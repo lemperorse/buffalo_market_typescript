@@ -10,7 +10,7 @@
                         </div>
                     </v-expand-transition>
                 </v-img>
-                <div class="p-6 cardproduct " >
+                <div class="p-6" >
                     <div class="flex items-baseline mb-1">
                         <span class="inline-block bg-red-400 text-red-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">New</span>
                         <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">

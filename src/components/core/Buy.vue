@@ -77,8 +77,8 @@
         </v-row>
 
         <v-divider></v-divider>
-
-        <Product />
+ 
+            <Product />  
 
         <div class="text-center mt-6">
             <v-pagination v-model="page" :length="6" circle></v-pagination>

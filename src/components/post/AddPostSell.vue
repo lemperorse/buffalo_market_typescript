@@ -132,8 +132,10 @@
 
             </div>
 
-            <div class="flex justify-center mt-4">
-                <v-btn color="success"><i class="fas fa-save text-lg mr-2"></i> บันทึก</v-btn>
+            <div class="flex justify-center mt-6">
+                <button class="rounded p-3 bg-green-600 hover:bg-green-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50" type="submit">
+                    <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
+                </button>
             </div>
 
         </form>

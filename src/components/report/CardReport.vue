@@ -2,7 +2,7 @@
 <div> 
     <div class="grid gap-6 mb-6 mt-6 md:grid-cols-2 xl:grid-cols-4">
         <!-- รายได้ทั้งหมด -->
-        <div class="flex items-center p-4 border-b-4 border-red-500 rounded-lg shadow-xl">
+        <div class="flex items-center p-4 bg-white border-b-4 border-red-500 rounded-lg shadow-xl">
             <div class="p-3 mr-4 text-red-500 rounded-full">
                 <i class="fas fa-clipboard-list text-4xl" aria-role="presentation" aria-label="CHEERING MEGAPHONE"></i>
             </div>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <!-- ประกาศการขาย -->
-        <div class="flex items-center p-4 border-b-4 border-blue-500 rounded-lg shadow-xl">
+        <div class="flex items-center p-4 bg-white border-b-4 border-blue-500 rounded-lg shadow-xl">
             <div class="p-3 mr-4 text-blue-500  rounded-full ">
                 <i class="fas fa-clipboard-list text-4xl" aria-role="presentation" aria-label="CHEERING MEGAPHONE"></i>
             </div>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <!-- ประกาศการขาย -->
-        <div class="flex items-center p-4 border-b-4 border-purple-500 rounded-lg shadow-xl">
+        <div class="flex items-center p-4 bg-white border-b-4 border-purple-500 rounded-lg shadow-xl">
             <div class="p-3 mr-4 text-purple-500 rounded-full ">
                 <i class="fas fa-clipboard text-4xl" aria-role="presentation" aria-label="CHEERING MEGAPHONE"></i>
             </div>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <!-- ปิดการขาย -->
-        <div class="flex items-center p-4 border-b-4 border-green-500 rounded-lg shadow-xl">
+        <div class="flex items-center p-4 bg-white border-b-4 border-green-500 rounded-lg shadow-xl">
             <div class="p-3 mr-4 text-green-500 rounded-full ">
                 <i class="fas fa-clipboard-check text-4xl" aria-role="presentation" aria-label="MONEY WITH WINGS"></i>
             </div>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <!-- ประกาศการรับซื้อ -->
-        <div class="flex items-center p-4 border-b-4 border-gray-500 rounded-lg shadow-xl">
+        <div class="flex items-center p-4 bg-white border-b-4 border-gray-500 rounded-lg shadow-xl">
             <div class="p-3 mr-4 text-gray-500 rounded-full  ">
                 <i class="far fa-clipboard text-4xl" aria-role="presentation" aria-label="NEWSPAPER"></i>
             </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
         <!-- ปิดการรับซื้อ -->
-        <div class="flex items-center p-4 border-b-4 border-black rounded-lg shadow-xl">
+        <div class="flex items-center p-4 bg-white border-b-4 border-black rounded-lg shadow-xl">
             <div class="p-3 mr-4 text-black rounded-full">
                 <i class="fas fa-clipboard-check text-4xl" aria-role="presentation" aria-label="PALM TREE"></i>
             </div>

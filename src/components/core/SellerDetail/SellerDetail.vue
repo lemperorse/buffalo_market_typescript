@@ -59,7 +59,7 @@
         </div>
     </v-row>
 
-    <v-toolbar class="m-2 rounded-lg elevation-1" :src="test">
+    <v-toolbar class="m-2 rounded-lg elevation-1" >
         <template>
             <v-tabs class="border rounded" color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                 <v-tab class="font-weight-black">สินค้าทั้งหมด</v-tab>

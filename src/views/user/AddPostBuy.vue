@@ -1,6 +1,6 @@
 <template>
-<v-app>
-    <div class="container mx-auto">
+<div class="bg-gray-100">
+    <div class="container mx-auto bg-gray-100">
         <div class="flex flex-wrap">
             <div class="w-full">
                 <div class="mb-2 relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded">
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-</v-app>
+</div>
 </template>
 
 <script>

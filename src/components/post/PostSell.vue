@@ -47,7 +47,7 @@
                                 <span class="fas fa-map-marker-alt"></span> เชียงใหม่
                             </div>
                             <v-select value=" " :items="status" dense outlined label="สถานะประกาศ"></v-select>
-                            <v-btn href="/#/user/postbuyedit/" class="mb-4" color="indigo" dark block depressed>แก้ไขประกาศ</v-btn>
+                            <v-btn href="/#/user/postselledit/" class="mb-4" color="indigo" dark block depressed>แก้ไขประกาศ</v-btn>
                             <v-btn class="mb-2" color="error" block depressed>ลบ</v-btn>
                         </div>
                         <hr>

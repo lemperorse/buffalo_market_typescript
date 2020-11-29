@@ -18,7 +18,7 @@
                         <World />
                     </v-tab-item>
                 </v-tabs> -->
-                <v-toolbar class="mb-2 rounded-lg elevation-1" :src="test" > 
+                <v-toolbar class="mb-2 rounded-lg elevation-1"  > 
                     <template>
                         <v-tabs class="border rounded-lg " color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                             <v-tab class="font-weight-black">ประกาศซื้อ</v-tab>

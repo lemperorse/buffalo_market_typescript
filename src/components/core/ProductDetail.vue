@@ -48,12 +48,9 @@
                         <div class="ml-2">
                             <h3>แอน แอนนี่</h3>
                             <h3>จังหวัด : พะเยา</h3>
-                            <!-- <v-btn @click="$router.push('/user/sellerdetail')" class="py-2 px-4" outlined color="green">
-                                แสดงรายละเอียด
-                            </v-btn> -->
                             <div class="flex ">
-                                <button @click="$router.push(`/user/sellerdetail`)" class="w-full p-1 rounded bg-green-600 hover:bg-green-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50" type="submit">
-                                    <div class="text-white">แสดงรายละเอียด</div>
+                                <button @click="$router.push(`/user/sellerdetail`)" class="text-sm rounded p-2 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                                    <div class="text-white"> แสดงรายละเอียด</div>
                                 </button>
                             </div>
                         </div>
@@ -62,12 +59,12 @@
                 <v-col cols="6" md="4">
                     <div class="ml-5">
                         <div class="text--primary">เบอร์ติดต่อ : 0812345678 <br /></div>
-                        <!-- <v-btn @click="dialog = true" class="py-2 px-4" outlined color="blue">
-                            นำทาง
-                        </v-btn> -->
                         <div class="flex ">
-                            <button @click="dialog = true" class="w-full md:w-1/2 p-1 rounded bg-blue-600 hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" type="submit">
+                            <!-- <button @click="dialog = true" class="w-full md:w-1/2 p-1 rounded bg-blue-600 hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" type="submit">
                                 <div class="text-white">นำทาง</div>
+                            </button> -->
+                            <button @click="dialog = true" class="w-full md:w-1/2 text-sm rounded p-2 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                                <div class="text-white"> นำทาง</div>
                             </button>
                         </div>
 
@@ -143,15 +140,13 @@
         ของผู้ขายคนนี้
     </p>
     <v-card-title primary-title>
-        <v-spacer></v-spacer> 
-        <button class="p-2 m-1 rounded bg-blue-600 hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" type="submit">
+        <v-spacer></v-spacer>
+        <button class="p-2 m-1 text-sm rounded p-3 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
             <i class="fas fa-arrow-left text-white"></i>
-        </button>
-        <button class="p-2 rounded bg-blue-600 hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" type="submit">
+        </button> 
+        <button class="p-2 m-1 text-sm rounded p-3 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
             <i class="fas fa-arrow-right text-white"></i>
-        </button>
-        <!-- <v-btn depressed class="m-1" color="deep-purple lighten-1" dark> <i class="fas fa-arrow-left"></i></v-btn>
-        <v-btn depressed class="m-1" color="deep-purple lighten-1" dark> <i class="fas fa-arrow-right"></i></v-btn> -->
+        </button> 
     </v-card-title>
     <v-card-text class="pa-0 pt-4" tile outlined>
         <div class="row ">

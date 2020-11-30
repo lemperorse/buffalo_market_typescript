@@ -2,13 +2,10 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <v-row dense>
-            <v-col cols="12" sm="8" class="pt-6">
-                <!-- <v-btn @click="$router.push(`/user/addpostbuy`)" depressed color="primary">
-                    เพิ่มประกาศซื้อ
-                </v-btn> -->
-                <div class="text-lg">
-                    <button @click="$router.push(`/user/addpostbuy`)" class="p-1 rounded bg-green-600 hover:bg-green-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50" type="submit">
-                        <div class="text-white">เพิ่มประกาศซื้อ</div>
+            <v-col cols="12" sm="8" class="pt-4">
+                <div>
+                    <button @click="$router.push(`/user/addpostbuy`)" class="rounded p-2 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                        <div class="text-white"><i class="far fa-plus-square"></i> เพิ่มประกาศซื้อ</div>
                     </button>
                 </div>
                 <small class="">แสดง 1-12 จาก 200 ผลิตภัณท์</small>
@@ -54,8 +51,11 @@
                             <v-select value=" " :items="status" dense outlined label="สถานะประกาศ"></v-select>
                             <!-- <v-btn href="/#/user/postbuyedit/" class="mb-4" color="indigo" dark block depressed>แก้ไขประกาศ</v-btn> -->
                             <div class="flex ">
-                                <button @click="$router.push(`/user/postbuyedit`)" class="w-full p-1 rounded bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50" type="submit">
+                                <!-- <button @click="$router.push(`/user/postbuyedit`)" class="w-full p-1 rounded bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50" type="submit">
                                     <div class="text-white"><i class="fas fa-pencil-alt text-lg"></i>แก้ไขประกาศ</div>
+                                </button> -->
+                                <button @click="$router.push(`/user/postbuyedit`)" class="w-full rounded p-2 bg-indigo-500 hover:bg-indigo-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                                    <div class="text-white"><i class="fas fa-pencil-alt"></i> แก้ไขประกาศ</div>
                                 </button>
                             </div>
 

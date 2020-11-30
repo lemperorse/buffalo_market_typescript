@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="bg-white border-b-4 border-purple-700 rounded shadow-xl p-2 mt-6">
+    <div class="bg-white border-l-8 border-purple-700 rounded shadow-xl p-2 mt-6">
         <div class="flex flex-col md:flex-row items-center">
             <GmapMap class="sizemap" :center="center" :zoom="7" map-type-id="roadmap">
                 <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center = m.position" />

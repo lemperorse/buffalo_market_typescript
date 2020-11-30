@@ -3,9 +3,9 @@
     <div class="rounded-t bg-white mb-0 px-6 py-6">
         <div class="text-center flex justify-between">
             <h6 class="text-gray-800 text-xl font-bold">ช่องทางการติดต่ออื่นๆ</h6>
-            <button class="rounded p-1 bg-purple-600 hover:bg-purple-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-600 focus:ring-opacity-50" type="button">
-                <div class="text-white"><i class="fas fa-pencil-alt text-lg"></i>แก้ไข</div>
-            </button>
+            <button class="rounded p-3 bg-yellow-500 hover:bg-yellow-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                <div class="text-white"><i class="fas fa-pencil-alt text-lg"></i> แก้ไข</div>
+            </button> 
             <!-- <button class="bg-red-500 f-white active:bg-orange-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
                 <i class="fas fa-pencil-alt text-lg"></i> ยกเลิกการแก้ไข
             </button> -->
@@ -22,11 +22,11 @@
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             Email
                         </label>
-                        <div class="mb-3 rounded bg-gray-200">
+                        <div class="mb-3 rounded bg-gray-200 border-b-2 border-green-500">
                             <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
                                 <i class="far fa-envelope text-lg text-gray-500"></i>
                             </span>
-                            <input type="text" class="p-3 w-full pl-10" />
+                            <input type="text" placeholder="โปรดระบุ Email ของคุณ" class="p-3 w-full pl-10" />
                         </div>
 
                     </div>
@@ -37,11 +37,11 @@
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             Facebook
                         </label>
-                        <div class="mb-3 rounded bg-gray-200">
+                        <div class="mb-3 rounded bg-gray-200 border-b-2 border-green-500">
                             <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
                                 <i class="fab fa-facebook text-lg text-gray-500"></i>
                             </span>
-                            <input type="text" class="p-3 w-full pl-10" />
+                            <input type="text" placeholder="โปรดระบุ Facebook ของคุณ" class="p-3 w-full pl-10" />
                         </div>
 
                     </div>
@@ -52,11 +52,11 @@
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             Line
                         </label>
-                        <div class="mb-3 rounded bg-gray-200">
+                        <div class="mb-3 rounded bg-gray-200 border-b-2 border-green-500">
                             <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
                                 <i class="fab fa-line text-lg text-gray-500"></i>
                             </span>
-                            <input type="text" class="p-3 w-full pl-10" />
+                            <input type="text" placeholder="โปรดระบุ Line ID ของคุณ" class="p-3 w-full pl-10" />
                         </div>
 
                     </div>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-600 hover:bg-green-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50" type="submit">
+                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
                     <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
                 </button>
             </div>

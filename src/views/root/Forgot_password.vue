@@ -14,19 +14,15 @@
                 </h2>
                 <div class="mt-8">
                     <!-- <form>  -->
-                        <div class="mt-6">
-                            <button  @click="$router.push('/forgot-admin')" class="animate__animated animate__slideInUp bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
-                                font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
-                                shadow-lg">
-                                ติดต่อแอดมิน
+                        <div class="mt-6"> 
+                            <button @click="$router.push('/forgot-admin')" type="submit" class="w-full animate__animated animate__slideInUp rounded-full p-3 bg-red-500 hover:bg-red-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" >
+                                <div class="text-white"> ติดต่อแอดมิน</div>
                             </button>
                         </div>
 
-                        <div class="mt-6">
-                            <button @click="$router.push('/forgot-user')" class="animate__animated animate__slideInUp bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
-                                font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
-                                shadow-lg">
-                                เปลี่ยนรหัสผ่านเอง
+                        <div class="mt-6"> 
+                            <button @click="$router.push('/forgot-user')" type="submit" class="w-full animate__animated animate__slideInUp rounded-full p-3 bg-red-500 hover:bg-red-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" >
+                                <div class="text-white"> เปลี่ยนรหัสผ่านเอง</div>
                             </button>
                         </div>
                     <!-- </form> -->

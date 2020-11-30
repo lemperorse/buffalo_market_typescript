@@ -7,8 +7,8 @@
                     รายละเอียด
                 </h6>
                 <div class="text-md">
-                    <button class=" rounded p-1 bg-red-600 hover:bg-red-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50" type="button">
-                        <div class="text-white"><i class="fas fa-eraser"></i> ลบข้อมูล</div>
+                    <button @click="disableUser" class="mt-1 text-xs rounded p-3 bg-red-500 hover:bg-red-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                        <div class="text-white"><i class="fas fa-eraser"></i> ลบประกาศซื้อ</div>
                     </button>
                 </div> 
             </div>
@@ -112,7 +112,7 @@
             </div>
 
             <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-600 hover:bg-green-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50" type="submit">
+                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
                     <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
                 </button>
             </div>

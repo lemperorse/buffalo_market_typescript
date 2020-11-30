@@ -1,5 +1,5 @@
 <template>
-<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800">
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 border-l-8 border-green-500">
     <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
             <div class="relative w-full max-w-full flex-grow flex-1">

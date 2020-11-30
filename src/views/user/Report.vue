@@ -13,27 +13,27 @@
             </h2>
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <CardBarChart />
+                    <ChartAll />
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <CardLineChart2 />
+                    <ChartPostAll />
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <CardLineChart />
+                    <ChartPostSell />
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <CardLineChart1 />
+                    <ChartCloseSell />
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <CardBarChart1 />
+                    <ChartPostBuy />
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <CardBarChart2 />
+                    <ChartCloseBuy />
                 </div>
 
             </div>
@@ -46,22 +46,22 @@
 <script>
 import { Component, Vue } from "vue-property-decorator";
 import CardReport from "@/components/report/CardReport.vue"
-import CardBarChart from "@/components/report/Chart/CardBarChart.vue"
-import CardLineChart2 from "@/components/report/Chart/CardLineChart2.vue"
-import CardLineChart from "@/components/report/Chart/CardLineChart.vue"
-import CardLineChart1 from "@/components/report/Chart/CardLineChart1.vue"
-import CardBarChart1 from "@/components/report/Chart/CardBarChart1.vue"
-import CardBarChart2 from "@/components/report/Chart/CardBarChart2.vue"
+import ChartAll from "@/components/report/Chart/ChartAll.vue"
+import ChartPostAll from "@/components/report/Chart/ChartPostAll.vue"
+import ChartPostSell from "@/components/report/Chart/ChartPostSell.vue"
+import ChartCloseSell from "@/components/report/Chart/ChartCloseSell.vue"
+import ChartPostBuy from "@/components/report/Chart/ChartPostBuy.vue"
+import ChartCloseBuy from "@/components/report/Chart/ChartCloseBuy.vue"
 export default {
     name: "report-page",
     components: {
         CardReport,
-        CardBarChart,
-        CardLineChart2,
-        CardLineChart,
-        CardLineChart1,
-        CardBarChart1,
-        CardBarChart2
+        ChartAll,
+        ChartPostAll,
+        ChartPostSell,
+        ChartCloseSell,
+        ChartPostBuy,
+        ChartCloseBuy
     },
     data() {
         return {

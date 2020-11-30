@@ -15,13 +15,10 @@
                             <v-card-subtitle>
                                 <div>ชื่อ : นายแดง อิอิ</div>
                                 <div>ที่อยู่ : 19 ตำบลแม่กา อำเภอเมืองพะเยา พะเยา 56000</div>
-                                <div>เบอร์โทรศัพท์ : 0123456789</div>
-                                <!-- <v-btn @click="dialog = true" class="py-2 px-4" outlined color="blue">
-                                    นำทาง
-                                </v-btn> -->
-                                <div class="flex ">
-                                    <button @click="dialog = true" class="md:w-1/2 w-full p-1 rounded bg-blue-600 hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" type="submit">
-                                        <div class="text-white">นำทาง</div>
+                                <div>เบอร์โทรศัพท์ : 0123456789</div> 
+                                <div class="flex "> 
+                                    <button @click="dialog = true" class="w-full md:w-1/2 text-sm rounded p-2 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                                        <div class="text-white"> นำทาง</div>
                                     </button>
                                 </div>
                                 <v-dialog v-model="dialog" scrollable fullscreen persistent :overlay="false" max-width="500px" transition="dialog-transition">

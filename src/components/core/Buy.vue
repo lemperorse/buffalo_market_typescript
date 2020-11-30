@@ -72,7 +72,6 @@
             </v-col>
             <v-col cols="12" sm="4" class="pl-6 pt-3">
                 <v-select class="pa-0" v-model="select" :items="options" style="margin-bottom: -20px" outlined dense></v-select>
-
             </v-col>
         </v-row>
 

@@ -1,10 +1,10 @@
 <template>
-<div > 
+<div>
     <v-row dense>
         <div class="flex flex-wrap">
             <v-col cols="12">
-                <v-card class="elevation-1" >
-                    <div class="d-flex flex-wrap" >
+                <v-card class="elevation-1">
+                    <div class="d-flex flex-wrap">
                         <v-avatar class="ma-3 rounded" size="125" tile>
                             <v-img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></v-img>
                         </v-avatar>
@@ -16,9 +16,14 @@
                                 <div>ชื่อ : นายแดง อิอิ</div>
                                 <div>ที่อยู่ : 19 ตำบลแม่กา อำเภอเมืองพะเยา พะเยา 56000</div>
                                 <div>เบอร์โทรศัพท์ : 0123456789</div>
-                                <v-btn @click="dialog = true" class="py-2 px-4" outlined color="blue">
+                                <!-- <v-btn @click="dialog = true" class="py-2 px-4" outlined color="blue">
                                     นำทาง
-                                </v-btn>
+                                </v-btn> -->
+                                <div class="flex ">
+                                    <button @click="dialog = true" class="md:w-1/2 w-full p-1 rounded bg-blue-600 hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" type="submit">
+                                        <div class="text-white">นำทาง</div>
+                                    </button>
+                                </div>
                                 <v-dialog v-model="dialog" scrollable fullscreen persistent :overlay="false" max-width="500px" transition="dialog-transition">
                                     <v-card>
                                         <v-card-title primary-title>
@@ -26,6 +31,7 @@
                                             <v-btn @click="dialog = false" dark icon color="red">
                                                 <v-icon>mdi-close</v-icon>
                                             </v-btn>
+
                                         </v-card-title>
                                         <v-card>
                                             <v-card-text>
@@ -59,7 +65,7 @@
         </div>
     </v-row>
 
-    <v-toolbar class="m-2 rounded-lg elevation-1" >
+    <v-toolbar class="m-2 rounded-lg elevation-1">
         <template>
             <v-tabs class="border rounded" color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                 <v-tab class="font-weight-black">สินค้าทั้งหมด</v-tab>

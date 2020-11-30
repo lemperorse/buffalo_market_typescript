@@ -2,9 +2,16 @@
 <div class="px-4 py-5 flex-auto">
     <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
         <form>
-            <h6 class="text-gray-500 text-sm mt-3 mb-6 font-bold uppercase">
-                รายละเอียด
-            </h6>
+            <div class="text-center flex justify-between">
+                <h6 class="text-gray-500 text-sm mt-3 mb-6 font-bold uppercase">
+                    รายละเอียด
+                </h6>
+                <div class="text-md">
+                    <button class=" rounded p-1 bg-red-600 hover:bg-red-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50" type="button">
+                        <div class="text-white"><i class="fas fa-eraser"></i> ลบข้อมูล</div>
+                    </button>
+                </div> 
+            </div>
             <div class="flex flex-wrap">
                 <div class="w-full lg:w-6/12 px-4">
                     <div class="relative w-full mb-3">
@@ -43,7 +50,7 @@
                         </div>
 
                     </div>
-                </div> 
+                </div>
 
                 <div class="w-full lg:w-12/12 px-4">
                     <div class="relative w-full">
@@ -102,7 +109,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="flex justify-center mt-6">
@@ -120,7 +126,7 @@
 <script>
 export default {
     data() {
-        return{
+        return {
             price: false,
         }
     }

@@ -2,9 +2,16 @@
 <div class="px-4 py-5 flex-auto">
     <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
         <form>
-            <h6 class="text-gray-500 text-sm mt-3 mb-6 font-bold uppercase">
-                รายละเอียด
-            </h6>
+            <div class="text-center flex justify-between">
+                <h6 class="text-gray-500 text-sm mt-3 mb-6 font-bold uppercase">
+                    รายละเอียด
+                </h6>
+                <div class="text-md">
+                    <button class=" rounded p-1 bg-red-600 hover:bg-red-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50" type="button">
+                        <div class="text-white"><i class="fas fa-eraser"></i> ลบข้อมูล</div>
+                    </button>
+                </div> 
+            </div>
             <div class="flex flex-wrap">
                 <div class="w-full lg:w-6/12 px-4">
                     <div class="relative w-full mb-3">
@@ -56,16 +63,7 @@
                 </div>
 
                 <div class="w-full lg:w-12/12 px-4">
-                    <div class="relative w-full mb-3">
-                        <!-- <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            วันที่ส่งมอบ
-                        </label>
-                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                            <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
-                                <i class="fas fa-calendar-day text-lg text-gray-500"></i>
-                            </span>
-                            <input type="date" value=" " class="px-2 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full pl-10" />
-                        </div> -->
+                    <div class="relative w-full mb-3"> 
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             รูปแบบการประกาศขาย
                         </label>

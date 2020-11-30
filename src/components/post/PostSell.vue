@@ -3,12 +3,17 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <v-row dense>
             <v-col cols="12" sm="8" class="pt-6">
-                <v-btn @click="$router.push(`/user/addpostsell`)" depressed color="success">
+                <!-- <v-btn @click="$router.push(`/user/addpostsell`)" depressed color="success">
                     เพิ่มประกาศขาย
-                </v-btn>
-                <small class="md:pl-6">แสดง 1-12 จาก 200 ผลิตภัณท์</small>
+                </v-btn> -->
+                <div class="text-lg">
+                    <button @click="$router.push(`/user/addpostsell`)" class="p-1 rounded bg-green-600 hover:bg-green-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50" type="submit">
+                        <div class="text-white">เพิ่มประกาศขาย</div>
+                    </button>
+                </div>
+                <small class="">แสดง 1-12 จาก 200 ผลิตภัณท์</small>
             </v-col>
-            <v-col cols="12" sm="4" class="relative pl-6 pt-3">
+            <v-col cols="12" sm="4" class="relative pl-6 pt-4">
                 <div class="flex rounded border-grey-light border bg-white">
                     <button>
                         <span class="w-auto flex justify-end items-center text-grey p-2">
@@ -47,8 +52,12 @@
                                 <span class="fas fa-map-marker-alt"></span> เชียงใหม่
                             </div>
                             <v-select value=" " :items="status" dense outlined label="สถานะประกาศ"></v-select>
-                            <v-btn href="/#/user/postselledit/" class="mb-4" color="indigo" dark block depressed>แก้ไขประกาศ</v-btn>
-                            <v-btn class="mb-2" color="error" block depressed>ลบ</v-btn>
+                            <!-- <v-btn href="/#/user/postselledit/" class="mb-4" color="indigo" dark block depressed>แก้ไขประกาศ</v-btn> -->
+                            <div class="flex ">
+                                <button @click="$router.push(`/user/postselledit`)" class="w-full p-1 rounded bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50" type="submit">
+                                    <div class="text-white"><i class="fas fa-pencil-alt text-lg"></i>แก้ไขประกาศ</div>
+                                </button>
+                            </div>
                         </div>
                         <hr>
                         <div class="text-xs text-center">

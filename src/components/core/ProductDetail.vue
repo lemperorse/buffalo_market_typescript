@@ -150,7 +150,7 @@
     </v-card-title>
     <v-card-text class="pa-0 pt-4" tile outlined>
         <div class="row ">
-            <div class="col-md-2 col-sm-4 col-xs-12 cursor-pointer" v-for="i in 6" @click="$router.push('/user/productdetail/')">
+            <div class="col-md-2 col-sm-4 col-6 cursor-pointer" v-for="i in 6" @click="$router.push('/user/productdetail/')">
                 <v-hover v-slot:default="{ hover }">
                     <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border">
                         <v-img class="white--text align-end" height="150px" src="https://images.pexels.com/photos/1054650/pexels-photo-1054650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
@@ -162,7 +162,7 @@
                         </v-img>
                         <div class="p-6 ">
                             <div class="flex items-baseline mb-1">
-                                <span class="inline-block bg-red-400 text-red-800 text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">New</span>
+                                <span class="inline-block bg-yellow-400 text-white text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">ใหม่</span>
                                 <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
                                     ควาย
                                 </div>

@@ -7,7 +7,7 @@
             <v-col cols="12" sm="4" class="pt-6">
                 <small>แสดง 1-12 จาก 200 ผลิตภัณท์</small>
             </v-col>
-            <v-col cols="12" sm="4" class="relative pl-6 pt-3">
+            <v-col cols="12" sm="4" class="relative">
                 <div class="flex rounded border-grey-light border bg-white">
                     <button>
                         <span class="w-auto flex justify-end items-center text-grey p-2">
@@ -17,7 +17,7 @@
                     <input class="w-full rounded " type="text" placeholder="ค้นหา">
                 </div>
             </v-col>
-            <v-col cols="12" sm="4" class="pl-6 pt-3">
+            <v-col cols="12" sm="4" class="pt-2">
                 <v-select class="pa-0" v-model="select" :items="options" style="margin-bottom:-20px" outlined dense></v-select>
             </v-col>
         </v-row>
@@ -25,7 +25,7 @@
         <v-divider></v-divider>
 
         <div class="row">
-            <div class="col-md-2 col-sm-3 col-xs-12 cursor-pointer" v-for="i in 18" @click="$router.push('/user/productdetail/')">
+            <div class="col-md-2 col-sm-3 col-6 cursor-pointer" v-for="i in 18" @click="$router.push('/user/productdetail/')">
                 <v-hover v-slot:default="{ hover }">
                     <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border">
                         <v-img class="white--text align-end" height="150px" src="https://images.pexels.com/photos/248412/pexels-photo-248412.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">

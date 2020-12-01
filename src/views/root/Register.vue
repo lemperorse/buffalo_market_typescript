@@ -19,23 +19,41 @@
                                 <span class="z-10 h-full leading-snug font-normal absolute text-center text-red-600 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
                                     <i class="fas fa-user"></i>
                                 </span>
+                                <input type="text" placeholder="ชื่อ" class="px-3 py-3 placeholder-gray-500 rounded bg-red-200  focus:bg-white focus:shadow-outline w-full pl-10" />
+                            </div>
+                        </div>
+                        <div class="relative animate__animated animate__fadeInRight">
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3 ">
+                                <span class="z-10 h-full leading-snug font-normal absolute text-center text-red-600 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" placeholder="นามสกุล" class="px-3 py-3 placeholder-gray-500 rounded bg-red-200  focus:bg-white focus:shadow-outline w-full pl-10" />
+                            </div>
+                        </div>
+                        <div class="relative animate__animated animate__fadeInRight">
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3 ">
+                                <span class="z-10 h-full leading-snug font-normal absolute text-center text-red-600 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
+                                    <i class="fas fa-user"></i>
+                                </span>
                                 <input type="text" placeholder="ชื่อผู้ใช้งาน" class="px-3 py-3 placeholder-gray-500 rounded bg-red-200  focus:bg-white focus:shadow-outline w-full pl-10" />
                             </div>
                         </div>
-                        <div class="relative mt-6 animate__animated animate__fadeInRight">
+                        <div class="relative animate__animated animate__fadeInRight">
                             <div class="relative flex w-full flex-wrap items-stretch mb-3 ">
                                 <span class="z-10 h-full leading-snug font-normal absolute text-center text-red-600 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
                                     <i class="fas fa-lock"></i>
                                 </span>
                                 <input type="password" placeholder="รหัสผ่าน" class="px-3 py-3 placeholder-gray-500 rounded bg-red-200  focus:bg-white focus:shadow-outline w-full pl-10" />
                             </div>
+                        </div>
+                        <div class="relative animate__animated animate__fadeInRight">
                             <div class="relative flex w-full flex-wrap items-stretch mb-3 ">
                                 <span class="z-10 h-full leading-snug font-normal absolute text-center text-red-600 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
                                     <i class="fas fa-lock"></i>
                                 </span>
                                 <input type="password" placeholder="ยืนยันรหัสผ่าน" class="px-3 py-3 placeholder-gray-500 rounded bg-red-200  focus:bg-white focus:shadow-outline w-full pl-10" />
                             </div>
-                        </div>
+                        </div> 
 
                         <div class="mt-6"> 
                             <button @click="$router.push('/')" type="submit" class="w-full animate__animated animate__slideInUp rounded-full p-3 bg-red-500 hover:bg-red-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" >

@@ -1,12 +1,11 @@
 <template>
 <div>
     <div class="col-md-12 col-sm-12 col-xs-12">
-
         <v-row dense>
             <v-col cols="12" sm="4" class="pt-6">
                 <small>แสดง 1-12 จาก 200 ผลิตภัณท์</small>
             </v-col>
-            <v-col cols="12" sm="4" class="relative pl-6 pt-3">
+            <v-col cols="12" sm="4" class="relative ">
                 <div class="flex rounded border-grey-light border bg-white">
                     <button>
                         <span class="w-auto flex justify-end items-center text-grey p-2">
@@ -16,9 +15,8 @@
                     <input class="w-full rounded " type="text" placeholder="ค้นหา">
                 </div>
             </v-col>
-            <v-col cols="12" sm="4" class="pl-6 pt-3">
+            <v-col cols="12" sm="4" class="pt-2">
                 <v-select class="pa-0" v-model="select" :items="options" style="margin-bottom: -20px" outlined dense></v-select>
-
             </v-col>
         </v-row>
 
@@ -26,7 +24,8 @@
 
         <!-- <div class="row text-center"> -->
         <div class="row">
-            <div class="col-md-2 col-sm-3 col-xs-12 cursor-pointer" v-for="i in 6" @click="$router.push('/user/productdetail/')">
+            <!-- <div class="col-md-2 col-sm-3 col-xs-12 cursor-pointer" v-for="i in 6" @click="$router.push('/user/productdetail/')"> -->
+            <div class="col-md-2 col-sm-3 col-6 cursor-pointer" v-for="i in 6" @click="$router.push('/user/productdetail/')">
                 <v-hover v-slot:default="{ hover }">
                     <!-- <v-card class="mx-auto" color="grey lighten-4" max-width="600"> -->
                     <!-- <div class="mx-auto card bg-white rounded-lg dark:bg-gray-800 shadow-xl"> -->

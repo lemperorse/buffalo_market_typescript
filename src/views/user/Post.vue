@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import test from "@/assets/ink_landscape_ching_ming_festival_4104466.jpg"
 import { Component, Vue } from "vue-property-decorator";
 import PostBuy from "@/components/post/PostBuy.vue"
 import PostSell from "@/components/post/PostSell.vue"
@@ -64,7 +63,6 @@ export default {
     },
     data() {
         return {
-            test,
             tabs: null,
             dialog: false,
         }

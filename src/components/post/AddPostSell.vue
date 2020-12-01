@@ -1,12 +1,12 @@
 <template>
 <div class="px-4 py-5 flex-auto">
-    <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+    <div class="flex-auto lg:px-10 py-10 pt-0">
         <form>
             <h6 class="text-gray-500 text-sm mt-3 mb-6 font-bold uppercase">
                 รายละเอียด
             </h6>
             <div class="flex flex-wrap">
-                <div class="w-full lg:w-6/12 px-4">
+                <div class="w-full lg:w-6/12 px-1">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             ชื่อสินค้า
@@ -20,7 +20,7 @@
                     </div>
                 </div>
 
-                <div class="w-full lg:w-6/12 px-4">
+                <div class="w-full lg:w-6/12 px-1">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             หมวดหมู่
@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="w-full lg:w-12/12 px-4">
+                <div class="w-full lg:w-12/12 px-1">
                     <div class="relative w-full">
                         <v-checkbox label="ช่วงราคา" v-model="price" value="value"></v-checkbox>
                         <v-text-field v-if="!price" label="" placeholder="ราคา" type="number" outlined prepend-inner-icon="mdi-numeric"></v-text-field>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="w-full lg:w-12/12 px-4">
+                <div class="w-full lg:w-12/12 px-1">
                     <div class="relative w-full mb-3">
                         <!-- <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             วันที่ส่งมอบ
@@ -97,7 +97,7 @@
                     </div>
                 </div>
 
-                <div class="w-full lg:w-12/12 px-4 lg:mt-11 ">
+                <div class="w-full lg:w-12/12 lg:mt-11 px-1">
                     <div class="relative w-full mb-3 ">
                         <div class="relative flex w-full flex-wrap items-stretch mb-3">
                             <v-textarea name="input-7-1" label="คำอธิบายสินค้า" value=""></v-textarea>
@@ -105,7 +105,7 @@
                     </div>
                 </div>
 
-                <div class="w-full lg:w-4/12 px-4 mt-4 " v-for="i in 4">
+                <div class="w-full lg:w-4/12 px-1 mt-4 " v-for="i in 4">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2 ">
                             อัพโหลดภาพถ่ายสินค้า
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full lg:w-4/12 px-4 mt-4 ">
+                <div class="w-full lg:w-4/12 px-1 mt-4 ">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             อัพโหลดวีดีโอสินค้า

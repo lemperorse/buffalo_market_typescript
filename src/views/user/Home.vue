@@ -49,7 +49,6 @@
 import Buy from "@/components/core/Buy.vue";
 import Sell from "@/components/core/Sell.vue";
 import World from "@/components/core/World.vue";
-import test from "@/assets/ink_landscape_ching_ming_festival_4104466.jpg"
 import { Component, Vue } from "vue-property-decorator";
 export default {
     name: "home-page",
@@ -60,7 +59,6 @@ export default {
     },
     data() {
         return {
-            test,
             tabs: null,
             dialog: false,
         }

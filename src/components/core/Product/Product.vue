@@ -1,5 +1,6 @@
 <template>
-<div class="row ">
+
+<div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12 cursor-pointer" v-for="i in 12" @click="$router.push('/user/productdetail/')">
         <v-hover v-slot:default="{ hover }">
             <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border ">

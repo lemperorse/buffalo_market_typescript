@@ -3,8 +3,8 @@
     <div class="container mx-auto ">
         <div class="flex flex-wrap">
             <div class="w-full lg:w-4/12 px-4">
-                <div class="relative min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg">
-                    <div class="px-6">
+                <div class="relative min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg border-l-4 border-green-500">
+                    <div class="px-5">
                         <div class="flex flex-wrap">
                             <img ref="profileImage" alt="..." src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" class="mt-4 shadow-xl h-16 rounded-full align-middle border-none" />
                             <div class="flex flex-col pl-4">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="w-full lg:w-8/12 px-4">
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded border-l-4 border-green-500">
                     <div class="px-4 py-5 flex-auto">
                         <div class="tab-content tab-space">
                             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">

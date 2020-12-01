@@ -60,24 +60,56 @@
             <v-col cols="12" sm="4" class="pt-6">
                 <small>แสดง 1-12 จาก 200 ผลิตภัณท์</small>
             </v-col>
-            <v-col cols="12" sm="4" class="relative pl-6 pt-3 ">
+            <v-col cols="12" sm="4" class="relative pt-2">
                 <div class="flex rounded border-grey-light border bg-white">
                     <button>
                         <span class="w-auto flex justify-end items-center text-grey p-2">
                             <i class="fas fa-search text-xl"></i>
                         </span>
                     </button>
-                    <input class="w-full rounded " type="text" placeholder="ค้นหา">
+                    <input class="w-full rounded " type="text" placeholder="ค้นหาสินค้าที่ต้องการ">
                 </div>
             </v-col>
-            <v-col cols="12" sm="4" class="pl-6 pt-3">
+            <v-col cols="12" sm="4" class="pt-3">
                 <v-select class="pa-0" v-model="select" :items="options" style="margin-bottom: -20px" outlined dense></v-select>
             </v-col>
         </v-row>
 
         <v-divider></v-divider>
- 
-            <Product />  
+
+        <!-- <Product /> -->
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-6 cursor-pointer" v-for="i in 12" @click="$router.push('/user/productdetail/')">
+                <v-hover v-slot:default="{ hover }">
+                    <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border ">
+                        <v-img class="white--text align-end" height="150px" src="https://images.pexels.com/photos/1054650/pexels-photo-1054650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                            <v-expand-transition>
+                                <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
+                                    <v-btn v-if="hover" href="/#/user/productdetail/" class="" outlined>ดูรายละเอียด</v-btn>
+                                </div>
+                            </v-expand-transition>
+                        </v-img>
+                        <div class="p-6">
+                            <div class="flex items-baseline mb-1">
+                                <span class="inline-block bg-yellow-400 text-white text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">ใหม่</span>
+                                <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
+                                    ควาย
+                                </div>
+                            </div>
+                            <h4 class="font-semibold text-lg leading-tight truncate mb-1 text-indigo-600 ">ควายเผือก</h4>
+                            <div class=" text-orange-600 font-bold mb-1">฿ 12,000</div>
+                            <div class="text-sm text-gray-600 font-light mb-1">
+                                <span class="fas fa-map-marker-alt"></span> เชียงใหม่
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-xs text-center">
+                            <span class="fas fa-bullhorn"></span> ผู้โพส : นายแดง มีสุขใจ
+                        </div>
+                    </div>
+                </v-hover>
+            </div>
+        </div>
 
         <div class="text-center mt-6">
             <v-pagination v-model="page" :length="6" circle></v-pagination>
@@ -153,6 +185,13 @@ export default {
 }
 </script>
 
-<style scoped> 
-
+<style scoped>
+ .v-card--reveal {
+     align-items: center;
+     bottom: 0;
+     justify-content: center;
+     opacity: 0.8;
+     position: absolute;
+     width: 100%;
+ }
 </style>

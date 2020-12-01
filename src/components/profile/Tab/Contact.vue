@@ -1,62 +1,62 @@
 <template>
 <div>
-    <div class="rounded-t bg-white mb-0 px-6 py-6">
-        <div class="text-center flex justify-between">
+    <div class="rounded-t bg-white mb-0 px-1 py-6">
+        <div class="text-center flex flex-wrap justify-between">
             <h6 class="text-gray-800 text-xl font-bold">ช่องทางการติดต่ออื่นๆ</h6>
-            <button class="rounded p-3 bg-yellow-500 hover:bg-yellow-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                <div class="text-white"><i class="fas fa-pencil-alt text-lg"></i> แก้ไข</div>
+            <button class="rounded w-full md:w-1/6 p-2 bg-yellow-500 hover:bg-yellow-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                <div class="text-white"><i class="fas fa-pencil-alt"></i> แก้ไข</div>
             </button> 
             <!-- <button class="bg-red-500 f-white active:bg-orange-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
                 <i class="fas fa-pencil-alt text-lg"></i> ยกเลิกการแก้ไข
             </button> -->
         </div>
     </div>
-    <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+    <div class="flex-auto px-1 lg:px-10 py-10 pt-0">
         <form>
             <!-- <h6 class="text-gray-500 text-sm mb-6 font-bold uppercase">
                 ข้อมูลส่วนตัว
             </h6> -->
             <div class="flex flex-wrap">
-                <div class="w-full  lg:w-12/12 px-4">
+                <div class="w-full  lg:w-12/12 px-1">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             Email
                         </label>
-                        <div class="mb-3 rounded bg-gray-200 border-b-2 border-green-500">
+                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
                             <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
                                 <i class="far fa-envelope text-lg text-gray-500"></i>
                             </span>
-                            <input type="text" placeholder="โปรดระบุ Email ของคุณ" class="p-3 w-full pl-10" />
+                            <input type="text" placeholder="โปรดระบุ Email ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
                         </div>
 
                     </div>
                 </div>
 
-                <div class="w-full  lg:w-12/12 px-4">
+                <div class="w-full  lg:w-12/12 px-1">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             Facebook
                         </label>
-                        <div class="mb-3 rounded bg-gray-200 border-b-2 border-green-500">
+                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
                             <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
                                 <i class="fab fa-facebook text-lg text-gray-500"></i>
                             </span>
-                            <input type="text" placeholder="โปรดระบุ Facebook ของคุณ" class="p-3 w-full pl-10" />
+                            <input type="text" placeholder="โปรดระบุ Facebook ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
                         </div>
 
                     </div>
                 </div> 
 
-                <div class="w-full  lg:w-12/12 px-4">
+                <div class="w-full  lg:w-12/12 px-1">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             Line
                         </label>
-                        <div class="mb-3 rounded bg-gray-200 border-b-2 border-green-500">
+                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
                             <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
                                 <i class="fab fa-line text-lg text-gray-500"></i>
                             </span>
-                            <input type="text" placeholder="โปรดระบุ Line ID ของคุณ" class="p-3 w-full pl-10" />
+                            <input type="text" placeholder="โปรดระบุ Line ID ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
                         </div>
 
                     </div>

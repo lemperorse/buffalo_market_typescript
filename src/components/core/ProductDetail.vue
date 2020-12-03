@@ -3,7 +3,8 @@
     <div class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3">
         <div class="row bg-white rounded border hover:shadow-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
-                <v-carousel class="rounded">
+
+                <v-carousel class="rounded" >
                     <v-carousel-item src="https://images.pexels.com/photos/1066226/pexels-photo-1066226.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
                     </v-carousel-item>
                     <v-carousel-item src="https://images.pexels.com/photos/1054650/pexels-photo-1054650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
@@ -12,7 +13,14 @@
                     </v-carousel-item>
                     <v-carousel-item src="https://images.pexels.com/photos/16009/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
                     </v-carousel-item>
+                    <v-carousel-item>
+                        <video class="w-full h-full" controls autoplay>
+                            <source :src="testvideo" type="video/mp4">
+                            <source src="mov_bbb.ogg" type="video/ogg"> 
+                        </video>
+                    </v-carousel-item>
                 </v-carousel>
+
             </div>
             <div class="col-md-7 col-sm-7 col-xs-12">
                 <v-breadcrumbs class="pb-0" :items="breadcrums"></v-breadcrumbs>
@@ -30,6 +38,7 @@
                     <p class="text-xl">ความสูง : 120 เซนติเมตร</p>
                     <p class="text-xl">อายุ : 5 ปี</p>
                 </div>
+ 
             </div>
         </div>
     </div>
@@ -143,10 +152,10 @@
         <v-spacer></v-spacer>
         <button class="p-2 m-1 text-sm rounded p-3 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
             <i class="fas fa-arrow-left text-white"></i>
-        </button> 
+        </button>
         <button class="p-2 m-1 text-sm rounded p-3 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
             <i class="fas fa-arrow-right text-white"></i>
-        </button> 
+        </button>
     </v-card-title>
     <v-card-text class="pa-0 pt-4" tile outlined>
         <div class="row ">
@@ -186,11 +195,12 @@
 </template>
 
 <script>
+import testvideo from "@/assets/video/mov_bbb.mp4"
 export default {
     data() {
         return {
             dialog: false,
-
+            testvideo,
             breadcrums: [{
                     text: "หน้าแรก",
                     disabled: false,

@@ -2,7 +2,7 @@
 <div class="bg-gray-100">
     <div class="container mx-auto ">
         <div class="flex flex-wrap">
-            <div class="w-full lg:w-4/12 px-4">
+            <div class="w-full lg:w-4/12 px-2">
                 <div class="relative min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg border-l-4 border-green-500">
                     <div class="px-5">
                         <div class="flex flex-wrap">
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <div class="w-full lg:w-8/12 px-4">
+            <div class="w-full lg:w-8/12 px-2">
                 <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded border-l-4 border-green-500">
                     <div class="px-4 py-5 flex-auto">
                         <div class="tab-content tab-space">

@@ -1,9 +1,8 @@
 <template>
 <div>
     <v-app>
-        <div class="bg-gray-100" >
-            <!-- <img :src="test" alt=""> -->
-            <div class="container mx-auto md:mt-4 ">
+        <div class="bg-gray-100">
+            <div class="container mx-auto md:mt-4 "> 
                 <!-- <v-tabs class="centered border"  color="primary" slider-color="primary" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                     <v-tab> ประกาศซื้อ </v-tab>
                     <v-tab-item class="bg-gray-100">
@@ -18,12 +17,12 @@
                         <World />
                     </v-tab-item>
                 </v-tabs> -->
-                <v-toolbar class="mb-2 rounded-lg elevation-1"  > 
+                <v-toolbar class="mb-2 rounded-lg elevation-1">
                     <template>
                         <v-tabs class="border rounded-lg " color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                             <v-tab class="font-weight-black">ประกาศซื้อ</v-tab>
                             <v-tab class="font-weight-black">ประกาศขาย</v-tab>
-                            <v-tab class="font-weight-black">แผนที่</v-tab> 
+                            <v-tab class="font-weight-black">แผนที่</v-tab>
                         </v-tabs>
                     </template>
                 </v-toolbar>
@@ -65,10 +64,10 @@ export default {
     }
 };
 </script>
+
 <style>
-/* Helper classes */ 
-.color { 
-  background-color: #FFFBE6 !important;
-} 
- 
+/* Helper classes */
+.color {
+    background-color: #FFFBE6 !important;
+}
 </style>

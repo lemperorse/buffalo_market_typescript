@@ -3,7 +3,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12"> 
         <v-row dense>
             <v-col cols="12" sm="4" class=" pt-4">
-                <div class="flex rounded border-grey-light border bg-white">
+                <div class="flex rounded border-grey-light border bg-white hover:shadow-lg">
                     <button>
                         <span class="w-auto flex justify-end items-center text-grey p-2">
                             <i class="fas fa-search text-xl"></i>

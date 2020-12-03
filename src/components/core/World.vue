@@ -1,30 +1,37 @@
 <template>
-<div class="container mx-auto">
-    <center>
-        <h2 class="text-2xl"> <i class="em em-world_map" aria-role="presentation" aria-label=""></i> แผนที่สถานที่สำคัญ</h2>
-    </center>
-    <center>
-        <p class="text-xl"> แผนที่ตั้งของเกษตร ผู้ผลิต สถานที่สำคัญที่เกี่ยวข้อง</p>
-    </center>
-    <img @click="dialog = true" class="w3-full" src="https://images.pexels.com/photos/269874/pexels-photo-269874.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-    <v-dialog v-model="dialog" scrollable persistent max-width="500px" transition="dialog-transition">
-        <v-card>
-            <v-card-title primary-title>
-                <h1 class="text-2xl mt-1">ข้อมูล</h1> <v-spacer></v-spacer>
-                <v-btn @click="dialog=false" dark icon color="red">
-                    <v-icon>mdi-close</v-icon>
-                </v-btn>
-            </v-card-title>
-            <v-card-text>
-                <h1 class="text-xl mt-1">ชื่อสถานที่ : ฟาร์มแอนนี่</h1>
-                <h1 class="text-xl mt-1">ที่อยู่ : เลขที่ 888 ม.6</h1>
-                <h1 class="text-xl mt-1">ตำบล : แม่กา</h1>
-                <h1 class="text-xl mt-1">อำเภอ : เมือง</h1>
-                <h1 class="text-xl mt-1">จังหวัด : พะเยา</h1>
-                <h1 class="text-xl mt-1">เบอร์ติดต่อ : 0912312312</h1> 
-            </v-card-text>
-        </v-card>
-    </v-dialog>
+<div>
+    <ul class="breadcrumb mt-8 mb-4 rounded">
+        <li><a href="/#/user/home/">หน้าแรก</a></li>
+        <li>แผนที่</li> 
+    </ul>
+    <div class="container mx-auto">
+        <center>
+            <h2 class="text-2xl"> <i class="em em-world_map" aria-role="presentation" aria-label=""></i> แผนที่สถานที่สำคัญ</h2>
+        </center>
+        <center>
+            <p class="text-xl"> แผนที่ตั้งของเกษตร ผู้ผลิต สถานที่สำคัญที่เกี่ยวข้อง</p>
+        </center>
+        <img @click="dialog = true" class="w3-full" src="https://images.pexels.com/photos/269874/pexels-photo-269874.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+        <v-dialog v-model="dialog" scrollable persistent max-width="500px" transition="dialog-transition">
+            <v-card>
+                <v-card-title primary-title>
+                    <h1 class="text-2xl mt-1">ข้อมูล</h1>
+                    <v-spacer></v-spacer>
+                    <v-btn @click="dialog=false" dark icon color="red">
+                        <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                </v-card-title>
+                <v-card-text>
+                    <h1 class="text-xl mt-1">ชื่อสถานที่ : ฟาร์มแอนนี่</h1>
+                    <h1 class="text-xl mt-1">ที่อยู่ : เลขที่ 888 ม.6</h1>
+                    <h1 class="text-xl mt-1">ตำบล : แม่กา</h1>
+                    <h1 class="text-xl mt-1">อำเภอ : เมือง</h1>
+                    <h1 class="text-xl mt-1">จังหวัด : พะเยา</h1>
+                    <h1 class="text-xl mt-1">เบอร์ติดต่อ : 0912312312</h1>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
+    </div>
 </div>
 </template>
 
@@ -103,5 +110,36 @@ export default {
 .sizemap {
     width: 300px;
     height: 300px;
+}
+ /* Style the list */
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
 }
 </style>

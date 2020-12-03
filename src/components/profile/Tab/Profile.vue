@@ -14,9 +14,9 @@
                 ข้อมูลส่วนตัว
             </h6> -->
             <div class="flex flex-wrap">
-                <div class="w-full  lg:w-12/12 px-1">
+                <div class="w-full  lg:w-12/12 px-1 ">
                     <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
+                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2 ">
                             ชื่อผู้ใช้งาน
                         </label>
                         <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
@@ -25,7 +25,6 @@
                             </span>
                             <input type="text" placeholder="โปรดระบุชื่อผู้ใช้งานของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
                         </div>
-
                     </div>
                 </div>
                 <div class="w-full lg:w-6/12 px-1">

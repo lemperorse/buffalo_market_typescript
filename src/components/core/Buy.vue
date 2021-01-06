@@ -85,13 +85,13 @@
 
             <!-- <Product /> -->
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-6 cursor-pointer" v-for="i in 12" @click="$router.push('/user/productdetail/')">
+                <div class="col-md-3 col-sm-6 col-6 cursor-pointer" v-for="i in 12" @click="$router.push('/user/buyproduct/')">
                     <v-hover v-slot:default="{ hover }">
                         <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border ">
                             <v-img class="white--text align-end" height="150px" src="https://images.pexels.com/photos/1054650/pexels-photo-1054650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                        <v-btn v-if="hover" href="/#/user/productdetail/" class="" outlined>ดูรายละเอียด</v-btn>
+                                        <v-btn v-if="hover" href="/#/user/buyproduct/" class="" outlined>ดูรายละเอียด</v-btn>
                                     </div>
                                 </v-expand-transition>
                             </v-img>

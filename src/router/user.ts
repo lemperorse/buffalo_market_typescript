@@ -21,6 +21,11 @@ const userRouter: any = [
         component: getView('ProductDetail')
     },
     {
+        path: '/user/buyproduct',
+        name: 'buyproduct',
+        component: getView('BuyProduct')
+    },
+    {
         path: '/user/sellerdetail',
         name: 'sellerdetail',
         component: getView('SellerDetail')

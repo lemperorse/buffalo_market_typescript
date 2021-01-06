@@ -1,11 +1,11 @@
 <template>
 <!-- bg-gradient-to-r from-red-400 to-red-600 -->
 <header class="bg-white shadow-lg sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
-    <div >
+    <!-- <div >
         <button @click="$router.go(-1)" class="p-2 rounded-full border hover:bg-red-500 hover:text-white hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 sm:mt-0 sm:ml-2 mt-1 px-2 py-1">
             <i class="fas fa-arrow-circle-left text-3xl"></i>
         </button>
-    </div>
+    </div> -->
     <div class="flex items-center justify-between px-4 py-3 sm:p-0">
         <div>
             <img class="h-14" :src="buffalo" alt="logo">

@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <v-breadcrumbs class="pb-0" :items="breadcrums"></v-breadcrumbs>
+        
 
         <v-row dense>
             <v-col cols="12" sm="4" class="pt-6">

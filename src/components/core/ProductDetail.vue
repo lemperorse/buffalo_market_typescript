@@ -23,7 +23,7 @@
 
             </div>
             <div class="col-md-7 col-sm-7 col-xs-12">
-                <v-breadcrumbs class="pb-0" :items="breadcrums"></v-breadcrumbs>
+                
                 <div class="pl-6">
                     <p class="text-2xl mb-0 mt-2 font-bold">ควายเผือกเอเชีย</p>
                     <v-card-actions class="pa-0">

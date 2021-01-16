@@ -1,101 +1,30 @@
 <template>
 <div>
-    <div class="rounded-t bg-white mb-0 px-1 py-6">
-        <div class="text-center flex flex-wrap justify-between">
-            <h6 class="text-gray-800 text-xl font-bold">ข้อมูลทั่วไป(ผู้ใช้งาน)</h6>
-            <button class="rounded w-full md:w-1/6 p-2 bg-yellow-500 hover:bg-yellow-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                <div class="text-white"><i class="fas fa-pencil-alt"></i> แก้ไข</div>
-            </button> 
+    <h2 class="font-semibold text-2xl">{{_lang('ข้อมูลส่วนตัว','Profile','个人信息')}}</h2><br>
+    <v-alert dense border="left" type="warning">{{_lang('หากต้องการแก้ไขข้อมูล ให้ทำการกรอกข้อมูลที่ต้องการแก้ไขแล้วกด "บันทึกการเปลี่ยนแปลง" ','To edit information Please fill in the information you want to edit and press "Save changes"','请填写您要编辑的信息 然后单击保存更改')}}</v-alert>
+
+    <form @submit.prevent="saveUser()">
+        <div class="flex flex-wrap">
+            <v-text-field class="w-full md:w-1/2" disabled v-model="form.username" filled :label="_lang('ชื่อผู้ใช้','Username','用户名')"></v-text-field>
+            <v-text-field class="w-full md:w-1/2" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
+            <v-select filled item-value="id" :item-text="_lang('value_th','value_en','value_ch')" class="w-full md:w-1/5" :items="choices.prefix" v-model="profile.prefix" :label="_lang('คำนำหน้า','Prefix','字首')"></v-select>
+            <v-text-field class="w-full md:w-2/5" filled v-model="form.first_name" :label="_lang('ชื่อจริง','First Name','名字')"></v-text-field>
+            <v-text-field class="w-full md:w-2/5" filled v-model="form.last_name" :label="_lang('นามสกุล','Last Name','姓')"></v-text-field>
+            <hr>
+            <v-text-field class="w-full md:w-1/2" type="date" filled v-model="profile.birthday" :label="_lang('วันเกิด','Last Name','姓')"></v-text-field>
+            <v-text-field class="w-full md:w-1/2" disabled filled v-model="profile.age" :label="_lang('อายุ','Last Name','姓')"></v-text-field>
+
+            <v-text-field class="w-full " filled v-model="profile.address" :label="_lang('ที่อยู่','Last Name','姓')"></v-text-field>
+
+            <v-text-field class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地区')"></v-text-field>
+            <v-text-field class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรศณีย์','Last Name','姓')"></v-text-field>
+
         </div>
-    </div>
-    <div class="flex-auto px-1 lg:px-10 py-10 pt-0">
-        <form>
-            <!-- <h6 class="text-gray-500 text-sm mb-6 font-bold uppercase">
-                ข้อมูลส่วนตัว
-            </h6> -->
-            <div class="flex flex-wrap">
-                <div class="w-full  lg:w-12/12 px-1 ">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2 ">
-                            ชื่อผู้ใช้งาน
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-user text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุชื่อผู้ใช้งานของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full lg:w-6/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ชื่อ
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                                <i class="far fa-address-card text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุชื่อ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
+        <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">
+            <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+        </v-btn>
 
-                <div class="w-full lg:w-6/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            นามสกุล
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                                <i class="far fa-address-card text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุนามสกุล" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-6/12  px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ที่อยู่ตามสำเนาทะเบียนบ้าน
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-home text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุที่อยู่" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-6/12  px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            เบอร์โทรศัพท์
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-mobile-alt text-lg text-gray-500"></i>
-                            </span>
-                            <input type="number" placeholder="โปรดระบุหมายเลขโทรศัพท์" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                    <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
-                </button>
-                
-            </div>
-
-        </form>
-
-    </div>
-
+    </form>
 </div>
 </template>
 
@@ -105,14 +34,92 @@ import {
     Vue,
     Watch,
 } from 'vue-property-decorator';
-
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
+import {
+    City
+} from "@/store/city";
+import moment from "moment";
 @Component({
     components: {},
     computed: {}
 })
 
 export default class Profile extends Vue {
+    response: boolean = false
+    form: any = {};
+    profile: any = {}
+    update: boolean = true;
+    async created() {
+        await this.loadChoices();
+        await this.load();
 
+    }
+    async load() {
+        await Auth.checkToken();
+        if (Auth.logined) {
+            this.form = await Auth.getUser()
+            this.profile = await Core.getHttp(`/api/default/profile/?user=${this.form.pk}`)
+            if (this.profile[0]) {
+                this.profile = this.profile[0]
+                await this.setCity()
+            } else {
+                this.profile = {}
+                this.update = false;
+            }
+            this.response = true;
+        }
+    }
+
+    choices: any = {}
+    async loadChoices() {
+        this.choices = {
+            "prefix": await Core.getChoice('คำนำหน้า'),
+            "sex": await Core.getChoice('เพศ'),
+        }
+    }
+
+    async saveUser() {
+        this.profile.geo = City.currentGeo ?.id
+        this.profile.province = City.currentProvince ?.id
+        this.profile.amphur = City.currentAmphur ?.id
+        this.profile.district = City.currentDistrict ?.id
+        if (this.update) {
+            await Core.putHttp(`/api/auth/user/`, this.form)
+            await Core.putHttp(`/api/default/profile/${this.profile.id}/`, this.profile)
+            await this.load();
+        } else {
+            console.log(this.profile)
+            this.profile.user = this.form.pk
+            await Core.putHttp(`/api/auth/user/`, this.form)
+            await Core.postHttp(`/api/default/profile/`, this.profile)
+            await this.load();
+        }
+
+    }
+
+    async openCityDialog() {
+        City.dialogCityState = true
+    }
+
+    get CityFrom() {
+        return City.showName
+    }
+
+    async setCity() {
+        City.currentGeo = await Core.getHttp(`/api/default/geography/${this.profile.geo}/`)
+        City.currentProvince = await Core.getHttp(`/api/default/province/${this.profile.province}/`)
+        City.currentAmphur = await Core.getHttp(`/api/default/amphur/${this.profile.amphur}/`)
+        City.currentDistrict = await Core.getHttp(`/api/default/district/${this.profile.district}/`)
+        await City.setShowName()
+    }
+
+    @Watch('profile.birthday')
+    async onChangeProvince(val: string) {
+        this.profile.age = moment().diff(val, 'years', false);
+
+    }
 }
 </script>
 

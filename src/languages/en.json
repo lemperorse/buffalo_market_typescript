@@ -1,0 +1,17 @@
+{
+    "name":"BuffMarket",
+    "language_choose":"Choose Language",
+    "web_nav":{
+        "sell":"Sell",
+        "buy":"Buy",
+        "map":"Nearby Map",
+        "help":"Help",
+        "language":"Language",
+        "register":"Register",
+        "login":"Login",
+        "download":"Download",
+        "search":"Search",
+        "searchTxt":"Search For"
+        
+    }
+}

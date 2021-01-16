@@ -1,174 +1,188 @@
 <template>
 <div class="px-4 py-5 flex-auto">
     <div class="flex-auto lg:px-10 py-10 pt-0">
-        <form>
-            <div class="text-center flex justify-between">
-                <h6 class="text-gray-500 text-sm mt-3 mb-6 font-bold uppercase">
-                    รายละเอียด
-                </h6>
-                <div class="text-md">
-                    <button class="mt-1 text-xs rounded p-3 bg-red-500 hover:bg-red-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                        <div class="text-white"><i class="fas fa-eraser"></i> ลบประกาศซื้อ</div>
-                    </button>
-                </div> 
-            </div>
-            <div class="flex flex-wrap">
-                <div class="w-full lg:w-6/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ชื่อสินค้า
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
-                                <i class="fas fa-tags text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" value="" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
+        <form @submit.prevent="updateProduct()">
+            <v-text-field type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อ','Name','名称')"></v-text-field>
+            <v-text-field type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')"></v-text-field>
+            <v-select :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select>
 
-                <div class="w-full lg:w-6/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            หมวดหมู่
-                        </label>
-                        <div class="relative mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
-                                <i class="fas fa-tag text-lg text-gray-500"></i>
-                            </span>
-                            <select class="p-3 w-full pl-10 hover:shadow-lg" id="grid-state">
-                                <option>ควาย</option>
-                                <option>ผลิตภัณฑ์จากฟาร์ม</option>
-                                <option>ปุ๋ย</option>
-                                <option>อุปกรณ์การเกษตกร</option>
-                                <option>อื่นๆ</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                            </div>
-                        </div>
+            <v-select :items="choices.price_type" item-text="name" item-value="id" v-model="product.price_type" class="w-full " filled :label="_lang('ประเภทราคา','Price Type','价格类型')"></v-select>
 
-                    </div>
-                </div>
+            <v-text-field v-if="product.price_type" type="text" v-model="product.price" class="w-full " filled :label="_lang('ราคา','Price','价钱')"></v-text-field>
+            <v-text-field v-if="!product.price_type" type="text" v-model="product.price_start" class="w-full " filled :label="_lang('ราคาเริ่มต้น','PriceStart','价格开始')"></v-text-field>
+            <v-text-field v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคา End','PriceEnd','价格结束')"></v-text-field>
 
-                <div class="w-full lg:w-12/12 px-1">
-                    <div class="relative w-full">
-                        <v-checkbox label="ช่วงราคา" v-model="price" value="value"></v-checkbox>
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ราคา
-                        </label>
-                        <div v-if="!price" class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
+            <a v-if="product.file1" target="_blank" rel="noopener noreferrer" :href="product.file1">ไฟล์ 1</a>
+            <VueFileAgent v-model="f1" :multiple="false" :maxSize="'5MB'" :deletable="true"  :accept="'image/*,video/*'"></VueFileAgent>
 
-                            <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
-                                <i class="fas fa-money-bill text-lg text-gray-500"></i>
-                            </span>
-                            <input type="number" value="" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                        <!-- <v-text-field  v-if="!price" label="" placeholder="ราคา" type="number" outlined prepend-inner-icon="mdi-numeric" ></v-text-field> -->
-                        <div v-else class="flex md:flex-row flex-col">
-                            <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                                กำหนดช่วงราคา
-                            </label>
-                            <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500 w-full">
-                                <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
-                                    <i class="fas fa-money-bill  text-lg text-gray-500"></i>
-                                </span>
-                                <input type="number" value="" class="p-3 w-full pl-10 hover:shadow-lg" />
-                            </div>
-                            <span class="p-3">ถึง</span>
-                            <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500 w-full">
-                                <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
-                                    <i class="fas fa-money-bill  text-lg text-gray-500"></i>
-                                </span>
-                                <input type="number" value="" class="p-3 w-full pl-10 hover:shadow-lg" />
-                            </div>
-                            <!-- <v-text-field label="" placeholder="เริ่มต้น" type="number" outlined prepend-inner-icon="mdi-numeric"></v-text-field>
-                            <v-text-field label="" placeholder="สูงสุด" type="number" outlined prepend-inner-icon="mdi-numeric"></v-text-field> -->
-                        </div>
-                    </div>
-                </div>
+            <a v-if="product.file2" target="_blank" rel="noopener noreferrer" :href="product.file2">ไฟล์ 2</a>
+            <VueFileAgent v-model="f2" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
 
-                <div class="w-full lg:w-12/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            วันที่ส่งมอบ
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
-                                <i class="fas fa-calendar-day text-lg text-gray-500"></i>
-                            </span>
-                            <input type="date" value=" " class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
+            <a v-if="product.file3" target="_blank" rel="noopener noreferrer" :href="product.file3">ไฟล์ 3</a>
+            <VueFileAgent v-model="f3" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
+            <a v-if="product.file4" target="_blank" rel="noopener noreferrer" :href="product.file4">ไฟล์ 4</a>
+            <VueFileAgent v-model="f4" :multiple="false" :maxSize="'5MB'" :deletable="true"  :accept="'image/*,video/*'"></VueFileAgent>
+            <a v-if="product.file5" target="_blank" rel="noopener noreferrer" :href="product.file5">ไฟล์ 5</a>
+            <VueFileAgent v-model="f5" :multiple="false" :maxSize="'5MB'" :deletable="true"  :accept="'image/*,video/*'"></VueFileAgent>
 
-                <div class="w-full lg:w-12/12 px-1 lg:mt-11 ">
-                    <!-- <div class="relative w-full mb-3 ">
-                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                            <v-textarea name="input-7-1" label="คำอธิบายสินค้า" value=""></v-textarea>
+            <v-select :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full " filled :label="_lang('SellType','SellType','销售类型')"></v-select>
+            <v-text-field v-if="product.sell_type == 0" type="date" v-model="product.buy_date" class="w-full " filled :label="_lang('วันที่ซื้อ','Date of purchase','购买日期')"></v-text-field>
+            <v-select :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select>
 
-                        </div>
-                    </div> -->
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            คำอธิบายสินค้า
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <textarea type="text" value="" class="p-3 w-full pl-4 hover:shadow-lg" />
-                            </div>
-                    </div> 
-                </div>
-
-                <div class="w-full lg:w-4/12 px-1 mt-4 " v-for="i in 4">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2 ">
-                            อัพโหลดภาพถ่ายสินค้า
-                        </label>
-                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                            <div class="flex justify-center mt-4">
-                                <input type="file">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full lg:w-4/12 px-1 mt-4 ">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            อัพโหลดวีดีโอสินค้า
-                        </label>
-                        <div class="relative flex w-full flex-wrap items-stretch mb-3">
-                            <div class="flex justify-center mt-4">
-                                <input type="file">
-                            </div>
-                        </div>
-                    </div>
+            <div>
+                <div v-for="category,index in categories" :key="index">
+                    <h2>{{category.name}}</h2>
+                    <v-checkbox v-for="detail,i in category.detail" :key="i" v-model="product.category" :label="detail.name" :value="detail.id"></v-checkbox>
                 </div>
 
             </div>
-
-            <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                    <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
-                </button>
-            </div>
-
+            <v-btn type="submit" x-large color="success">Save</v-btn>
         </form>
 
+        <button @click="removeProduct()" class="mt-2 rounded p-1 bg-red-500 hover:bg-refd-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+            <div class="text-white"><i class="mdi mdi-delete"></i> ลบประกาศ</div>
+        </button>
     </div>
 </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            price: false,
+<script lang="ts">
+import {
+    Component,
+    Vue,
+    Watch,
+} from 'vue-property-decorator';
+import axios from '@/plugins/axios'
+import MapView from '@/components/core/Map.vue';
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
+import { Map } from "@/store/map";
+import { Product } from "@/store/product";
+import {
+    City
+} from "@/store/city";
+@Component({
+    components: { MapView },
+    computed: {},
+})
+
+export default class Saller extends Vue {
+    farm: any = {}
+    response: boolean = false;
+    user: any = null
+    profile: any = null
+    saller: boolean = false;
+    categories: any = null
+    chooseCategories: any = []
+    f1: any = {}
+    f2: any = {}
+    f3: any = {}
+    f4: any = {}
+    f5: any = {}
+    async created() {
+        await this.loadFarm()
+        await this.loadChoice();
+        await this.loadProduct();
+        // await this.setProductKey();
+    }
+
+    async loadFarm() {
+        this.user = await Auth.getUser()
+        this.profile = await User.getProfileFull();
+        this.farm = await Core.getHttp(`/api/user/farm/${this.user.pk}/`)
+        this.response = true
+    }
+
+    public product: any = {}
+    public async setProductKey() {
+        //this.product.id = 0
+        this.product.category = this.chooseCategories
+        this.product.farm = this.farm.id
+        this.product.user = this.user.pk
+        this.product.status = 5
+    }
+    choices: any = {}
+    public async loadChoice() {
+        this.categories = await Core.getHttp(`/api/default/categories/`)
+        this.choices = {
+            "product_type": await Product.ProductType,
+            "sell_type": await Product.SaleType,
+            "price_type": await Product.PriceType,
+            'status': await Product.StatusSell
         }
+    }
+    public async loadProduct() {
+        let product = this.$route.query.product
+        this.product = await Core.getHttp(`/api/default/product/${product}/`)
+    }
+
+    public async storeProduct() {
+        await this.setProductKey()
+        let store = await Core.postHttp(`/api/default/product/`, this.product)
+        if (store.id) { alert("Save product success") }
+    }
+
+    public async updateProduct() {
+        delete this.product.file1;
+        delete this.product.file2;
+        delete this.product.file3;
+        delete this.product.file4;
+        delete this.product.file5;
+        let store = await Core.putHttp(`/api/default/product/${this.product.id}/`, this.product)
+        if (store.id) {
+            await this.storeImage(store.id);
+            alert("Save product success")
+        }
+    }
+
+    public async removeProduct() {
+        let check = confirm('Are you sure ?')
+        if (check) {
+            let store = await Core.deleteHttp(`/api/default/product/${this.product.id}/`)
+            alert("Delete product success")
+            await this.$router.go(-1)
+        }
+    }
+
+    async storeImage(id: number) {
+        var formData = new FormData();
+        if (this.f1.file) {
+            formData.append(`file1`, this.f1.file);
+        }
+        if (this.f2.file) {
+            formData.append(`file2`, this.f2.file);
+        }
+        if (this.f3.file) {
+            formData.append(`file3`, this.f3.file);
+        }
+        if (this.f4.file) {
+            formData.append(`file4`, this.f4.file);
+        }
+        if (this.f5.file) {
+            formData.append(`file5`, this.f5.file);
+        }
+        await axios.put(`/api/default/productfile/${id}/`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+
     }
 
 }
 </script>
+
+<style>
+.f-white {
+    color: white !important;
+}
+
+.sizemap {
+    width: 1000px;
+    height: 300px;
+}
+</style>
 
 <style>
 

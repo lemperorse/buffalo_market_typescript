@@ -2,21 +2,8 @@
 <div>
     <v-app>
         <div class="bg-gray-100">
-            <div class="container mx-auto md:mt-4 "> 
-                <!-- <v-tabs class="centered border"  color="primary" slider-color="primary" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
-                    <v-tab> ประกาศซื้อ </v-tab>
-                    <v-tab-item class="bg-gray-100">
-                        <Buy />
-                    </v-tab-item>
-                    <v-tab> ประกาศขาย </v-tab>
-                    <v-tab-item class="bg-gray-100">
-                        <Sell />
-                    </v-tab-item>
-                    <v-tab> แผนที่ </v-tab>
-                    <v-tab-item class="bg-gray-100">
-                        <World />
-                    </v-tab-item>
-                </v-tabs> -->
+            <div class="container mx-auto md:mt-4 ">
+
                 <v-toolbar class="mb-2 rounded-lg elevation-1">
                     <template>
                         <v-tabs class="border rounded-lg " color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
@@ -58,8 +45,17 @@ export default {
     },
     data() {
         return {
-            tabs: null,
+            tabs: 1,
             dialog: false,
+        }
+    },
+    async created() {
+        if (this.$route.query.tab == 1) {
+            this.tab = 1
+        } else if (this.$route.query.tab == 2) {
+            this.tab = 2
+        } else {
+
         }
     }
 };

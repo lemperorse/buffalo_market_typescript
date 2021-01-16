@@ -4,41 +4,50 @@
         <div class="row bg-white rounded border hover:shadow-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
 
-                <v-carousel class="rounded" >
-                    <v-carousel-item src="https://images.pexels.com/photos/1066226/pexels-photo-1066226.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                    </v-carousel-item>
-                    <v-carousel-item src="https://images.pexels.com/photos/1054650/pexels-photo-1054650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
-                    </v-carousel-item>
-                    <v-carousel-item src="https://images.pexels.com/photos/46188/bison-buffalo-american-animal-46188.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
-                    </v-carousel-item>
-                    <v-carousel-item src="https://images.pexels.com/photos/16009/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                <v-carousel class="rounded">
+                    <v-carousel-item>
+                        <img :src="product.file1" alt="" srcset="">
                     </v-carousel-item>
                     <v-carousel-item>
-                        <video class="w-full h-full" controls autoplay>
-                            <source :src="testvideo" type="video/mp4">
-                            <source src="mov_bbb.ogg" type="video/ogg"> 
-                        </video>
+                        <img :src="product.file2" alt="" srcset="">
                     </v-carousel-item>
+                    <v-carousel-item>
+                        <img :src="product.file3" alt="" srcset="">
+                    </v-carousel-item>
+                    <v-carousel-item>
+                          <video class="w-full h-full" controls  >
+                            <source :src="product.file4" type="video/mp4">
+                            <source :src="product.file4"  type="video/ogg">
+                        </video>
+                    </v-carousel-item> 
+                    <v-carousel-item>
+                         <video class="w-full h-full" controls  >
+                            <source :src="product.file5" type="video/mp4">
+                            <source :src="product.file5"  type="video/ogg">
+                        </video>
+                    </v-carousel-item> 
                 </v-carousel>
 
             </div>
             <div class="col-md-7 col-sm-7 col-xs-12">
-                
+
                 <div class="pl-6">
-                    <p class="text-2xl mb-0 mt-2 font-bold">ควายเผือกเอเชีย</p>
+                    <p class="text-2xl mb-0 mt-2 font-bold">{{product.name}}</p>
                     <v-card-actions class="pa-0">
                         <p class="headline font-weight-light pt-3">
-                            ฿12,000
-                            <del style="" class="subtitle-1 font-weight-thin">฿20,000</del>
+
+                            <span v-if="product.price_type">{{product.price}}</span>
+                            <span v-else>{{product.price_start}} - {{product.price_end}}</span>
+
+                            <!-- <del style="" class="subtitle-1 font-weight-thin">฿20,000</del> -->
                         </p>
                     </v-card-actions>
                     <v-divider></v-divider>
-                    <p class="text-xl font-bold mt-4">รายละเอียดควาย</p>
-                    <p class="text-xl">น้ำหนัก : 530 กิโลกรัม</p>
-                    <p class="text-xl">ความสูง : 120 เซนติเมตร</p>
-                    <p class="text-xl">อายุ : 5 ปี</p>
+                    <p class="text-xl font-bold mt-4">ประเภทสินค้า</p>
+                    <v-btn class="m-2" v-for="category,i in product.category" :key="i" small color="info" rounded>{{category.name}}</v-btn>
+
                 </div>
- 
+
             </div>
         </div>
     </div>
@@ -55,24 +64,26 @@
                         </div>
 
                         <div class="ml-2">
-                            <h3>แอน แอนนี่</h3>
-                            <h3>จังหวัด : พะเยา</h3>
+                            <h3 v-if="product.farm">
+                                <span v-if="product.farm.user">{{product.farm.user.first_name}} {{product.farm.user.last_name}}</span>
+                            </h3>
+                            <h3 v-if="product.farm">จังหวัด : <span v-if="product.farm.province">{{product.farm.province.name}}</span></h3>
                             <div class="flex ">
-                                <button @click="$router.push(`/user/sellerdetail`)" class="text-sm rounded p-2 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                                <!-- <button @click="$router.push(`/user/sellerdetail`)" class="text-sm rounded p-2 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
                                     <div class="text-white"> แสดงรายละเอียด</div>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </v-row>
                 </v-col>
                 <v-col cols="6" md="4">
                     <div class="ml-5">
-                        <div class="text--primary">เบอร์ติดต่อ : 0812345678 <br /></div>
+                        <div class="text--primary" v-if="product.farm">เบอร์ติดต่อ : <span>{{product.farm.tel}}</span> <br /></div>
                         <div class="flex ">
                             <!-- <button @click="dialog = true" class="w-full md:w-1/2 p-1 rounded bg-blue-600 hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" type="submit">
                                 <div class="text-white">นำทาง</div>
                             </button> -->
-                            <button @click="dialog = true" class="w-full md:w-1/2 text-sm rounded p-2 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                            <button @click="openMap" class="w-full md:w-1/2 text-sm rounded p-2 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
                                 <div class="text-white"> นำทาง</div>
                             </button>
                         </div>
@@ -81,7 +92,7 @@
                             <v-card>
                                 <v-card-title primary-title>
                                     นำทาง <v-spacer></v-spacer>
-                                    <v-btn @click="dialog = false" dark icon color="red">
+                                    <v-btn dark icon color="red">
                                         <v-icon>mdi-close</v-icon>
                                     </v-btn>
                                 </v-card-title>
@@ -89,8 +100,7 @@
                                     <v-card-text>
                                         <img src="https://www.img.in.th/images/759e9362e5014422ea9fa2deaf85ce15.png" class="w-full h-auto md:h-full" alt="" />
                                         <p class="text-xl pt-6">
-                                            บิ๊กไอซ์ฟาร์มควายไทย 53 หมู่ที่ 1 ต.ทับยายเชียง
-                                            อ.พรหมพิราม จ.พิษณุโลก
+                                            {{product.farm.address}}
                                         </p>
                                     </v-card-text>
                                 </v-card>
@@ -109,33 +119,24 @@
                     <v-tab>รายละเอียด</v-tab>
                     <v-tab>ช่องทางการติดต่ออื่นๆ</v-tab>
                     <v-tab-item>
+
                         <p class="pt-4 font-weight-thin text-lg">
-                            ชื่อสินค้า : ควายเผือกเอเชีย
-                        </p>
-                        <p class="font-weight-thin text-lg">สี : ดำ</p>
-                        <p class="font-weight-thin text-lg">น้ำหนัก : 530 กิโลกรัม</p>
-                        <p class="font-weight-thin text-lg">ความสูง : 120 เซนติเมตร</p>
-                        <p class="font-weight-thin text-lg">อายุ : 5 ปี</p>
-                        <v-divider></v-divider>
-                        <p class="pt-4 font-weight-thin text-lg">
-                            ควาย หรือภาษาทางการว่า กระบือ จัดอยู่ในไฟลัมสัตว์มีแกนสันหลัง
-                            ชั้นสัตว์เลี้ยงลูกด้วยนม
-                            เป็นสัตว์เลี้ยงที่ใกล้ชิดกับงานเกษตรกรรมของประเทศแถบเอเชียมากที่สุด[ต้องการอ้างอิง]
-                            เพราะชาวนานิยมเลี้ยงควายเป็นแรงงานเพื่อไว้ไถนา
-                            บ้างก็ใช้ควายเป็นพาหนะเข้าไปทำไร่ทำนา
-                            บ้างก็ฆ่าควายกินเนื้อเป็นอาหาร ควายจึงมีประโยชน์หลายประการ
-                            ปัจจุบันมีการใช้งานควายน้อยลง
+                            {{product.detail}}
                         </p>
                     </v-tab-item>
                     <v-tab-item>
                         <p class="pt-4 font-weight-thin text-lg">
-                            Email : 123123@123.com
+                            Email : <span>{{product.farm.email}}</span>
                         </p>
-                        <p class="font-weight-thin text-lg">Facebook : Wert</p>
-                        <p class="font-weight-thin text-lg">Line : @aaa333</p>
-                        <p class="font-weight-thin text-lg">เบอร์ติดต่อ : 0812345678</p>
+                        <p class="font-weight-thin text-lg">Facebook : <span>{{product.farm.facebook}}</span></p>
+                        <p class="font-weight-thin text-lg">Line : <span>{{product.farm.line}}</span></p>
+                        <p class="font-weight-thin text-lg">เบอร์ติดต่อ : <span>{{product.farm.tel}}</span></p>
                         <p class="font-weight-thin text-lg">
-                            ที่อยู่ : 123/123 บ้านโซ้
+                            ที่อยู่ : <span>{{product.farm.address}}</span>
+                            <span>{{product.farm.province.name}}</span>-
+                            <span>{{product.farm.amphur.name}}</span>-
+                            <span>{{product.farm.district.name}}</span>
+                            <span>{{product.farm.zipcode}}</span>
                         </p>
                     </v-tab-item>
                 </v-tabs>
@@ -148,43 +149,41 @@
     <p class="font-weight-light text-center text-2xl text-purple-600">
         ของผู้ขายคนนี้
     </p>
-    <v-card-title primary-title>
-        <v-spacer></v-spacer>
-        <button class="p-2 m-1 text-sm rounded p-3 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-            <i class="fas fa-arrow-left text-white"></i>
-        </button>
-        <button class="p-2 m-1 text-sm rounded p-3 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-            <i class="fas fa-arrow-right text-white"></i>
-        </button>
-    </v-card-title>
+
     <v-card-text class="pa-0 pt-4" tile outlined>
         <div class="row ">
-            <div class="col-md-2 col-sm-4 col-6 cursor-pointer" v-for="i in 6" @click="$router.push('/user/productdetail/')">
+            <div class="w-40 m-2 cursor-pointer" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+
                 <v-hover v-slot:default="{ hover }">
                     <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border">
-                        <v-img class="white--text align-end" height="150px" src="https://images.pexels.com/photos/1054650/pexels-photo-1054650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                        <v-img class="white--text align-end w-full" height="150px" :src="ximg(pu.file1)">
                             <v-expand-transition>
                                 <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                    <v-btn v-if="hover" href="/#/user/productdetail/" class="" outlined>ดูรายละเอียด</v-btn>
+                                    <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>ดูรายละเอียด </v-btn>
                                 </div>
                             </v-expand-transition>
                         </v-img>
                         <div class="p-6 ">
                             <div class="flex items-baseline mb-1">
                                 <span class="inline-block bg-yellow-400 text-white text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">ใหม่</span>
-                                <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
-                                    ควาย
+                                <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide" v-for="cat,i in pu.category" :key="i">
+                                    {{cat.name}}
                                 </div>
                             </div>
-                            <h4 class="font-semibold text-lg leading-tight truncate mb-1 text-indigo-600 ">ควายเผือก</h4>
-                            <div class=" text-orange-600 font-bold mb-1">฿ 12,000</div>
-                            <div class="text-sm text-gray-600 font-light mb-1">
-                                <span class="fas fa-map-marker-alt"></span> เชียงใหม่
+                            <h4 class="font-semibold text-lg leading-tight truncate mb-1 text-indigo-600 "> {{pu.name}}</h4>
+
+                            <div class=" text-orange-600 font-bold mb-1">
+                                <span v-if="pu.price_type">{{pu.price}}</span>
+                                <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
+                            </div>
+                            <div class="text-sm text-gray-600 font-light mb-1" v-if="pu.farm">
+                                <span class="fas fa-map-marker-alt"></span>
+                                <span v-if="pu.farm.province">{{pu.farm.province.name}}</span>
                             </div>
                         </div>
                         <hr>
                         <div class="text-xs text-center">
-                            <span class="fas fa-bullhorn"></span> ผู้โพส : นายแดง มีสุขใจ
+                            <span class="fas fa-bullhorn"></span> ผู้โพส : <span v-if="pu.farm.user">{{pu.farm.user.first_name}}</span>
                         </div>
                     </div>
                 </v-hover>
@@ -194,45 +193,94 @@
 </div>
 </template>
 
-<script>
-import testvideo from "@/assets/video/mov_bbb.mp4"
-export default {
-    data() {
-        return {
-            dialog: false,
-            testvideo,
-            breadcrums: [{
-                    text: "หน้าแรก",
-                    disabled: false,
-                    href: "breadcrumbs_home",
-                },
-                {
-                    text: "ประกาศขาย",
-                    disabled: true,
-                    href: "breadcrumbs_announce",
-                },
-                {
-                    text: "ควาย",
-                    disabled: true,
-                    href: "breadcrumbs_buffalo",
-                },
-                {
-                    text: "ควายเอเชีย",
-                    disabled: true,
-                    href: "breadcrumbs_buffaloasia",
-                },
-                {
-                    text: "ควายเผือกเอเชีย",
-                    disabled: true,
-                    href: "breadcrumbs_buffaloasia",
-                },
-            ],
+<script lang="ts">
+import {
+    Component,
+    Vue,
+    Watch,
+} from 'vue-property-decorator';
+import MapView from '@/components/core/Map.vue';
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
+import { Map } from "@/store/map";
+import { Product } from "@/store/product";
+import {
+    City
+} from "@/store/city";
+@Component({
+    components: { MapView },
+    computed: {},
+})
+
+export default class PostSaller extends Vue {
+    dialog: boolean = false
+    async created() {
+        await this.loadProduct();
+        await this.loadFarm();
+        await this.loadProducts()
+        this.response = true
+    }
+    products: any = null
+    product: any = null
+    farm: any = {}
+    response: boolean = false;
+    user: any = null
+    profile: any = null
+
+    async loadFarm() {
+        this.user = await Auth.getUser()
+        this.profile = await User.getProfileFull();
+        this.farm = await Core.getHttp(`/api/default/farm/${this.product.farm.id}/`)
+    }
+
+    async loadProduct() {
+        let id = this.$route.query.product
+        this.product = await Core.getHttp(`/api/default/products/${id}/`)
+    }
+    async loadProducts() {
+        this.products = await Core.getHttp(`/api/default/products/?farm=${this.product.farm.id}`)
+    }
+    public async updateProduct(product: any) {
+        let store = await Core.putHttp(`/api/default/products/${product.id}/`, product)
+        if (store.id) {
+            alert("Save product success")
+            await this.loadProduct()
         }
     }
+
+    async openBrowser(position: any) {
+        let me = `${position.coords.latitude},${position.coords.longitude}`
+        let to = `${this.farm.latitude},${this.farm.longitude}`
+        console.log(me, `https://www.google.com/maps/dir/?api=1&origin=${me}&destination=${to}`);
+        window.open(`https://www.google.com/maps/dir/?api=1&origin=${me}&destination=${to}`, '_blank');
+    }
+    async openMap() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(this.openBrowser);
+        } else {
+
+        }
+
+    }
+
+    ximg(file: any) {
+        return (file) ? file : 'https://images.pexels.com/photos/4052387/pexels-photo-4052387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    }
+
 }
 </script>
 
 <style scoped>
+.v-card--reveal {
+    align-items: center;
+    bottom: 0;
+    justify-content: center;
+    opacity: 0.8;
+    position: absolute;
+    width: 100%;
+}
+</style><style scoped>
 .v-card--reveal {
     align-items: center;
     bottom: 0;

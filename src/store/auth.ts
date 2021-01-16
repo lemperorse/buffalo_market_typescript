@@ -8,6 +8,7 @@ class AuthClass extends VuexModule {
     //state
     public Hi: String | null = null;
     private  token:any =  localStorage.getItem('token')
+    public logined:boolean = false
     // public user :User | null = null
 
     public async  setUser(id:number){
@@ -47,7 +48,13 @@ class AuthClass extends VuexModule {
         })
     }
 
+    public async getUser(){
+        return await Core.getHttp(`/api/auth/user/`)
+    }
 
+    public async reToken(){
+        axios.defaults.headers.common['Authorization'] = '';
+    }
 
 
     public async storeToken(token:any){
@@ -61,12 +68,15 @@ class AuthClass extends VuexModule {
     public async checkToken(){
         if(this.token != null){
             await this.storeToken(this.token);
+            this.logined = true;
+        }else{
+            this.logined = false;
         }
     }
 
     async logout(){
         localStorage.clear();
-        return await Core.postHttp('/api/rest-auth/logout/',{})
+        return await Core.postHttp('/api/auth/logout/',{})
     }
 }
 

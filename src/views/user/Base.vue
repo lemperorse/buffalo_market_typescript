@@ -1,21 +1,21 @@
 <template>
 <div>
-    <Navbar1 />
-    <div class="hidden md:contents "> 
-    </div>
-     <div class="contents md:hidden"> 
-    </div>
-    <router-view />
+     <v-app  >
+      <WebNav />  
+         <router-view class="pt-32" />     <CityDialog />
+    </v-app>
+
 </div>
 </template>
 
 <script lang="ts">
-
 import { Component, Vue } from "vue-property-decorator";
-import Navbar1 from '@/components/core/Navbar1.vue';
+ import CityDialog from '@/components/core/City.vue';
+
+import WebNav from '../../components/core/WebNav.vue'
 @Component({
     components: {
-        Navbar1
+         WebNav, CityDialog
     },
     computed: {}
 })

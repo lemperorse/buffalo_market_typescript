@@ -13,6 +13,11 @@ const rootRouter = [
         component: getView('Home')
     },
     {
+        path: 'login',
+        name: 'login-home',
+        component: getView('Login')
+    },
+    {
         path: 'register',
         name: 'register-home',
         component: getView('Register')

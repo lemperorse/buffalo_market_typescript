@@ -1,105 +1,11 @@
 <template>
 <div>
-    <v-row dense>
-        <div class="flex flex-wrap">
-            <v-col cols="12">
-                <v-card class="elevation-1">
-                    <div class="d-flex flex-wrap">
-                        <v-avatar class="ma-3 rounded" size="125" tile>
-                            <v-img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></v-img>
-                        </v-avatar>
-                        <div>
-                            <v-card-title class="headline">
-                                <div class="text-xl">รายการสินค้า : 20 รายการ</div>
-                            </v-card-title>
-                            <v-card-subtitle>
-                                <div>ชื่อ : นายแดง อิอิ</div>
-                                <div>ที่อยู่ : 19 ตำบลแม่กา อำเภอเมืองพะเยา พะเยา 56000</div>
-                                <div>เบอร์โทรศัพท์ : 0123456789</div>
-                                <div class="flex ">
-                                    <button @click="dialog = true" class="w-full md:w-1/2 text-sm rounded p-2 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                                        <div class="text-white"> นำทาง</div>
-                                    </button>
-                                </div>
-                                <v-dialog v-model="dialog" scrollable fullscreen persistent :overlay="false" max-width="500px" transition="dialog-transition">
-                                    <v-card>
-                                        <v-card-title primary-title>
-                                            นำทาง <v-spacer></v-spacer>
-                                            <v-btn @click="dialog = false" dark icon color="red">
-                                                <v-icon>mdi-close</v-icon>
-                                            </v-btn>
+    <ul class="breadcrumb mt-8 mb-4 rounded">
+        <li><a href="/#/user/home/">หน้าแรก</a></li>
+        <li>ประกาศซื้อ</li> 
+    </ul>
 
-                                        </v-card-title>
-                                        <v-card>
-                                            <v-card-text>
-                                                <iframe width="600" height="450" frameborder="0"
-                                                 style="border:0" 
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC04k2TIJBXUa0yJQ0N2XimbuiVubkgG6g
-    &q=บิ๊กไอซ์ฟาร์มควายไทย" allowfullscreen>
-                                                </iframe>
-                                                <p class="text-xl pt-6">
-                                                    บิ๊กไอซ์ฟาร์มควายไทย 53 หมู่ที่ 1 ต.ทับยายเชียง
-                                                    อ.พรหมพิราม จ.พิษณุโลก
-                                                </p>
-                                            </v-card-text>
-                                        </v-card>
-                                    </v-card>
-                                </v-dialog>
-
-                            </v-card-subtitle>
-
-                        </div>
-                        <div>
-                            <v-card-title class="headline">
-                                <div class="text-xl">ช่องทางการติดต่ออื่นๆ</div>
-                            </v-card-title>
-
-                            <v-card-subtitle>
-                                <div>Email : ContactJobs@asd.com</div>
-                                <div>Facebook : ContactJobs</div>
-                                <div>Line : ContactJobs</div>
-                            </v-card-subtitle>
-                        </div>
-                    </div>
-                </v-card>
-            </v-col>
-        </div>
-    </v-row>
-
-    <!-- <v-toolbar class="m-2 rounded-lg elevation-1">
-        <template>
-            <v-tabs class="border rounded" color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
-                <v-tab class="font-weight-black">สินค้าทั้งหมด</v-tab>
-                <v-tab class="font-weight-black">ควาย</v-tab>
-                <v-tab class="font-weight-black">ผลิตภัณฑ์จากฟาร์ม</v-tab>
-                <v-tab class="font-weight-black">ปุ๋ย</v-tab>
-                <v-tab class="font-weight-black">อุปกรณ์การเกษตกร</v-tab>
-                <v-tab class="font-weight-black">อื่นๆ</v-tab>
-            </v-tabs>
-        </template>
-    </v-toolbar>
-    <v-tabs-items v-model="tabs">
-        <v-tab-item class="bg-gray-100">
-            <ProductAll />
-        </v-tab-item>
-        <v-tab-item class="bg-gray-100">
-            <ProductBuffalo />
-        </v-tab-item>
-        <v-tab-item class="bg-gray-100">
-            <ProductFarm />
-        </v-tab-item>
-        <v-tab-item class="bg-gray-100">
-            <ProductFertilizer />
-        </v-tab-item>
-        <v-tab-item class="bg-gray-100">
-            <ProductEquipment />
-        </v-tab-item>
-        <v-tab-item class="bg-gray-100">
-            <ProductOther />
-        </v-tab-item>
-    </v-tabs-items> -->
-
-    <div class="row px-2">
+    <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-12">
             <v-card>
                 <v-card-title>
@@ -179,13 +85,13 @@
 
             <!-- <Product /> -->
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-6 cursor-pointer" v-for="i in 12" @click="$router.push('/user/productdetail/')">
+                <div class="col-md-3 col-sm-6 col-6 cursor-pointer" v-for="i in 12" @click="$router.push('/user/buyproduct/')">
                     <v-hover v-slot:default="{ hover }">
                         <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border ">
                             <v-img class="white--text align-end" height="150px" src="https://images.pexels.com/photos/1054650/pexels-photo-1054650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                        <v-btn v-if="hover" href="/#/user/productdetail/" class="" outlined>ดูรายละเอียด</v-btn>
+                                        <v-btn v-if="hover" href="/#/user/buyproduct/" class="" outlined>ดูรายละเอียด</v-btn>
                                     </div>
                                 </v-expand-transition>
                             </v-img>
@@ -220,26 +126,13 @@
 </template>
 
 <script>
-import ProductAll from "./Tabs/ProductAll.vue"
-import ProductBuffalo from "./Tabs/ProductBuffalo.vue"
-import ProductEquipment from "./Tabs/ProductEquipment.vue"
-import ProductFertilizer from "./Tabs/ProductFertilizer.vue"
-import ProductFarm from './Tabs/ProductFarm.vue'
-import ProductOther from './Tabs/ProductOther.vue'
+import Product from "@/components/core/Product/Product.vue"
 export default {
     components: {
-        ProductAll,
-        ProductBuffalo,
-        ProductEquipment,
-        ProductFertilizer,
-        ProductFarm,
-        ProductOther
+        Product
     },
     data() {
         return {
-            tabs: null,
-            dialog: false,
-
             range: [0, 10000],
             min: 0,
             max: 10000,
@@ -295,11 +188,11 @@ export default {
                 },
             ],
         }
-    },
+    }
 }
 </script>
 
-<style>
+<style scoped>
 .v-card--reveal {
     align-items: center;
     bottom: 0;
@@ -307,5 +200,37 @@ export default {
     opacity: 0.8;
     position: absolute;
     width: 100%;
+}
+
+/* Style the list */
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
 }
 </style>

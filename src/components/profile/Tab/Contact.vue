@@ -1,78 +1,26 @@
 <template>
 <div>
-    <div class="rounded-t bg-white mb-0 px-1 py-6">
-        <div class="text-center flex flex-wrap justify-between">
-            <h6 class="text-gray-800 text-xl font-bold">ช่องทางการติดต่ออื่นๆ</h6>
-            <button class="rounded w-full md:w-1/6 p-2 bg-yellow-500 hover:bg-yellow-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                <div class="text-white"><i class="fas fa-pencil-alt"></i> แก้ไข</div>
-            </button> 
-            <!-- <button class="bg-red-500 f-white active:bg-orange-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
-                <i class="fas fa-pencil-alt text-lg"></i> ยกเลิกการแก้ไข
-            </button> -->
-        </div>
-    </div>
-    <div class="flex-auto px-1 lg:px-10 py-10 pt-0">
-        <form>
-            <!-- <h6 class="text-gray-500 text-sm mb-6 font-bold uppercase">
-                ข้อมูลส่วนตัว
-            </h6> -->
+
+    <h2 class="font-semibold text-2xl">{{_lang('ช่องทางการติดต่ออื่นๆ','Other contact channels','其他联系渠道')}}</h2><br>
+    <v-alert dense border="left" type="warning">{{_lang('หากต้องการแก้ไขข้อมูล ให้ทำการกรอกข้อมูลที่ต้องการแก้ไขแล้วกด "บันทึกการเปลี่ยนแปลง" ','To edit information Please fill in the information you want to edit and press "Save changes"','请填写您要编辑的信息 然后单击保存更改')}}</v-alert>
+
+    <div>
+        <form @submit.prevent="updatePersonal()">
             <div class="flex flex-wrap">
-                <div class="w-full  lg:w-12/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            Email
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="far fa-envelope text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุ Email ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="w-full  lg:w-12/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            Facebook
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fab fa-facebook text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุ Facebook ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-
-                    </div>
-                </div> 
-
-                <div class="w-full  lg:w-12/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            Line
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fab fa-line text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุ Line ID ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-
-                    </div>
-                </div> 
-
+                <v-text-field prepend-inner-icon="mdi-phone" class="w-full "   v-model="profile.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
+                <v-text-field prepend-inner-icon="far fa-envelope"  class="w-full " filled v-model="profile.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
+                <v-text-field prepend-inner-icon="fab fa-facebook" class="w-full " filled v-model="profile.facebook" label="Facebook"></v-text-field>
+                <v-text-field prepend-inner-icon="fab fa-line" class="w-full " filled v-model="profile.line" label="Line"></v-text-field>
+                <v-text-field class="w-full " filled v-model="profile.other" :label="_lang('อื่นๆ','Other','其他')"></v-text-field>
             </div>
-
-            <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                    <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
-                </button>
-            </div>
+            <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">
+                <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+            </v-btn>
 
         </form>
-
     </div>
+
+   
 
 </div>
 </template>
@@ -83,7 +31,9 @@ import {
     Vue,
     Watch,
 } from 'vue-property-decorator';
-
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
 @Component({
     components: {},
     computed: {}
@@ -91,6 +41,25 @@ import {
 
 export default class Profile extends Vue {
 
+    profile: any = null
+    profileImage: any = null;
+    response: boolean = false
+    async created() {
+        await this.loadProfile()
+        this.response = true;
+    }
+    async loadProfile() {
+        this.profile = await User.getProfile()
+        this.profileImage = await Core.getHttp(`/api/user/personal/image/${this.profile.id}/`)
+    }
+    async updatePersonal() {
+        let update = await Core.putHttp(`/api/default/profile/${this.profile.id}/`, this.profile)
+        if (update.id) {
+            alert('Successfully saved data')
+            await this.loadProfile() //.$_lang('บันทึกข้อมูลสำเร็จ','Successfully saved data','成功保存数据')
+        }
+
+    }
 }
 </script>
 

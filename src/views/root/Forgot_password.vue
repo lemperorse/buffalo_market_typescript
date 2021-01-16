@@ -3,17 +3,32 @@
     <button @click="$router.go(-1)" class="p-3 text-red-600">
         <i class="fas fa-arrow-circle-left text-3xl"></i>
     </button>
-    <img :src="wave" class="animate__animated animate__fadeInUp fixed hidden lg:block inset-0 h-full" style="z-index: -1;" />
-    <div class="w-screen h-screen flex flex-col justify-center items-center lg:grid lg:grid-cols-2">
-        <img :src="team_up" class="hidden lg:block w-1/2 hover:scale-150 transition-all duration-500 transform mx-auto" />
-        <form class="flex flex-col justify-center items-center w-1/2">
+
+    <div class="   p-4 ">
+        <h2 class="text-2xl">ลืมรหัสผ่าน</h2>
+        <form v-if="step==1" @submit.prevent="foundUser()">
+            <v-text-field v-model="form.personal_id" filled label="ระบุเลขบัตรประจำตัวประชาชน"></v-text-field>
+            <v-text-field v-model="form.tel" filled label="เบอร์โทร"></v-text-field>
+            <v-btn type="submit" class="w-full" color="success">ยืนยัน</v-btn>
+        </form>
+
+        <form v-if="step==2" @submit.prevent="changePassword()">
+            <div class="flex flex-wrap">
+                <v-text-field type="password" required prepend-inner-icon="mdi-lock" class="w-full " v-model="formPassword.password" filled :label="_lang('รหัสผ่าน','Password','密码')"></v-text-field>
+                <v-text-field type="password" required prepend-inner-icon="mdi-lock" class="w-full " filled v-model="formPassword.password2" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')"></v-text-field>
+            </div>
+            <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">
+                <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+            </v-btn>
+        </form>
+        <!-- <form class="flex flex-col justify-center items-center w-1/2">
             <img :src="team_re" class="w-32 animate__animated animate__fadeInDown" />
             <div class=" ">
                 <h2 class="animate__animated animate__fadeInRight my-8 font-display font-bold text-xl text-gray-700 text-center">
                     ติดต่อขอรหัสผ่าน
                 </h2>
                 <div class="mt-8">
-                    <!-- <form>  -->
+
                         <div class="mt-6"> 
                             <button @click="$router.push('/forgot-admin')" type="submit" class="w-full animate__animated animate__slideInUp rounded-full p-3 bg-red-500 hover:bg-red-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" >
                                 <div class="text-white"> ติดต่อแอดมิน</div>
@@ -25,28 +40,63 @@
                                 <div class="text-white"> เปลี่ยนรหัสผ่านเอง</div>
                             </button>
                         </div>
-                    <!-- </form> -->
+
                 </div>
             </div>
 
-        </form>
+        </form> -->
     </div>
 
 </div>
 </template>
 
-<script>
-import wave from "@/assets/login/wave.png";
-import team_up from "@/assets/login/undraw_team_up_ip2x.svg";
-import team_re from "@/assets/login/undraw_Remote_team_re_ck1y.svg";
+<script lang="ts">
+import {
+    Component,
+    Vue,
+} from 'vue-property-decorator';
+import { Core } from '../../store/core'
+import { Auth } from '../../store/auth'
+import { User } from '../../store/user'
+@Component({
+    components: {
 
-export default {
-    data() {
-        return {
-            wave,
-            team_re,
-            team_up
-        };
     },
-};
+    computed: {}
+})
+
+export default class Forgot extends Vue {
+
+    step: any = 1;
+    form: any = {}
+    formPassword: any = {}
+    user: any = null
+    async created() {
+
+    }
+
+    async foundUser() {
+        let user = await Core.getHttp(`/api/default/profile/?personal_id=${this.form.personal_id}&tel=${this.form.tel}`)
+        if (user[0].id) {
+            this.step = 2
+            this.user = user;
+        }
+    }
+
+    async changePassword(event: any) {
+        let user = this.user[0];
+        if (this.formPassword.password == this.formPassword.password2) {
+            let change = await Core.putHttp(`/api/user/password/${user.user}/`, this.formPassword)
+            this.formPassword = {}
+            if (change.id) {
+                alert('เปลี่ยนรหัสผ่านสำเร็จ');
+                await this.$router.go(-1)
+                // await App.success("เปลี่ยนรหัสผ่านสำเร็จ")
+            }
+        } else {
+            alert('รหัสผ่านไม่ตรงกัน');
+            // await App.error("รหัสผ่านไม่ตรงกัน")
+        }
+    }
+}
 </script>

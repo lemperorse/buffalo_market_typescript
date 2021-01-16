@@ -1,6 +1,10 @@
 <template>
   <div> 
-        <router-view />  
+    <v-app  >
+      <WebNav /><br><br><br><br>
+         <router-view />  
+    </v-app>
+     
   </div>
 </template>
 
@@ -10,10 +14,10 @@ import {
   Component,
   Vue,
 } from 'vue-property-decorator'; 
-
+import WebNav from '../../components/core/WebNav.vue'
 @Component({
   components: {  
-    
+    WebNav
     },
     computed: {}
 })

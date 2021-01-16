@@ -2,7 +2,7 @@
 <div>
     <ul class="breadcrumb mt-8 mb-4 rounded">
         <li><a href="/#/user/home/">หน้าแรก</a></li>
-        <li>ประกาศซื้อ</li> 
+        <li>ประกาศซื้อ</li>
     </ul>
 
     <div class="row">
@@ -11,106 +11,68 @@
                 <v-card-title>
                     กรอง
                 </v-card-title>
+                <v-radio-group v-model="productType">
+                    <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
+                </v-radio-group>
                 <v-divider></v-divider>
-                <template>
-                    <v-treeview :items="items" :open="[0]" :active="[0]" :selected-color="'#fff'" activatable open-on-click dense></v-treeview>
-                </template>
-                <v-divider></v-divider>
-                <v-card-title>ราคา</v-card-title>
+                <div v-for="category,index in categories" :key="index">
+                    <h2>{{category.name}}</h2>
+                    <v-checkbox v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
+                </div>
 
-                <v-range-slider v-model="range" :max="max" :min="min" :height="10" class="align-center" dense></v-range-slider>
-                <v-row class="pa-2" dense>
-                    <v-col cols="12" sm="5">
-                        <v-text-field :value="range[0]" label="ต่ำสุด" outlined dense @change="$set(range, 0, $event)"></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="2">
-                        <p class="pt-2 text-center">ถึง</p>
-                    </v-col>
-                    <v-col cols="12" sm="5">
-                        <v-text-field :value="range[1]" label="สูงสุด" outlined dense @change="$set(range, 1, $event)"></v-text-field>
-                    </v-col>
-                </v-row>
+                <v-card-title>ราคา</v-card-title>
+                <v-radio-group v-model="priceType">
+                    <v-radio v-for="sale,n in saleType" :key="n" :label="sale.name" :value="sale.id"></v-radio>
+                </v-radio-group>
+                <div class="flex ">
+                    <v-text-field v-model="price_low" name="name" label="ต่ำสุด" id="id"></v-text-field> - <v-text-field v-model="price_height" name="name" label="สูงสุด" id="id"></v-text-field>
+                    <v-btn @click="changepriceType" color="success">{{_lang('ตกลง','OK','好')}}</v-btn>
+                </div>
+
                 <v-divider></v-divider>
-                <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                        <option>จังหวัด</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                    </div>
-                </div>
-                <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                        <option>อำเภอ</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                    </div>
-                </div>
-                <div class="relative">
-                    <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                        <option>ตำบล</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                    </div>
-                </div>
+
+                <v-autocomplete item-text="name" item-value="id" @change="loadProducts()" label="จังหวัด" :items="provinces" v-model="province"></v-autocomplete>
+
             </v-card>
         </div>
 
         <div class="col-md-9 col-sm-9 col-xs-12">
-            <v-row dense>
-                <v-col cols="12" sm="4" class="pt-6">
-                    <small>แสดง 1-12 จาก 200 ผลิตภัณท์</small>
-                </v-col>
-                <v-col cols="12" sm="4" class="relative pt-2">
-                    <div class="flex rounded border-grey-light border bg-white hover:shadow-lg">
-                        <button>
-                            <span class="w-auto flex justify-end items-center text-grey p-2">
-                                <i class="fas fa-search text-xl"></i>
-                            </span>
-                        </button>
-                        <input class="w-full rounded " type="text" placeholder="ค้นหาสินค้าที่ต้องการ">
-                    </div>
-                </v-col>
-                <v-col cols="12" sm="4" class="pt-3">
-                    <v-select class="pa-0" v-model="select" :items="options" style="margin-bottom: -20px" outlined dense></v-select>
-                </v-col>
-            </v-row>
-
             <v-divider></v-divider>
 
             <!-- <Product /> -->
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-6 cursor-pointer" v-for="i in 12" @click="$router.push('/user/buyproduct/')">
+                <div class="w-40 m-2 cursor-pointer" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+
                     <v-hover v-slot:default="{ hover }">
-                        <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border ">
-                            <v-img class="white--text align-end" height="150px" src="https://images.pexels.com/photos/1054650/pexels-photo-1054650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                        <div class="mx-auto card rounded-lg bg-white hover:shadow-lg overflow-hidden border">
+                            <v-img class="white--text align-end w-full"  height="150px" :src="ximg(pu.file1)" >
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                        <v-btn v-if="hover" href="/#/user/buyproduct/" class="" outlined>ดูรายละเอียด</v-btn>
+                                        <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>ดูรายละเอียด </v-btn>
                                     </div>
                                 </v-expand-transition>
                             </v-img>
-                            <div class="p-6">
+                            <div class="p-6 ">
                                 <div class="flex items-baseline mb-1">
                                     <span class="inline-block bg-yellow-400 text-white text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">ใหม่</span>
-                                    <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
-                                        ควาย
+                                    <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide" v-for="cat,i in pu.category" :key="i">
+                                        {{cat.name}}
                                     </div>
                                 </div>
-                                <h4 class="font-semibold text-lg leading-tight truncate mb-1 text-indigo-600 ">ควายเผือก</h4>
-                                <div class=" text-orange-600 font-bold mb-1">฿ 12,000</div>
-                                <div class="text-sm text-gray-600 font-light mb-1">
-                                    <span class="fas fa-map-marker-alt"></span> เชียงใหม่
+                                <h4 class="font-semibold text-lg leading-tight truncate mb-1 text-indigo-600 "> {{pu.name}}</h4>
+
+                                <div class=" text-orange-600 font-bold mb-1">
+                                    <span v-if="pu.price_type">{{pu.price}}</span>
+                                    <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
+                                </div>
+                                <div class="text-sm text-gray-600 font-light mb-1" v-if="pu.farm">
+                                    <span class="fas fa-map-marker-alt"></span>
+                                    <span v-if="pu.farm.province">{{pu.farm.province.name}}</span>
                                 </div>
                             </div>
                             <hr>
                             <div class="text-xs text-center">
-                                <span class="fas fa-bullhorn"></span> ผู้โพส : นายแดง มีสุขใจ
+                                <span class="fas fa-bullhorn"></span> ผู้โพส : <span v-if="pu.farm.user">{{pu.farm.user.first_name}}</span>
                             </div>
                         </div>
                     </v-hover>
@@ -125,70 +87,87 @@
 </div>
 </template>
 
-<script>
-import Product from "@/components/core/Product/Product.vue"
-export default {
-    components: {
-        Product
-    },
-    data() {
-        return {
-            range: [0, 10000],
-            min: 0,
-            max: 10000,
-            select: "นิยม",
-            options: ["", "นิยม", "ราคา: ต่ำ ไป สูง", "ราคา: สูง ไป ต่ำ"],
-            page: 1,
-            items: [{
-                    id: 0,
-                    name: "ทั้งหมด",
-                    children: [],
-                },
-                {
-                    id: 1,
-                    name: "ควาย",
-                    children: [
-                        { id: 1, name: "ควายเอเชีย" },
-                        { id: 2, name: "ควายแอฟริกา" },
-                        { id: 3, name: "ควายแคระ" },
-                        { id: 4, name: "ควายปลัก" },
-                        { id: 5, name: "ควายแม่น้ำ" },
-                    ],
-                },
-                {
-                    id: 2,
-                    name: "ผลิตภัณฑ์จากฟาร์ม",
-                    children: [
-                        { id: 6, name: "เนื้อ" },
-                        { id: 7, name: "หนัง" },
-                        { id: 8, name: "เขา" },
-                    ],
-                },
-                {
-                    id: 3,
-                    name: "ปุ๋ย",
-                    children: [],
-                },
-                {
-                    id: 4,
-                    name: "อุปกรณ์การเกษตกร",
-                    children: [
-                        { id: 9, name: "เชือก" },
-                        { id: 10, name: "มีด" },
-                        { id: 11, name: "เสียม" },
-                        { id: 12, name: "คราด" },
-                        { id: 13, name: "จอบ" },
-                        { id: 14, name: "เคียว" },
-                    ],
-                },
-                {
-                    id: 5,
-                    name: "อื่นๆ",
-                    children: [],
-                },
-            ],
-        }
+<script lang="ts">
+import {
+    Component,
+    Vue,
+    Watch,
+} from 'vue-property-decorator';
+import MapView from '@/components/core/Map.vue';
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
+import { Map } from "@/store/map";
+import { Product } from "@/store/product";
+import {
+    City
+} from "@/store/city";
+@Component({
+    components: { MapView },
+    computed: {},
+})
+
+export default class PostSaller extends Vue {
+    dialog: boolean = false
+    priceType: any = 1
+    saleType: any = null
+    async created() {
+        await this.loadCategory();
+        await this.loadProvinces();
+        this.saleType = await Product.SaleType
+        this.productsType = await Product.ProductType
+        await this.loadProducts()
+        this.response = true
     }
+    products: any = null
+    response: boolean = false;
+    category: any = ''
+    productType: number = 0
+    productsType: any = null
+    @Watch('chooseCategories')
+    async changeCategory(val: any) {
+        this.category = `category=${this.chooseCategories.toString()}`
+        await this.loadProducts()
+    }
+
+    @Watch('productType')
+    async changeProductsType(val: any) {
+        await this.loadProducts()
+    }
+
+    price: any = ''
+    price_low: any = ''
+    price_height: any = ''
+    async changepriceType() {
+        if (this.priceType == true) {
+            this.price = `&price_in=${Number(this.price_low)-1}&price_out=${Number(this.price_height)+1}`
+        } else {
+            this.price = `&price_start=${Number(this.price_low)-1}&price_end=${Number(this.price_height)+1}`
+        }
+        await this.loadProducts()
+    }
+
+    async loadProducts() {
+        let search = this.$route.query.search
+        search = (search) ? `search=${search}` : ''
+        this.products = await Core.getHttp(`/api/default/products/?&product_type=${this.productType}&${this.category}${search}${this.price}&farm__province=${this.province}`)
+    }
+    categories: any = null
+    chooseCategories: any = []
+    async loadCategory() {
+        this.categories = await Core.getHttp(`/api/default/categories/`)
+    }
+    provinces: any = null
+    province: any = '';
+    async loadProvinces() {
+        this.provinces = await Core.getHttp(`/api/default/province/`)
+    }
+
+    
+    ximg(file: any) {
+        return (file) ? file : 'https://images.pexels.com/photos/4052387/pexels-photo-4052387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    }
+
 }
 </script>
 

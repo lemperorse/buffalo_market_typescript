@@ -1,21 +1,15 @@
 <template>
 <div class="bg-gray-100">
-
-    <div class="container mx-auto " v-if="response">
-
+    <div class="container mx-auto ">
         <div class="flex flex-wrap">
             <div class="w-full lg:w-3/12 px-2">
                 <div class="relative min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg border-l-4 border-green-500">
                     <div class="px-5">
                         <div class="flex flex-col justify-center  items-center">
 
-                            <img v-if="profile.profile_image" ref="imageProfile" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" :src="profile.profile_image" />
-                            <img v-else ref="imageProfile" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" />
-                            <input type="file" ref="profile" @change="profileChange" style="display:none;" />
-
+                            <img ref="profileImage" alt="..." src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" class="mt-4 shadow-xl h-16 w-16 rounded-full align-middle border-none" />
                             <h2 class="text-base font-semibold" v-if="user">{{user.first_name}} &nbsp; {{user.first_name}}</h2>
                             <h2 v-if="user">@{{user.first_name}}</h2>
-                            <v-btn @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปโปรไฟล์','Change Profile Image','变更个人资料图片')}}</v-btn>
 
                         </div>
 
@@ -124,55 +118,13 @@ export default class Table extends Vue {
     user: any = null
     response: boolean = false
     private openTab: number = 1
-    profile: any = {}
-    form: any = null;
     async created() {
         await Auth.checkToken();
         if (Auth.logined) {
             this.user = await Auth.getUser()
-            await this.loadProfile()
-
         }
-
         this.response = true;
     }
-
-    async loadProfile() {
-        let user = await Core.getHttp(`/api/default/profile/?user=${this.user.pk}`)
-        if (user.length > 0) {
-            this.profile = await Core.getHttp(`/api/user/profile/image/${user[0].id}/`)
-            if (this.profile.profile_image) {
-                let imageProfile: any = this.$refs.imageProfile
-                console.log(imageProfile);
-            } else {
-
-            }
-        }else{
-            alert('กรุณาระบุข้อมูลส่วนตัว')
-        }
-
-    }
-
-    async profileChange(event: any) {
-        let file = await this.getBase64(event.target.files[0])
-        let imageProfile: any = this.$refs.imageProfile
-        imageProfile.src = file
-        this.profile.profile_image = file
-        let data = await Core.putHttp(`/api/user/profile/image/${this.profile.id}/`, this.profile)
-        if (data.id) {
-            alert("success")
-        }
-    }
-
-    async getBase64(file: any) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-        });
-    }
-
     toggleTabs(tabNumber: number) {
         this.openTab = tabNumber
     }

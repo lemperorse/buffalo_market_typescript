@@ -1,5 +1,6 @@
 import {VuexModule, Module, Mutation, Action} from "vuex-class-modules";
 import axios from '@/plugins/axios'
+ 
 @Module({generateMutationSetters: true})
 class CoreModule extends VuexModule {
     //state
@@ -24,13 +25,14 @@ class CoreModule extends VuexModule {
     }
 
     async getChoice(name:string):Promise<any>{
-        return await this.getHttp(`/api/choice/?name=${name}`)
+        return await this.getHttp(`/api/default/choice/?name=${name}`)
     }
 
     async getGeo():Promise<any>{
-        return await this.getHttp('/api/geo/')
+        return await this.getHttp('/api/default/')
     }
 
+     
     async getBase64(file:any) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -39,6 +41,9 @@ class CoreModule extends VuexModule {
             reader.onerror = error => reject(error);
         });
     }
+
+    
+ 
 
 }
 

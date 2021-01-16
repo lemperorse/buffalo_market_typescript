@@ -13,6 +13,11 @@ const userRouter: any = [
         name: 'home',
         component: getView('Home')
     },
+    {
+        path: '/test',
+        name: 'test',
+        component: getView('Test')
+    },
 
     //*****************************หน้ารวมสินค้า******************************** */
     {

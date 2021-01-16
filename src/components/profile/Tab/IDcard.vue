@@ -1,58 +1,25 @@
 <template>
 <div>
-    <div class="rounded-t bg-white mb-0 px-1 py-6">
-        <div class="text-center flex flex-wrap justify-between">
-            <h6 class="text-gray-800 text-xl font-bold">บัตรประชาชน</h6>
-            <button class="rounded w-full md:w-1/6 p-2 bg-yellow-500 hover:bg-yellow-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                <div class="text-white"><i class="fas fa-pencil-alt"></i> แก้ไข</div>
-            </button> 
-            <!-- <button class="bg-red-500 f-white active:bg-orange-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
-                <i class="fas fa-pencil-alt text-lg"></i> ยกเลิกการแก้ไข
-            </button> -->
-        </div>
+
+    <h2 class="font-semibold text-2xl">{{_lang('ยืนยันตัวตน','ID card','身份证')}}</h2><br>
+
+    <form v-if="response" @submit.prevent="updatePersonal()">
+        <v-text-field class="w-full " v-model="profile.personal_id" filled :label="_lang('เลขบัตรประชาชน','ID card number','身份证号码')"></v-text-field>
+        <v-btn type="submit" class="w-full md:w-auto float-md-right" color="warning">
+            <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+        </v-btn>
+    </form>
+
+    <div class="mt-24">
+        <h2>ภาพถ่ายบัตรประจำตัวประชาชน</h2>
+
+        <img v-if="profileImage.presonal_image" ref="profileImage" class="mt-4 shadow-xl h-auto w-full   align-middle border-none" :src="profileImage.presonal_image" />
+        <img v-else ref="profileImage" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" />
+        <input type="file" ref="profile" @change="personalImageChange" style="display:none;" /><br>
+        <v-btn class="w-full md:w-auto float-md-right" @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปโปรไฟล์','Change Profile Image','变更个人资料图片')}}</v-btn>
+
     </div>
-    <div class="flex-auto px-1 lg:px-10 py-10 pt-0">
-        <form>
-            <div class="w-full lg:w-12/12  px-1">
-                <div class="relative w-full mb-3">
-                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                        เลขบัตรประชาชน
-                    </label>
 
-                    <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                        <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                            <i class="far fa-address-card text-lg text-gray-500"></i>
-                        </span>
-                        <input type="number" placeholder="โปรดระบุหมายเลขบัตรประจำตัวประชาชนของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-full lg:w-12/12  px-1">
-                <hr class="mt-6 border-b-1 border-gray-400" />
-                <h6 class="text-gray-500 text-sm mt-3 mb-6 font-bold uppercase">
-                    ภาพถ่ายบัตรประจำตัวประชาชน
-                </h6>
-                <div class="flex flex-wrap">
-                    <div class="w-full lg:w-12/12 px-1">
-                        <div class="relative flex justify-center w-full">
-                            <img ref="farmImage" id="farmImage" class="w-128 h-48" src="https://images.pexels.com/photos/326576/pexels-photo-326576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        </div>
-                        <div class="flex justify-center mt-6">
-                            <input type="file" ref="personal" >
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                    <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
-                </button>
-            </div>
-
-        </form>
-    </div>
 </div>
 </template>
 
@@ -62,12 +29,57 @@ import {
     Vue,
     Watch,
 } from 'vue-property-decorator';
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
 @Component({
     components: {},
     computed: {}
 })
 
-export default class ImageClass extends Vue {}
+export default class Personal extends Vue {
+    profile: any = null
+    profileImage:any = null ;
+    response: boolean = false
+    async created() {
+        await this.loadProfile()
+        this.response = true;
+    }
+    async loadProfile() {
+        this.profile = await User.getProfile()
+        this.profileImage = await Core.getHttp(`/api/user/personal/image/${this.profile.id}/`)
+    }
+    async updatePersonal() {
+        let update = await Core.putHttp(`/api/default/profile/${this.profile.id}/`, this.profile)
+        if (update.id) {
+            alert('Successfully saved data')
+            await this.loadProfile() //.$_lang('บันทึกข้อมูลสำเร็จ','Successfully saved data','成功保存数据')
+        }
+
+    }
+
+    
+    async personalImageChange(event: any) {
+        let file = await this.getBase64(event.target.files[0]) 
+        let profileImage: any = this.$refs.profileImage
+        profileImage.src = file
+        this.profileImage.presonal_image = file
+        let data = await Core.putHttp(`/api/user/personal/image/${this.profile.id}/`, this.profileImage)
+        if (data.id) {
+            alert("success")
+        }
+    }
+
+    async getBase64(file: any) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    }
+
+}
 </script>
 
 <style>

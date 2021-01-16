@@ -1,224 +1,72 @@
 <template>
 <div>
-    <div class="rounded-t bg-white mb-0 px-1 py-6">
-        <div class="text-center flex flex-wrap justify-between">
-            <h6 class="text-gray-800 text-xl font-bold">ข้อมูลผู้ขาย</h6>
-            <button class="rounded w-full md:w-1/6 p-2 bg-yellow-500 hover:bg-yellow-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                <div class="text-white"><i class="fas fa-pencil-alt"></i> แก้ไข</div>
-            </button>
-            <!-- <button class="bg-red-500 f-white active:bg-orange-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
-                <i class="fas fa-pencil-alt text-lg"></i> ยกเลิกการแก้ไข
-            </button> -->
+    <h2 class="font-semibold text-2xl">{{_lang('ร้านค้าของคุณ','Your shop','你的店')}}</h2><br>
+
+    <div v-if="saller">
+
+        <div>
+           
+            <div class="flex flex-col">
+                <div class="flex">
+                    <img class="w-24 h-24 rounded-full" :src="profile.profile_image" alt="" srcset="">
+                    <div class="pl-4"> <h2 class="font-semibold">ชื่อ รูปผู้ขาย และ เลขบัตรประจำตัวประชาชน</h2>
+                        <h2>{{user.first_name}}&nbsp;&nbsp;{{user.last_name}} ({{profile.personal_id}})</h2>
+                    </div>
+                </div>
+              
+                <div class="flex mt-4">
+                    <img class="w-24 h-auto " :src="profile.presonal_image" alt="" srcset="">
+                    <div class="pl-4">   <h2 class="font-semibold" >ที่อยู่ผู้ชาย</h2>
+                        <h2>{{profile.address}}</h2>
+                        <h2>{{profile.geo.name}}-{{profile.province.name}}-{{profile.amphur.name}}-{{profile.district.name}}</h2>
+                        <h2>{{profile.zipcode}}</h2>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="flex-auto px-1 lg:px-10 py-10 pt-0">
-        <form>
+
+        <br> <br>
+        <form v-if="response" @submit.prevent="update()">
             <div class="flex flex-wrap">
-                <div class="w-full  lg:w-6/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ชื่อทางการค้า
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="far fa-address-card text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุชื่อทางการค้าของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
+                <v-text-field class="w-full " v-model="form.name" filled :label="_lang('ชื่อทางการค้า','ชื่อทางการค้า','ชื่อทางการค้า')"></v-text-field>
+                <v-text-field class="w-full " v-model="form.farm_address" filled :label="_lang('ที่อยู่ร้านค้า','ที่อยู่ร้านค้า','ที่อยู่ร้านค้า')"></v-text-field>
+                <v-text-field class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地区')"></v-text-field>
 
-                    </div>
+                <v-text-field class="w-full " v-model="form.zipcode" filled :label="_lang('รหัสไปรศณีย์','รหัสไปรศณีย์','รหัสไปรศณีย์')"></v-text-field>
+
+                <div class="relative w-full mb-3">
+                    <MapView :name="'locations'" :center="{'Latitude':form.latitude,'Longitude' :form.longitude }" :locations="[
+                    {'Latitude':form.latitude,'Longitude' :form.longitude } ,]" :zoom="18" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
                 </div>
-                <div class="w-full lg:w-6/12 px-1">
-                    <div class="relative w-full mb-6">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ที่ตั้งทางการค้า
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-map-marked-alt text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุที่ตั้งทางการค้าของคุณ"  class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
+                <v-text-field class="w-full md:w-1/2" v-model="form.latitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด)','พิกัดร้านค้าตามระบบ GPS (ละติจูด)','พิกัดร้านค้าตามระบบ GPS (ละติจูด)')"></v-text-field>
+
+                <v-text-field class="w-full md:w-1/2" v-model="form.longitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)','พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)','พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)')"></v-text-field>
+
+                <div class="flex flex-wrap">
+                    <v-text-field class="w-full md:w-1/2" prepend-inner-icon="mdi-phone" v-model="form.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
+                    <v-text-field class="w-full md:w-1/2" prepend-inner-icon="far fa-envelope" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
+                    <v-text-field class="w-full md:w-1/2" prepend-inner-icon="fab fa-facebook" filled v-model="form.facebook" label="Facebook"></v-text-field>
+                    <v-text-field class="w-full md:w-1/2" prepend-inner-icon="fab fa-line" filled v-model="form.line" label="Line"></v-text-field>
+                    <v-text-field class="w-full " filled v-model="form.other" :label="_lang('อื่นๆ','Other','其他')"></v-text-field>
                 </div>
-
-                <div class="w-full lg:w-12/12  mb-6">
-                    <div class="flex flex-wrap">
-                        <div class="w-full lg:w-12/12 px-1">
-                            <div class="bg-white border-l-2 border-green-500 rounded shadow-xl p-2 mt-6">
-                                <div class="flex flex-col md:flex-row items-center">
-                                    <GmapMap class="sizemap" :center="center" :zoom="7" map-type-id="roadmap">
-                                        <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center = m.position" />
-                                    </GmapMap>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-6/12  px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            พิกัดฟาร์มตามระบบ GPS (ละติจูด)
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-thumbtack text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุพิกัดละติจูด" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-6/12  px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            พิกัดฟาร์มตามระบบ GPS (ลองจิจูด)
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-thumbtack text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุพิกัดลองจิจูด" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-6/12  px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ชื่อ
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-user text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุชื่อของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-6/12  px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            นามสกุล
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-user text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุนามสกุลของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-12/12  px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="md:w-2/3 block text-gray-500 font-bold">
-                            <input class="mr-2 leading-tight" type="checkbox">
-                            <span class="text-sm">
-                                ใช้ข้อมูลเดียวกับข้อมูลส่วนตัว
-                            </span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-6/12  px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ที่อยู่ตามทะเบียนบ้าน
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-user text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุที่อยู่ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-6/12 lg:pt-8 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="md:w-2/3 block text-gray-500 font-bold">
-                            <input class="mr-2 leading-tight" type="checkbox">
-                            <span class="text-sm">
-                                ใช้ที่อยู่เดียวกับข้อมูลส่วนตัว
-                            </span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="w-full  lg:w-12/12 px-1">
-                    <hr class="mt-6 border-b-1 border-gray-400" />
-                    <h6 class="text-gray-500 text-sm mt-3 mb-6 font-bold uppercase">
-                        ช่องทางการติดต่ออื่นๆ
-                    </h6>
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            Email
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="far fa-envelope text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุ Email ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="w-full  lg:w-12/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            Facebook
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fab fa-facebook text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุ Facebook ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full  lg:w-12/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            Line
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fab fa-line text-lg text-gray-500"></i>
-                            </span>
-                            <input type="text" placeholder="โปรดระบุ Line ID ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full  lg:w-12/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            เบอร์โทรศัพท์
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                                <i class="fas fa-phone text-lg text-gray-500"></i>
-                            </span>
-                            <input type="number" placeholder="โปรดระบุหมายเลขโทรศัพท์ของคุณ" class="p-3 w-full pl-10 hover:shadow-lg" />
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
-            <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                    <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
-                </button>
-            </div>
-
+            <v-btn type=" submit" class="w-full md:w-auto float-md-right" x-large color="warning">
+                <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+            </v-btn>
         </form>
 
+    </div>
+    <div v-else>
+        <v-alert type="info">
+            {{_lang('คุณยังไม่มีร้านค้า หากคุณต้องการสร้างร้านค้าเพื่อลงประกาศขายของ ให้กด "สร้างสร้านค้า"','You do not have a store yet.If you want to create a store to post your listings, press "Create Shop".','您还没有商店。如果要创建一个商店来发布您的列表，请按“创建商店”。')}}
+        </v-alert>
+
+        <center>
+            <v-btn @click="createShop()" x-large color="success">
+                <v-icon>mdi-store</v-icon>{{_lang('สร้างร้านค้า','Create a store','建立店铺')}}
+            </v-btn>
+        </center>
     </div>
 
 </div>
@@ -230,48 +78,97 @@ import {
     Vue,
     Watch,
 } from 'vue-property-decorator';
-
+import MapView from '@/components/core/Map.vue';
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
+import { Map } from "@/store/map";
+import {
+    City
+} from "@/store/city";
 @Component({
-    components: {},
+    components: { MapView },
     computed: {},
-    data() {
-        return {
-            center: {
-                lat: 19.1664466,
-                lng: 99.9019888,
-            },
-            markers: [{
-                    position: {
-                        lat: 19.1664466,
-                        lng: 99.9019888,
-                    },
-                },
-                {
-                    position: {
-                        lat: 20.0,
-                        lng: 99.9019888,
-                    },
-                },
-                {
-                    position: {
-                        lat: 19.3,
-                        lng: 100.9019888,
-                    },
-                },
-                {
-                    position: {
-                        lat: 20.3,
-                        lng: 100.9019888,
-                    },
-                },
-            ],
-
-        }
-    }
 })
 
-export default class Profile extends Vue {
+export default class Saller extends Vue {
+    form: any = {}
+    response: boolean = false;
+    user: any = null
+    profile: any = null
+    saller: boolean = false;
+    async created() {
+        await this.loadFarm();
 
+    }
+
+    async loadFarm() {
+        this.user = await Auth.getUser()
+        this.profile = await User.getProfileFull();
+        this.form = await Core.getHttp(`/api/user/farm/${this.user.pk}/`)
+        if (this.form.id) {
+            this.saller = true;
+        }
+        this.response = true;
+    }
+
+    async createShop() {
+        let shop = await Core.postHttp(`/api/default/farm/`, {
+            'user': this.user.pk,
+            latitude: '19.0284279',
+            longitude: '99.8940557'
+        })
+
+        if (shop.id) {
+            alert('สร้างร้านค้าของคุณสำเร็จแล้ว')
+            await this.loadFarm();
+        }
+    }
+    get latCore() {
+        return Map.lat
+    }
+    get lngCore() {
+        return Map.lng
+    }
+    @Watch('latCore')
+    async changeMapCore() {
+        this.form.latitude = Map.lat
+        this.form.longitude = Map.lng
+        await this.update();
+    }
+
+    async update() {
+        this.response = false
+        this.form.geo = City.currentGeo ?.id
+        this.form.province = City.currentProvince ?.id
+        this.form.amphur = City.currentAmphur ?.id
+        this.form.district = City.currentDistrict ?.id
+        let farm = await Core.putHttp(`/api/default/farm/${this.form.id}/`, this.form)
+        if (farm.id) {
+            alert("แก้ไขข้อมูลสำเร็จ")
+            // await App.success("แก้ไขข้อมูลสำเร็จ")
+        } else {
+            alert("เกิดข้อผิดพลาดในการแก้ไขข้อมูล")
+            //await App.error("เกิดข้อผิดพลาดในการแก้ไขข้อมูล")
+        }
+        await this.loadFarm();
+    }
+
+    async openCityDialog() {
+        City.dialogCityState = true
+    }
+
+    get CityFrom() {
+        return City.showName
+    }
+
+    async setCity() {
+        City.currentGeo = await Core.getHttp(`/api/default/geography/${this.form.geo}/`)
+        City.currentProvince = await Core.getHttp(`/api/default/province/${this.form.province}/`)
+        City.currentAmphur = await Core.getHttp(`/api/default/amphur/${this.form.amphur}/`)
+        City.currentDistrict = await Core.getHttp(`/api/default/district/${this.form.district}/`)
+        await City.setShowName()
+    }
 }
 </script>
 

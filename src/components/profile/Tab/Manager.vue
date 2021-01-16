@@ -1,58 +1,22 @@
 <template>
 <div>
-    <div class="rounded-t bg-white mb-0 px-1 py-6">
-        <div class="text-center flex flex-wrap justify-between">
-            <h6 class="text-gray-800 text-xl font-bold">ข้อมูลทั่วไป</h6>
-            <button class="rounded w-full md:w-1/6 p-2 bg-yellow-500 hover:bg-yellow-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                <div class="text-white"><i class="fas fa-pencil-alt "></i> แก้ไข</div>
-            </button> 
-            <!-- <button class="bg-red-500 f-white active:bg-orange-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
-                <i class="fas fa-pencil-alt text-lg"></i> ยกเลิกการแก้ไข
-            </button> -->
-        </div>
-    </div>
-    <div class="flex-auto px-1 lg:px-10 py-10 pt-0">
-        <form> 
+
+      <h2 class="font-semibold text-2xl">{{_lang('เปลี่ยนรหัสผ่าน','Change Password','更改密码')}}</h2><br>
+    <v-alert dense border="left" type="warning">{{_lang('หากต้องการแก้ไขข้อมูล ให้ทำการกรอกข้อมูลที่ต้องการแก้ไขแล้วกด "บันทึกการเปลี่ยนแปลง" ','To edit information Please fill in the information you want to edit and press "Save changes"','请填写您要编辑的信息 然后单击保存更改')}}</v-alert>
+
+    <div>
+        <form @submit.prevent="changePassword()">
             <div class="flex flex-wrap">
-                <div class="w-full  lg:w-6/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            รหัสผ่านใหม่
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="z-10 mt-2 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 ">
-                                <i class="fas fa-key text-lg text-gray-500"></i>
-                            </span>
-                            <input type="password" placeholder="โปรดระบุรหัสผ่านใหม่" class="p-3 w-full pl-10 hover:shadow-lg"/>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="w-full lg:w-6/12 px-1">
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                            ยืนยันรหัสผ่าน
-                        </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <span class="z-10 mt-2 h-full leading-snug font-normal text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 ">
-                                <i class="fas fa-key text-lg text-gray-500"></i>
-                            </span>
-                            <input type="password" placeholder="โปรดระบุรหัสผ่านใหม่" value="" class="p-3 w-full pl-10 hover:shadow-lg"/>
-                        </div>
-                    </div>
-                </div> 
-
+                <v-text-field type="password" required prepend-inner-icon="mdi-lock" class="w-full "   v-model="formPassword.password" filled :label="_lang('รหัสผ่าน','Password','密码')"></v-text-field>
+                <v-text-field type="password" required prepend-inner-icon="mdi-lock"  class="w-full " filled v-model="formPassword.password2" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')"></v-text-field>
             </div>
-
-            <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                    <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
-                </button>
-            </div>
-
-        </form>
-
+            <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">
+                <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+            </v-btn> 
+        </form> 
     </div>
+ 
+ 
 
 </div>
 </template>
@@ -64,13 +28,37 @@ import {
     Watch,
 } from 'vue-property-decorator';
 
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
 @Component({
     components: {},
     computed: {}
 })
 
 export default class Profile extends Vue {
+    formPassword: any = {}
+ 
+    response: boolean = false
+    async created() {
+      
+        this.response = true;
+    } 
 
+    async changePassword(event: any) {
+        let user = await User.getUser()
+        if (this.formPassword.password == this.formPassword.password2) {
+            let change = await Core.putHttp(`/api/user/password/${user.pk}/`, this.formPassword)
+            this.formPassword = {}
+            if (change.id) {
+                alert('เปลี่ยนรหัสผ่านสำเร็จ');
+                // await App.success("เปลี่ยนรหัสผ่านสำเร็จ")
+            }
+        } else {
+            alert('รหัสผ่านไม่ตรงกัน');
+            // await App.error("รหัสผ่านไม่ตรงกัน")
+        }
+    }
 }
 </script>
 

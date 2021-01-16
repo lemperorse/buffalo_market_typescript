@@ -36,8 +36,7 @@
 
                                 </v-sparkline>
                             </v-sheet>
-                        </v-card>
-
+                        </v-card> 
                     </div> 
                 </v-tab-item>
             </v-tabs-items>

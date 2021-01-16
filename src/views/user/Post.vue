@@ -5,12 +5,13 @@
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                 ประกาศของ...(ฉัน)
             </h2>
-          
-            <v-toolbar class="mb-2 rounded-lg elevation-1" >
+
+            <v-toolbar class="mb-2 rounded-lg elevation-1">
                 <template>
                     <v-tabs class="border rounded" color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                         <v-tab class="font-weight-black">ประกาศซื้อ</v-tab>
                         <v-tab class="font-weight-black">ประกาศขาย</v-tab>
+                        <v-tab class="font-weight-black">รายงาน</v-tab>
                     </v-tabs>
                 </template>
             </v-toolbar>
@@ -21,6 +22,24 @@
                 <v-tab-item class="bg-gray-100">
                     <PostSell />
                 </v-tab-item>
+                <v-tab-item class="bg-gray-100">
+                    <div>
+                        <h2 class="text-2xl font-bold">รายงาน สถิติ</h2>
+                        <v-card class="p-2 mt-2">
+                            <h2>จำนวนรายการที่ขายได้</h2>
+                            <h2 class="text-3xl">{{productsEnd.length}}</h2>
+                        </v-card>
+                        <!-- <pre>{{data}}</pre> -->
+                        <v-card style="background-color:#008080;">
+                            <v-sheet color="rgba(0, 0, 0, .12)">
+                                <v-sparkline :labels="labels" :value="value" color="rgba(255, 255, 255, .7)" height="100" padding="24" stroke-linecap="round" smooth>
+
+                                </v-sparkline>
+                            </v-sheet>
+                        </v-card>
+
+                    </div> 
+                </v-tab-item>
             </v-tabs-items>
         </div>
     </div>
@@ -28,21 +47,77 @@
 </v-app>
 </template>
 
-<script>
-import { Component, Vue } from "vue-property-decorator";
+<script lang="ts">
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
 import PostBuy from "@/components/post/PostBuy.vue"
 import PostSell from "@/components/post/PostSell.vue"
-export default {
-    name: "post-page",
+import { Component, Vue, Watch } from "vue-property-decorator";
+import _ from 'lodash'
+@Component({
     components: {
         PostBuy,
         PostSell
     },
-    data() {
-        return {
-            tabs: null,
-            dialog: false,
-        }
+    computed: {}
+})
+
+export default class Postx extends Vue {
+    tabs: any = 2
+    dialog: any = false
+    products: any = null
+    value: any = []
+    labels: any = []
+    async created() {
+        await this.loadFarm()
+        await this.loadProducts()
     }
-};
+
+    farm: any = {}
+    response: boolean = false;
+    user: any = null
+    profile: any = null
+    async loadFarm() {
+        this.user = await Auth.getUser()
+        this.profile = await User.getProfileFull();
+        this.farm = await Core.getHttp(`/api/user/farm/${this.user.pk}/`)
+    }
+    data: any = null
+    productsEnd:any = null
+    async loadProducts() {
+      this.productsEnd = await Core.getHttp(`/api/default/product/?farm=${this.farm.id}&status=3`)
+
+        this.products = await Core.getHttp(`/api/default/product/?farm=${this.farm.id}`)
+        this.data = _.chain(this.products)
+            // Group the elements of Array based on `color` property
+            .groupBy("status")
+            // `key` is group's name (color), `value` is the array of objects
+            .map((value: any, key: any) => ({ status: key, data: value }))
+            .value()
+
+        for (let index = 0; index < this.data.length; index++) {
+            this.value.push(this.data[index].data.length)
+            let name = ''
+            if (this.data[index].status == 0) {
+                name = 'ยกเลิก'
+            }  else if (this.data[index].status == 1) {
+                name = 'ได้รับสินค้าแล้ว'
+            } else if (this.data[index].status == 2) {
+                name = 'รับซื้อ'
+            } else if (this.data[index].status == 3) {
+                name = 'ขายแล้ว'
+            } else if (this.data[index].status == 4) {
+                name = 'สินค้าหมด'
+            } else if (this.data[index].status == 5) {
+                name = 'มีสินค้า'
+            } else {
+                name = 'ไม่มีสถานะ'
+            }
+            this.labels.push(`${name} (${this.data[index].data.length})`)
+        }
+
+    }
+
+}
 </script>

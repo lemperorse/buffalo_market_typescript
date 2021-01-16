@@ -1,7 +1,7 @@
 <template>
 <div class="fixed w-full h-28 nav" style="z-index:100;  ">
     <div class="container">
-        <div class="flex overflow-auto" v-if="response">
+        <div class="flex  overflow-y-hidden	overflow-x-auto	 " v-if="response">
             <v-btn @click="goPageTab(1)" small text dark>{{$txt.web_nav.sell}}</v-btn> 
             <v-btn @click="goPageTab(2)" small text dark> {{$txt.web_nav.map}}</v-btn>
             <v-spacer></v-spacer>
@@ -25,7 +25,7 @@
 
             <v-btn v-if="!logined" @click="$router.push('/register')" small text dark> {{$txt.web_nav.register}}</v-btn>
             <v-btn v-if="!logined" @click="$router.push('/login')" small text dark> {{$txt.web_nav.login}}</v-btn>
-            <v-btn @click="$router.push('/register')" small outlined dark> {{$txt.web_nav.download}}</v-btn>
+            <v-btn class="invisible  md:visible"  @click="$router.push('/register')" small outlined dark> {{$txt.web_nav.download}}</v-btn>
         </div>
         <div class="flex pt-4">
             <h2 style="cursor: pointer;" class="text-base md:text-2xl logo-font pon" @click="$router.push('/')">

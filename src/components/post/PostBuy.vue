@@ -127,7 +127,7 @@ export default class PostSaller extends Vue {
 
     products: any = null
     async loadProduct() {
-        this.products = await Core.getHttp(`/api/default/products/?farm=${this.farm.id}&product_type=1&search=${this.search}`)
+        this.products = await Core.getHttp(`/api/default/product/?farm=${this.farm.id}&product_type=1&search=${this.search}`)
     }
 
     public async updateProduct(product:any) { 

@@ -1,17 +1,17 @@
 <template>
-<v-app>
+<!-- <v-app> -->
     <div class="bg-gray-100">
         <div class="container mx-auto bg-gray-100 ">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                ประกาศของ...(ฉัน)
+                {{_lang('ประกาศของ','Announcement of','公告')}} {{user.first_name}}
             </h2>
 
-            <v-toolbar class="mb-2 rounded-lg elevation-1">
+            <v-toolbar class="mb-4 rounded elevation-0">
                 <template>
-                    <v-tabs class="border rounded" color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
-                        <v-tab class="font-weight-black">ประกาศซื้อ</v-tab>
-                        <v-tab class="font-weight-black">ประกาศขาย</v-tab>
-                        <v-tab class="font-weight-black">รายงาน</v-tab>
+                    <v-tabs class="rounded" color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
+                        <v-tab class="font-weight-black">{{_lang('ประกาศซื้อ','Buy','購買')}}</v-tab>
+                        <v-tab class="font-weight-black">{{_lang('ประกาศขาย','Sell','賣')}}</v-tab>
+                        <v-tab class="font-weight-black">{{_lang('รายงาน','Report','報告')}}</v-tab>
                     </v-tabs>
                 </template>
             </v-toolbar>
@@ -24,9 +24,9 @@
                 </v-tab-item>
                 <v-tab-item class="bg-gray-100">
                     <div>
-                        <h2 class="text-2xl font-bold">รายงาน สถิติ</h2>
+                        <h2 class="text-2xl font-bold">{{_lang('รายงาน สถิติ','Report','報告')}}</h2>
                         <v-card class="p-2 mt-2">
-                            <h2>จำนวนรายการที่ขายได้</h2>
+                            <h2>{{_lang('จำนวนรายการที่ขายได้','Number of items sold','銷售數量')}}</h2>
                             <h2 class="text-3xl">{{productsEnd.length}}</h2>
                         </v-card>
                         <!-- <pre>{{data}}</pre> -->
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-</v-app>
+<!-- </v-app> -->
 </template>
 
 <script lang="ts">

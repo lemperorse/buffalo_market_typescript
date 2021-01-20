@@ -1,11 +1,11 @@
 <template>
-<v-app>
+<!-- <v-app> -->
     <div class="bg-gray-100">
         <div class="container mx-auto">
             <ProductDetail />
         </div>
     </div>
-</v-app>
+<!-- </v-app> -->
 </template>
 
 <script>

@@ -17,7 +17,7 @@
             <v-text-field class="w-full " filled v-model="profile.address" :label="_lang('ที่อยู่','Last Name','姓')"></v-text-field>
 
             <v-text-field class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地区')"></v-text-field>
-            <v-text-field class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรศณีย์','Last Name','姓')"></v-text-field>
+            <v-text-field class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Last Name','姓')"></v-text-field>
 
         </div>
         <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">

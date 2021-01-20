@@ -9,14 +9,14 @@
             <div class="flex flex-col">
                 <div class="flex">
                     <img class="w-24 h-24 rounded-full" :src="profile.profile_image" alt="" srcset="">
-                    <div class="pl-4"> <h2 class="font-semibold">ชื่อ รูปผู้ขาย และ เลขบัตรประจำตัวประชาชน</h2>
+                    <div class="pl-4"> <h2 class="font-semibold">{{_lang('ชื่อ รูปผู้ขาย และ เลขบัตรประจำตัวประชาชน','Name, Image and ID card number','姓名，商戶圖像和身份證號')}}</h2>
                         <h2>{{user.first_name}}&nbsp;&nbsp;{{user.last_name}} ({{profile.personal_id}})</h2>
                     </div>
                 </div>
               
                 <div class="flex mt-4">
                     <img class="w-24 h-auto " :src="profile.presonal_image" alt="" srcset="">
-                    <div class="pl-4">   <h2 class="font-semibold" >ที่อยู่ผู้ชาย</h2>
+                    <div class="pl-4">   <h2 class="font-semibold" >{{_lang('ที่อยู่ผู้ขาย','Seller address','賣方地址')}}</h2>
                         <h2>{{profile.address}}</h2>
                         <h2>{{profile.geo.name}}-{{profile.province.name}}-{{profile.amphur.name}}-{{profile.district.name}}</h2>
                         <h2>{{profile.zipcode}}</h2>
@@ -28,19 +28,19 @@
         <br> <br>
         <form v-if="response" @submit.prevent="update()">
             <div class="flex flex-wrap">
-                <v-text-field class="w-full " v-model="form.name" filled :label="_lang('ชื่อทางการค้า','ชื่อทางการค้า','ชื่อทางการค้า')"></v-text-field>
-                <v-text-field class="w-full " v-model="form.farm_address" filled :label="_lang('ที่อยู่ร้านค้า','ที่อยู่ร้านค้า','ที่อยู่ร้านค้า')"></v-text-field>
+                <v-text-field class="w-full " v-model="form.name" filled :label="_lang('ชื่อทางการค้า','Trade name','商品名')"></v-text-field>
+                <v-text-field class="w-full " v-model="form.farm_address" filled :label="_lang('ที่อยู่ร้านค้า','Shop address','店鋪地址')"></v-text-field>
                 <v-text-field class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地区')"></v-text-field>
 
-                <v-text-field class="w-full " v-model="form.zipcode" filled :label="_lang('รหัสไปรศณีย์','รหัสไปรศณีย์','รหัสไปรศณีย์')"></v-text-field>
+                <v-text-field class="w-full " v-model="form.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')"></v-text-field>
 
                 <div class="relative w-full mb-3">
                     <MapView :name="'locations'" :center="{'Latitude':form.latitude,'Longitude' :form.longitude }" :locations="[
                     {'Latitude':form.latitude,'Longitude' :form.longitude } ,]" :zoom="18" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
                 </div>
-                <v-text-field class="w-full md:w-1/2" v-model="form.latitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด)','พิกัดร้านค้าตามระบบ GPS (ละติจูด)','พิกัดร้านค้าตามระบบ GPS (ละติจูด)')"></v-text-field>
+                <v-text-field class="w-full md:w-1/2" v-model="form.latitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด)','GPS (Latitude)','GPS（緯度')"></v-text-field>
 
-                <v-text-field class="w-full md:w-1/2" v-model="form.longitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)','พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)','พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)')"></v-text-field>
+                <v-text-field class="w-full md:w-1/2" v-model="form.longitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)','GPS (Longitude)','GPS（經度）')"></v-text-field>
 
                 <div class="flex flex-wrap">
                     <v-text-field class="w-full md:w-1/2" prepend-inner-icon="mdi-phone" v-model="form.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>

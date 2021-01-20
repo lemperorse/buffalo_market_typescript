@@ -2,6 +2,7 @@
     "name":"BuffMarket",
     "language_choose":"Choose Language",
     "web_nav":{
+        "product":"Product",
         "sell":"Sell",
         "buy":"Buy",
         "map":"Nearby Map",
@@ -11,7 +12,10 @@
         "login":"Login",
         "download":"Download",
         "search":"Search",
-        "searchTxt":"Search For"
+        "searchTxt":"Search For",
+        "username":"Username",
+        "password":"Password",
+        "confirmpassword":"Confirm password"
         
     }
 }

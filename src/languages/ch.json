@@ -2,6 +2,7 @@
     "name":"布法罗市场",
     "language_choose":"选择一种语言",
     "web_nav": {
+        "product":"產品",
         "sell":"出售公告",
         "buy":"购买公告",
         "map":"附近地图",
@@ -11,6 +12,9 @@
         "login":"登录",
         "download":"下载应用程式",
         "search":"搜索",
-        "searchTxt":"搜索公告" 
+        "searchTxt":"搜索公告",
+        "username":"用戶名" ,
+        "password":"密碼",
+        "confirmpassword":"確認密碼"
     }
 }

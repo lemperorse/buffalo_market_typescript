@@ -23,30 +23,30 @@
 
                         <ul class="flex mb-0 list-none flex-col pt-3 pb-4 ">
                             <li class="-mb-px mr-2 last:mr-0 flex-auto ">
-                                <a class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(1)" v-bind:class="{'text-green-600 bg-white': openTab !== 1, 'text-white bg-green-600': openTab === 1}">
+                                <div class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(1)" v-bind:class="{'text-green-600 bg-white': openTab !== 1, 'text-white bg-green-600': openTab === 1}">
                                     <i class="fas fa-user text-base mr-1"></i>{{_lang('ข้อมูลทั่วไป','General information','一般信息')}}
-                                </a>
+                                </div>
                             </li>
                             <li class="-mb-px mr-2 last:mr-0 flex-auto  ">
-                                <a class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-green-600 bg-white': openTab !== 2, 'text-white bg-green-600': openTab === 2}">
+                                <div class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-green-600 bg-white': openTab !== 2, 'text-white bg-green-600': openTab === 2}">
                                     <i class="far fa-id-card text-base mr-1"></i>{{_lang('บัตรประชาชน','ID Card','身份證')}}
-                                </a>
+                                </div>
                             </li>
                             <li class="-mb-px mr-2 last:mr-0 flex-auto ">
-                                <a class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(3)" v-bind:class="{'text-green-600 bg-white': openTab !== 3, 'text-white bg-green-600': openTab === 3}">
+                                <div class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(3)" v-bind:class="{'text-green-600 bg-white': openTab !== 3, 'text-white bg-green-600': openTab === 3}">
                                     <i class="far fa-address-book text-base mr-1"></i>{{_lang('ช่องทางการติดต่ออื่นๆ','Other contact','其他聯繫渠道')}}
-                                </a>
+                                </div>
                             </li>
                             <li class="-mb-px mr-2 last:mr-0 flex-auto ">
-                                <a class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(4)" v-bind:class="{'text-green-600 bg-white': openTab !== 4, 'text-white bg-green-600': openTab === 4}">
+                                <div class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(4)" v-bind:class="{'text-green-600 bg-white': openTab !== 4, 'text-white bg-green-600': openTab === 4}">
                                     <i class="far fa-id-card text-base mr-1"></i>{{_lang('ข้อมูลผู้ขาย','Seller information','賣家信息')}}
-                                </a>
+                                </div>
                             </li>
 
                             <li class="-mb-px mr-2 last:mr-0 flex-auto ">
-                                <a class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(5)" v-bind:class="{'text-green-600 bg-white': openTab !== 5, 'text-white bg-green-600': openTab === 5}">
+                                <div class="text-xs font-bold uppercase px-5 py-3 cursor-pointer rounded block leading-normal" v-on:click="toggleTabs(5)" v-bind:class="{'text-green-600 bg-white': openTab !== 5, 'text-white bg-green-600': openTab === 5}">
                                     <i class="fas fa-cog text-base mr-1"></i>{{_lang('ตั้งค่า','Set up','設定')}}
-                                </a>
+                                </div>
                             </li>
                         </ul>
 

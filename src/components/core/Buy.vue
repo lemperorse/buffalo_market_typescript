@@ -1,8 +1,36 @@
 <template>
 <div>
-    <div class="row">
-        <div class="col-md-3 col-sm-3 col-xs-12">
-            <v-card class="elevation-0">  
+    <div class="row"> 
+        <div class="col-md-3 col-sm-3 col-xs-12 ">
+            <v-expansion-panels v-model="panel" :disabled="disabled" multiple >
+                <v-expansion-panel >
+                    <v-expansion-panel-header>{{_lang('คลิกเพื่อแสดงตัวกรอง','Click to display the filter','單擊以顯示過濾器。')}}</v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                        <v-card-title>{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</v-card-title>
+                        <v-radio-group class="p-3" v-model="productType">
+                            <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
+                        </v-radio-group>
+                        <v-divider></v-divider>
+                        <div v-for="category,index in categories" :key="index">
+                            <h2 class="p-3">{{category.name}}</h2>
+                            <v-checkbox class="pl-3" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
+                        </div>
+                        <v-divider></v-divider>
+                        <v-card-title>{{_lang('ราคา','Price','價錢')}}</v-card-title>
+                        <v-radio-group class="p-3" v-model="priceType">
+                            <v-radio v-for="sale,n in saleType" :key="n" :label="sale.name" :value="sale.id"></v-radio>
+                        </v-radio-group>
+                        <div class="flex p-3">
+                            <v-text-field v-model="price_low" name="name" id="id" :label="_lang('ต่ำสุด','Lowest','最低的')"></v-text-field> - <v-text-field v-model="price_height" name="name" id="id" :label="_lang('สูงสุด','Maximum','最大')"></v-text-field>
+                            <v-btn rounded class="mt-2" @click="changepriceType" color="success">{{_lang('ตกลง','OK','好')}}</v-btn>
+                        </div>
+                        <v-divider></v-divider>
+                        <v-autocomplete class="p-3" item-text="name" item-value="id" @change="loadProducts()" :label="_lang('จังหวัด','Province','省')" :items="provinces" v-model="province"></v-autocomplete>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+
+            </v-expansion-panels>
+            <!-- <v-card class="elevation-0">
                 <v-card-title>{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</v-card-title>
                 <v-radio-group class="p-3" v-model="productType">
                     <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
@@ -23,15 +51,15 @@
                 </div>
                 <v-divider></v-divider>
                 <v-autocomplete class="p-3" item-text="name" item-value="id" @change="loadProducts()" :label="_lang('จังหวัด','Province','省')" :items="provinces" v-model="province"></v-autocomplete>
-            </v-card>
+            </v-card> -->
         </div>
-
+        
         <div class="col-md-9 col-sm-9 col-xs-12">
             <!-- <Product /> -->
             <div class="row">
                 <div class="w-36 m-2 md:mr-6 cursor-pointer " v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                     <v-hover v-slot:default="{ hover }">
-                        <div class="mx-auto rounded-lg  bg-white hover:shadow-lg overflow-hidden ">
+                        <div class="mx-auto rounded-lg  bg-white hover:shadow-lg overflow-hidden elevation-1">
                             <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="ximg(pu.file1)">
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
@@ -65,9 +93,8 @@
                                 </div>
                             </div> -->
                             <hr>
-
-                            <div class="text-xs text-center">
-                                <span class="fas fa-bullhorn"></span> {{_lang('ผู้โพส','Poster','海報')}} : <span v-if="pu.farm.user">{{pu.farm.user.first_name}}</span>
+                            <div class="text-xs text-center bg1">
+                                <span class="fas fa-bullhorn tw"></span> <span class="tw">{{_lang('ผู้โพส','Poster','海報')}} : </span><span v-if="pu.farm.user" class="tw">{{pu.farm.user.first_name}}</span>
                             </div>
                         </div>
                     </v-hover>
@@ -106,6 +133,8 @@ export default class PostSaller extends Vue {
     dialog: boolean = false
     priceType: any = 1
     saleType: any = null
+    // panel:number[] = [0, 1] 
+    
     async created() {
         await this.loadCategory();
         await this.loadProvinces();
@@ -173,5 +202,12 @@ export default class PostSaller extends Vue {
     opacity: 0.8;
     position: absolute;
     width: 100%;
+} 
+.bg1{
+    background-color: #0EAD69;
+}
+
+.tw{
+    color: white;
 }
 </style>

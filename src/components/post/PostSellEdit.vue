@@ -36,11 +36,11 @@
                 </div>
 
             </div>
-            <v-btn type="submit" x-large color="success">Save</v-btn>
+            <v-btn type="submit" x-large color="success"><v-icon>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}</v-btn>
         </form>
 
         <button @click="removeProduct()" class="mt-2 rounded p-1 bg-red-500 hover:bg-refd-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-            <div class="text-white"><i class="mdi mdi-delete"></i> ลบประกาศ</div>
+            <div class="text-white"><i class="mdi mdi-delete text-xl"></i> {{_lang('ลบประกาศ','Delete','刪除')}}</div>
         </button>
     </div>
 </div>

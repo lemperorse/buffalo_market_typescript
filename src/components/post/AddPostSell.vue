@@ -28,7 +28,7 @@
                 </div>
 
             </div>
-            <v-btn type="submit" x-large color="success">Save</v-btn>
+            <v-btn type="submit" x-large color="success" class="w-full">{{_lang('บันทึก','Save','保存')}}</v-btn>
         </form>
     </div>
 </div>

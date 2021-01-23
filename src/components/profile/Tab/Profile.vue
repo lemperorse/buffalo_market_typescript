@@ -11,13 +11,13 @@
             <v-text-field class="w-full md:w-2/5" filled v-model="form.first_name" :label="_lang('ชื่อจริง','First Name','名字')"></v-text-field>
             <v-text-field class="w-full md:w-2/5" filled v-model="form.last_name" :label="_lang('นามสกุล','Last Name','姓')"></v-text-field>
             <hr>
-            <v-text-field class="w-full md:w-1/2" type="date" filled v-model="profile.birthday" :label="_lang('วันเกิด','Last Name','姓')"></v-text-field>
-            <v-text-field class="w-full md:w-1/2" disabled filled v-model="profile.age" :label="_lang('อายุ','Last Name','姓')"></v-text-field>
+            <v-text-field class="w-full md:w-1/2" type="date" filled v-model="profile.birthday" :label="_lang('วันเกิด','Birthday','生日')"></v-text-field>
+            <v-text-field class="w-full md:w-1/2" disabled filled v-model="profile.age" :label="_lang('อายุ','Age','年齡')"></v-text-field>
 
-            <v-text-field class="w-full " filled v-model="profile.address" :label="_lang('ที่อยู่','Last Name','姓')"></v-text-field>
+            <v-text-field class="w-full " filled v-model="profile.address" :label="_lang('ที่อยู่','Address','地址')"></v-text-field>
 
-            <v-text-field class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地区')"></v-text-field>
-            <v-text-field class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Last Name','姓')"></v-text-field>
+            <v-text-field class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地區')"></v-text-field>
+            <v-text-field class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')"></v-text-field>
 
         </div>
         <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">

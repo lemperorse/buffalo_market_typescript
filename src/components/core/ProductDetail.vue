@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 ">
-        <div class="row bg-white rounded border hover:shadow-lg overflow-hidden">
+        <div class="row bg-white rounded elevation-1 hover:shadow-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
 
                 <v-carousel class="rounded">
@@ -54,8 +54,8 @@
         </div>
     </div>
 
-    <div class="bg-white rounded p-2 border hover:shadow-lg overflow-hidden">
-        <div class="pa-2 pt-">
+    <div class="bg-white rounded p-2 elevation-1 mt-2 hover:shadow-lg overflow-hidden">
+        <div class="pa-2">
             <v-row wrap>
                 <v-col cols="12" sm="6" md="8">
                     <v-row wrap>
@@ -114,8 +114,8 @@
         </div>
     </div>
 
-    <div class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 mb-2">
-        <div class="row bg-white rounded p-2 border hover:shadow-lg overflow-hidden">
+    <div class="w-full mt-2 md:w-1/1 xl:w-1/1 p-3 md:p-3 mb-2">
+        <div class="row bg-white rounded p-2 elevation-1 hover:shadow-lg overflow-hidden">
             <div class="col-sm-12 col-xs-12 col-md-12">
                 <v-tabs class="rounded" color="error" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                     <v-tab>{{_lang('รายละเอียด','Detail','詳情')}}</v-tab>

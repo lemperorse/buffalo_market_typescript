@@ -6,7 +6,7 @@
                 {{_lang('ประกาศของ','Announcement of','公告')}} {{user.first_name}}
             </h2>
 
-            <v-toolbar class="mb-4 rounded elevation-0">
+            <v-toolbar class="mb-4 rounded elevation-1">
                 <template>
                     <v-tabs class="rounded" color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                         <v-tab class="font-weight-black">{{_lang('ประกาศซื้อ','Buy','購買')}}</v-tab>
@@ -30,7 +30,7 @@
                             <h2 class="text-3xl">{{productsEnd.length}}</h2>
                         </v-card>
                         <!-- <pre>{{data}}</pre> -->
-                        <v-card style="background-color:#008080;">
+                        <v-card class="bg1">
                             <v-sheet color="rgba(0, 0, 0, .12)">
                                 <v-sparkline :labels="labels" :value="value" color="rgba(255, 255, 255, .7)" height="100" padding="24" stroke-linecap="round" smooth>
 
@@ -120,3 +120,9 @@ export default class Postx extends Vue {
 
 }
 </script>
+
+<style scoped>  
+.bg1 {
+    background-color: #0EAD69;
+} 
+</style>

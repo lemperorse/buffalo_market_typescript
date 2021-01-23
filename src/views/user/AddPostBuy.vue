@@ -7,8 +7,8 @@
                     <div class="px-4 py-5 flex-auto">
                         <div class="text-center">
                             <div class="text-blue-500">
-                                <i class="fas fa-store-alt text-base mr-1"></i>เพิ่มประกาศซื้อ
-                            </div>
+                                <i class="fas fa-store-alt text-base mr-1"></i>{{_lang('เพิ่มประกาศซื้อ','Add product','添加產品')}}
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ export default {
     },
     data() {
         return {
-            
+
         }
     }
 };

@@ -7,7 +7,7 @@
                     <div class="px-4 py-5 flex-auto">
                         <div class="text-center">
                             <div class="text-blue-500">
-                                <i class="fas fa-store-alt text-base mr-1"></i>แก้ไขประกาศซื้อ
+                                <i class="fas fa-store-alt text-base mr-1"></i>{{_lang('แก้ไขประกาศซื้อ','Edit','修改購買')}}
                             </div>
                         </div>
                     </div>

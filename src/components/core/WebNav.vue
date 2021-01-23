@@ -32,7 +32,7 @@
             </h2>
             <form class="w-2/3 flex pl-4" @submit.prevent="goSearch()">
                 <v-text-field v-model="search" solo :label="$txt.web_nav.searchTxt" dense></v-text-field>
-                <v-btn outlined dark type="submit" class="ml-2" >{{$txt.web_nav.search}}</v-btn>
+                <v-btn outlined dark type="submit" class="ml-2">{{$txt.web_nav.search}}</v-btn>
             </form>
         </div>
     </div>
@@ -40,13 +40,18 @@
         <v-card>
             <v-card-title primary-title>
                 {{$txt.language_choose}}
+                <v-spacer></v-spacer>
+                <v-btn @click="dialogLang = false" dark fab small color="red" class="elevation-0">
+                    <v-icon>mdi-close</v-icon>
+                </v-btn>
             </v-card-title>
             <v-card-text>
-                <div class="flex flex-col"> 
-                    <v-btn @click="changeLanguage('th')" color="success" class=" transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">ภาษาไทย</v-btn> <br>
-                    <v-btn @click="changeLanguage('ch')" color="warning" class=" transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">中文</v-btn><br>
-                    <v-btn @click="changeLanguage('en')" color="info" class=" transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">English</v-btn><br>
+                <div class="flex flex-col">
+                    <v-btn @click="changeLanguage('th')" color="success" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">ภาษาไทย</v-btn> <br>
+                    <v-btn @click="changeLanguage('ch')" color="error" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">中文</v-btn><br>
+                    <v-btn @click="changeLanguage('en')" color="primary" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">English</v-btn><br>
                 </div>
+
             </v-card-text>
         </v-card>
     </v-dialog>
@@ -72,6 +77,7 @@ export default class Navbar extends Vue {
     user: any = null
     search: any = ''
     response: boolean = false
+    
     async created() {
         await Auth.checkToken();
         if (Auth.logined) {
@@ -106,6 +112,8 @@ export default class Navbar extends Vue {
         //await location.open('https://docs.google.com/document/d/1JzhXn1UksQ9rgVzus0VwBAHBoieGpSKdV1jypj5B7XE/edit?usp=sharing','_blank');
     }
 
+    
+
 }
 </script>
 
@@ -114,5 +122,6 @@ export default class Navbar extends Vue {
     /* background: rgb(238, 177, 123); */
     /* background: linear-gradient(90deg, rgba(238, 177, 123, 1) 0%, rgba(152, 63, 128, 1) 100%); */
     background: #0EAD69;
+    /* background: #643fef; */
 }
 </style>

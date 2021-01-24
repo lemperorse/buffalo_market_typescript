@@ -7,7 +7,7 @@
                     รายละเอียด
                 </h6>
                 <div class="text-md">
-                    <button class="mt-1 text-xs rounded p-3 bg-red-500 hover:bg-red-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                    <button class="mt-1 text-xs rounded p-3 bg-red-500 hover:bg-red-800  focus:outline-none focus:ring-4 focus:ring-red-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
                         <div class="text-white"><i class="fas fa-eraser"></i> ลบประกาศขาย</div>
                     </button>
                 </div> 
@@ -18,11 +18,11 @@
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             ชื่อสินค้า
                         </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
+                        <div class="mb-3 rounded bg-gray-100 border border-l-2 border-green-500">
                             <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
                                 <i class="fas fa-tags text-lg text-gray-500"></i>
                             </span>
-                            <input type="text" value="" class="p-3 w-full pl-10 hover:shadow-lg" />
+                            <input type="text" value="" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
                         </div>
                     </div>
                 </div>
@@ -32,11 +32,11 @@
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             หมวดหมู่
                         </label>
-                        <div class="relative mb-3 rounded bg-gray-200 border-l-2 border-green-500">
+                        <div class="relative mb-3 rounded bg-gray-100 border border-l-2 border-green-500">
                             <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
                                 <i class="fas fa-tag text-lg text-gray-500"></i>
                             </span>
-                            <select class="p-3 w-full pl-10 hover:shadow-lg" id="grid-state">
+                            <select class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" id="grid-state">
                                 <option>ควาย</option>
                                 <option>ผลิตภัณฑ์จากฟาร์ม</option>
                                 <option>ปุ๋ย</option>
@@ -58,11 +58,11 @@
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             ราคา
                         </label>
-                        <div v-if="!price" class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
+                        <div v-if="!price" class="mb-3 rounded bg-gray-100 border border-l-2 border-green-500">
                             <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
                                 <i class="fas fa-money-bill text-lg text-gray-500"></i>
                             </span>
-                            <input type="number" value="" class="p-3 w-full pl-10 hover:shadow-lg" />
+                            <input type="number" value="" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
                         </div>
                         <!-- <v-text-field  v-if="!price" label="" placeholder="ราคา" type="number" outlined prepend-inner-icon="mdi-numeric" ></v-text-field> -->
                         
@@ -70,18 +70,18 @@
                             <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                                 กำหนดช่วงราคา
                             </label>
-                            <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500 w-full">
+                            <div class="mb-3 rounded bg-gray-100 border border-l-2 border-green-500 w-full">
                                 <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
                                     <i class="fas fa-money-bill  text-lg text-gray-500"></i>
                                 </span>
-                                <input type="number" value="" class="p-3 w-full pl-10 hover:shadow-lg" />
+                                <input type="number" value="" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
                             </div>
                             <span class="p-3">ถึง</span>
-                            <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500 w-full">
+                            <div class="mb-3 rounded bg-gray-100 border border-l-2 border-green-500 w-full">
                                 <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
                                     <i class="fas fa-money-bill  text-lg text-gray-500"></i>
                                 </span>
-                                <input type="number" value="" class="p-3 w-full pl-10 hover:shadow-lg" />
+                                <input type="number" value="" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
                             </div>
                         </div>
                     </div>
@@ -92,11 +92,11 @@
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             รูปแบบการประกาศขาย
                         </label>
-                        <div class="relative mb-3 rounded bg-gray-200 border-l-2 border-green-500">
+                        <div class="relative mb-3 rounded bg-gray-100 border border-l-2 border-green-500">
                             <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
                                 <i class="fas fa-bullhorn text-lg text-gray-500"></i>
                             </span>
-                            <select :items="type" v-model="postType" class="p-3 w-full pl-10 hover:shadow-lg" id="grid-state">
+                            <select :items="type" v-model="postType" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" id="grid-state">
                                 <option>ถาวร</option>
                                 <option>ชั่วคราว</option>
                             </select>
@@ -113,20 +113,20 @@
                                     </label>
                                     <div class="flex md:flex-row flex-col">
 
-                                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500 w-full">
+                                        <div class="mb-3 rounded bg-gray-100 border border-l-2 border-green-500 w-full">
                                             <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
                                                 <i class="fas fa-calendar-day  text-lg text-gray-500"></i>
                                             </span>
-                                            <input type="date" value=" " class="p-3 w-full pl-10 hover:shadow-lg" />
+                                            <input type="date" value=" " class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
                                         </div>
 
                                         <span class="p-3">ถึง</span>
 
-                                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500 w-full">
+                                        <div class="mb-3 rounded bg-gray-100 border border-l-2 border-green-500 w-full">
                                             <span class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1 mt-2">
                                                 <i class="fas fa-calendar-day  text-lg text-gray-500"></i>
                                             </span>
-                                            <input type="date" value=" " class="p-3 w-full pl-10 hover:shadow-lg" />
+                                            <input type="date" value=" " class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
                                         </div>
                                     </div>
                                 </div>
@@ -140,8 +140,8 @@
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
                             คำอธิบายสินค้า
                         </label>
-                        <div class="mb-3 rounded bg-gray-200 border-l-2 border-green-500">
-                            <textarea type="text" value="" class="p-3 w-full pl-4 hover:shadow-lg" />
+                        <div class="mb-3 rounded bg-gray-100 border border-l-2 border-green-500">
+                            <textarea type="text" value="" class="p-3 w-full pl-4 " />
                             </div>
                     </div> 
                 </div>
@@ -174,7 +174,7 @@
             </div>
 
             <div class="flex justify-center mt-6">
-                <button class="rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                <button class="rounded p-3 bg-green-500 hover:bg-green-800  focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
                     <div class="text-white"><i class="fas fa-save text-lg"></i> บันทึกข้อมูล</div>
                 </button>
             </div>

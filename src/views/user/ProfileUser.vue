@@ -1,8 +1,6 @@
 <template>
-<div class="bg-gray-100">
-
+<div class="bg">
     <div class="container mx-auto " v-if="response">
-
         <div class="flex flex-wrap">
             <div class="w-full lg:w-3/12 px-2">
                 <div class="relative min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg border-l-4 border-green-500">
@@ -15,8 +13,12 @@
 
                             <h2 class="text-base font-semibold" v-if="user">{{user.first_name}} &nbsp; {{user.first_name}}</h2>
                             <h2 v-if="user">@{{user.first_name}}</h2>
-                            <v-btn @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปโปรไฟล์','Change Profile Image','变更个人资料图片')}}</v-btn>
-
+                            <!-- <v-btn @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปโปรไฟล์','Change Profile Image','变更个人资料图片')}}</v-btn> -->
+                            <button @click="$refs.profile.click()" class="w-full btn green1 md:w-auto float-md-right text-white">
+                                <div class="text-white">
+                                    {{_lang('เปลี่ยนรูปโปรไฟล์','Change Profile Image','变更个人资料图片')}}
+                                </div>
+                            </button>
                         </div>
 
                         <hr class="mt-6">
@@ -147,7 +149,7 @@ export default class Table extends Vue {
             } else {
 
             }
-        }else{
+        } else {
             alert('กรุณาระบุข้อมูลส่วนตัว')
         }
 
@@ -179,4 +181,38 @@ export default class Table extends Vue {
 
 }
 </script>
- 
+
+<style scoped>
+.bg {
+    background-color: #F5F5F5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%2343cc20' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%2315aa6c' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2306c853' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%231ca35f' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%2300c274' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23219d51' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2300bc8c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23279643' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%2319b39b' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%232b8f35' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%234aaaa2' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%232f8826' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.btn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.green1 {
+    background-color: #0EAD69;
+    box-shadow: 0px 5px 0px 0px #283D3B;
+}
+
+.green1:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
+}
+</style>

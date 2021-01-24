@@ -13,7 +13,7 @@
             <v-text-field v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคา End','PriceEnd','价格结束')"></v-text-field>
 
             <a v-if="product.file1" target="_blank" rel="noopener noreferrer" :href="product.file1">ไฟล์ 1</a>
-            <VueFileAgent v-model="f1" :multiple="false" :maxSize="'5MB'" :deletable="true"  :accept="'image/*'"></VueFileAgent>
+            <VueFileAgent v-model="f1" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*'"></VueFileAgent>
 
             <a v-if="product.file2" target="_blank" rel="noopener noreferrer" :href="product.file2">ไฟล์ 2</a>
             <VueFileAgent v-model="f2" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
@@ -21,9 +21,9 @@
             <a v-if="product.file3" target="_blank" rel="noopener noreferrer" :href="product.file3">ไฟล์ 3</a>
             <VueFileAgent v-model="f3" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
             <a v-if="product.file4" target="_blank" rel="noopener noreferrer" :href="product.file4">ไฟล์ 4</a>
-            <VueFileAgent v-model="f4" :multiple="false" :maxSize="'5MB'" :deletable="true"  :accept="'image/*,video/*'"></VueFileAgent>
+            <VueFileAgent v-model="f4" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
             <a v-if="product.file5" target="_blank" rel="noopener noreferrer" :href="product.file5">ไฟล์ 5</a>
-            <VueFileAgent v-model="f5" :multiple="false" :maxSize="'5MB'" :deletable="true"  :accept="'image/*,video/*'"></VueFileAgent>
+            <VueFileAgent v-model="f5" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
 
             <v-select :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full " filled :label="_lang('SellType','SellType','销售类型')"></v-select>
             <v-text-field v-if="product.sell_type == 0" type="date" v-model="product.buy_date" class="w-full " filled :label="_lang('วันที่ซื้อ','Date of purchase','购买日期')"></v-text-field>
@@ -36,11 +36,16 @@
                 </div>
 
             </div>
-            <v-btn type="submit" x-large color="success"><v-icon>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}</v-btn>
+            <button type="submit" class="w-full btn green1">
+                <div class="text-white">
+                    <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}
+                </div>
+            </button>
         </form>
-
-        <button @click="removeProduct()" class="mt-2 rounded p-1 bg-red-500 hover:bg-refd-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-            <div class="text-white"><i class="mdi mdi-delete text-xl"></i> {{_lang('ลบประกาศ','Delete','刪除')}}</div>
+        <button type="submit" class="w-full btn red1 mt-4" @click="removeProduct()">
+            <div class="text-white">
+                <div class="text-white"><i class="mdi mdi-delete text-xl"></i> {{_lang('ลบประกาศ','Delete','刪除')}}</div>
+            </div>
         </button>
     </div>
 </div>
@@ -173,7 +178,7 @@ export default class Saller extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .f-white {
     color: white !important;
 }
@@ -182,8 +187,39 @@ export default class Saller extends Vue {
     width: 1000px;
     height: 300px;
 }
-</style>
 
-<style>
 
-</style>
+.btn {
+    border-radius: 5px;
+    padding: 15px 25px;
+    /* font-size: 12px; */
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.btn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.green1 {
+    background-color: #0EAD69;
+    box-shadow: 0px 5px 0px 0px #283D3B;
+} 
+.green1:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
+}
+
+.red1 {
+    background-color: #E63946;
+    box-shadow: 0px 5px 0px 0px #9D0208;
+}
+.red1:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(220, 38, 38, var(--tw-bg-opacity));
+}
+</style> 

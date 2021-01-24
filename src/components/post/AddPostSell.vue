@@ -28,7 +28,12 @@
                 </div>
 
             </div>
-            <v-btn type="submit" x-large color="success" class="w-full">{{_lang('บันทึก','Save','保存')}}</v-btn>
+            <!-- <v-btn type="submit" x-large color="success" class="w-full">{{_lang('บันทึก','Save','保存')}}</v-btn> -->
+            <button type="submit" class="w-full btn green">
+                <div class="text-white">
+                    <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}
+                </div>
+            </button>
         </form>
     </div>
 </div>
@@ -140,7 +145,7 @@ export default class Saller extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .f-white {
     color: white !important;
 }
@@ -149,8 +154,25 @@ export default class Saller extends Vue {
     width: 1000px;
     height: 300px;
 }
-</style>
 
-<style>
+.btn {
+    border-radius: 5px;
+    padding: 15px 25px;
+    font-size: 22px;
+    text-decoration: none; 
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
 
-</style>
+.btn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+} 
+
+.green {
+    background-color: #2B9348;
+    box-shadow: 0px 5px 0px 0px #007F5F;
+} 
+</style> 

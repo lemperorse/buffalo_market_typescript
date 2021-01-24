@@ -1,27 +1,24 @@
 <template>
 <div>
-    <div class="bg1">  
-        <div class="container mx-auto mt-4 "> 
-            <v-toolbar class="mb-2 rounded elevation-1" >
+    <div class="bg2">
+        <div class="container mx-auto mt-4 ">
+            <v-toolbar class="mb-2 rounded elevation-0" >
                 <template>
-                    <v-tabs class="rounded-lg"  color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
+                    <v-tabs class="rounded-lg"  color="success" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                         <v-tab class="font-weight-black">{{_lang('ประกาศ','Announcement','產品')}}</v-tab>
                         <v-tab class="font-weight-black">{{_lang('แผนที่','Map','地圖')}}</v-tab>
                     </v-tabs>
                 </template>
             </v-toolbar>
             <v-tabs-items v-model="tabs">
-                <v-tab-item class="bg1">
+                <v-tab-item class="bg2">
                     <Buy />
                 </v-tab-item>
-                <v-tab-item class="bg1">
+                <v-tab-item class="bg2">
                     <World />
                 </v-tab-item>
             </v-tabs-items>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#0EAD69" fill-opacity="1" d="M0,256L24,224C48,192,96,128,144,122.7C192,117,240,171,288,197.3C336,224,384,224,432,197.3C480,171,528,117,576,80C624,43,672,21,720,64C768,107,816,213,864,234.7C912,256,960,192,1008,138.7C1056,85,1104,43,1152,53.3C1200,64,1248,128,1296,176C1344,224,1392,256,1416,272L1440,288L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path>
-        </svg>
+        </div> 
     </div>
 </div>
 </template>
@@ -56,7 +53,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* Helper classes */
 .color {
     background-color: #FFFBE6 !important;
@@ -64,5 +61,12 @@ export default {
 
 .bg1 {
     background-color: #F5F5F5;
-} 
+}
+
+.bg2 {
+    background-color: #F5F5F5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%2343cc20' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%2315aa6c' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2306c853' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%231ca35f' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%2300c274' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23219d51' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2300bc8c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23279643' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%2319b39b' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%232b8f35' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%234aaaa2' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%232f8826' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover; 
+}
 </style>

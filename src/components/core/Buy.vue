@@ -4,54 +4,33 @@
         <div class="col-md-3 col-sm-3 col-xs-12 ">
             <v-expansion-panels v-model="panel" :disabled="disabled" multiple >
                 <v-expansion-panel >
-                    <v-expansion-panel-header>{{_lang('คลิกเพื่อแสดงตัวกรอง','Click to display the filter','單擊以顯示過濾器。')}}</v-expansion-panel-header>
-                    <v-expansion-panel-content>
-                        <v-card-title>{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</v-card-title>
+                    <v-expansion-panel-header class="bgtext1 shadow">{{_lang('คลิกเพื่อแสดงตัวกรอง','Click to display the filter','單擊以顯示過濾器。')}}</v-expansion-panel-header>
+                    <v-expansion-panel-content class="mt-2">
+                        <v-card-title class="bgtext rounded shadow-lg">{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</v-card-title>
                         <v-radio-group class="p-3" v-model="productType">
                             <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
-                        </v-radio-group>
-                        <v-divider></v-divider>
+                        </v-radio-group>  
                         <div v-for="category,index in categories" :key="index">
-                            <h2 class="p-3">{{category.name}}</h2>
+                            <h2 class="p-3 bgtext rounded shadow-lg">{{category.name}}</h2>
                             <v-checkbox class="pl-3" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
-                        </div>
-                        <v-divider></v-divider>
-                        <v-card-title>{{_lang('ราคา','Price','價錢')}}</v-card-title>
+                        </div> 
+                        <v-card-title class="bgtext rounded shadow-lg">{{_lang('ระยะเวลาการขาย','Time period','時間段')}}</v-card-title>
                         <v-radio-group class="p-3" v-model="priceType">
                             <v-radio v-for="sale,n in saleType" :key="n" :label="sale.name" :value="sale.id"></v-radio>
                         </v-radio-group>
+                        <v-card-title class="bgtext rounded shadow-lg">{{_lang('ราคา','Price','價錢')}}</v-card-title>
                         <div class="flex p-3">
                             <v-text-field v-model="price_low" name="name" id="id" :label="_lang('ต่ำสุด','Lowest','最低的')"></v-text-field> - <v-text-field v-model="price_height" name="name" id="id" :label="_lang('สูงสุด','Maximum','最大')"></v-text-field>
-                            <v-btn rounded class="mt-2" @click="changepriceType" color="success">{{_lang('ตกลง','OK','好')}}</v-btn>
-                        </div>
-                        <v-divider></v-divider>
+                            <v-btn rounded flat class="mt-2" @click="changepriceType" color="success" depressed>{{_lang('ตกลง','OK','好')}}</v-btn>
+                        </div> 
+                        <v-card-title class="bgtext rounded shadow-lg">{{_lang('จังหวัด','Province','省')}}</v-card-title>
                         <v-autocomplete class="p-3" item-text="name" item-value="id" @change="loadProducts()" :label="_lang('จังหวัด','Province','省')" :items="provinces" v-model="province"></v-autocomplete>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
 
             </v-expansion-panels>
             <!-- <v-card class="elevation-0">
-                <v-card-title>{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</v-card-title>
-                <v-radio-group class="p-3" v-model="productType">
-                    <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
-                </v-radio-group>
-                <v-divider></v-divider>
-                <div v-for="category,index in categories" :key="index">
-                    <h2 class="p-3">{{category.name}}</h2>
-                    <v-checkbox class="pl-3" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
-                </div>
-                <v-divider></v-divider>
-                <v-card-title>{{_lang('ราคา','Price','價錢')}}</v-card-title>
-                <v-radio-group class="p-3" v-model="priceType">
-                    <v-radio v-for="sale,n in saleType" :key="n" :label="sale.name" :value="sale.id"></v-radio>
-                </v-radio-group>
-                <div class="flex p-3">
-                    <v-text-field v-model="price_low" name="name" id="id" :label="_lang('ต่ำสุด','Lowest','最低的')"></v-text-field> - <v-text-field v-model="price_height" name="name" id="id" :label="_lang('สูงสุด','Maximum','最大')"></v-text-field>
-                    <v-btn rounded class="mt-2" @click="changepriceType" color="success">{{_lang('ตกลง','OK','好')}}</v-btn>
-                </div>
-                <v-divider></v-divider>
-                <v-autocomplete class="p-3" item-text="name" item-value="id" @change="loadProducts()" :label="_lang('จังหวัด','Province','省')" :items="provinces" v-model="province"></v-autocomplete>
-            </v-card> -->
+                </v-card> -->
         </div>
         
         <div class="col-md-9 col-sm-9 col-xs-12">
@@ -59,7 +38,7 @@
             <div class="row">
                 <div class="w-36 m-2 md:mr-6 cursor-pointer " v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                     <v-hover v-slot:default="{ hover }">
-                        <div class="mx-auto rounded-lg  bg-white hover:shadow-lg overflow-hidden elevation-1">
+                        <div class="mx-auto rounded-lg  bg-white hover:shadow-lg overflow-hidden shadow-lg border">
                             <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="ximg(pu.file1)">
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
@@ -210,4 +189,16 @@ export default class PostSaller extends Vue {
 .tw{
     color: white;
 }
+
+.bgtext { 
+    background: linear-gradient(to right, #0DB39E 0%, #16DB93 100%);
+    color: white; 
+}
+
+.bgtext1 { 
+    /* background: linear-gradient(to right, #83E377 0%, #EFEA5A 100%); */
+    background: linear-gradient(to right, #0DB39E 0%, #16DB93 100%);
+    color: white; 
+} 
+
 </style>

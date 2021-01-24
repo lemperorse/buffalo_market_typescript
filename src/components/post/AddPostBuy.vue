@@ -11,7 +11,7 @@
             <v-text-field v-if="product.price_type" type="text" v-model="product.price" class="w-full " filled :label="_lang('ราคา','Price','价钱')"></v-text-field>
             <v-text-field v-if="!product.price_type" type="text" v-model="product.price_start" class="w-full " filled :label="_lang('ราคาเริ่มต้น','PriceStart','价格开始')"></v-text-field>
             <v-text-field v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคา End','PriceEnd','价格结束')"></v-text-field>
-            <VueFileAgent v-model="file"  @select="filesSelected($event)" :multiple="true" :maxSize="'5MB'" :deletable="true" :maxFiles="5"  :accept="'image/*,video/*'" ></VueFileAgent> 
+            <VueFileAgent v-model="file" @select="filesSelected($event)" :multiple="true" :maxSize="'5MB'" :deletable="true" :maxFiles="5" :accept="'image/*,video/*'"></VueFileAgent>
             <pre>{{product.file1}}</pre>
             <!-- <v-text-field type="file" v-model="product.file1" class="w-full " filled :label="_lang('ไฟล์ 1','File1','文件1')"></v-text-field>
             <v-text-field type="file" v-model="product.file2" class="w-full " filled :label="_lang('ไฟล์ 2','File2','文件2')"></v-text-field>
@@ -28,7 +28,12 @@
                 </div>
 
             </div>
-            <v-btn type="submit" x-large color="success" class="w-full"><v-icon>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}</v-btn>
+            <!-- <v-btn type="submit" x-large color="success" class="w-full"><v-icon>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}</v-btn> -->
+            <button type="submit" class="w-full btn green">
+                <div class="text-white">
+                    <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}
+                </div>
+            </button>
         </form>
     </div>
 </div>
@@ -56,7 +61,7 @@ import axios from '@/plugins/axios'
 })
 
 export default class Saller extends Vue {
-    file:any = []
+    file: any = []
     farm: any = {}
     response: boolean = false;
     user: any = null
@@ -101,10 +106,10 @@ export default class Saller extends Vue {
     public async storeProduct() {
         await this.setProductKey()
         let store = await Core.postHttp(`/api/default/product/`, this.product)
-        if (store.id) { 
+        if (store.id) {
             await this.storeImage(store.id)
-            alert("Save product success") 
-            }
+            alert("Save product success")
+        }
     }
 
     public async updateProduct() {
@@ -115,32 +120,33 @@ export default class Saller extends Vue {
 
     public async removeProduct() {
         let store = await Core.deleteHttp(`/api/default/product/${this.product.id}/`)
-        if (store.id) { 
-            
-         alert("Save product success") }
+        if (store.id) {
+
+            alert("Save product success")
+        }
     }
 
-    async filesSelected(event:any){
+    async filesSelected(event: any) {
         console.log(event);
     }
 
-    async storeImage(id:number){
-        var formData = new FormData(); 
-            for (let index = 0; index < this.file.length; index++) {
-               formData.append(`file${(index+1)}`,this.file[index].file); 
-            } 
-            await axios.put(`/api/default/productfile/${id}/`, formData, {
-                headers: {
+    async storeImage(id: number) {
+        var formData = new FormData();
+        for (let index = 0; index < this.file.length; index++) {
+            formData.append(`file${(index+1)}`, this.file[index].file);
+        }
+        await axios.put(`/api/default/productfile/${id}/`, formData, {
+            headers: {
                 'Content-Type': 'multipart/form-data'
-                }
-            })
+            }
+        })
 
     }
 
 }
 </script>
 
-<style>
+<style scoped>
 .f-white {
     color: white !important;
 }
@@ -149,8 +155,26 @@ export default class Saller extends Vue {
     width: 1000px;
     height: 300px;
 }
-</style>
 
-<style>
+.btn {
+    border-radius: 5px;
+    padding: 15px 25px;
+    font-size: 22px;
+    text-decoration: none; 
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
 
+.btn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+} 
+
+.green {
+    background-color: #2B9348;
+    box-shadow: 0px 5px 0px 0px #007F5F;
+} 
 </style>
+ 

@@ -1,9 +1,8 @@
 <template>
-<div>
+<div  class="bg2">
     <div class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 ">
         <div class="row bg-white rounded elevation-1 hover:shadow-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
-
                 <v-carousel class="rounded">
                     <v-carousel-item>
                         <img :src="product.file1" alt="" srcset="">
@@ -117,8 +116,8 @@
     <div class="w-full mt-2 md:w-1/1 xl:w-1/1 p-3 md:p-3 mb-2">
         <div class="row bg-white rounded p-2 elevation-1 hover:shadow-lg overflow-hidden">
             <div class="col-sm-12 col-xs-12 col-md-12">
-                <v-tabs class="rounded" color="error" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
-                    <v-tab>{{_lang('รายละเอียด','Detail','詳情')}}</v-tab>
+                <v-tabs class="rounded" color="success" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
+                    <v-tab >{{_lang('รายละเอียด','Detail','詳情')}}</v-tab>
                     <v-tab>{{_lang('ช่องทางการติดต่ออื่นๆ','Other contact','其他聯絡人')}}</v-tab>
                     <v-tab-item>
 
@@ -245,13 +244,13 @@ export default class PostSaller extends Vue {
     position: absolute;
     width: 100%;
 }
-</style><style scoped>
-.v-card--reveal {
-    align-items: center;
-    bottom: 0;
-    justify-content: center;
-    opacity: 0.8;
-    position: absolute;
-    width: 100%;
+.bg1 {
+    background-color: #0EAD69;
 }
-</style>
+.bg2 {
+    background-color: #F5F5F5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%2343cc20' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%2315aa6c' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2306c853' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%231ca35f' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%2300c274' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23219d51' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2300bc8c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23279643' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%2319b39b' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%232b8f35' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%234aaaa2' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%232f8826' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover; 
+}
+</style> 

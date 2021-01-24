@@ -26,16 +26,26 @@
             <v-btn v-if="!logined" @click="$router.push('/login')" small text dark> {{$txt.web_nav.login}}</v-btn>
             <v-btn class="invisible  md:visible" @click="$router.push('/register')" small outlined dark> {{$txt.web_nav.download}}</v-btn>
         </div>
-        <div class="flex pt-4">
+        <div class="flex pt-2">
             <h2 style="cursor: pointer;" class="text-base md:text-2xl logo-font pon" @click="$router.push('/')">
                 <v-icon>em em-water_buffalo</v-icon>&nbsp;{{$txt.name}}
             </h2>
             <form class="w-2/3 flex pl-4" @submit.prevent="goSearch()">
-                <v-text-field v-model="search" solo :label="$txt.web_nav.searchTxt" dense></v-text-field>
-                <v-btn outlined dark type="submit" class="ml-2">{{$txt.web_nav.search}}</v-btn>
+                <!-- <v-text-field v-model="search" solo :label="$txt.web_nav.searchTxt" dense></v-text-field> -->
+                <!-- <v-btn color="success" dark type="submit" class="ml-2">{{$txt.web_nav.search}}</v-btn> -->
+                <div class="bg-white flex rounded shadow-xl">
+                    <span class="w-auto flex justify-end items-center text-gray-500 p-3">
+                        <i class="fas fa-search text-xl"></i>
+                    </span>
+                    <input class="w-full rounded" type="text" :placeholder="$txt.web_nav.searchTxt" v-model="search">
+                    <button class="bg-green-400 hover:bg-green-300 rounded text-white m-1 pl-4 pr-4 items-center">
+                        <div class="font-semibold text-xs ">{{$txt.web_nav.search}}</div>
+                    </button>
+                </div>
             </form>
         </div>
     </div>
+
     <v-dialog v-model="dialogLang" scrollable :overlay="false" max-width="500px" transition="dialog-transition">
         <v-card>
             <v-card-title primary-title>
@@ -46,7 +56,8 @@
                 </v-btn>
             </v-card-title>
             <v-card-text>
-                <div class="flex flex-col">
+                <div class="flex flex-col mt-2">
+                    <gb-flag code="us" size="small" />
                     <v-btn @click="changeLanguage('th')" color="success" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">ภาษาไทย</v-btn> <br>
                     <v-btn @click="changeLanguage('ch')" color="error" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">中文</v-btn><br>
                     <v-btn @click="changeLanguage('en')" color="primary" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">English</v-btn><br>
@@ -62,7 +73,6 @@
 import { User } from "@/store/user";
 import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
-
 import { Component, Vue, Watch } from "vue-property-decorator";
 
 @Component({
@@ -77,7 +87,7 @@ export default class Navbar extends Vue {
     user: any = null
     search: any = ''
     response: boolean = false
-    
+
     async created() {
         await Auth.checkToken();
         if (Auth.logined) {
@@ -112,8 +122,6 @@ export default class Navbar extends Vue {
         //await location.open('https://docs.google.com/document/d/1JzhXn1UksQ9rgVzus0VwBAHBoieGpSKdV1jypj5B7XE/edit?usp=sharing','_blank');
     }
 
-    
-
 }
 </script>
 
@@ -121,7 +129,8 @@ export default class Navbar extends Vue {
 .nav {
     /* background: rgb(238, 177, 123); */
     /* background: linear-gradient(90deg, rgba(238, 177, 123, 1) 0%, rgba(152, 63, 128, 1) 100%); */
-    background: #0EAD69;
+    /* background: #0EAD69; */
     /* background: #643fef; */
+    background: linear-gradient(to right, #0EAD69 0%, #06D6A0 100%);
 }
 </style>

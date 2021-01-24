@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <hr class="m-1">
-                <button @click="loadProduct" class="md:ml-1 md:mb-1 md:mt-0  w-full md:w-1/6 rounded p-3 bts hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                <button type="submit" @click="loadProduct" class="w-full btn1 green2 md:w-1/2 mb-3 md:ml-1 md:mb-1 md:mt-0  w-full md:w-1/6 rounded">
                     <div class="text-white"><i class="fas fa-search"></i> {{_lang('ค้นหา','Search','搜索')}}</div>
                 </button>
                 <!-- <v-text-field dense prepend-inner-icon="fas fa-search " filled v-model="search" :label="_lang('ค้นหา','Search','搜索')" id="id"></v-text-field>
@@ -20,7 +20,7 @@
 
             <v-col cols="12" sm="4" class="relative ">
                 <div class="text-right">
-                    <button @click="$router.push(`/user/addpostbuy`)" class="w-full md:w-1/2 mb-3 mt-1 rounded p-3 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                    <button type="submit" class="w-full btn green1 md:w-1/2 mb-3 mt-1 rounded p-3" @click="$router.push(`/user/addpostbuy`)">
                         <div class="text-white"><i class="far fa-plus-square"></i> {{_lang('เพิ่มประกาศซื้อ','Add product','添加產品')}}</div>
                     </button>
                 </div>
@@ -34,7 +34,7 @@
             <div class="w-36 m-2 md:mr-6 cursor-pointer" v-if="products" v-for="product,i in products" :key="i">
                 <v-hover v-slot:default="{ hover }">
                     <!-- <v-card class="mx-auto" color="grey lighten-4" max-width="600"> -->
-                    <div class="mx-auto card rounded-lg elevation-1 bg-white hover:shadow-lg overflow-hidden">
+                    <div class="mx-auto card rounded-lg elevation-1 bg-white hover:shadow-lg overflow-hidden shadow-lg border">
                         <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="ximg(product.file1)">
                             <v-expand-transition>
                                 <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
@@ -54,7 +54,7 @@
                             </div> -->
                             <v-select @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
                             <div class=" flex ">
-                                <button @click="$router.push(`/user/postbuyedit/?product=${product.id}`)" class="w-full rounded p-1 bg-indigo-500 hover:bg-indigo-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
+                                <button type="submit" @click="$router.push(`/user/postbuyedit/?product=${product.id}`)" class="w-full btn2 blue1 rounded ">
                                     <div class="text-white"><i class="fas fa-pencil-alt"></i>{{_lang('แก้ไขประกาศ','Edit','編輯公告')}}</div>
                                 </button>
                             </div>
@@ -174,7 +174,7 @@ export default class PostSaller extends Vue {
     align-items: center;
 }
 
-.bts{
+.bts {
     background: #0EAD69;
 }
 
@@ -223,5 +223,82 @@ export default class PostSaller extends Vue {
 
 :-ms-input-placeholder {
     color: #fff;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 14px 24px;
+    /* font-size: 12px; */
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.btn1 {
+    border-radius: 5px;
+    padding: 15px 25px;
+    /* font-size: 12px; */
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.btn2 {
+    border-radius: 5px;
+    padding: 5px 10px;
+    /* font-size: 12px; */
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.btn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.btn1:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.btn2:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.green1 {
+    background-color: #6930C3;
+    box-shadow: 0px 5px 0px 0px #002855;
+}
+
+.green1:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(139, 92, 246, var(--tw-bg-opacity));
+}
+
+.green2 {
+    background-color: #0EAD69;
+    box-shadow: 0px 5px 0px 0px #283D3B;
+}
+
+.green2:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
+}
+
+.blue1 {
+    background-color: #4361EE;
+    box-shadow: 0px 5px 0px 0px #03045E;
+}
+
+.blue1:hover {
+    background-color: #4895EF;
 }
 </style>

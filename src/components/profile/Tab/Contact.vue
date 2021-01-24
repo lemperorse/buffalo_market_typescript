@@ -7,20 +7,20 @@
     <div>
         <form @submit.prevent="updatePersonal()">
             <div class="flex flex-wrap">
-                <v-text-field prepend-inner-icon="mdi-phone" class="w-full "   v-model="profile.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
-                <v-text-field prepend-inner-icon="far fa-envelope"  class="w-full " filled v-model="profile.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
+                <v-text-field prepend-inner-icon="mdi-phone" class="w-full " v-model="profile.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
+                <v-text-field prepend-inner-icon="far fa-envelope" class="w-full " filled v-model="profile.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
                 <v-text-field prepend-inner-icon="fab fa-facebook" class="w-full " filled v-model="profile.facebook" label="Facebook"></v-text-field>
                 <v-text-field prepend-inner-icon="fab fa-line" class="w-full " filled v-model="profile.line" label="Line"></v-text-field>
                 <v-text-field class="w-full " filled v-model="profile.other" :label="_lang('อื่นๆ','Other','其他')"></v-text-field>
             </div>
-            <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">
-                <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
-            </v-btn>
+            <button type="submit" class="w-full btn orange1 md:w-auto float-md-right text-white">
+                <div class="text-white">
+                    <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+                </div>
+            </button>
 
         </form>
     </div>
-
-   
 
 </div>
 </template>
@@ -63,8 +63,33 @@ export default class Profile extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .f-white {
     color: white !important;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 15px 25px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.btn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.orange1 {
+    background-color: #FB8500;
+    box-shadow: 0px 5px 0px 0px #CD6509;
+}
+.orange1:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(245, 158, 11, var(--tw-bg-opacity));
 }
 </style>

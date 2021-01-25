@@ -167,17 +167,6 @@ export default class PostSaller extends Vue {
     color: white;
 }
 
-.wrapper {
-    /* min-height: 100vh; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.bts {
-    background: #0EAD69;
-}
-
 .search_box {
     /* background: #643fef; */
     background: #0EAD69;

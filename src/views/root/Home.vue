@@ -1,5 +1,5 @@
 <template>
-<div>
+<div> 
     <div class="bg2">
         <div class="container mx-auto mt-4 ">
             <v-toolbar class="mb-2 rounded elevation-0" >

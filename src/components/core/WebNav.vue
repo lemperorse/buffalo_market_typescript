@@ -27,13 +27,13 @@
             <v-btn class="invisible  md:visible" @click="$router.push('/register')" small outlined dark> {{$txt.web_nav.download}}</v-btn>
         </div>
         <div class="flex pt-2">
-            <h2 style="cursor: pointer;" class="text-base md:text-2xl logo-font pon" @click="$router.push('/')">
+            <h2 style="cursor: pointer;" class="text-base md:text-xl logo-font pon" @click="$router.push('/')">
                 <v-icon>em em-water_buffalo</v-icon>&nbsp;{{$txt.name}}
             </h2>
             <form class="w-2/3 flex pl-4" @submit.prevent="goSearch()">
                 <!-- <v-text-field v-model="search" solo :label="$txt.web_nav.searchTxt" dense></v-text-field> -->
                 <!-- <v-btn color="success" dark type="submit" class="ml-2">{{$txt.web_nav.search}}</v-btn> -->
-                <div class="bg-white flex rounded shadow-xl">
+                <div class="bg-white flex rounded shadow-lg">
                     <span class="w-auto flex justify-end items-center text-gray-500 p-3">
                         <i class="fas fa-search text-xl"></i>
                     </span>

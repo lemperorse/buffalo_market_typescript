@@ -34,7 +34,7 @@
             <div class="w-36 m-2 md:mr-6 cursor-pointer" v-if="products" v-for="product,i in products" :key="i">
                 <v-hover v-slot:default="{ hover }">
                     <!-- <v-card class="mx-auto" color="grey lighten-4" max-width="600"> -->
-                    <div class="mx-auto card rounded-lg elevation-1 bg-white hover:shadow-lg overflow-hidden shadow-lg border">
+                    <div class="mx-auto rounded-lg bg-white overflow-hidden shadow-lg border">
                         <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="ximg(product.file1)">
                             <v-expand-transition>
                                 <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">

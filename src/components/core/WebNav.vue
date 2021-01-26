@@ -57,9 +57,9 @@
             </v-card-title>
             <v-card-text>
                 <div class="flex flex-col mt-2">
-                    <v-btn @click="changeLanguage('th')" color="success" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"><i class="em em-flag-th" aria-role="presentation" aria-label="Thailand Flag"></i> ภาษาไทย</v-btn> <br>
-                    <v-btn @click="changeLanguage('ch')" color="error" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"><i class="em em-flag-tw" aria-role="presentation" aria-label="Taiwan Flag"></i> 中文</v-btn><br>
-                    <v-btn @click="changeLanguage('en')" color="primary" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"><i class="em em-flag-um" aria-role="presentation" aria-label="U.S. Outlying Islands Flag"></i> English</v-btn><br>
+                    <v-btn @click="changeLanguage('th')" color="success" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> ภาษาไทย</v-btn> <br>
+                    <v-btn @click="changeLanguage('ch')" color="error" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 中文</v-btn><br>
+                    <v-btn @click="changeLanguage('en')" color="primary" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> English</v-btn><br>
                 </div>
 
             </v-card-text>

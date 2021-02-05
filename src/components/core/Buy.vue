@@ -10,9 +10,9 @@
                         <v-radio-group class="p-3" v-model="productType">
                             <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
                         </v-radio-group>
-                        <div v-for="category,index in categories" :key="index">
+                        <div v-for="category,index in categories" :key="index" class="pb-6">
                             <h2 class="p-3 bgtext rounded shadow-lg">{{category.name}}</h2>
-                            <v-checkbox class="pl-3" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
+                            <v-checkbox class="pl-3 -mb-8" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
                         </div>
                         <p class="bgtext rounded shadow-lg p-3">{{_lang('ระยะเวลาการขาย','Time period','時間段')}}</p>
                         <v-radio-group class="p-3" v-model="priceType">
@@ -36,7 +36,7 @@
         <div class="col-md-9 col-sm-9 col-xs-12">
             <!-- <Product /> -->
             <div class="row">
-                <div class="w-36 m-2 md:mr-6 cursor-pointer " v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+                <div class="w-36 md:w-64 m-2 md:mr-6 cursor-pointer " v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                     <v-hover v-slot:default="{ hover }">
                         <div class="mx-auto rounded-lg  bg-white overflow-hidden shadow-lg border">
                             <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="ximg(pu.file1)">
@@ -208,11 +208,16 @@ export default class PostSaller extends Vue {
     /* white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
-    line-height: 1;
+    /* line-height: 1;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis; */
+    white-space: nowrap;
+    /* width: 50px;  */
+    overflow: hidden;
     text-overflow: ellipsis;
+    /* border: 1px solid #000000; */
 }
 
 .text2 {

@@ -31,7 +31,7 @@
 
         <div class="row">
             <!-- <div class="col-md-2 col-sm-4 col-6" v-if="products" v-for="product,i in products" :key="i"> -->
-            <div class="w-36 m-2 md:mr-6 cursor-pointer" v-if="products" v-for="product,i in products" :key="i">
+            <div class="w-36 md:w-64 m-2 md:mr-6 cursor-pointer" v-if="products" v-for="product,i in products" :key="i">
                 <v-hover v-slot:default="{ hover }">
                     <!-- <v-card class="mx-auto" color="grey lighten-4" max-width="600"> -->
                     <div class="mx-auto rounded-lg bg-white overflow-hidden shadow-lg border">
@@ -43,9 +43,9 @@
                             </v-expand-transition>
                         </v-img>
                         <div class="p-4">
-                            <h4 class="font-semibold leading-tight mb-1 text-indigo-600 ">{{_lang('ชื่อสินค้า','Product','產品名稱')}} : {{product.name}}</h4>
-                            <div class=" text-orange-600 font-bold mb-1">
-                                <span class="text-sm" v-if="product.price_type">{{_lang('ราคา','Price','價錢')}} : {{product.price}}</span>
+                            <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{_lang('ชื่อสินค้า','Product','產品名稱')}} : {{product.name}}</h4>
+                            <div class=" text-orange-600 font-bold mb-1 text1">
+                                <span class=" text1" v-if="product.price_type">{{_lang('ราคา','Price','價錢')}} : {{product.price}}</span>
                                 <span v-else>{{_lang('ราคา','Price','價錢')}} : {{product.price_start}} - {{product.price_end}}</span>
                             </div>
                             <!-- <div class="text-sm text-gray-600 font-light mb-1" v-if="product.farm">
@@ -159,7 +159,12 @@ export default class PostSaller extends Vue {
     position: absolute;
     width: 100%;
 }
-
+.text1 {
+    font-size: 12px; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
 .bg1 {
     background-color: #0EAD69;
 }

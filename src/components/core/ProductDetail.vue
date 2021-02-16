@@ -69,11 +69,6 @@
                                 <span v-if="product.farm.user">{{_lang('ชื่อ','Name','名稱')}} : {{product.farm.user.first_name}} {{product.farm.user.last_name}}</span>
                             </h3>
                             <h3 v-if="product.farm">{{_lang('จังหวัด','Province','省')}} : <span v-if="product.farm.province">{{product.farm.province.name}}</span></h3>
-                            <div class="flex ">
-                                <!-- <button @click="$router.push(`/user/sellerdetail`)" class="text-sm rounded p-2 bg-green-500 hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                                    <div class="text-white"> แสดงรายละเอียด</div>
-                                </button> -->
-                            </div>
                         </div>
                     </v-row>
                 </v-col>
@@ -81,32 +76,10 @@
                     <div class="ml-5">
                         <div class="text--primary" v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
                         <div class="flex ">
-                            <!-- <button @click="dialog = true" class="w-full md:w-1/2 p-1 rounded bg-blue-600 hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" type="submit">
-                                <div class="text-white">นำทาง</div>
-                            </button> -->
                             <button @click="openMap" class="w-full md:w-1/2 text-sm rounded p-2 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
                                 <div class="text-white">{{_lang('นำทาง','Navigate','導航')}}</div>
                             </button>
                         </div>
-
-                        <!-- <v-dialog v-model="dialog" scrollable fullscreen persistent :overlay="false" max-width="500px" transition="dialog-transition">
-                            <v-card>
-                                <v-card-title primary-title>
-                                    นำทาง <v-spacer></v-spacer>
-                                    <v-btn dark icon color="red">
-                                        <v-icon>mdi-close</v-icon>
-                                    </v-btn>
-                                </v-card-title>
-                                <v-card>
-                                    <v-card-text>
-                                        <img src="https://www.img.in.th/images/759e9362e5014422ea9fa2deaf85ce15.png" class="w-full h-auto md:h-full" alt="" />
-                                        <p class="text-xl pt-6">
-                                            {{product.farm.address}}
-                                        </p>
-                                    </v-card-text>
-                                </v-card>
-                            </v-card>
-                        </v-dialog> -->
                     </div>
                 </v-col>
             </v-row>
@@ -249,7 +222,7 @@ export default class PostSaller extends Vue {
 }
 .bg2 {
     background-color: #F5F5F5;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%2343cc20' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%2315aa6c' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2306c853' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%231ca35f' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%2300c274' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23219d51' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2300bc8c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23279643' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%2319b39b' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%232b8f35' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%234aaaa2' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%232f8826' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%2343cc20' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%2315aa6c' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2306c853' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%231ca35f' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%2300c274' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23219d51' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2300bc8c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23279643' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%2319b39b' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%232b8f35' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%234aaaa2' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%232f8826' points='943 900 1210 900 971 687'/%3E%3C/svg%3E"); */
     background-attachment: fixed;
     background-size: cover; 
 }

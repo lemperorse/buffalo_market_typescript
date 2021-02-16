@@ -5,35 +5,28 @@
             <v-col cols="12" sm="8" class="flex flex-wrap">
                 <div class="w-full md:w-1/2">
                     <div class="search_box">
-                        <!-- <div class="search_btn"><i class="fas fa-search"></i></div> -->
                         <input type="text" class="input_search" v-model="search" id="id" :placeholder="_lang('ค้นหา...','What are you looking for?','搜索')">
-                        <div class="search_btn" @click="loadProduct"><i class="fas fa-search"></i></div>
+                        <div class="search_btn btn green2" @click="loadProduct"><i class="fas fa-search"></i></div>
                     </div>
                 </div>
                 <hr class="m-1">
                 <button type="submit" @click="loadProduct" class="w-full btn1 green2 md:w-1/2 mb-3 md:ml-1 md:mb-1 md:mt-0  w-full md:w-1/6 rounded">
                     <div class="text-white"><i class="fas fa-search"></i> {{_lang('ค้นหา','Search','搜索')}}</div>
                 </button>
-                <!-- <v-text-field dense prepend-inner-icon="fas fa-search " filled v-model="search" :label="_lang('ค้นหา','Search','搜索')" id="id"></v-text-field>
-                <v-btn large @click="loadProduct" color="success" class="md:mt-1 ml-1 w-full md:w-1/12">{{_lang('ค้นหา','Search','搜索')}}</v-btn> -->
             </v-col>
 
             <v-col cols="12" sm="4" class="relative ">
                 <div class="text-right">
-                    <button @click="$router.push(`/user/addpostsell`)" type="submit" class="w-full btn green1 md:w-1/2 mb-3 mt-1 rounded p-3">
+                    <button @click="$router.push(`/user/addpostsell`)" type="submit" class="w-full btn purple1 md:w-1/2 mb-3 mt-1 rounded p-3">
                         <div class="text-white"><i class="far fa-plus-square"></i> {{_lang('เพิ่มประกาศขาย','Add product','添加產品')}}</div>
                     </button>
                 </div>
             </v-col>
-        </v-row>
-
-        <v-divider class="mb-2"></v-divider>
-
+        </v-row> 
+        
         <div class="row">
-            <!-- <div class="col-md-2 col-sm-4 col-6" v-if="products" v-for="product,i in products" :key="i"> -->
-            <div class="w-36 md:w-64 m-2 md:mr-6 cursor-pointer" v-if="products" v-for="product,i in products" :key="i">
+            <div class="w-1/2 md:w-1/5 cursor-pointer p-2 " v-if="products" v-for="product,i in products" :key="i">
                 <v-hover v-slot:default="{ hover }">
-                    <!-- <v-card class="mx-auto" color="grey lighten-4" max-width="600"> -->
                     <div class="mx-auto rounded-lg bg-white overflow-hidden shadow-lg border">
                         <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="ximg(product.file1)">
                             <v-expand-transition>
@@ -43,15 +36,11 @@
                             </v-expand-transition>
                         </v-img>
                         <div class="p-4">
-                            <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{_lang('ชื่อสินค้า','Product','產品名稱')}} : {{product.name}}</h4>
-                            <div class=" text-orange-600 font-bold mb-1 text1">
-                                <span class=" text1" v-if="product.price_type">{{_lang('ราคา','Price','價錢')}} : {{product.price}}</span>
-                                <span v-else>{{_lang('ราคา','Price','價錢')}} : {{product.price_start}} - {{product.price_end}}</span>
+                            <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{product.name}}</h4>
+                            <div class=" text-orange-600 font-bold mb-1">
+                                <span class="  text1" v-if="product.price_type">{{_lang('฿','฿','฿')}} {{product.price}}</span>
+                                <span v-else class=" text1">{{_lang('฿','฿','฿')}} {{product.price_start}} - {{product.price_end}}</span>
                             </div>
-                            <!-- <div class="text-sm text-gray-600 font-light mb-1" v-if="product.farm">
-                                <span class="fas fa-map-marker-alt"></span>
-                                <span v-if="product.farm.province">{{product.farm.province.name}}</span>
-                            </div> -->
                             <v-select @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
                             <div class=" flex ">
                                 <button type="submit" @click="$router.push(`/user/postselledit/?product=${product.id}`)" class="w-full btn2 blue1 rounded ">
@@ -59,12 +48,7 @@
                                 </button>
                             </div>
                         </div>
-                        <hr>
-                        <div class="text-xs text-center bg1">
-                            <span class="fas fa-bullhorn tw"></span> <span class="tw">{{_lang('ผู้โพส','Poster','海報')}} : {{user.first_name}}</span>
-                        </div>
                     </div>
-                    <!-- </v-card> -->
                 </v-hover>
             </div>
         </div>
@@ -164,15 +148,7 @@ export default class PostSaller extends Vue {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis; 
-}
-.bg1 {
-    background-color: #0EAD69;
-}
-
-.tw {
-    color: white;
-}
-
+} 
 .wrapper {
     /* min-height: 100vh; */
     display: flex;
@@ -279,12 +255,12 @@ export default class PostSaller extends Vue {
     box-shadow: 0px 1px 0px 0px;
 }
 
-.green1 {
+.purple1 {
     background-color: #6930C3;
     box-shadow: 0px 5px 0px 0px #002855;
 }
 
-.green1:hover {
+.purple1:hover {
     --tw-bg-opacity: 1;
     background-color: rgba(139, 92, 246, var(--tw-bg-opacity));
 }

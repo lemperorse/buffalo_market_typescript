@@ -2,7 +2,7 @@
 <div>
     <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-12 ">
-            <v-expansion-panels v-model="panel" :disabled="disabled" multiple>
+            <v-expansion-panels multiple>
                 <v-expansion-panel>
                     <v-expansion-panel-header class="bgtext1 shadow ">{{_lang('คลิกเพื่อแสดงตัวกรอง','Click to display the filter','單擊以顯示過濾器。')}}</v-expansion-panel-header>
                     <v-expansion-panel-content class="bg3 pt-4">
@@ -28,57 +28,31 @@
                     </v-expansion-panel-content>
                 </v-expansion-panel>
 
-            </v-expansion-panels>
-            <!-- <v-card class="elevation-0">
-                </v-card> -->
+            </v-expansion-panels> 
         </div>
-
-        <div class="col-md-9 col-sm-9 col-xs-12">
-            <!-- <Product /> -->
-            <div class="row">
-                <div class="w-36 md:w-64 m-2 md:mr-6 cursor-pointer " v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+        <div class="col-md-9 col-sm-9 col-xs-12"> 
+            <div class="flex flex-row flex-wrap">
+                <div class="w-1/2 md:w-1/5 cursor-pointer p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                     <v-hover v-slot:default="{ hover }">
-                        <div class="mx-auto rounded-lg  bg-white overflow-hidden shadow-lg border">
-                            <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="ximg(pu.file1)">
+                        <div class="mx-auto rounded-lg overflow-hidden bg-white shadow-lg ">
+                            <v-img class="white--text align-end w-full rounded-t-lg h-32"   :src="ximg(pu.file1)">
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
                                         <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
                                     </div>
                                 </v-expand-transition>
                             </v-img>
-                            <div class="p-6 ">
-                                <div class="flex items-baseline mb-1">
-                                    <span class="inline-block bg-blue-400 text-white text1 px-2 py-1 rounded-full uppercase font-semibold tracking-wide">{{_lang('ประเภท','Category','類別')}}</span>
-                                    <div class="ml-2 text-gray-600 text1 uppercase font-semibold tracking-wide">
-                                        {{pu.product_type}}
-                                    </div>
-                                </div>
-
-                                <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text1"> {{_lang('ชื่อสินค้า','Product','產品名稱')}} : {{pu.name}}</h4>
-
+                            <div class="p-6 "> 
+                                <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{pu.name}}</h4>
                                 <div class="text-orange-600 font-bold mb-1">
-                                    <span class="text1" v-if="pu.price_type">{{_lang('ราคา','Price','價錢')}} : {{pu.price}}</span>
+                                    <span class="text1" v-if="pu.price_type">{{_lang('฿','฿','฿')}} {{pu.price}}</span>
                                     <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
-                                </div>
-                                <div class="text1 text-gray-600 font-light mb-1" v-if="pu.farm">
-                                    <span class="fas fa-map-marker-alt text1"></span>
-                                    <span class="text1" v-if="pu.farm.province"> {{pu.farm.province.name}}</span>
-                                </div>
-                            </div>
-                            <!-- <div class="flex flex-wrap items-baseline text-xs text-center pl-6">
-                                <span class="inline-block bg-yellow-400 text-white text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">tag</span>
-                                <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide" v-for="cat,i in pu.category" :key="i">
-                                    {{cat.name}}
-                                </div>
-                            </div> -->
-                            <hr>
-                            <div class="text-xs text-center bg1">
-                                <span class="fas fa-bullhorn tw"></span> <span class="tw">{{_lang('ผู้โพส','Poster','海報')}} : </span><span v-if="pu.farm.user" class="tw">{{pu.farm.user.first_name}}</span>
-                            </div>
+                                </div> 
+                            </div> 
                         </div>
                     </v-hover>
                 </div>
-            </div>
+            </div> 
 
             <div class="text-center mt-6">
                 <v-pagination v-model="page" :length="6" circle></v-pagination>
@@ -197,27 +171,16 @@ export default class PostSaller extends Vue {
     color: white;
 }
 
-.bgtext1 {
-    /* background: linear-gradient(to right, #83E377 0%, #EFEA5A 100%); */
+.bgtext1 { 
     background: linear-gradient(to right, #0DB39E 0%, #16DB93 100%);
     color: white;
 }
 
 .text1 {
-    font-size: 12px;
-    /* white-space: nowrap;
+    font-size: 12px; 
+    white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ellipsis; */
-    /* line-height: 1;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis; */
-    white-space: nowrap;
-    /* width: 50px;  */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* border: 1px solid #000000; */
+    text-overflow: ellipsis; 
 }
 
 .text2 {

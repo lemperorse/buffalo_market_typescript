@@ -1,12 +1,18 @@
 <template>
 <div class="bg">
-    <div class="container mx-auto " v-if="response">
+    <div class="container mx-auto " v-if="response"> 
+        <div class="w-full p-2 mb-6">
+            <ol class="flex text-gray-700 bg-gray-300 rounded py-2 px-2">
+                <li class="px-2"><a href="/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
+                <li class="text-gray-500 select-none">/</li> 
+                <li class="px-2 text-green-600">{{_lang('โปรไฟล์','Profile','輪廓')}}</li>
+            </ol> 
+        </div>
         <div class="flex flex-wrap">
             <div class="w-full lg:w-3/12 px-2">
                 <div class="relative min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg border-l-4 border-green-500">
                     <div class="px-5">
                         <div class="flex flex-col justify-center  items-center">
-
                             <img v-if="profile.profile_image" ref="imageProfile" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" :src="profile.profile_image" />
                             <img v-else ref="imageProfile" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" />
                             <input type="file" ref="profile" @change="profileChange" style="display:none;" />
@@ -214,5 +220,17 @@ export default class Table extends Vue {
 .green1:hover {
     --tw-bg-opacity: 1;
     background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
+}
+
+a {
+    color: black !important;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 </style>

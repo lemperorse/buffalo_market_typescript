@@ -3,6 +3,7 @@
     <v-app  >
       <WebNav /><br><br><br><br>
          <router-view />  
+         <Footer></Footer>
     </v-app>
      
   </div>
@@ -15,9 +16,11 @@ import {
   Vue,
 } from 'vue-property-decorator'; 
 import WebNav from '../../components/core/WebNav.vue'
+import Footer from '../../components/core/Footer.vue'
 @Component({
   components: {  
-    WebNav
+    WebNav,
+    Footer
     },
     computed: {}
 })

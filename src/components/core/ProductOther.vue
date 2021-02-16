@@ -1,6 +1,28 @@
 <template>
 <div>
-    <v-card-text class="pa-0 pt-4"  >
+    <div class="flex flex-row flex-wrap">
+        <div class="w-1/2 md:w-1/5 cursor-pointer p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+            <v-hover v-slot:default="{ hover }">
+                <div class="mx-auto rounded-lg overflow-hidden bg-white shadow-lg ">
+                    <v-img class="white--text align-end w-full rounded-t-lg h-32" :src="ximg(pu.file1)">
+                        <v-expand-transition>
+                            <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
+                                <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
+                            </div>
+                        </v-expand-transition>
+                    </v-img>
+                    <div class="p-6 ">
+                        <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{pu.name}}</h4>
+                        <div class="text-orange-600 font-bold mb-1">
+                            <span class="text1" v-if="pu.price_type">{{_lang('฿','฿','฿')}} {{pu.price}}</span>
+                            <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
+                        </div>
+                    </div>
+                </div>
+            </v-hover>
+        </div>
+    </div>
+    <!-- <v-card-text class="pa-0 pt-4"  >
         <div class="row ">
             <div class="w-36 m-2 cursor-pointer" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                 <v-hover v-slot:default="{ hover }">
@@ -40,7 +62,7 @@
                 </v-hover>
             </div>
         </div>
-    </v-card-text>
+    </v-card-text> -->
 </div>
 </template>
 
@@ -139,5 +161,4 @@ export default class PostSaller extends Vue {
 .tw {
     color: white;
 }
-
 </style>

@@ -4,7 +4,7 @@
     <h2 @click="$router.push('/')" class="text-3xl mt-8">{{_lang('ยินดีต้อนรับเข้าสู่','Welcome to','欢迎来到')}}</h2>
     <h2 @click="$router.push('/')" class="font-semibold text-2xl text-left"> {{_lang('ตลาดควาย กรุณาเข้าสู่ระบบ','Buffalo Market Please login','布法罗市场请登录')}}</h2><br>
 
-    <div class="w-full md:w-96 shadow-xl rounded bg-white ">
+    <div class="w-full md:w-96 shadow-xl rounded bg-white mb-6">
         <v-card-text>
             <form @submit.prevent="login()" class="flex flex-col p-3">
                 <!-- <v-text-field v-model="form.username" outlined :label="_lang('ชื่อผู้ใช้','Username','用户名')"></v-text-field> -->

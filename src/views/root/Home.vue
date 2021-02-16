@@ -1,43 +1,10 @@
 <template>
 <div>
     <div class="bg2">
-        <div class="container mx-auto mt-4">  
+        <div class="container mx-auto mt-4"> 
+            <Popup />
             <div class="mb-2 bg-white rounded shadow-md rounded-t">
-                <v-card-title primary-title class="">
-                    หมวดหมู่
-                </v-card-title>
-                <v-card-text>
-                    <v-container>
-                        <center>
-                            <v-row>
-                                <div class="w-1/3 md:w-1/6">
-                                    <div class="p-1 m-1 cursor-pointer bg-yellow-400 hover:bg-yellow-600 rounded-lg h-32">
-                                        <div class="mt-2">
-                                            <img src="@/assets/icon/buffalo.png" alt="" class="w-14 h-14">
-                                            <p class="text-white text-base font-bold mt-2">ควาย</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-1/3 md:w-1/6">
-                                    <div class="pa-1 m-1 cursor-pointer bg-gray-400 hover:bg-gray-600 rounded-lg h-32" outlined tile>
-                                        <div class="mt-2">
-                                            <img src="@/assets/icon/farm.png" alt="" class="w-14 h-14">
-                                            <p class="text-white text-base font-bold mt-2">สินค้าจากฟาร์ม</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-1/3 md:w-1/6">
-                                    <div class="pa-1 m-1 cursor-pointer bg-green-400 hover:bg-green-600 rounded-lg h-32" outlined tile>
-                                        <div class="mt-2">
-                                            <img src="@/assets/icon/harvest.png" alt="" class="w-14 h-14">
-                                            <p class="text-white text-base font-bold mt-2">สินค้าจากชุมชน</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </v-row>
-                        </center>
-                    </v-container>
-                </v-card-text>
+                <Category />
             </div>
             <v-toolbar class="mb-2 rounded elevation-0">
                 <template>
@@ -64,6 +31,8 @@
 import Buy from "@/components/core/Buy.vue";
 import Sell from "@/components/core/Sell.vue";
 import World from "@/components/core/World.vue";
+import Popup from "@/components/core/Popup.vue"
+import Category from "@/components/core/Category.vue"
 import { Component, Vue } from "vue-property-decorator";
 export default {
     name: "home-page",
@@ -71,11 +40,13 @@ export default {
         Buy,
         Sell,
         World,
+        Popup,
+        Category
     },
     data() {
         return {
             tabs: null,
-            dialog: false,
+            // dialog: false,
         }
     },
     async created() {
@@ -84,14 +55,13 @@ export default {
         } else if (this.$route.query.tab == 2) {
             this.tabs = 1
         } else {
-
         }
+        this.dialog=true;
     }
 };
 </script>
 
 <style scoped>
-/* Helper classes */
 .color {
     background-color: #FFFBE6 !important;
 }
@@ -107,4 +77,8 @@ export default {
     background-size: cover;
 }
 
+h1 {
+    text-align: center;
+    margin: 1.5em;
+}
 </style>

@@ -24,12 +24,12 @@
             <div>
                 <div v-for="category,index in categories" :key="index">
                     <h2>{{category.name}}</h2>
-                    <v-checkbox v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
+                    <v-checkbox class="-mb-4" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
                 </div>
 
             </div>
             <!-- <v-btn type="submit" x-large color="success" class="w-full"><v-icon>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}</v-btn> -->
-            <button type="submit" class="w-full btn green">
+            <button type="submit" class="w-full btn green mt-6">
                 <div class="text-white">
                     <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}
                 </div>

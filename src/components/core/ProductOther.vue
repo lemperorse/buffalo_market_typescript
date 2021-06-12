@@ -3,7 +3,7 @@
     <div class="flex flex-row flex-wrap">
         <div class="w-1/2 md:w-1/5 cursor-pointer p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
             <v-hover v-slot:default="{ hover }">
-                <div class="mx-auto rounded-lg overflow-hidden bg-white shadow-lg ">
+                <v-card class="rounded-lg" outlined>
                     <v-img class="white--text align-end w-full rounded-t-lg h-32" :src="ximg(pu.file1)">
                         <v-expand-transition>
                             <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
@@ -18,51 +18,10 @@
                             <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
                         </div>
                     </div>
-                </div>
+                </v-card>
             </v-hover>
         </div>
-    </div>
-    <!-- <v-card-text class="pa-0 pt-4"  >
-        <div class="row ">
-            <div class="w-36 m-2 cursor-pointer" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
-                <v-hover v-slot:default="{ hover }">
-                    <div class="mx-auto card rounded-lg bg-white overflow-hidden shadow-lg border">
-                        <v-img class="white--text align-end w-full" height="150px" :src="ximg(pu.file1)">
-                            <v-expand-transition>
-                                <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                    <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>ดูรายละเอียด </v-btn>
-                                </div>
-                            </v-expand-transition>
-                        </v-img>
-                        <div class="p-6 ">
-                            <div class="flex items-baseline mb-1">
-                                <span class="inline-block bg-blue-400 text-white text-xs px-2 py-1 rounded-full uppercase font-semibold tracking-wide">{{_lang('ประเภท','Category','類別')}}</span>
-                                <div class="ml-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
-                                    {{pu.product_type}}
-                                </div>
-                            </div>
-
-                            <h4 class="font-semibold leading-tight text-sm mb-1 text-indigo-600 "> {{_lang('ชื่อสินค้า','Product','產品名稱')}} : {{pu.name}}</h4>
-
-                            <div class="text-orange-600 font-bold mb-1">
-                                <span class="text-sm" v-if="pu.price_type">{{_lang('ราคา','Price','價錢')}} : {{pu.price}}</span>
-                                <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
-                            </div>
-                            <div class="text-sm text-gray-600 font-light mb-1" v-if="pu.farm">
-                                <span class="fas fa-map-marker-alt text-xs"></span>
-                                <span class="text-xs" v-if="pu.farm.province">{{pu.farm.province.name}}</span>
-                            </div>
-                        </div>
-
-                        <hr>
-                        <div class="text-xs text-center bg1">
-                            <span class="fas fa-bullhorn tw"></span> <span class="tw">{{_lang('ผู้โพส','Poster','海報')}} : </span><span v-if="pu.farm.user" class="tw">{{pu.farm.user.first_name}}</span>
-                        </div>
-                    </div>
-                </v-hover>
-            </div>
-        </div>
-    </v-card-text> -->
+    </div> 
 </div>
 </template>
 
@@ -152,13 +111,5 @@ export default class PostSaller extends Vue {
     opacity: 0.8;
     position: absolute;
     width: 100%;
-}
-
-.bg1 {
-    background-color: #0EAD69;
-}
-
-.tw {
-    color: white;
-}
+}  
 </style>

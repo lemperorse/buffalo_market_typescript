@@ -1,7 +1,7 @@
 <template>
 <div  class="bg2">
-    <div class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 ">
-        <div class="row bg-white rounded shadow-lg overflow-hidden">
+    <v-card class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg" outlined>
+        <div class="row ">
             <div class="col-md-5 col-sm-5 col-xs-12">
                 <v-carousel class="rounded">
                     <v-carousel-item>
@@ -34,13 +34,11 @@
                     <v-card-actions class="pa-0">
                         <p class="headline font-weight-light pt-3 ">
                             <span v-if="product.price_type">{{_lang('ราคา','Price','價錢')}} : {{product.price}}</span>
-                            <span v-else>{{product.price_start}} - {{product.price_end}}</span>
-                            <!-- <del style="" class="subtitle-1 font-weight-thin">฿20,000</del> -->
+                            <span v-else>{{product.price_start}} - {{product.price_end}}</span> 
                         </p>
                     </v-card-actions>
                     <v-divider></v-divider>
                     <p class="text-xl font-bold mt-4 m-1">{{_lang('ประเภทสินค้า','Product Type','產品類別')}}</p>
-                    <!-- <v-btn class="" v-for="category,i in product.category" :key="i" small color="info" rounded>{{category.name}}</v-btn> -->
                     <v-chip v-for="category,i in product.category" :key="i" class="m-1 rounded-lg" color="orange lighten-1" label text-color="white">
                         <v-icon left>
                             mdi-label
@@ -51,9 +49,9 @@
 
             </div>
         </div>
-    </div>
+    </v-card>
 
-    <div class="bg-white rounded p-2 shadow-lg mt-2 overflow-hidden">
+    <v-card class="rounded-lg p-2 mt-4" outlined>
         <div class="pa-2">
             <v-row wrap>
                 <v-col cols="12" sm="6" md="8">
@@ -75,19 +73,17 @@
                 <v-col cols="6" md="4">
                     <div class="ml-5">
                         <div class="text--primary" v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
-                        <div class="flex ">
-                            <button @click="openMap" class="w-full md:w-1/2 text-sm rounded p-2 bg-blue-500 hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-                                <div class="text-white">{{_lang('นำทาง','Navigate','導航')}}</div>
-                            </button>
+                        <div class="flex "> 
+                            <v-btn @click="openMap" depressed rounded color="primary" class="w-full md:w-1/2 p-2" type="submit" dark>{{_lang('นำทาง','Navigate','導航')}}</v-btn>
                         </div>
                     </div>
                 </v-col>
             </v-row>
         </div>
-    </div>
+    </v-card>
 
-    <div class="w-full mt-2 md:w-1/1 xl:w-1/1 p-3 md:p-3 mb-2">
-        <div class="row bg-white rounded p-2 shadow-lg overflow-hidden">
+    <v-card class="w-full mt-2 md:w-1/1 xl:w-1/1 p-3 md:p-3 mb-2 rounded-lg" outlined>
+        <div class="row p-2">
             <div class="col-sm-12 col-xs-12 col-md-12">
                 <v-tabs class="rounded" color="success" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                     <v-tab >{{_lang('รายละเอียด','Detail','詳情')}}</v-tab>
@@ -116,10 +112,12 @@
                 </v-tabs>
             </div>
         </div>
-    </div>
+    </v-card>
 
     <v-divider class="mt-8"></v-divider>
-    <p class="font-weight-light pt-3 text-center te xt-2xl">สินค้าอื่นๆ</p>
+    <!-- Other products
+of this seller -->
+    <p class="font-weight-light pt-3 text-center te xt-2xl">{{_lang('สินค้าอื่นๆ','Address','地址')}}</p>
     <p class="font-weight-light text-center text-2xl text-purple-600">
         ของผู้ขายคนนี้
     </p>

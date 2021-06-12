@@ -19,12 +19,7 @@
 
                             <h2 class="text-base font-semibold" v-if="user">{{user.first_name}} &nbsp; {{user.first_name}}</h2>
                             <h2 v-if="user">@{{user.first_name}}</h2>
-                            <!-- <v-btn @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปโปรไฟล์','Change Profile Image','变更个人资料图片')}}</v-btn> -->
-                            <button @click="$refs.profile.click()" class="w-full btn green1 md:w-auto float-md-right text-white">
-                                <div class="text-white">
-                                    {{_lang('เปลี่ยนรูปโปรไฟล์','Change Profile Image','变更个人资料图片')}}
-                                </div>
-                            </button>
+                            <v-btn @click="$refs.profile.click()" rounded color="success">{{_lang('เปลี่ยนรูปโปรไฟล์','Change Profile Image','变更个人资料图片')}}</v-btn>
                         </div>
 
                         <hr class="mt-6">

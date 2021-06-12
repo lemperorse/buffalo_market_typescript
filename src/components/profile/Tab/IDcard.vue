@@ -4,12 +4,8 @@
     <h2 class="font-semibold text-2xl">{{_lang('ยืนยันตัวตน','ID card','身份证')}}</h2><br>
 
     <form v-if="response" @submit.prevent="updatePersonal()">
-        <v-text-field class="w-full " v-model="profile.personal_id" filled :label="_lang('เลขบัตรประชาชน','ID card number','身份证号码')"></v-text-field>
-        <button type="submit" class="w-full btn orange1 md:w-auto float-md-right text-white">
-            <div class="text-white">
-                <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
-            </div>
-        </button>
+        <v-text-field rounded class="w-full " v-model="profile.personal_id" filled :label="_lang('เลขบัตรประชาชน','ID card number','身份证号码')"></v-text-field>
+         <v-btn large rounded class="w-full md:w-auto float-md-right" type="submit" color="success">{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}</v-btn>
     </form>
 
     <div class="mt-24">
@@ -17,10 +13,8 @@
         <img v-if="profileImage.presonal_image" ref="profileImage" class="mt-4 shadow-xl h-auto w-full   align-middle border-none" :src="profileImage.presonal_image" />
         <img v-else ref="profileImage" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" />
         <input type="file" ref="profile" @change="personalImageChange" style="display:none;" /><br>
-        <!-- <v-btn class="w-full md:w-auto float-md-right" @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปบัตรประชาชน','Change Profile Image','变更个人资料图片')}}</v-btn> -->
-        <button type="submit" @click="$refs.profile.click()" class="w-full btn green1 md:w-auto float-md-right text-white">
-            <div class="text-white">{{_lang('เปลี่ยนรูปบัตรประชาชน','Change Profile Image','变更个人资料图片')}}</div>
-        </button>
+        <v-btn large rounded class="w-full md:w-auto float-md-right" @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปบัตรประชาชน','Change Profile Image','变更个人资料图片')}}</v-btn>
+
     </div>
 
 </div>

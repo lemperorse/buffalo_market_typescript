@@ -28,26 +28,22 @@
         </div>
         <div class="flex pt-2">
             <h2 style="cursor: pointer;" class="text-base md:text-xl logo-font pon" @click="$router.push('/')">
-                <v-icon>em em-water_buffalo</v-icon>&nbsp;{{$txt.name}}
+                &nbsp;{{$txt.name}}
             </h2>
             <form class="w-2/3 flex pl-4" @submit.prevent="goSearch()">
-                <!-- <v-text-field v-model="search" solo :label="$txt.web_nav.searchTxt" dense></v-text-field> -->
-                <!-- <v-btn color="success" dark type="submit" class="ml-2">{{$txt.web_nav.search}}</v-btn> -->
-                <div class="bg-white flex rounded shadow-lg">
+                <div class="bg-white flex rounded-full shadow-lg">
                     <span class="w-auto flex justify-end items-center text-gray-500 p-3">
                         <i class="fas fa-search text-xl"></i>
                     </span>
-                    <input class="w-full rounded" type="text" :placeholder="$txt.web_nav.searchTxt" v-model="search">
-                    <button class="bg-green-400 hover:bg-green-300 rounded text-white m-1 pl-4 pr-4 items-center">
-                        <div class="font-semibold text-xs ">{{$txt.web_nav.search}}</div>
-                    </button>
+                    <input class="w-full " type="text" :placeholder="$txt.web_nav.searchTxt" v-model="search">
+                    <v-btn depressed type="submit" fab color="success">{{$txt.web_nav.search}}</v-btn>
                 </div>
             </form>
         </div>
     </div>
 
     <v-dialog v-model="dialogLang" scrollable :overlay="false" max-width="500px" transition="dialog-transition">
-        <v-card>
+        <v-card class="rounded-lg">
             <v-card-title primary-title>
                 {{$txt.language_choose}}
                 <v-spacer></v-spacer>
@@ -57,9 +53,9 @@
             </v-card-title>
             <v-card-text>
                 <div class="flex flex-col mt-2">
-                    <v-btn @click="changeLanguage('th')" color="success" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> ภาษาไทย</v-btn> <br>
-                    <v-btn @click="changeLanguage('ch')" color="error" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 中文</v-btn><br>
-                    <v-btn @click="changeLanguage('en')" color="primary" class="elevation-0 transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> English</v-btn><br>
+                    <v-btn @click="changeLanguage('th')" depressed rounded color="success" class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> ภาษาไทย</v-btn> <br>
+                    <v-btn @click="changeLanguage('ch')" depressed rounded color="error" class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 中文</v-btn><br>
+                    <v-btn @click="changeLanguage('en')" depressed rounded color="primary" class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> English</v-btn><br>
                 </div>
 
             </v-card-text>

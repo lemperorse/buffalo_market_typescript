@@ -30,9 +30,9 @@
         <br> <br>
         <form v-if="response" @submit.prevent="update()">
             <div class="flex flex-wrap">
-                <v-text-field class="w-full " v-model="form.name" filled :label="_lang('ชื่อทางการค้า','Trade name','商品名')"></v-text-field>
-                <v-text-field class="w-full " v-model="form.farm_address" filled :label="_lang('ที่อยู่ร้านค้า','Shop address','店鋪地址')"></v-text-field>
-                <v-text-field class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地区')"></v-text-field>
+                <v-text-field rounded class="w-full " v-model="form.name" filled :label="_lang('ชื่อทางการค้า','Trade name','商品名')"></v-text-field>
+                <v-text-field rounded class="w-full " v-model="form.farm_address" filled :label="_lang('ที่อยู่ร้านค้า','Shop address','店鋪地址')"></v-text-field>
+                <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地区')"></v-text-field>
 
                 <v-text-field class="w-full " v-model="form.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')"></v-text-field>
 
@@ -40,24 +40,21 @@
                     <MapView :name="'locations'" :center="{'Latitude':form.latitude,'Longitude' :form.longitude }" :locations="[
                     {'Latitude':form.latitude,'Longitude' :form.longitude } ,]" :zoom="18" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
                 </div>
-                <v-text-field class="w-full md:w-1/2" v-model="form.latitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด)','GPS (Latitude)','GPS（緯度')"></v-text-field>
+                <v-text-field rounded class="w-full md:w-1/2" v-model="form.latitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด)','GPS (Latitude)','GPS（緯度')"></v-text-field>
 
-                <v-text-field class="w-full md:w-1/2" v-model="form.longitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)','GPS (Longitude)','GPS（經度）')"></v-text-field>
+                <v-text-field rounded class="w-full md:w-1/2" v-model="form.longitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)','GPS (Longitude)','GPS（經度）')"></v-text-field>
 
                 <div class="flex flex-wrap">
-                    <v-text-field class="w-full md:w-1/2" prepend-inner-icon="mdi-phone" v-model="form.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
-                    <v-text-field class="w-full md:w-1/2" prepend-inner-icon="far fa-envelope" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
-                    <v-text-field class="w-full md:w-1/2" prepend-inner-icon="fab fa-facebook" filled v-model="form.facebook" label="Facebook"></v-text-field>
-                    <v-text-field class="w-full md:w-1/2" prepend-inner-icon="fab fa-line" filled v-model="form.line" label="Line"></v-text-field>
-                    <v-text-field class="w-full " filled v-model="form.other" :label="_lang('อื่นๆ','Other','其他')"></v-text-field>
+                    <v-text-field rounded class="w-full md:w-1/2" prepend-inner-icon="mdi-phone" v-model="form.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
+                    <v-text-field rounded class="w-full md:w-1/2" prepend-inner-icon="far fa-envelope" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
+                    <v-text-field rounded class="w-full md:w-1/2" prepend-inner-icon="fab fa-facebook" filled v-model="form.facebook" label="Facebook"></v-text-field>
+                    <v-text-field rounded class="w-full md:w-1/2" prepend-inner-icon="fab fa-line" filled v-model="form.line" label="Line"></v-text-field>
+                    <v-text-field rounded class="w-full " filled v-model="form.other" :label="_lang('อื่นๆ','Other','其他')"></v-text-field>
                 </div>
-            </div>
-
-            <button type="submit" class="w-full btn orange1 md:w-auto float-md-right text-white">
-                <div class="text-white">
-                    <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
-                </div>
-            </button>
+            </div> 
+            <v-btn large rounded class="w-full md:w-auto float-md-right" type="submit" color="success">
+                <v-icon dark>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+            </v-btn>
         </form>
 
     </div>
@@ -65,12 +62,9 @@
         <v-alert type="info">
             {{_lang('คุณยังไม่มีร้านค้า หากคุณต้องการสร้างร้านค้าเพื่อลงประกาศขายของ ให้กด "สร้างสร้านค้า"','You do not have a store yet.If you want to create a store to post your listings, press "Create Shop".','您还没有商店。如果要创建一个商店来发布您的列表，请按“创建商店”。')}}
         </v-alert>
-
-        <button type="submit" class="w-full btn green1 md:w-auto float-md-right text-white">
-            <div class="text-white">
-                <v-icon dark>mdi-store</v-icon> {{_lang('สร้างร้านค้า','Create a store','建立店铺')}}
-            </div>
-        </button>
+        <v-btn @click="createShop()" large rounded class="w-full md:w-auto float-md-right" type="submit" color="success">
+            <v-icon dark>mdi-store</v-icon>{{_lang('สร้างร้านค้า','Create a store','建立店铺')}}
+        </v-btn>
     </div>
 
 </div>

@@ -1,106 +1,22 @@
 <template>
-<!-- <div>
-    <button @click="$router.go(-1)" class="p-3 text-red-600">
-        <i class="fas fa-arrow-circle-left text-3xl"></i>
-    </button>
-
-    <div class="p-4">
-        <h2 class="text-2xl">ลืมรหัสผ่าน</h2>
-        <form v-if="step==1" @submit.prevent="foundUser()">
-            <v-text-field v-model="form.personal_id" filled label="ระบุเลขบัตรประจำตัวประชาชน"></v-text-field>
-            <v-text-field v-model="form.tel" filled label="เบอร์โทร"></v-text-field>
-            <v-btn type="submit" class="w-full" color="success">ยืนยัน</v-btn>
-        </form>
-
-        <form v-if="step==2" @submit.prevent="changePassword()">
-            <div class="flex flex-wrap">
-                <v-text-field type="password" required prepend-inner-icon="mdi-lock" class="w-full " v-model="formPassword.password" filled :label="_lang('รหัสผ่าน','Password','密码')"></v-text-field>
-                <v-text-field type="password" required prepend-inner-icon="mdi-lock" class="w-full " filled v-model="formPassword.password2" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')"></v-text-field>
-            </div>
-            <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">
-                <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
-            </v-btn>
-        </form>
-    </div>
-
-</div> -->
-<div class="h-full w-full flex flex-col justify-center items-center bg2" >
+<div class="h-full w-full flex flex-col justify-center items-center bg2  pt-20 pb-20 md:pb-0 md:pt-0" >
     <h2 class="text-3xl">{{_lang('ลืมรหัสผ่าน','Forgot password','忘記密碼')}}</h2>
-    <v-card class="w-full md:w-96">
+    <v-card class="w-full md:w-96 rounded-lg">
         <v-card-text>
             <form v-if="step==1" @submit.prevent="foundUser()">
-                <!-- <v-text-field v-model="form.personal_id" filled label="ระบุเลขบัตรประจำตัวประชาชน"></v-text-field>
-                <v-text-field v-model="form.tel" filled label="เบอร์โทร"></v-text-field>
-                <v-btn type="submit" class="w-full" color="success">ยืนยัน</v-btn> -->
-
-                <div class="relative w-full mb-3">
-                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                        {{_lang('เลขบัตรประจำตัวประชาชน','ID card number','身份證號碼')}}
-                    </label>
-                    <div class="mb-3 rounded bg-gray-100 border">
-                        <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                            <i class="far fa-address-card text-lg text-gray-500"></i>
-                        </span>
-                        <input required v-model="form.username" type="text" :placeholder="_lang('ระบุเลขบัตรประจำตัวประชาชน','Specify the ID card number','指定身份證號')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                    </div>
-                </div>
-
-                <div class="relative w-full mb-3">
-                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                        {{_lang('เบอร์โทร','Phone number','電話號碼')}}
-                    </label>
-                    <div class="mb-3 rounded bg-gray-100 border">
-                        <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                            <i class="fas fa-mobile-alt text-lg text-gray-500"></i>
-                        </span>
-                        <input required v-model="form.username" type="text" :placeholder="_lang('เบอร์โทร','Phone number','電話號碼')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                    </div>
-                </div>
-
-                <button type="submit" class="w-full btn green1">
-                    <div class="text-white">{{_lang('ยืนยัน','Confirm','確認')}}</div>
-                </button>
-
+                <div > 
+                    <v-text-field v-model="form.personal_id" required type="text" :label="_lang('กรอกเลขบัตรประจำตัวประชาชน','ID card number','身份證號碼')" filled rounded></v-text-field>
+                    <v-text-field v-model="form.tel" required type="text" :label="_lang('กรอกเบอร์โทร','Phone number','電話號碼')" filled rounded></v-text-field>
+                </div> 
+                <v-btn rounded large class="w-full" type="submit" color="success">{{_lang('ยืนยัน','Confirm','確認')}}</v-btn>
             </form>
 
             <form v-if="step==2" @submit.prevent="changePassword()">
-
-                <!-- <div class="flex flex-wrap">
-                    <v-text-field type="password" required prepend-inner-icon="mdi-lock" class="w-full " v-model="formPassword.password" filled :label="_lang('รหัสผ่าน','Password','密码')"></v-text-field>
-                    <v-text-field type="password" required prepend-inner-icon="mdi-lock" class="w-full " filled v-model="formPassword.password2" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')"></v-text-field>
+                <div>
+                    <v-text-field required v-model="formPassword.password" type="password" :label="_lang('รหัสผ่าน','Password','密码')" filled rounded></v-text-field>
+                    <v-text-field required v-model="formPassword.password2" type="password" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')" filled rounded></v-text-field>
                 </div>
-                <v-btn type="submit" class="w-full md:w-auto float-md-right" x-large color="warning">
-                    <v-icon>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
-                </v-btn> -->
-
-                <div class="relative w-full mb-3">
-                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                        {{_lang('รหัสผ่าน','Password','密码')}}
-                    </label>
-                    <div class="mb-3 rounded bg-gray-100 border">
-                        <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                            <i class="fas fa-key text-lg text-gray-500"></i>
-                        </span>
-                        <input required v-model="formPassword.password" type="password" :placeholder="_lang('รหัสผ่าน','Password','密码')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                    </div>
-                </div>
-
-                <div class="relative w-full mb-3">
-                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                        {{_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')}}
-                    </label>
-                    <div class="mb-3 rounded bg-gray-100 border">
-                        <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                            <i class="fas fa-key text-lg text-gray-500"></i>
-                        </span>
-                        <input required v-model="formPassword.password2" type="password" :placeholder="_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                    </div>
-                </div>
-
-                <button type="submit" class="w-full btn green1">
-                    <div class="text-white">{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}</div>
-                </button>
-
+                <v-btn rounded large class="w-full" type="submit" color="success">{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}</v-btn>
             </form>
         </v-card-text> 
     </v-card>
@@ -167,30 +83,5 @@ export default class Forgot extends Vue {
     background-attachment: fixed;
     background-size: cover; 
 }
-
-.btn {
-    border-radius: 5px;
-    padding: 15px 25px;
-    font-size: 22px;
-    text-decoration: none; 
-    color: #fff;
-    position: relative;
-    display: inline-block;
-}
-
-.btn:active {
-    transform: translate(0px, 5px);
-    -webkit-transform: translate(0px, 5px);
-    box-shadow: 0px 1px 0px 0px;
-} 
-
-.green1 {
-    background-color: #0EAD69;
-    box-shadow: 0px 5px 0px 0px #283D3B;
-}
-
-.green1:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
-}
+ 
 </style>

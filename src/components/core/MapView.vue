@@ -2,18 +2,6 @@
 <div class="map" ref="googleMap">
 
 </div>
-<!-- <v-dialog v-model="dialog" scrollable fullscreen persistent :overlay="false" max-width="500px" transition="dialog-transition">
-      <v-card>
-        <v-card-title primary-title>
-          {{detail.name}}
-        </v-card-title>
-        <v-card-text>
-          <p> {{detail.address}}</p>
-          <p> {{detail.detail}}</p>
-        </v-card-text>
-      </v-card>
-    </v-dialog>  -->
-<!-- -->
 </template>
 
 <script lang="ts">

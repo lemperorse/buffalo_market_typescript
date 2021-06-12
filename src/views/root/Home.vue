@@ -1,12 +1,8 @@
 <template>
 <div>
     <div class="bg2">
-        <div class="container mx-auto mt-4"> 
-            <Popup />
-            <div class="mb-2 bg-white rounded shadow-md rounded-t">
-                <Category />
-            </div>
-            <v-toolbar class="mb-2 rounded elevation-0">
+        <div class="container mx-auto mt-4">
+            <v-toolbar class="mb-2 rounded-lg " >
                 <template>
                     <v-tabs class="rounded-lg bg3" color="success" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                         <v-tab class="font-weight-black">{{_lang('ประกาศ','Announcement','產品')}}</v-tab>
@@ -28,20 +24,16 @@
 </template>
 
 <script>
-import Buy from "@/components/core/Buy.vue";
-import Sell from "@/components/core/Sell.vue";
+import Buy from "@/components/core/Buy.vue"; 
 import World from "@/components/core/World.vue";
 import Popup from "@/components/core/Popup.vue"
-import Category from "@/components/core/Category.vue"
 import { Component, Vue } from "vue-property-decorator";
 export default {
     name: "home-page",
     components: {
-        Buy,
-        Sell,
+        Buy, 
         World,
         Popup,
-        Category
     },
     data() {
         return {

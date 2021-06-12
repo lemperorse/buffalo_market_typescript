@@ -1,79 +1,17 @@
 <template>
  <div class="h-full w-full flex flex-col justify-center items-center bg2">
      <h2 @click="$router.push('/')" class="text-3xl mt-8 mb-4">{{_lang('สมัครสมาชิก','Register','寄存器')}}</h2>
-     <v-card class="w-full md:w-96">
+     <v-card class="w-full md:w-96 rounded-lg">
          <v-card-text>
              <form @submit.prevent="register">
-                 <!-- <v-text-field required v-model="form.username" filled label="ชื่อผู้ใช้"></v-text-field>
-                <v-text-field type="password" required v-model="form.password" filled label="รหัสผ่าน"></v-text-field>
-                <v-text-field type="password" required v-model="form.password2" filled label="ยืนยันรหัสผ่าน"></v-text-field>
-                <v-text-field required v-model="form.first_name" filled label="ชื่อ"></v-text-field>
-                <v-text-field required v-model="form.last_name" filled label="สกุล"></v-text-field>
-                <v-btn class="w-full" type="submit" large color="success">สมัครสมาชิก</v-btn> -->
-                 <div class="relative w-full mb-3">
-                     <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                         {{_lang('ชื่อผู้ใช้งาน','Username','用戶名')}}
-                     </label>
-                     <div class="mb-3 rounded bg-gray-100 border">
-                         <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                             <i class="fas fa-user text-lg text-gray-500"></i>
-                         </span>
-                         <input required v-model="form.username" type="text" :placeholder="_lang('กรุณาใส่ชื่อผู้ใช้','Please enter username','請輸入用戶名')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                     </div>
-                 </div>
-
-                 <div class="relative w-full mb-3">
-                     <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                         {{_lang('รหัสผ่าน','Password','密碼')}}
-                     </label>
-                     <div class="mb-3 rounded bg-gray-100 border">
-                         <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                             <i class="fas fa-key text-lg text-gray-500"></i>
-                         </span>
-                         <input required v-model="form.password" type="password" :placeholder="_lang('กรุณาใส่รหัสผ่าน','Please enter password','請輸入密碼')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                     </div>
-                 </div>
-
-                 <div class="relative w-full mb-3">
-                     <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                         {{_lang('ยืนยันรหัสผ่าน','Confirm password','確認密碼')}}
-                     </label>
-                     <div class="mb-3 rounded bg-gray-100 border">
-                         <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                             <i class="fas fa-key text-lg text-gray-500"></i>
-                         </span>
-                         <input required v-model="form.password2" type="password" :placeholder="_lang('กรุณายืนยันรหัสผ่าน','Please confirm password','請確認密碼。')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                     </div>
-                 </div>
-
-                 <div class="relative w-full mb-3">
-                     <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                         {{_lang('ชื่อ','Firstname','名字')}}
-                     </label>
-                     <div class="mb-3 rounded bg-gray-100 border">
-                         <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                             <i class="far fa-address-card text-lg text-gray-500"></i>
-                         </span>
-                         <input required v-model="form.first_name" type="text" :placeholder="_lang('กรุณาใส่ชื่อจริง','Please enter your first name','請輸入您的名字')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                     </div>
-                 </div>
-
-                 <div class="relative w-full mb-3">
-                     <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                         {{_lang('นามสกุล','Lastname','姓')}}
-                     </label>
-                     <div class="mb-3 rounded bg-gray-100 border">
-                         <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1">
-                             <i class="far fa-address-card text-lg text-gray-500"></i>
-                         </span>
-                         <input required v-model="form.last_name" type="text" :placeholder="_lang('กรุณาใส่นามสกุล','Please enter last name','請輸入姓氏')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                     </div>
-                 </div>
-
-                 <button type="submit" class="w-full btn green1">
-                     <div class="text-white">{{_lang('สมัครสมาชิก','Register','寄存器')}}</div>
-                 </button>
-
+                 <div> 
+                    <v-text-field required v-model="form.username" type="text" :label="_lang('ชื่อผู้ใช้งาน','Username','用戶名')" filled rounded></v-text-field>
+                    <v-text-field required v-model="form.password" type="password" :label="_lang('รหัสผ่าน','Password','密碼')" filled rounded></v-text-field>
+                    <v-text-field required v-model="form.password2" type="password" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','確認密碼')" filled rounded></v-text-field>
+                    <v-text-field required v-model="form.first_name" type="text" :label="_lang('ชื่อ','Firstname','名字')" filled rounded></v-text-field>
+                    <v-text-field required v-model="form.last_name" type="text" :label="_lang('นามสกุล','Lastname','姓')" filled rounded></v-text-field>
+                    <v-btn rounded large class="w-full" type="submit" color="success">{{_lang('สมัครสมาชิก','Register','寄存器')}}</v-btn>
+                 </div>  
              </form>
          </v-card-text>
          <v-card-actions> 

@@ -5,26 +5,24 @@
 
     <form @submit.prevent="saveUser()">
         <div class="flex flex-wrap">
-            <v-text-field class="w-full md:w-1/2" disabled v-model="form.username" filled :label="_lang('ชื่อผู้ใช้','Username','用户名')"></v-text-field>
-            <v-text-field class="w-full md:w-1/2" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
-            <v-select filled item-value="id" :item-text="_lang('value_th','value_en','value_ch')" class="w-full md:w-1/5" :items="choices.prefix" v-model="profile.prefix" :label="_lang('คำนำหน้า','Prefix','字首')"></v-select>
-            <v-text-field class="w-full md:w-2/5" filled v-model="form.first_name" :label="_lang('ชื่อจริง','First Name','名字')"></v-text-field>
-            <v-text-field class="w-full md:w-2/5" filled v-model="form.last_name" :label="_lang('นามสกุล','Last Name','姓')"></v-text-field>
+            <v-text-field rounded class="w-full md:w-1/2" disabled v-model="form.username" filled :label="_lang('ชื่อผู้ใช้','Username','用户名')"></v-text-field>
+            <v-text-field rounded class="w-full md:w-1/2" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
+            <v-select rounded filled item-value="id" :item-text="_lang('value_th','value_en','value_ch')" class="w-full md:w-1/5" :items="choices.prefix" v-model="profile.prefix" :label="_lang('คำนำหน้า','Prefix','字首')"></v-select>
+            <v-text-field rounded class="w-full md:w-2/5" filled v-model="form.first_name" :label="_lang('ชื่อจริง','First Name','名字')"></v-text-field>
+            <v-text-field rounded class="w-full md:w-2/5" filled v-model="form.last_name" :label="_lang('นามสกุล','Last Name','姓')"></v-text-field>
             <hr>
-            <v-text-field class="w-full md:w-1/2" type="date" filled v-model="profile.birthday" :label="_lang('วันเกิด','Birthday','生日')"></v-text-field>
-            <v-text-field class="w-full md:w-1/2" disabled filled v-model="profile.age" :label="_lang('อายุ','Age','年齡')"></v-text-field>
+            <v-text-field rounded class="w-full md:w-1/2" type="date" filled v-model="profile.birthday" :label="_lang('วันเกิด','Birthday','生日')"></v-text-field>
+            <v-text-field rounded class="w-full md:w-1/2" disabled filled v-model="profile.age" :label="_lang('อายุ','Age','年齡')"></v-text-field>
 
-            <v-text-field class="w-full " filled v-model="profile.address" :label="_lang('ที่อยู่','Address','地址')"></v-text-field>
+            <v-text-field rounded class="w-full " filled v-model="profile.address" :label="_lang('ที่อยู่','Address','地址')"></v-text-field>
 
-            <v-text-field class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地區')"></v-text-field>
-            <v-text-field class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')"></v-text-field>
+            <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地區')"></v-text-field>
+            <v-text-field rounded class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')"></v-text-field>
 
         </div>
-        <button type="submit" class="w-full btn orange1 md:w-auto float-md-right text-white">
-            <div class="text-white">
-                <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
-            </div>
-        </button>
+        <v-btn large rounded class="w-full md:w-auto float-md-right" type="submit" color="success">
+            <v-icon dark>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
+        </v-btn>
 
     </form>
 </div>

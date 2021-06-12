@@ -4,39 +4,16 @@
     <h2 @click="$router.push('/')" class="text-3xl mt-8">{{_lang('ยินดีต้อนรับเข้าสู่','Welcome to','欢迎来到')}}</h2>
     <h2 @click="$router.push('/')" class="font-semibold text-2xl text-left"> {{_lang('ตลาดควาย กรุณาเข้าสู่ระบบ','Buffalo Market Please login','布法罗市场请登录')}}</h2><br>
 
-    <div class="w-full md:w-96 shadow-xl rounded bg-white mb-6">
+    <v-card class="w-full md:w-96 shadow-xl rounded-lg mb-6">
         <v-card-text>
-            <form @submit.prevent="login()" class="flex flex-col p-3">
-                <!-- <v-text-field v-model="form.username" outlined :label="_lang('ชื่อผู้ใช้','Username','用户名')"></v-text-field> -->
-                <!-- <v-text-field type="password" v-model="form.password" outlined :label="_lang('รหัสผ่าน','Password','密码')"></v-text-field> -->
-                <!-- <v-btn type="submit" x-large color="success">{{_lang('เข้าสู่ระบบ','Login','登录')}}</v-btn> -->
-                <div class="relative w-full mb-3">
-                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                        {{_lang('ชื่อผู้ใช้','Username','用户名')}}
-                    </label>
-                    <div class="mb-3 rounded bg-gray-100 border ">
-                        <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                            <i class="fas fa-user text-lg text-gray-500"></i>
-                        </span>
-                        <input v-model="form.username" required type="text" :placeholder="_lang('กรุณาใส่ชื่อผู้ใช้','Please enter username','請輸入用戶名')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                    </div>
+            <form @submit.prevent="login()" class="flex flex-col p-3"> 
+                <div class="w-full mb-3">
+                    <v-text-field v-model="form.username" required type="text"  :label="_lang('กรุณาใส่ชื่อผู้ใช้','Please enter username','請輸入用戶名')" filled rounded></v-text-field>
                 </div>
-
-                <div class="relative w-full mb-3">
-                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2">
-                        {{_lang('รหัสผ่าน','Password','密碼')}}
-                    </label>
-                    <div class="mb-3 rounded bg-gray-100 border">
-                        <span class="mt-1.5 h-full leading-snug font-normal text-center absolute rounded w-8 pl-2 py-1 ">
-                            <i class="fas fa-key text-lg text-gray-500"></i>
-                        </span>
-                        <input v-model="form.password" required type="password" :placeholder="_lang('กรุณาใส่รหัสผ่าน','Please enter password','請輸入密碼')" class="p-3 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-green-500 rounded" />
-                    </div>
-                </div>
-                <button type="submit" class="w-full btn green1">
-                    <div class="text-white">{{_lang('เข้าสู่ระบบ','Login','登录')}}</div>
-                </button>
-
+                <div class="w-full mb-3">
+                    <v-text-field v-model="form.password" required type="password" :label="_lang('กรุณาใส่รหัสผ่าน','Please enter password','請輸入密碼')" filled rounded></v-text-field>
+                </div> 
+                <v-btn rounded large class="w-full" type="submit" color="success">{{_lang('เข้าสู่ระบบ','Login','登录')}}</v-btn>
             </form>
         </v-card-text>
         <v-card-actions>
@@ -46,7 +23,7 @@
                 <v-btn @click="$router.push('/register')" text color="primary"><span v-html="_lang('สมาชิกใหม่? <b>ลงทะเบียน</b> ที่นี่','New member? <b> Register </b> here','新成员？ <b>在</ b>注册')"></span></v-btn>
             </div>
         </v-card-actions>
-    </div>
+    </v-card>
 
 </div>
 </template>
@@ -96,30 +73,4 @@ export default class Login extends Vue {
     background-size: cover;
 }
 
-/* start da css for da buttons */
-.btn {
-    border-radius: 5px;
-    padding: 15px 25px;
-    font-size: 22px;
-    text-decoration: none;
-    color: #fff;
-    position: relative;
-    display: inline-block;
-}
-
-.btn:active {
-    transform: translate(0px, 5px);
-    -webkit-transform: translate(0px, 5px);
-    box-shadow: 0px 1px 0px 0px;
-}
-
-.green1 {
-    background-color: #0EAD69;
-    box-shadow: 0px 5px 0px 0px #283D3B;
-}
-
-.green1:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
-}
 </style>

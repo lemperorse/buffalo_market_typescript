@@ -1,31 +1,30 @@
 <template>
-  <div> 
-    <v-app  >
-      <WebNav /><br><br><br><br>
-         <router-view />  
-         <Footer></Footer>
+<div>
+    <v-app>
+        <WebNav /><br><br><br><br>
+        <router-view />
+        <Footer></Footer>
     </v-app>
-     
-  </div>
+
+</div>
 </template>
 
-<script lang="ts"> 
+<script lang="ts">
+ import {
+     Component,
+     Vue,
+ } from 'vue-property-decorator';
+ import WebNav from '../../components/core/WebNav.vue'
+ import Footer from '../../components/core/Footer.vue'
+ @Component({
+     components: {
+         WebNav,
+         Footer
+     },
+     computed: {}
+ })
 
-import {
-  Component,
-  Vue,
-} from 'vue-property-decorator'; 
-import WebNav from '../../components/core/WebNav.vue'
-import Footer from '../../components/core/Footer.vue'
-@Component({
-  components: {  
-    WebNav,
-    Footer
-    },
-    computed: {}
-})
+ export default class Test extends Vue {
 
-export default class Test extends Vue { 
-
-}
+ }
 </script>

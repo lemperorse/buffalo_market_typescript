@@ -2,15 +2,15 @@
 <div class="px-4 py-5 flex-auto">
     <div class="flex-auto lg:px-10 py-10 pt-0">
         <form @submit.prevent="storeProduct()">
-            <v-text-field type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อ','Name','名称')"></v-text-field>
-            <v-text-field type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')"></v-text-field>
-            <v-select :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select>
+            <v-text-field rounded type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อ','Name','名称')"></v-text-field>
+            <v-text-field rounded type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')"></v-text-field>
+            <v-select rounded :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select>
 
-            <v-select :items="choices.price_type" item-text="name" item-value="id" v-model="product.price_type" class="w-full " filled :label="_lang('ประเภทราคา','Price Type','价格类型')"></v-select>
+            <v-select rounded :items="choices.price_type" item-text="name" item-value="id" v-model="product.price_type" class="w-full " filled :label="_lang('ประเภทราคา','Price Type','价格类型')"></v-select>
 
-            <v-text-field v-if="product.price_type" type="text" v-model="product.price" class="w-full " filled :label="_lang('ราคา','Price','价钱')"></v-text-field>
-            <v-text-field v-if="!product.price_type" type="text" v-model="product.price_start" class="w-full " filled :label="_lang('ราคาเริ่มต้น','PriceStart','价格开始')"></v-text-field>
-            <v-text-field v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคา End','PriceEnd','价格结束')"></v-text-field>
+            <v-text-field rounded v-if="product.price_type" type="text" v-model="product.price" class="w-full " filled :label="_lang('ราคา','Price','价钱')"></v-text-field>
+            <v-text-field rounded v-if="!product.price_type" type="text" v-model="product.price_start" class="w-full " filled :label="_lang('ราคาเริ่มต้น','PriceStart','价格开始')"></v-text-field>
+            <v-text-field rounded v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคา End','PriceEnd','价格结束')"></v-text-field>
             <VueFileAgent v-model="file"  @select="filesSelected($event)" :multiple="true" :maxSize="'5MB'" :deletable="true" :maxFiles="5"  :accept="'image/*,video/*'" ></VueFileAgent> 
             <pre>{{product.file1}}</pre>
             <!-- <v-text-field type="file" v-model="product.file1" class="w-full " filled :label="_lang('ไฟล์ 1','File1','文件1')"></v-text-field>
@@ -18,22 +18,17 @@
             <v-text-field type="file" v-model="product.file3" class="w-full " filled :label="_lang('ไฟล์ 3','File3','文件3')"></v-text-field>
             <v-text-field type="file" v-model="product.file4" class="w-full " filled :label="_lang('ไฟล์ 4','File4','文件4')"></v-text-field>
             <v-text-field type="file" v-model="product.file5" class="w-full " filled :label="_lang('ไฟล์ 5','File5','文件5')"></v-text-field> -->
-            <v-select :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full " filled :label="_lang('SellType','SellType','销售类型')"></v-select>
-            <v-text-field v-if="product.sell_type == 0" type="date" v-model="product.buy_date" class="w-full " filled :label="_lang('วันที่ซื้อ','Date of purchase','购买日期')"></v-text-field>
+            <v-select rounded :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full pt-3" filled :label="_lang('ประเภทการขาย','Sales type','銷售類型')"></v-select>
+            <v-text-field rounded v-if="product.sell_type == 0" type="date" v-model="product.buy_date" class="w-full pt-3" filled :label="_lang('วันที่สิ้นสุดประกาศขาย','Sale end date','銷售結束日期')"></v-text-field>
 
-            <div>
+            <div class="pt-3 pb-3">
                 <div v-for="category,index in categories" :key="index">
                     <h2>{{category.name}}</h2>
                     <v-checkbox class="-mb-4" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
                 </div>
 
             </div>
-            <!-- <v-btn type="submit" x-large color="success" class="w-full">{{_lang('บันทึก','Save','保存')}}</v-btn> -->
-            <button type="submit" class="w-full btn green mt-6">
-                <div class="text-white">
-                    <v-icon dark>mdi-floppy</v-icon> {{_lang('บันทึก','Save','保存')}}
-                </div>
-            </button>
+            <v-btn type="submit" rounded large color="success" class="w-full">{{_lang('บันทึก','Save','保存')}}</v-btn> 
         </form>
     </div>
 </div>

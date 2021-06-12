@@ -1,29 +1,29 @@
 <template>
 <div>
-    <div class="row">
+    <div class="row pb-6">
         <div class="col-md-3 col-sm-3 col-xs-12 ">
-            <v-expansion-panels multiple>
+            <v-expansion-panels multiple >
                 <v-expansion-panel>
-                    <v-expansion-panel-header class="bgtext1 shadow ">{{_lang('คลิกเพื่อแสดงตัวกรอง','Click to display the filter','單擊以顯示過濾器。')}}</v-expansion-panel-header>
+                    <v-expansion-panel-header class="bgtext1 shadow">{{_lang('คลิกเพื่อแสดงตัวกรอง','Click to display the filter','單擊以顯示過濾器。')}}</v-expansion-panel-header>
                     <v-expansion-panel-content class="bg3 pt-4">
-                        <p class="bgtext rounded shadow-lg p-3">{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</p>
+                        <p class="bgtext rounded-full shadow-lg p-3">{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</p>
                         <v-radio-group class="p-3" v-model="productType">
                             <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
                         </v-radio-group>
                         <div v-for="category,index in categories" :key="index" class="pb-6">
-                            <h2 class="p-3 bgtext rounded shadow-lg">{{category.name}}</h2>
+                            <h2 class="p-3 bgtext rounded-full shadow-lg">{{category.name}}</h2>
                             <v-checkbox class="pl-3 -mb-8" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
                         </div>
-                        <p class="bgtext rounded shadow-lg p-3">{{_lang('ระยะเวลาการขาย','Time period','時間段')}}</p>
+                        <p class="bgtext rounded-full shadow-lg p-3">{{_lang('ระยะเวลาการขาย','Time period','時間段')}}</p>
                         <v-radio-group class="p-3" v-model="priceType">
                             <v-radio v-for="sale,n in saleType" :key="n" :label="sale.name" :value="sale.id"></v-radio>
                         </v-radio-group>
-                        <p class="bgtext rounded shadow-lg p-3">{{_lang('ราคา','Price','價錢')}}</p>
+                        <p class="bgtext rounded-full shadow-lg p-3">{{_lang('ราคา','Price','價錢')}}</p>
                         <div class="flex p-3">
                             <v-text-field v-model="price_low" name="name" id="id" :label="_lang('ต่ำสุด','Lowest','最低的')"></v-text-field> - <v-text-field v-model="price_height" name="name" id="id" :label="_lang('สูงสุด','Maximum','最大')"></v-text-field>
                             <v-btn rounded flat class="mt-2" @click="changepriceType" color="success" depressed>{{_lang('ตกลง','OK','好')}}</v-btn>
                         </div>
-                        <p class="bgtext rounded shadow-lg p-3">{{_lang('จังหวัด','Province','省')}}</p>
+                        <p class="bgtext rounded-full shadow-lg p-3">{{_lang('จังหวัด','Province','省')}}</p>
                         <v-autocomplete class="p-3" item-text="name" item-value="id" @change="loadProducts()" :label="_lang('จังหวัด','Province','省')" :items="provinces" v-model="province"></v-autocomplete>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -34,7 +34,7 @@
             <div class="flex flex-row flex-wrap">
                 <div class="w-1/2 md:w-1/5 cursor-pointer p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                     <v-hover v-slot:default="{ hover }">
-                        <div class="mx-auto rounded-lg overflow-hidden bg-white shadow-lg ">
+                        <v-card class="rounded-lg" outlined>
                             <v-img class="white--text align-end w-full rounded-t-lg h-32"   :src="ximg(pu.file1)">
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
@@ -49,7 +49,7 @@
                                     <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
                                 </div> 
                             </div> 
-                        </div>
+                        </v-card>
                     </v-hover>
                 </div>
             </div> 

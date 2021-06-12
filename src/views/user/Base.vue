@@ -1,9 +1,10 @@
 <template>
 <div>
-     <v-app  >
-      <WebNav />  
-         <router-view class="pt-32" />     <CityDialog />
-         <Footer></Footer>
+    <v-app>
+        <WebNav />
+        <router-view class="pt-32" />
+        <CityDialog />
+        <Footer></Footer>
     </v-app>
 
 </div>
@@ -16,7 +17,9 @@ import WebNav from '../../components/core/WebNav.vue'
 import Footer from '../../components/core/Footer.vue'
 @Component({
     components: {
-         WebNav, CityDialog,Footer
+        WebNav,
+        CityDialog,
+        Footer
     },
     computed: {}
 })

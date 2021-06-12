@@ -3,7 +3,7 @@
     <div class="container mx-auto bg-gray-100">
         <div class="flex flex-wrap">
             <div class="w-full">
-                <div class="mb-2 relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded border-l-4 border-green-500">
+                <v-card class="rounded-lg" outlined>
                     <div class="px-4 py-5 flex-auto">
                         <div class="text-center">
                             <div class="text-blue-500">
@@ -11,10 +11,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded border-l-4 border-green-500">
-                    <PostBuyEdit />
+                </v-card>
+                <div class="pt-3">
+                    <v-card class="rounded-lg" outlined>
+                        <PostBuyEdit />
+                    </v-card>
                 </div>
 
             </div>
@@ -33,7 +34,7 @@ export default {
     },
     data() {
         return {
-            
+
         }
     }
 };

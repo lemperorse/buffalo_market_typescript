@@ -2,24 +2,11 @@
 <div>
     <v-app>
         <div class="bg-gray-100">
-            <div class="container mx-auto md:mt-4 ">
-
-                <v-toolbar class="mb-2 rounded-lg elevation-1">
-                    <template>
-                        <v-tabs class="border rounded-lg " color="error" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
-                            <v-tab class="font-weight-black">ประกาศซื้อ</v-tab>
-                            <v-tab class="font-weight-black">ประกาศขาย</v-tab>
-                            <v-tab class="font-weight-black">แผนที่</v-tab>
-                        </v-tabs>
-                    </template>
-                </v-toolbar>
+            <div class="container mx-auto md:mt-4 "> 
                 <v-tabs-items v-model="tabs">
                     <v-tab-item class="bg-gray-100">
                         <Buy />
-                    </v-tab-item>
-                    <v-tab-item class="bg-gray-100">
-                        <Sell />
-                    </v-tab-item>
+                    </v-tab-item> 
                     <v-tab-item class="bg-gray-100">
                         <World />
                     </v-tab-item>
@@ -32,15 +19,13 @@
 </template>
 
 <script>
-import Buy from "@/components/core/Buy.vue";
-import Sell from "@/components/core/Sell.vue";
+import Buy from "@/components/core/Buy.vue"; 
 import World from "@/components/core/World.vue";
 import { Component, Vue } from "vue-property-decorator";
 export default {
     name: "home-page",
     components: {
-        Buy,
-        Sell,
+        Buy, 
         World,
     },
     data() {

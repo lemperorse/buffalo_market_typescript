@@ -24,17 +24,7 @@ const userRouter: any = [
         path: '/user/productdetail',
         name: 'productdetail',
         component: getView('ProductDetail')
-    },
-    {
-        path: '/user/buyproduct',
-        name: 'buyproduct',
-        component: getView('BuyProduct')
-    },
-    {
-        path: '/user/sellerdetail',
-        name: 'sellerdetail',
-        component: getView('SellerDetail')
-    },
+    }, 
     //*****************************หน้าจัดการประกาศ******************************** */
     {
         path: '/user/post',

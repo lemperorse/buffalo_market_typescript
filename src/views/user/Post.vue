@@ -13,7 +13,7 @@
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{_lang('ประกาศของ','Announcement of','公告')}} {{user.first_name}}
         </h2>
-        <v-toolbar class="mb-4 rounded elevation-0">
+        <v-toolbar class="mb-4 rounded-lg elevation-0">
             <template>
                 <v-tabs class="rounded" color="success" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                     <v-tab class="font-weight-black">{{_lang('ประกาศซื้อ','Buy','購買')}}</v-tab>

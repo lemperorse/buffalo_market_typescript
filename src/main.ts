@@ -7,10 +7,7 @@ import store from './store'
 import vuetify from './plugins/vuetify';
  
 import './plugins/varible';
-Vue.config.productionTip = false
-import BootstrapVue from "bootstrap-vue";
-
-Vue.use(BootstrapVue);
+Vue.config.productionTip = false 
 import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg.css'
 Vue.use(VueFormGenerator)

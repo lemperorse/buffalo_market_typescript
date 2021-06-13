@@ -21,7 +21,7 @@
             </v-col>
         </v-row> 
         
-        <div class="row">
+        <div class="row p-2">
             <div class="w-1/2 md:w-1/5 cursor-pointer p-2 " v-if="products" v-for="product,i in products" :key="i">
                 <v-hover v-slot:default="{ hover }">
                     <v-card class="rounded-lg" outlined>

@@ -20,7 +20,7 @@
             <v-text-field rounded class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')"></v-text-field>
 
         </div>
-        <v-btn large rounded class="w-full md:w-auto float-md-right" type="submit" color="success">
+        <v-btn x-large rounded class="w-full" type="submit" color="success">
             <v-icon dark>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
         </v-btn>
 

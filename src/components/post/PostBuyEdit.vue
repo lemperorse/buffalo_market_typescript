@@ -120,6 +120,7 @@ export default class Saller extends Vue {
         await this.setProductKey()
         let store = await Core.postHttp(`/api/default/product/`, this.product)
         if (store.id) { alert("Save product success") }
+        await this.$router.go(-1)
     }
 
     public async updateProduct() {
@@ -132,6 +133,7 @@ export default class Saller extends Vue {
         if (store.id) {
             await this.storeImage(store.id);
             alert("Save product success")
+            await this.$router.go(-1)
         }
     }
 

@@ -1,28 +1,28 @@
 <template>
 <div  class="bg2">
     <v-card class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg" outlined>
-        <div class="row ">
+        <div class="row "> 
             <div class="col-md-5 col-sm-5 col-xs-12">
-                <v-carousel class="rounded">
+                <v-carousel class="rounded" height="400" width="300" cycle>
                     <v-carousel-item>
-                        <img :src="product.file1" alt="" srcset="">
+                        <img :src="$server+'/'+product.file1" class="h-full w-full" alt="" srcset="">
                     </v-carousel-item>
                     <v-carousel-item>
-                        <img :src="product.file2" alt="" srcset="">
+                        <img :src="$server+'/'+product.file2" class="h-full w-full" alt="" srcset="">
                     </v-carousel-item>
                     <v-carousel-item>
-                        <img :src="product.file3" alt="" srcset="">
+                        <img :src="$server+'/'+product.file3" class="h-full w-full" alt="" srcset="">
                     </v-carousel-item>
                     <v-carousel-item>
                         <video class="w-full h-full" controls>
-                            <source :src="product.file4" type="video/mp4">
-                            <source :src="product.file4" type="video/ogg">
+                            <source :src="$server+'/'+product.file4" class="h-full w-full" type="video/mp4">
+                            <source :src="$server+'/'+product.file4" class="h-full w-full" type="video/ogg">
                         </video>
                     </v-carousel-item>
                     <v-carousel-item>
                         <video class="w-full h-full" controls>
-                            <source :src="product.file5" type="video/mp4">
-                            <source :src="product.file5" type="video/ogg">
+                            <source :src="$server+'/'+product.file5" class="h-full w-full" type="video/mp4">
+                            <source :src="$server+'/'+product.file5" class="h-full w-full" type="video/ogg">
                         </video>
                     </v-carousel-item>
                 </v-carousel>
@@ -58,7 +58,7 @@
                     <v-row wrap>
                         <div class="pa-2 ml-5">
                             <v-avatar size="55">
-                                <img src="https://cache.gmo2.sistacafe.com/images/uploads/summary/image/65745/9738ebc7fc580672cfc0053c43d9ad2e.jpg" />
+                                <img :src="$server+'/'+profile.presonal_image" />
                             </v-avatar>
                         </div>
 

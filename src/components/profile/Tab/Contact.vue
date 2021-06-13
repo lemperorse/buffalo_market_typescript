@@ -7,13 +7,13 @@
     <div>
         <form @submit.prevent="updatePersonal()">
             <div class="flex flex-wrap">
-                <v-text-field rounded prepend-inner-icon="mdi-phone" class="w-full " v-model="profile.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
+                <v-text-field rounded type="number" prepend-inner-icon="mdi-phone" class="w-full " v-model="profile.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
                 <v-text-field rounded prepend-inner-icon="far fa-envelope" class="w-full " filled v-model="profile.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
                 <v-text-field rounded prepend-inner-icon="fab fa-facebook" class="w-full " filled v-model="profile.facebook" label="Facebook"></v-text-field>
                 <v-text-field rounded prepend-inner-icon="fab fa-line" class="w-full " filled v-model="profile.line" label="Line"></v-text-field>
                 <v-text-field rounded class="w-full " filled v-model="profile.other" :label="_lang('อื่นๆ','Other','其他')"></v-text-field>
             </div>
-            <v-btn large rounded class="w-full md:w-auto float-md-right" type="submit" color="success">
+            <v-btn large rounded class="w-full" type="submit" color="success">
                 <v-icon dark>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
             </v-btn>
 

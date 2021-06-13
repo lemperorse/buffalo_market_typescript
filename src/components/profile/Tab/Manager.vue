@@ -10,7 +10,7 @@
                 <v-text-field rounded type="password" required prepend-inner-icon="mdi-lock" class="w-full "   v-model="formPassword.password" filled :label="_lang('รหัสผ่าน','Password','密码')"></v-text-field>
                 <v-text-field rounded type="password" required prepend-inner-icon="mdi-lock"  class="w-full " filled v-model="formPassword.password2" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')"></v-text-field>
             </div> 
-            <v-btn large rounded class="w-full md:w-auto float-md-right" type="submit" color="success">
+            <v-btn large rounded class="w-full" type="submit" color="success">
                 <v-icon dark>mdi-floppy</v-icon>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}
             </v-btn>
         </form> 

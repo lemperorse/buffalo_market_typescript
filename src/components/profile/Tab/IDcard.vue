@@ -4,17 +4,19 @@
     <h2 class="font-semibold text-2xl">{{_lang('ยืนยันตัวตน','ID card','身份证')}}</h2><br>
 
     <form v-if="response" @submit.prevent="updatePersonal()">
-        <v-text-field rounded class="w-full " v-model="profile.personal_id" filled :label="_lang('เลขบัตรประชาชน','ID card number','身份证号码')"></v-text-field>
-         <v-btn large rounded class="w-full md:w-auto float-md-right" type="submit" color="success">{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}</v-btn>
+        <v-text-field rounded type="number" class="w-full " v-model="profile.personal_id" filled :label="_lang('เลขบัตรประชาชน','ID card number','身份证号码')"></v-text-field>
+        <v-btn large rounded class="w-full" type="submit" color="success">{{_lang('บันทึกเลขบัตรประชาชน','Save Change','保存更改')}}</v-btn>
     </form>
 
     <div class="mt-24">
         <h2>{{_lang('ภาพถ่ายบัตรประจำตัวประชาชน','ID card photo','賣方地址')}}</h2>
-        <img v-if="profileImage.presonal_image" ref="profileImage" class="mt-4 shadow-xl h-auto w-full   align-middle border-none" 
+        <center>
+        <img v-if="profileImage.presonal_image" ref="profileImage" class="mt-4 h-120 w-120 rounded-lg align-middle border-none" 
         :src="$server+'/'+profileImage.presonal_image" />
-        <img v-else ref="profileImage" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" />
+        <img v-else ref="profileImage" class="mt-4 rounded-full align-middle border-none" src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" />
         <input type="file" ref="profile" @change="personalImageChange" style="display:none;" /><br>
-        <v-btn large rounded class="w-full md:w-auto float-md-right" @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปบัตรประชาชน','Change Profile Image','变更个人资料图片')}}</v-btn>
+        </center>
+        <v-btn large rounded class="w-full" @click="$refs.profile.click()" color="success">{{_lang('เปลี่ยนรูปบัตรประชาชน','Change Profile Image','变更个人资料图片')}}</v-btn>
 
     </div>
 

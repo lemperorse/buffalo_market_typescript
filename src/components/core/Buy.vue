@@ -1,7 +1,7 @@
 <template>
 <div>
-    <div class="flex flex-wrap overflow-hidden">
-        <div class="w-full overflow-hidden lg:w-1/4 ">
+    <div class="flex flex-wrap p-1">
+        <div class="w-full  lg:w-1/4 ">
             <v-expansion-panels multiple>
                 <v-expansion-panel>
                     <v-expansion-panel-header class="bgtext1 shadow">{{_lang('คลิกเพื่อแสดงตัวกรอง','Click to display the filter','單擊以顯示過濾器。')}}</v-expansion-panel-header>
@@ -34,12 +34,12 @@
             <v-container>
                 <v-row>
                     <v-col cols="auto"  v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
-                        <v-hover v-slot:default="{ hover }">
-                            <v-card height="250px" width="180px" outlined>
+                        <v-hover  v-slot:default="{ hover }"> 
+                            <v-card class="rounded-lg" height="250px" width="140px" outlined>
                                 <v-img class="white--text align-end w-full rounded-t-lg h-32" :src="`${ximg(pu.file1)}`">
                                     <v-expand-transition>
                                         <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                            <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
+                                            <v-btn rounded v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
                                         </div>
                                     </v-expand-transition>
                                 </v-img>
@@ -54,33 +54,7 @@
                         </v-hover>
                     </v-col>
                 </v-row>
-            </v-container>
-
-            <!-- <div class="flex flex-row flex-wrap">
-                <div class="w-1/2 md:w-1/5 cursor-pointer p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
-
-                     <a :href="$server+'/'+ximg(pu.file1)">ssss</a>
-                    <v-hover v-slot:default="{ hover }">
-                        <v-card class="rounded-lg" outlined>
-
-                            <v-img class="white--text align-end w-full rounded-t-lg h-32"   :src="`${ximg(pu.file1)}`">
-                                <v-expand-transition>
-                                    <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                        <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
-                                    </div>
-                                </v-expand-transition>
-                            </v-img>
-                            <div class="p-6 "> 
-                                <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{pu.name}}</h4>
-                                <div class="text-orange-600 font-bold mb-1">
-                                    <span class="text1" v-if="pu.price_type">{{_lang('฿','฿','฿')}} {{pu.price}}</span>
-                                    <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
-                                </div> 
-                            </div> 
-                        </v-card>
-                    </v-hover>
-                </div>
-            </div>  -->
+            </v-container> 
 
             <div class="text-center mt-6">
                 <v-pagination v-model="page" :length="6" circle></v-pagination>

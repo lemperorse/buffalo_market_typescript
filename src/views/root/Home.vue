@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="bg2">
+    <div class="">
         <div class="container mx-auto mt-4">
             <v-toolbar class="mb-2 rounded-lg " >
                 <template>
@@ -11,10 +11,10 @@
                 </template>
             </v-toolbar>
             <v-tabs-items v-model="tabs">
-                <v-tab-item class="bg2">
+                <v-tab-item class="">
                     <Buy />
                 </v-tab-item>
-                <v-tab-item class="bg2">
+                <v-tab-item class="">
                     <World />
                 </v-tab-item>
             </v-tabs-items>
@@ -54,24 +54,5 @@ export default {
 };
 </script>
 
-<style scoped>
-.color {
-    background-color: #FFFBE6 !important;
-}
-
-.bg1 {
-    background-color: #F5F5F5;
-}
-
-.bg2 {
-    background-color: #F5F5F5;
-    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='800 0 1600 900'%3E%3Cpolygon fill='%2343cc20' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%2315aa6c' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2306c853' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%231ca35f' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%2300c274' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23219d51' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2300bc8c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23279643' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%2319b39b' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%232b8f35' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%234aaaa2' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%232f8826' points='943 900 1210 900 971 687'/%3E%3C/svg%3E"); */
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-h1 {
-    text-align: center;
-    margin: 1.5em;
-}
+<style scoped> 
 </style>

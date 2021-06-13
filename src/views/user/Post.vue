@@ -1,9 +1,9 @@
 <template>
 <!-- <v-app> -->
-<div class="bg">
-    <div class="container mx-auto bg ">
-        <div class="w-full">
-            <ol class="flex text-gray-700 bg-gray-300 rounded py-2 px-2">
+<div class="">
+    <div class="container mx-auto">
+        <div class="w-full ">
+            <ol class="flex text-gray-700 bg-gray-300 rounded-full py-2 px-2">
                 <li class="px-2"><a href="/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li> 
                 <li class="text-gray-500 select-none">/</li> 
                 <li class="px-2 text-green-600">{{_lang('จัดการประกาศ','Manage announcements','管理公告')}}</li>
@@ -13,7 +13,7 @@
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{_lang('ประกาศของ','Announcement of','公告')}} {{user.first_name}}
         </h2>
-        <v-toolbar class="mb-4 rounded-lg elevation-0">
+        <v-toolbar class="mb-4 rounded-lg elevation-2">
             <template>
                 <v-tabs class="rounded" color="success" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                     <v-tab class="font-weight-black">{{_lang('ประกาศซื้อ','Buy','購買')}}</v-tab>
@@ -23,14 +23,14 @@
             </template>
         </v-toolbar>
         <v-tabs-items v-model="tabs">
-            <v-tab-item class="bg ">
+            <v-tab-item class=" ">
                 <PostBuy />
             </v-tab-item>
-            <v-tab-item class="bg ">
+            <v-tab-item class=" ">
                 <PostSell />
             </v-tab-item>
-            <v-tab-item class="bg ">
-                <div>
+            <v-tab-item class="">
+                <div class="p-2">
                     <h2 class="text-2xl font-bold">{{_lang('รายงาน สถิติ','Report','報告')}}</h2>
                     <v-card class="p-2 mt-2">
                         <h2>{{_lang('จำนวนรายการที่ขายได้','Number of items sold','銷售數量')}}</h2>
@@ -128,13 +128,7 @@ export default class Postx extends Vue {
 }
 </script>
 
-<style scoped>
-.bg {
-    background-color: #F5F5F5;
-    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%2343cc20' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%2315aa6c' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2306c853' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%231ca35f' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%2300c274' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23219d51' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%2300bc8c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23279643' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%2319b39b' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%232b8f35' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%234aaaa2' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%232f8826' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
-      background-attachment: fixed;
-      background-size: cover; */
-}
+<style scoped> 
 
 .bg1 {
     background-color: #0EAD69;

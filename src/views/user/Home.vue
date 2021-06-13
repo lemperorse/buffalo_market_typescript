@@ -1,13 +1,13 @@
 <template>
 <div>
     <v-app>
-        <div class="bg-gray-100">
-            <div class=" md:mt-4 "> 
+        <div class="">
+            <div class="md:mt-4"> 
                 <v-tabs-items v-model="tabs">
-                    <v-tab-item class="bg-gray-100">
+                    <v-tab-item class=" ">
                         <Buy />
                     </v-tab-item> 
-                    <v-tab-item class="bg-gray-100">
+                    <v-tab-item class=" ">
                         <World />
                     </v-tab-item>
                 </v-tabs-items>
@@ -48,8 +48,5 @@ export default {
 </script>
 
 <style>
-/* Helper classes */
-.color {
-    background-color: #FFFBE6 !important;
-}
+/* Helper classes */ 
 </style>

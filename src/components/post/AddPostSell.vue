@@ -104,6 +104,7 @@ export default class Saller extends Vue {
         if (store.id) { 
             await this.storeImage(store.id)
             alert("Save product success") 
+            await this.$router.go(-1)
             }
     }
 
@@ -111,13 +112,14 @@ export default class Saller extends Vue {
         await this.setProductKey()
         let store = await Core.putHttp(`/api/default/product/${this.product.id}/`, this.product)
         if (store.id) { alert("Save product success") }
+        await this.$router.go(-1)
     }
 
     public async removeProduct() {
         let store = await Core.deleteHttp(`/api/default/product/${this.product.id}/`)
-        if (store.id) { 
-            
+        if (store.id) {  
          alert("Save product success") }
+         await this.$router.go(-1)
     }
 
     async filesSelected(event:any){

@@ -5,20 +5,21 @@
       <v-card-title>
         เลือก จังหวัด อำเภอ ตำบล
         <v-spacer></v-spacer>
-        <v-btn @click="closeDialog" icon text>
-          <v-icon>fas fa-window-close</v-icon>
+        <v-btn @click="closeDialog" color="error" small fab>
+          x
         </v-btn>
       </v-card-title>
       <v-card-text>
-        <v-autocomplete return-object label="ภูมิภาค" filled v-model="geoChoose" :items="geo"
+        <v-autocomplete rounded return-object label="ภูมิภาค" filled v-model="geoChoose" :items="geo"
                         item-text="name"></v-autocomplete>
-        <v-autocomplete return-object label="จังหวัด" filled v-model="provinceChoose" :items="province"
+        <v-autocomplete rounded return-object label="จังหวัด" filled v-model="provinceChoose" :items="province"
                         item-text="name"></v-autocomplete>
-        <v-autocomplete return-object label="อำเภอ" filled v-model="amphurChoose" :items="amphur"
+        <v-autocomplete rounded return-object label="อำเภอ" filled v-model="amphurChoose" :items="amphur"
                         item-text="name"></v-autocomplete>
-        <v-autocomplete return-object label="ตำบล" filled v-model="districtChoose" :items="district"
+        <v-autocomplete rounded return-object label="ตำบล" filled v-model="districtChoose" :items="district"
                         item-text="name"></v-autocomplete>
-        <button @click="submitCity()" :class="'bg-blue-800 '+$btn"> {{ $rt }}</button>
+        <!-- <button @click="submitCity()" :class="'bg-blue-800 '+$btn"> {{ $rt }}</button> -->
+        <v-btn @click="submitCity()" block rounded x-large color="success">ยืนยัน</v-btn>
       </v-card-text>
     </v-card>
   </v-dialog>

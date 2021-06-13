@@ -1,6 +1,6 @@
 <template>
-<div class="bg-gray-100">
-    <div class="container mx-auto bg-gray-100">
+<div class="">
+    <div class="container mx-auto ">
         <div class="flex flex-wrap">
             <div class="w-full">
                 <v-card class="rounded-lg" outlined>

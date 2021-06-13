@@ -1045,7 +1045,7 @@ video {
   background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
-.bg-gray-100 {
+. {
   --bg-opacity: 1;
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--bg-opacity));
@@ -1231,7 +1231,7 @@ video {
   background-color: rgba(237, 100, 166, var(--bg-opacity));
 }
 
-.active\:bg-gray-100:active {
+.active\::active {
   --bg-opacity: 1;
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--bg-opacity));

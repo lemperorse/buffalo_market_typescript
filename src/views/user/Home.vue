@@ -2,7 +2,7 @@
 <div>
     <v-app>
         <div class="bg-gray-100">
-            <div class="container mx-auto md:mt-4 "> 
+            <div class=" md:mt-4 "> 
                 <v-tabs-items v-model="tabs">
                     <v-tab-item class="bg-gray-100">
                         <Buy />
@@ -35,6 +35,7 @@ export default {
         }
     },
     async created() {
+       
         if (this.$route.query.tab == 1) {
             this.tab = 1
         } else if (this.$route.query.tab == 2) {

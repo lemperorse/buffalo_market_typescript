@@ -42,6 +42,7 @@ export default {
         }
     },
     async created() {
+   
         if (this.$route.query.tab == 1) {
             this.tabs = 0
         } else if (this.$route.query.tab == 2) {

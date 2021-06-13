@@ -18,7 +18,7 @@ import th from './languages/th.json'
 import en from './languages/en.json'
 import ch from './languages/ch.json'
 Vue.prototype.$language = language
-
+Vue.prototype.$server = process.env.VUE_APP_SERVER
 import VueFileAgent from 'vue-file-agent';  
 Vue.use(VueFileAgent);
 

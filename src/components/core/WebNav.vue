@@ -1,6 +1,7 @@
 <template>
-<div class="fixed w-full h-28 nav" style="z-index:100;  ">
-    <div class="container">
+ 
+  <div class="fixed w-full h-28 nav" style="z-index:100;  ">
+    <div class=" p-2 md:pl-20 md:pr-20 ">
         <div class="flex  overflow-y-hidden	overflow-x-auto	 " v-if="response">
             <v-btn @click="goPageTab(1)" small text dark>{{$txt.web_nav.product}}</v-btn>
             <v-btn @click="goPageTab(2)" small text dark> {{$txt.web_nav.map}}</v-btn>
@@ -61,7 +62,7 @@
             </v-card-text>
         </v-card>
     </v-dialog>
-</div>
+</div> 
 </template>
 
 <script lang="ts">

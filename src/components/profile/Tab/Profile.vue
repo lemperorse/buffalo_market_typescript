@@ -7,14 +7,14 @@
         <div class="flex flex-wrap">
             <v-text-field rounded class="w-full md:w-1/2" disabled v-model="form.username" filled :label="_lang('ชื่อผู้ใช้','Username','用户名')"></v-text-field>
             <v-text-field rounded class="w-full md:w-1/2" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>
-            <v-select rounded filled item-value="id" :item-text="_lang('value_th','value_en','value_ch')" class="w-full md:w-1/5" :items="choices.prefix" v-model="profile.prefix" :label="_lang('คำนำหน้า','Prefix','字首')"></v-select>
+            <v-select rounded filled    class="w-full md:w-1/5" :items="$txt.language" v-model="profile.prefix" :label="_lang('คำนำหน้า','Prefix','字首')"></v-select>
             <v-text-field rounded class="w-full md:w-2/5" filled v-model="form.first_name" :label="_lang('ชื่อจริง','First Name','名字')"></v-text-field>
             <v-text-field rounded class="w-full md:w-2/5" filled v-model="form.last_name" :label="_lang('นามสกุล','Last Name','姓')"></v-text-field>
             <hr>
             <v-text-field rounded class="w-full md:w-1/2" type="date" filled v-model="profile.birthday" :label="_lang('วันเกิด','Birthday','生日')"></v-text-field>
             <v-text-field rounded class="w-full md:w-1/2" disabled filled v-model="profile.age" :label="_lang('อายุ','Age','年齡')"></v-text-field>
 
-            <v-text-field rounded class="w-full " filled v-model="profile.address" :label="_lang('ที่อยู่','Address','地址')"></v-text-field>
+            <v-text-field rounded class="w-full " filled v-model="profile.my_address" :label="_lang('ที่อยู่','Address','地址')"></v-text-field>
 
             <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地區')"></v-text-field>
             <v-text-field rounded class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')"></v-text-field>
@@ -75,7 +75,11 @@ export default class Profile extends Vue {
     choices: any = {}
     async loadChoices() {
         this.choices = {
-            "prefix": await Core.getChoice('คำนำหน้า'),
+            "prefix": {
+                th:['นาย','นาง','นางสาว'],
+                en:['Mr.','Mrs.','Miss'],
+                ch:['先生','女士','小姐']
+            },
             "sex": await Core.getChoice('เพศ'),
         }
     }

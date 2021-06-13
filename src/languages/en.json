@@ -17,5 +17,6 @@
         "password":"Password",
         "confirmpassword":"Confirm password"
         
-    }
+    },
+    "language":["Mr.","Mrs.","Miss"]
 }

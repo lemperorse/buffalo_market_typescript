@@ -8,7 +8,7 @@
 
             <div class="flex flex-col">
                 <div class="flex">
-                    <img class="w-24 h-24 rounded-full" :src="profile.profile_image" alt="" srcset="">
+                    <img class="w-24 h-24 rounded-full" :src="$server+'/'+profile.profile_image" alt="" srcset="">
                     <div class="pl-4">
                         <h2 class="font-semibold">{{_lang('ชื่อ รูปผู้ขาย และ เลขบัตรประจำตัวประชาชน','Name, Image and ID card number','姓名，商戶圖像和身份證號')}}</h2>
                         <h2>{{user.first_name}}&nbsp;&nbsp;{{user.last_name}} ({{profile.personal_id}})</h2>
@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="flex mt-4">
-                    <img class="w-24 h-auto " :src="profile.presonal_image" alt="" srcset="">
+                    <img class="w-24 h-auto " :src="$server+'/'+profile.presonal_image" alt="" srcset="">
                     <div class="pl-4">
                         <h2 class="font-semibold">{{_lang('ที่อยู่ผู้ขาย','Seller address','賣方地址')}}</h2>
                         <h2>{{profile.address}}</h2>
@@ -37,12 +37,14 @@
                 <v-text-field class="w-full " v-model="form.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')"></v-text-field>
 
                 <div class="relative w-full mb-3">
-                    <MapView :name="'locations'" :center="{'Latitude':form.latitude,'Longitude' :form.longitude }" :locations="[
-                    {'Latitude':form.latitude,'Longitude' :form.longitude } ,]" :zoom="18" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
+                    <pre>{{location}}</pre>
+                    <MapView :name="'locations'" :center="{'Latitude':location.lat ,'Longitude' :location.lng }" :locations="[
+                    {'Latitude':location.lng ,'Longitude' :location.lat} ,]" :zoom="18" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
                 </div>
-                <v-text-field rounded class="w-full md:w-1/2" v-model="form.latitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด)','GPS (Latitude)','GPS（緯度')"></v-text-field>
 
-                <v-text-field rounded class="w-full md:w-1/2" v-model="form.longitude" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ลองจิจูด)','GPS (Longitude)','GPS（經度）')"></v-text-field>
+                <v-text-field rounded class="w-full md:w-1/2" v-model="form.location" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด,ลองจิจูด)','GPS (Latitude,Longitude)','GPS（緯度,經度)')"></v-text-field>
+
+              
 
                 <div class="flex flex-wrap">
                     <v-text-field rounded class="w-full md:w-1/2" prepend-inner-icon="mdi-phone" v-model="form.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
@@ -95,6 +97,8 @@ export default class Saller extends Vue {
     user: any = null
     profile: any = null
     saller: boolean = false;
+    location:object = {}
+
     async created() {
         await this.loadFarm();
 
@@ -106,15 +110,25 @@ export default class Saller extends Vue {
         this.form = await Core.getHttp(`/api/user/farm/${this.user.pk}/`)
         if (this.form.id) {
             this.saller = true;
+            await this.generateMap()
         }
         this.response = true;
+    }
+
+    async generateMap(){
+        let map = (this.form.location).split(',')
+        if(map.length > 1){
+            this.location = {
+                lat : map[0],
+                lng:map[1]
+            }
+        }
     }
 
     async createShop() {
         let shop = await Core.postHttp(`/api/default/farm/`, {
             'user': this.user.pk,
-            latitude: '19.0284279',
-            longitude: '99.8940557'
+            location:'19.0284279,99.8940557', 
         })
 
         if (shop.id) {

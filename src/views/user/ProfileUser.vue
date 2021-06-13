@@ -13,7 +13,7 @@
                 <div class="relative min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg border-l-4 border-green-500">
                     <div class="px-5">
                         <div class="flex flex-col justify-center  items-center">
-                            <img v-if="profile.profile_image" ref="imageProfile" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" :src="profile.profile_image" />
+                            <img v-if="profile.profile_image" ref="imageProfile" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" :src="$server+'/'+profile.profile_image" />
                             <img v-else ref="imageProfile" class="mt-4 shadow-xl h-28 w-28 rounded-full align-middle border-none" src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" />
                             <input type="file" ref="profile" @change="profileChange" style="display:none;" />
 

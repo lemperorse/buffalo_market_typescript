@@ -21,11 +21,11 @@
             </v-col>
         </v-row> 
         
-        <div class="row p-2">
+        <div class="row p-1">
             <div class="w-1/2 md:w-1/5 cursor-pointer p-2 " v-if="products" v-for="product,i in products" :key="i">
                 <v-hover v-slot:default="{ hover }">
                     <v-card class="rounded-lg" outlined>
-                        <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="ximg(product.file1)">
+                        <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="$server+'/'+product.file1">
                             <v-expand-transition>
                                 <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
                                     <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${product.id}&name=${product.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}}</v-btn>
@@ -38,7 +38,7 @@
                                 <span class="  text1" v-if="product.price_type">{{_lang('฿','฿','฿')}} {{product.price}}</span>
                                 <span v-else class=" text1">{{_lang('฿','฿','฿')}} {{product.price_start}} - {{product.price_end}}</span>
                             </div>
-                            <v-select rounded @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
+                            <v-select dense rounded @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
                             <div class=" flex "> 
                                 <v-btn type="submit " @click="$router.push(`/user/postselledit/?product=${product.id}`)" large rounded class="w-full" color="success">
                                     <v-icon dark>fas fa-pencil-alt</v-icon>{{_lang('แก้ไขประกาศ','Edit','編輯公告')}}
@@ -144,140 +144,5 @@ export default class PostSaller extends Vue {
     font-size: 12px; 
     white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ellipsis; 
-} 
-.wrapper {
-    /* min-height: 100vh; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.bts {
-    background: #0EAD69;
-}
-
-.search_box {
-    /* background: #643fef; */
-    background: #0EAD69;
-    position: relative;
-    padding: 15px;
-    border-radius: 5px;
-    display: flex;
-}
-
-.search_box .search_btn {
-    width: 40px;
-    height: 30px;
-    border-radius: 15%;
-    /* background: #7a5cf0; */
-    background: #74C69D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    margin-left: 15px;
-    cursor: pointer;
-}
-
-.search_box .input_search {
-    outline: none;
-    border: 0;
-    /* background: #7a5cf0; */
-    background: #74C69D;
-    border-radius: 5px;
-    padding: 15px 20px;
-    width: 300px;
-    height: 30px;
-    color: #fff;
-}
-
-::placeholder {
-    color: #fff;
-}
-
-::-webkit-input-placeholder {
-    color: #fff;
-}
-
-:-ms-input-placeholder {
-    color: #fff;
-}
-
-.btn {
-    border-radius: 5px;
-    padding: 14px 24px;
-    /* font-size: 12px; */
-    text-decoration: none;
-    color: #fff;
-    position: relative;
-    display: inline-block;
-}
-
-.btn1 {
-    border-radius: 5px;
-    padding: 15px 25px;
-    /* font-size: 12px; */
-    text-decoration: none;
-    color: #fff;
-    position: relative;
-    display: inline-block;
-}
-
-.btn2 {
-    border-radius: 5px;
-    padding: 5px 10px;
-    /* font-size: 12px; */
-    text-decoration: none;
-    color: #fff;
-    position: relative;
-    display: inline-block;
-}
-
-.btn:active {
-    transform: translate(0px, 5px);
-    -webkit-transform: translate(0px, 5px);
-    box-shadow: 0px 1px 0px 0px;
-}
-
-.btn1:active {
-    transform: translate(0px, 5px);
-    -webkit-transform: translate(0px, 5px);
-    box-shadow: 0px 1px 0px 0px;
-}
-
-.btn2:active {
-    transform: translate(0px, 5px);
-    -webkit-transform: translate(0px, 5px);
-    box-shadow: 0px 1px 0px 0px;
-}
-
-.purple1 {
-    background-color: #6930C3;
-    box-shadow: 0px 5px 0px 0px #002855;
-}
-
-.purple1:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgba(139, 92, 246, var(--tw-bg-opacity));
-}
-
-.green2 {
-    background-color: #0EAD69;
-    box-shadow: 0px 5px 0px 0px #283D3B;
-}
-
-.green2:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
-}
-
-.blue1 {
-    background-color: #4361EE;
-    box-shadow: 0px 5px 0px 0px #03045E;
-}
-
-.blue1:hover {
-    background-color: #4895EF;
-}
+    text-overflow: ellipsis;}
 </style>

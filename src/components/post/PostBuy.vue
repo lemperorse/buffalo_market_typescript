@@ -103,7 +103,7 @@ export default class PostSaller extends Vue {
         await this.loadFarm();
         await this.loadProduct();
         this.choices = {
-            'status': await Product.StatusSell
+            'status': await Product.StatusBuy
         }
         this.response = true
     }

@@ -6,7 +6,7 @@
     <form @submit.prevent="saveUser()">
         <div class="flex flex-wrap">
             <v-text-field rounded class="w-full md:w-1/2" disabled v-model="form.username" filled :label="_lang('ชื่อผู้ใช้','Username','用户名')" prepend-inner-icon="mdi-face"></v-text-field>
-            <v-text-field rounded class="w-full md:w-1/2" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')" prepend-inner-icon="mdi-email-outline"></v-text-field>
+            <v-text-field rounded class="w-full md:w-1/2" filled v-model="profile.email" :label="_lang('อีเมล์','Email','电子邮件')" prepend-inner-icon="mdi-email-outline"></v-text-field>
             <v-select rounded filled    class="w-full md:w-1/5" :items="$txt.language" v-model="profile.prefix" :label="_lang('คำนำหน้า','Prefix','字首')" prepend-inner-icon="mdi-card-account-details-outline"></v-select>
             <v-text-field rounded class="w-full md:w-2/5" filled v-model="form.first_name" :label="_lang('ชื่อจริง','First Name','名字')" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
             <v-text-field rounded class="w-full md:w-2/5" filled v-model="form.last_name" :label="_lang('นามสกุล','Last Name','姓')" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>

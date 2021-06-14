@@ -3,15 +3,15 @@
     <v-card class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg" > 
         <div class="row rounded-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
-                <v-carousel class="rounded w-full"  height="300px">
+                <v-carousel class="rounded w-full"  height="300px" cycle>
                     <v-carousel-item v-if="product.file1">
-                        <img :src="$server+'/'+product.file1" alt="" srcset="">
+                        <img class="w-full h-full" :src="$server+'/'+product.file1" alt="" srcset="">
                     </v-carousel-item>
                     <v-carousel-item v-if="product.file2">
-                        <img :src="$server+'/'+product.file2" alt="" srcset="">
+                        <img class="w-full h-full" :src="$server+'/'+product.file2" alt="" srcset="">
                     </v-carousel-item>
                     <v-carousel-item v-if="product.file3">
-                        <img :src="$server+'/'+product.file3" alt="" srcset="">
+                        <img class="w-full h-full" :src="$server+'/'+product.file3" alt="" srcset="">
                     </v-carousel-item>
                     <v-carousel-item v-if="product.file4">
                         <video class="w-full h-full" controls>
@@ -200,7 +200,7 @@ export default class PostSaller extends Vue {
 
     ximg(file: any) {
         return (file) ? file : 'https://images.pexels.com/photos/4052387/pexels-photo-4052387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-    }
+    } 
 
 }
 </script>

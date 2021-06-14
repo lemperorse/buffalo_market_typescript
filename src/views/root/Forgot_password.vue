@@ -19,7 +19,7 @@
                     <v-text-field required v-model="formPassword.password" type="password" :label="_lang('รหัสผ่าน','Password','密码')" filled rounded prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
                     <v-text-field required v-model="formPassword.password2" type="password" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','确认密码')" filled rounded prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
                 </div>
-                <v-btn rounded large class="w-full" type="submit" color="success">{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}</v-btn>
+                <v-btn rounded large class="w-full bgbtn" type="submit" dark>{{_lang('บันทึกการเปลี่ยนแปลง','Save Change','保存更改')}}</v-btn>
             </form>
         </v-card-text> 
     </v-card>

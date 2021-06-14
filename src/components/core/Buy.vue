@@ -36,7 +36,7 @@
                 <div class="w-1/2 md:w-1/5 p-2 "  v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                     <v-hover v-slot:default="{ hover }">
                         <v-card class="rounded-lg" height="220px" width="140px" >
-                            <v-img class="white--text align-end w-full rounded-t-lg h-28"   :src="ximg(pu.file1)">
+                            <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="ximg(pu.file1)">
                                 <v-expand-transition>
                                     <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
                                         <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>

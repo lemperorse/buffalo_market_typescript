@@ -41,7 +41,7 @@
                             </div>
                             <v-select dense rounded @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
                             <div class=" flex "> 
-                                <v-btn type="submit " @click="$router.push(`/user/postselledit/?product=${product.id}`)" large rounded class="w-full bgbtn" dark>
+                                <v-btn type="submit " @click="$router.push(`/user/postselledit/?product=${product.id}`)" rounded large rounded class="w-full bgbtn" dark>
                                     <v-icon dark>fas fa-pencil-alt</v-icon>{{_lang('แก้ไข','Edit','編輯公告')}}
                                 </v-btn>
                             </div>

@@ -4,7 +4,7 @@
     <v-alert dense border="left" type="warning">{{_lang('หากต้องการแก้ไขข้อมูล ให้ทำการกรอกข้อมูลที่ต้องการแก้ไขแล้วกด "บันทึกการเปลี่ยนแปลง" ','To edit information Please fill in the information you want to edit and press "Save changes"','请填写您要编辑的信息 然后单击保存更改')}}</v-alert>
 
     <form @submit.prevent="saveUser()">
-        <div class="flex flex-wrap"> 
+        <div class="flex flex-wrap">
             <v-text-field rounded class="w-full md:w-1/2" disabled v-model="form.username" filled :label="_lang('ชื่อผู้ใช้','Username','用户名')" prepend-inner-icon="mdi-face"></v-text-field>
             <v-text-field rounded class="w-full md:w-1/2" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')" prepend-inner-icon="mdi-email-outline"></v-text-field>
             <v-select rounded filled    class="w-full md:w-1/5" :items="$txt.language" v-model="profile.prefix" :label="_lang('คำนำหน้า','Prefix','字首')" prepend-inner-icon="mdi-card-account-details-outline"></v-select>

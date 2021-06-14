@@ -143,6 +143,6 @@ export default class GoogleMapWithMarkersComponent extends Vue {
 <style scoped>
 .map {
     border-radius: 8px;
-    height: 300px;
+    height: 500px;
 }
 </style>

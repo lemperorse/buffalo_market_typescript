@@ -68,12 +68,12 @@
                             <h3 v-if="product.farm">
                                 <span v-if="product.farm.user">{{_lang('ชื่อ','Name','名稱')}} : {{product.farm.user.first_name}} {{product.farm.user.last_name}}</span>
                             </h3>
-                            <h3 v-if="product.farm">{{_lang('จังหวัด','Province','省')}} : <span v-if="product.farm.province">{{product.farm.province.name}}</span></h3>
+                            <h3 v-if="product.farm">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}}-{{profile.amphur.name}}-{{profile.district.name}}</h3>
                         </div>
                     </v-row>
                 </v-col>
                 <v-col cols="6" md="4">
-                    <div class="ml-5">
+                    <div >
                         <div class="text--primary" v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
                         <div class="flex "> 
                             <v-btn @click="openMap" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark>{{_lang('นำทาง','Navigate','導航')}}</v-btn>

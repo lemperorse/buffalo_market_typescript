@@ -1,25 +1,25 @@
 <template>
 <div  class="">
-    <v-card class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg" >
+    <v-card class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg" > 
         <div class="row rounded-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
                 <v-carousel class="rounded w-full"  height="300px">
-                    <v-carousel-item>
+                    <v-carousel-item v-if="product.file1 != false">
                         <img :src="$server+'/'+product.file1" alt="" srcset="">
                     </v-carousel-item>
-                    <v-carousel-item>
+                    <v-carousel-item v-if="product.file2 != false">
                         <img :src="$server+'/'+product.file2" alt="" srcset="">
                     </v-carousel-item>
-                    <v-carousel-item>
+                    <v-carousel-item v-if="product.file3 != false">
                         <img :src="$server+'/'+product.file3" alt="" srcset="">
                     </v-carousel-item>
-                    <v-carousel-item>
+                    <v-carousel-item v-if="product.file4 != false">
                         <video class="w-full h-full" controls>
                             <source :src="$server+'/'+product.file4" type="video/mp4">
                             <source :src="$server+'/'+product.file4" type="video/ogg">
                         </video>
                     </v-carousel-item>
-                    <v-carousel-item>
+                    <v-carousel-item v-if="product.file5 != false">
                         <video class="w-full h-full" controls>
                             <source :src="$server+'/'+product.file5" type="video/mp4">
                             <source :src="$server+'/'+product.file5" type="video/ogg">
@@ -60,7 +60,7 @@
                     <v-row wrap>
                         <div class="pa-2 ml-5">
                             <v-avatar size="55">
-                                <img src="https://cache.gmo2.sistacafe.com/images/uploads/summary/image/65745/9738ebc7fc580672cfc0053c43d9ad2e.jpg" />
+                                <img :src="$server+'/'+profile.profile_image" />
                             </v-avatar>
                         </div>
 

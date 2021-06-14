@@ -3,17 +3,17 @@
     <div class="container mx-auto ">
         <div class="flex flex-wrap">
             <div class="w-full">
-                <v-card class="rounded-lg" outlined>
+                <v-card class="rounded-lg">
                     <div class="px-4 py-5 flex-auto">
                         <div class="text-center">
-                            <div class="text-blue-500">
+                            <div class="text-green-500">
                                 <i class="fas fa-store-alt text-xl mr-1"></i>{{_lang('แก้ไขประกาศซื้อ','Edit','修改購買')}}
                             </div>
                         </div>
                     </div>
                 </v-card>
                 <div class="pt-3">
-                    <v-card class="rounded-lg" outlined>
+                    <v-card class="rounded-lg">
                         <PostBuyEdit />
                     </v-card>
                 </div>

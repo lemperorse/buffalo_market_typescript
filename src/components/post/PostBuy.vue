@@ -7,7 +7,7 @@
                     <v-text-field @click="loadProduct" filled rounded v-model="search" id="id" :label="_lang('ค้นหา...','What are you looking for?','搜索')"></v-text-field>
                 </div>
                 <hr class="m-1">
-                <v-spacer></v-spacer>
+                <!-- <v-spacer></v-spacer> -->
                 <v-btn type="submit " @click="loadProduct" large fab class="bgbtn" dark>
                     <v-icon dark>fas fa-search</v-icon>
                 </v-btn>
@@ -32,20 +32,26 @@
                                     <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${product.id}&name=${product.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}}</v-btn>
                                 </div>
                             </v-expand-transition>
-                        </v-img>
-                        <v-card-text>
+                        </v-img> 
+
+                        <div class="p-4">
                             <div>
                                 <div class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{product.name}}</div>
                                 <div class=" text-orange-600 font-bold mb-1">
-                                    <div class="text-md" v-if="product.price_type">{{_lang('฿','฿','฿')}} {{product.price}}</div>
-                                    <div v-else class=" text-md">{{_lang('฿','฿','฿')}} {{product.price_start}} - {{product.price_end}}</div>
+                                    <div class="text-sm" v-if="product.price_type">{{_lang('฿','฿','฿')}} {{product.price}}</div>
+                                    <div v-else class=" text-sm">{{_lang('฿','฿','฿')}} {{product.price_start}} - {{product.price_end}}</div>
+                                </div> 
+                                <div class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{product.buy_date}}</div>
+                                <div class="pt-5">
+                                    <v-select dense @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
                                 </div>
-                                <v-select rounded dense @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
                             </div>
-                        </v-card-text>
-                        <v-btn type="submit" @click="$router.push(`/user/postbuyedit/?product=${product.id}`)" rounded block large text class="bgbtn"  dark>
-                            <v-icon dark>fas fa-pencil-alt</v-icon>{{_lang('แก้ไข','Edit','編輯公告')}}
-                        </v-btn>
+                            <div class=" flex "> 
+                                <v-btn type="submit" @click="$router.push(`/user/postbuyedit/?product=${product.id}`)" rounded block large text class="bgbtn"  dark>
+                                    <v-icon dark>fas fa-pencil-alt</v-icon>{{_lang('แก้ไข','Edit','編輯公告')}}
+                                </v-btn>
+                            </div>
+                        </div> 
 
                     </v-card>
                 </v-hover>

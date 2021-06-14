@@ -10,7 +10,7 @@
 
             <v-text-field dense rounded v-if="product.price_type" type="text" v-model="product.price" class="w-full " filled :label="_lang('ราคา','Price','价钱')"></v-text-field>
             <v-text-field dense rounded v-if="!product.price_type" type="text" v-model="product.price_start" class="w-full " filled :label="_lang('ราคาเริ่มต้น','PriceStart','价格开始')"></v-text-field>
-            <v-text-field dense rounded v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคา End','PriceEnd','价格结束')"></v-text-field>
+            <v-text-field dense rounded v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคาสุดท้าย','PriceEnd','价格结束')"></v-text-field>
             <VueFileAgent v-model="file"  @select="filesSelected($event)" :multiple="true" :maxSize="'5MB'" :deletable="true" :maxFiles="5"  :accept="'image/*,video/*'" ></VueFileAgent> 
             <pre>{{product.file1}}</pre>
             <!-- <v-text-field type="file" v-model="product.file1" class="w-full " filled :label="_lang('ไฟล์ 1','File1','文件1')"></v-text-field>

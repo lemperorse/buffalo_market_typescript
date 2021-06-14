@@ -1,7 +1,10 @@
 <template>
 <!-- <v-app> -->
-<div class="" v-if="farm.id != false"> 
-    <div class="container mx-auto">
+<div class="" v-if="!products.farm">  
+    <!-- <pre>{{user}}</pre> -->
+    <!-- <pre>{{profile.user}}</pre> -->
+    <!-- <pre>{{products.farm}}</pre> -->
+    <div class="container mx-auto" >
         <div class="w-full ">
             <ol class="flex text-gray-700 bg-gray-300 rounded-full py-2 px-2">
                 <li class="px-2"><a href="/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li> 
@@ -13,6 +16,7 @@
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{_lang('ประกาศของ','Announcement of','公告')}} {{user.first_name}}
         </h2>
+        
         <v-toolbar class="mb-4 rounded-lg elevation-0">
             <template>
                 <v-tabs class="rounded" color="teal accent-3" v-model="tabs" next-icon="mdi-arrow-right-bold-circle-outline" prev-icon="mdi-arrow-left-bold-circle-outline" show-arrows>
@@ -91,9 +95,9 @@ export default class Postx extends Vue {
     }
     data: any = null
     productsEnd: any = null
+    
     async loadProducts() {
         this.productsEnd = await Core.getHttp(`/api/default/product/?farm=${this.farm.id}&status=3`)
-
         this.products = await Core.getHttp(`/api/default/product/?farm=${this.farm.id}`)
         this.data = _.chain(this.products)
             // Group the elements of Array based on `color` property

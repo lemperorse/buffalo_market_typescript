@@ -20,7 +20,7 @@
                     
                     <div class="pl-4">
                         <h2 class="font-semibold">{{_lang('ที่อยู่ผู้ขาย','Seller address','賣方地址')}}</h2>
-                        <h2>{{profile.address}}</h2>
+                        <h2>{{profile.my_address}}</h2>
                         <h2>{{profile.geo.name}}-{{profile.province.name}}-{{profile.amphur.name}}-{{profile.district.name}}</h2>
                         <h2>{{profile.zipcode}}</h2>
                     </div>
@@ -33,7 +33,7 @@
             <div class="flex flex-wrap">
                 <v-text-field rounded class="w-full " v-model="form.name" filled :label="_lang('ชื่อทางการค้า','Trade name','商品名')" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
                 <v-text-field rounded class="w-full " v-model="form.farm_address" filled :label="_lang('ที่อยู่ร้านค้า','Shop address','店鋪地址')" prepend-inner-icon="mdi-home-city-outline"></v-text-field>
-                <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地区')" prepend-inner-icon="mdi-home-group"></v-text-field>
+                <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('จังหวัดที่อยู่ร้านค้า','province, shop address','省、店地址')" prepend-inner-icon="mdi-home-group"></v-text-field>
 
                 <v-text-field rounded class="w-full " v-model="form.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')" prepend-inner-icon="mdi-id-card"></v-text-field>
 
@@ -43,9 +43,6 @@
                 </div>
 
                 <v-text-field rounded class="w-full md:w-1/2" v-model="form.location" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด,ลองจิจูด)','GPS (Latitude,Longitude)','GPS（緯度,經度)')" prepend-inner-icon="mdi-google-maps"></v-text-field>
-
-              
-
                 <div class="flex flex-wrap">
                     <v-text-field rounded type="number" class="w-full md:w-1/2" prepend-inner-icon="mdi-phone" v-model="form.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
                     <v-text-field rounded class="w-full md:w-1/2" prepend-inner-icon="far fa-envelope" filled v-model="form.email" :label="_lang('อีเมล์','Email','电子邮件')"></v-text-field>

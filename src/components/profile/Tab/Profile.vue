@@ -93,12 +93,14 @@ export default class Profile extends Vue {
             await Core.putHttp(`/api/auth/user/`, this.form)
             await Core.putHttp(`/api/default/profile/${this.profile.id}/`, this.profile)
             await this.load();
+            alert('Successfully saved data')
         } else {
             console.log(this.profile)
             this.profile.user = this.form.pk
             await Core.putHttp(`/api/auth/user/`, this.form)
             await Core.postHttp(`/api/default/profile/`, this.profile)
             await this.load();
+            alert('Successfully saved data')
         }
 
     }

@@ -7,7 +7,7 @@
                     <v-text-field @click="loadProduct" filled rounded v-model="search" id="id" :label="_lang('ค้นหา...','What are you looking for?','搜索')"  ></v-text-field>
                 </div>
                 <hr class="m-1">
-                <v-spacer></v-spacer>
+                <!-- <v-spacer></v-spacer> -->
                 <v-btn type="submit " @click="loadProduct" large fab class="bgbtn" dark>
                     <v-icon dark>fas fa-search</v-icon>
                 </v-btn>
@@ -26,26 +26,31 @@
             <div class="w-1/2 md:w-1/5 cursor-pointer p-3 " v-if="products" v-for="product,i in products" :key="i">
                 <v-hover v-slot:default="{ hover }">
                     <v-card class="rounded-lg" height="370px" width="200px">
-                        <v-img class="white--text align-end w-full rounded-t-lg" height="150px" :src="$server+'/'+product.file1">
+                        <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="$server+'/'+product.file1">
                             <v-expand-transition>
                                 <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
                                     <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${product.id}&name=${product.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}}</v-btn>
                                 </div>
                             </v-expand-transition>
                         </v-img>
+                        
                         <div class="p-4">
-                            <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{product.name}}</h4>
+                            <div class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{product.name}}</div>
                             <div class=" text-orange-600 font-bold mb-1">
-                                <span class="  text1" v-if="product.price_type">{{_lang('฿','฿','฿')}} {{product.price}}</span>
-                                <span v-else class=" text1">{{_lang('฿','฿','฿')}} {{product.price_start}} - {{product.price_end}}</span>
+                                <div class="  text-sm" v-if="product.price_type">{{_lang('฿','฿','฿')}} {{product.price}}</div>
+                                <div v-else class=" text-sm">{{_lang('฿','฿','฿')}} {{product.price_start}} - {{product.price_end}}</div>
                             </div>
-                            <v-select dense rounded @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
+                            <div class="font-semibold leading-tight mb-1 text-indigo-600 text1">{{product.buy_date}}</div>
+                            <div class="pt-5">
+                                <v-select dense @change="updateProduct(product)" :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะสินค้า ','Product status','產品狀態')"></v-select>
+                            </div>
                             <div class=" flex "> 
-                                <v-btn type="submit " @click="$router.push(`/user/postselledit/?product=${product.id}`)" rounded large rounded class="w-full bgbtn" dark>
+                                <v-btn type="submit " @click="$router.push(`/user/postselledit/?product=${product.id}`)" rounded large class="w-full bgbtn" dark>
                                     <v-icon dark>fas fa-pencil-alt</v-icon>{{_lang('แก้ไข','Edit','編輯公告')}}
                                 </v-btn>
                             </div>
-                        </div>
+                        </div> 
+
                     </v-card>
                 </v-hover>
             </div>

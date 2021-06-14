@@ -1,9 +1,11 @@
 <template>
 <div>
+    <!-- <pre>{{products}}</pre> -->
+
     <div class="flex flex-row flex-wrap">
         <div class="w-1/2 md:w-1/6 p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
             <v-hover v-slot:default="{ hover }">
-                <v-card class="rounded-lg" height="250px" width="200px" >
+                <v-card class="rounded-lg" height="250px" width="200px">
                     <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="$server+'/'+product.file1">
                         <v-expand-transition>
                             <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
@@ -21,7 +23,10 @@
                 </v-card>
             </v-hover>
         </div>
-    </div> 
+    </div>
+    <div class="text-center mt-6 rounded-lg">
+        <v-pagination v-model="page" :length="6" circle color="teal accent-3"></v-pagination>
+    </div>
 </div>
 </template>
 
@@ -59,6 +64,7 @@ export default class PostSaller extends Vue {
     response: boolean = false;
     user: any = null
     profile: any = null
+    page: number = 1
 
     async loadFarm() {
         this.user = await Auth.getUser()
@@ -111,5 +117,5 @@ export default class PostSaller extends Vue {
     opacity: 0.8;
     position: absolute;
     width: 100%;
-}  
+}
 </style>

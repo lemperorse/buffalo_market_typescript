@@ -110,7 +110,9 @@ export default class Navbar extends Vue {
 
     async logout() {
         await Auth.logout();
+        await this.$router.push("/")
         await location.reload();
+        
     }
     async gotoHelp() {
         await window.open(`https://docs.google.com/document/d/1JzhXn1UksQ9rgVzus0VwBAHBoieGpSKdV1jypj5B7XE/edit?usp=sharing`, '_blank');

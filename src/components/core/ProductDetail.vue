@@ -4,22 +4,22 @@
         <div class="row rounded-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
                 <v-carousel class="rounded w-full"  height="300px">
-                    <v-carousel-item v-if="product.file1 != false">
+                    <v-carousel-item v-if="product.file1">
                         <img :src="$server+'/'+product.file1" alt="" srcset="">
                     </v-carousel-item>
-                    <v-carousel-item v-if="product.file2 != false">
+                    <v-carousel-item v-if="product.file2">
                         <img :src="$server+'/'+product.file2" alt="" srcset="">
                     </v-carousel-item>
-                    <v-carousel-item v-if="product.file3 != false">
+                    <v-carousel-item v-if="product.file3">
                         <img :src="$server+'/'+product.file3" alt="" srcset="">
                     </v-carousel-item>
-                    <v-carousel-item v-if="product.file4 != false">
+                    <v-carousel-item v-if="product.file4">
                         <video class="w-full h-full" controls>
                             <source :src="$server+'/'+product.file4" type="video/mp4">
                             <source :src="$server+'/'+product.file4" type="video/ogg">
                         </video>
                     </v-carousel-item>
-                    <v-carousel-item v-if="product.file5 != false">
+                    <v-carousel-item v-if="product.file5">
                         <video class="w-full h-full" controls>
                             <source :src="$server+'/'+product.file5" type="video/mp4">
                             <source :src="$server+'/'+product.file5" type="video/ogg">

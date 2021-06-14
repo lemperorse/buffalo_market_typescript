@@ -2,7 +2,9 @@
 <div>
     <v-app>
         <WebNav /><br><br><br><br>
+        <div>
         <router-view />
+        </div>
         <Footer></Footer>
     </v-app>
 
@@ -28,3 +30,7 @@
 
  }
 </script>
+
+<style scoped>
+
+</style>

@@ -1,6 +1,6 @@
 <template>
 <!-- <v-app> -->
-<div class="">
+<div class="" v-if="farm.id != false"> 
     <div class="container mx-auto">
         <div class="w-full ">
             <ol class="flex text-gray-700 bg-gray-300 rounded-full py-2 px-2">
@@ -13,9 +13,9 @@
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{_lang('ประกาศของ','Announcement of','公告')}} {{user.first_name}}
         </h2>
-        <v-toolbar class="mb-4 rounded-lg elevation-2">
+        <v-toolbar class="mb-4 rounded-lg elevation-0">
             <template>
-                <v-tabs class="rounded" color="success" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
+                <v-tabs class="rounded" color="teal accent-3" v-model="tabs" next-icon="mdi-arrow-right-bold-circle-outline" prev-icon="mdi-arrow-left-bold-circle-outline" show-arrows>
                     <v-tab class="font-weight-black">{{_lang('ประกาศซื้อ','Buy','購買')}}</v-tab>
                     <v-tab class="font-weight-black">{{_lang('ประกาศขาย','Sell','賣')}}</v-tab>
                     <v-tab class="font-weight-black">{{_lang('รายงาน','Report','報告')}}</v-tab>
@@ -145,4 +145,5 @@ a:link {
 a:hover {
     text-decoration: underline;
 }
+
 </style>

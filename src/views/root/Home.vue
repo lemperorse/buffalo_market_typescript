@@ -1,10 +1,10 @@
 <template>
 <div>
-    <div class="">
+    <div class="bg-home">
         <div class="container mx-auto mt-4">
-            <v-toolbar class="mb-2 rounded-lg " >
+            <v-toolbar class="mb-2 m-1 elevation-0" >
                 <template>
-                    <v-tabs class="rounded-lg bg3" color="success" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
+                    <v-tabs class="rounded-lg" color="teal accent-3" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
                         <v-tab class="font-weight-black">{{_lang('ประกาศ','Announcement','產品')}}</v-tab>
                         <v-tab class="font-weight-black">{{_lang('แผนที่','Map','地圖')}}</v-tab>
                     </v-tabs>
@@ -54,5 +54,5 @@ export default {
 };
 </script>
 
-<style scoped> 
+<style scoped>  
 </style>

@@ -14,13 +14,13 @@
                         <img class="w-full h-full" :src="$server+'/'+product.file3" alt="" srcset="">
                     </v-carousel-item>
                     <v-carousel-item v-if="product.file4">
-                        <video class="w-full h-full" controls>
+                        <video class="w-full h-full" controls autoplay >
                             <source :src="$server+'/'+product.file4" type="video/mp4">
                             <source :src="$server+'/'+product.file4" type="video/ogg">
                         </video>
                     </v-carousel-item>
                     <v-carousel-item v-if="product.file5">
-                        <video class="w-full h-full" controls>
+                        <video class="w-full h-full" controls autoplay>
                             <source :src="$server+'/'+product.file5" type="video/mp4">
                             <source :src="$server+'/'+product.file5" type="video/ogg">
                         </video>
@@ -52,20 +52,19 @@
             </div>
         </div>
     </v-card>
-
     <v-card class="rounded-lg p-2 mt-2 overflow-hidden " >
         <div class="pa-2">
             <v-row wrap>
                 <v-col cols="12" sm="6" md="8">
                     <v-row wrap>
                         <div class="pa-2 ml-5">
-                            <v-avatar size="55">
+                            <v-avatar size="55" >
                                 <img :src="$server+'/'+profile.profile_image" />
                             </v-avatar>
                         </div>
 
                         <div class="ml-2 mt-3">
-                            <h3 v-if="product.farm">
+                            <h3 v-if="product.farm"> 
                                 <span v-if="product.farm.user">{{_lang('ชื่อ','Name','名稱')}} : {{product.farm.user.first_name}} {{product.farm.user.last_name}}</span>
                             </h3>
                             <h3 v-if="product.farm">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}}-{{profile.amphur.name}}-{{profile.district.name}}</h3>

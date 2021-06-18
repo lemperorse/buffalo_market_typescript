@@ -10,7 +10,6 @@
                 <div class="flex">
                     <img class="w-24 h-24 rounded-full" :src="$server+'/'+profile.profile_image" alt="" srcset="">
                     <div class="pl-4">
-                        <!-- <h2 class="font-semibold">{{_lang('ชื่อ รูปผู้ขาย และ เลขบัตรประจำตัวประชาชน','Name, Image and ID card number','姓名，商戶圖像和身份證號')}}</h2> -->
                         <h2>ชื่อผู้ขาย : {{user.first_name}}&nbsp;&nbsp;{{user.last_name}}</h2>
                         <h2>เลขบัตรประชาชน : {{profile.personal_id}}</h2>
                     </div>
@@ -35,11 +34,11 @@
                 <v-text-field rounded class="w-full " v-model="form.farm_address" filled :label="_lang('ที่อยู่ร้านค้า','Shop address','店鋪地址')" prepend-inner-icon="mdi-home-city-outline"></v-text-field>
                 <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('จังหวัดที่อยู่ร้านค้า','province, shop address','省、店地址')" prepend-inner-icon="mdi-home-group"></v-text-field>
 
-                <v-text-field rounded class="w-full " v-model="form.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')" prepend-inner-icon="mdi-id-card"></v-text-field>
+                <v-text-field rounded class="w-full " type="number" v-model="form.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')" prepend-inner-icon="mdi-id-card"></v-text-field>
 
                 <div class="relative w-full mb-3"> 
                     <MapView :name="'locations'" :center="{'Latitude':location.lat ,'Longitude' :location.lng }" :locations="[
-                    {'Latitude':location.lng ,'Longitude' :location.lat} ,]" :zoom="18" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
+                    {'Latitude':location.lng ,'Longitude' :location.lat} ,]" :zoom="16" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
                 </div>
 
                 <v-text-field rounded class="w-full md:w-1/2" v-model="form.location" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด,ลองจิจูด)','GPS (Latitude,Longitude)','GPS（緯度,經度)')" prepend-inner-icon="mdi-google-maps"></v-text-field>

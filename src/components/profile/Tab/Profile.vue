@@ -17,7 +17,7 @@
             <v-text-field rounded class="w-full " filled v-model="profile.my_address" :label="_lang('ที่อยู่','Address','地址')" prepend-inner-icon="mdi-home-city-outline"></v-text-field>
 
             <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地區')" prepend-inner-icon="mdi-home-group"></v-text-field>
-            <v-text-field rounded class="w-full  " v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')" prepend-inner-icon="mdi-postage-stamp"></v-text-field>
+            <v-text-field rounded class="w-full" type="number" v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')" prepend-inner-icon="mdi-postage-stamp"></v-text-field>
 
         </div>
         <v-btn x-large rounded class="w-full bgbtn" dark type="submit">

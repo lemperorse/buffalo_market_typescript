@@ -6,7 +6,7 @@
         <div class="w-1/2 md:w-1/6 p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
             <v-hover v-slot:default="{ hover }">
                 <v-card class="rounded-lg" height="250px" width="200px">
-                    <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="$server+'/'+product.file1">
+                    <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="$server+'/'+pu.file1">
                         <v-expand-transition>
                             <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
                                 <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
@@ -84,6 +84,7 @@ export default class PostSaller extends Vue {
         if (store.id) {
             alert("Save product success")
             await this.loadProduct()
+            
         }
     }
 

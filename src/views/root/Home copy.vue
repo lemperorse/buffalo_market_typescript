@@ -1,21 +1,39 @@
 <template>
 <div>
-    <Slide />
-    <Category />
-    <ProductNow />
+    <div class="">
+        <div class="container mx-auto mt-4">
+            <v-toolbar class="mb-2 m-1 elevation-0" >
+                <template>
+                    <v-tabs class="rounded-lg" color="teal accent-3" v-model="tabs" next-icon="mdi-arrow-right-bold-box-outline" prev-icon="mdi-arrow-left-bold-box-outline" show-arrows>
+                        <v-tab class="font-weight-black">{{_lang('ประกาศ','Announcement','產品')}}</v-tab>
+                        <v-tab class="font-weight-black">{{_lang('แผนที่','Map','地圖')}}</v-tab>
+                    </v-tabs>
+                </template>
+            </v-toolbar>
+            <v-tabs-items v-model="tabs">
+                <v-tab-item class="">
+                    <Buy />
+                </v-tab-item>
+                <v-tab-item class="">
+                    <World />
+                </v-tab-item>
+            </v-tabs-items>
+        </div>
+    </div>
 </div>
 </template>
 
 <script>
-import Slide from '@/components/home/Slide.vue' 
-import Category from '@/components/home/Category.vue' 
-import ProductNow from '@/components/home/ProductNow.vue' 
-
+import Buy from "@/components/core/Buy.vue"; 
+import World from "@/components/core/World.vue";
+import Popup from "@/components/core/Popup.vue"
 import { Component, Vue } from "vue-property-decorator";
 export default {
     name: "home-page",
     components: {
-      Slide,Category,ProductNow
+        Buy, 
+        World,
+        Popup,
     },
     data() {
         return {

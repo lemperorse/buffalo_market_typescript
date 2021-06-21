@@ -8,8 +8,8 @@ module.exports = {
   // "transpileDependencies": [
   //   "vuetify"
   // ],
-//  publicPath: process.env.NODE_ENV === 'production' ?
-//       '/buffalo_market_web/' :
-//       '/'
+ publicPath: process.env.NODE_ENV === 'production' ?
+      '/buffalo_market_typescript/' :
+      '/'
    
 }

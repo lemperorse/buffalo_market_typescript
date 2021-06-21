@@ -2,9 +2,10 @@
 <div>
     <v-app>
         <WebNav /><br><br><br><br>
-        <div>
-        <router-view />
-        </div>
+        <v-main>
+            <router-view />
+        </v-main>
+
         <Footer></Footer>
     </v-app>
 
@@ -12,23 +13,23 @@
 </template>
 
 <script lang="ts">
- import {
-     Component,
-     Vue,
- } from 'vue-property-decorator';
- import WebNav from '../../components/core/WebNav.vue'
- import Footer from '../../components/core/Footer.vue'
- @Component({
-     components: {
-         WebNav,
-         Footer
-     },
-     computed: {}
- })
+import {
+    Component,
+    Vue,
+} from 'vue-property-decorator';
+import WebNav from '../../components/core/WebNav.vue'
+import Footer from '../../components/core/Footer.vue'
+@Component({
+    components: {
+        WebNav,
+        Footer
+    },
+    computed: {}
+})
 
- export default class Test extends Vue {
+export default class Test extends Vue {
 
- }
+}
 </script>
 
 <style scoped>

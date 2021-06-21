@@ -8,8 +8,7 @@ Vue.use(VueRouter)
 const root:any = rootRouter
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'Home',
+    path: '/', 
     component: () => import('@/views/root/Base.vue'),
     children: rootRouter
   },

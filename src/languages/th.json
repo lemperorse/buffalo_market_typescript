@@ -15,7 +15,8 @@
         "searchTxt":"ค้นหาประกาศ",
         "username":"ชื่อผู้ใช้งาน",
         "password":"รหัสผ่าน",
-        "confirmpassword":"ยืนยันรหัสผ่าน"
+        "confirmpassword":"ยืนยันรหัสผ่าน",
+        "post":"ลงประกาศ"
 
         
     },

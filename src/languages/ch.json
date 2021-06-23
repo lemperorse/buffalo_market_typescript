@@ -15,7 +15,8 @@
         "searchTxt":"搜索公告",
         "username":"用戶名" ,
         "password":"密碼",
-        "confirmpassword":"確認密碼"
+        "confirmpassword":"確認密碼",
+        "post":"郵政"
     },
     "language":["先生","女士","小姐"]
 }

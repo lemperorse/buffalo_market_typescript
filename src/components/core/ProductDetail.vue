@@ -51,7 +51,7 @@
 
             </div>
         </div>
-    </v-card>
+    </v-card> 
     <v-card class="rounded-lg p-2 mt-2 overflow-hidden " >
         <div class="pa-2">
             <v-row wrap>
@@ -75,6 +75,7 @@
                     <div >
                         <div class="text--primary" v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
                         <div class="flex "> 
+                            <v-btn @click="$router.push(`/user/productall?product=${product.id}&name=${product.farm.user.first_name}`)" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark>{{_lang('ดูสินค้า','View','查看產品')}}</v-btn>
                             <v-btn @click="openMap" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark>{{_lang('นำทาง','Navigate','導航')}}</v-btn>
                         </div>
                     </div>

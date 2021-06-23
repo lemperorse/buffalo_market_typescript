@@ -19,7 +19,7 @@ const userRouter: any = [
         component: getView('Test')
     },
 
-    //*****************************หน้ารวมสินค้า******************************** */
+    //*****************************หน้ารายละเอียดสินค้า******************************** */
     {
         path: '/user/productdetail',
         name: 'productdetail',
@@ -62,6 +62,38 @@ const userRouter: any = [
         path: '/user/profileuser',
         name: 'profileuser',
         component: getView('ProfileUser')
+    },
+    //*****************************ร้านค้าของฉัน******************************** */
+    {
+        path: '/user/myshop',
+        name: '_myshop',
+        component: getView('_myshop')
+    },
+    {
+        path: '/user/myshoplist',
+        name: '_myshoplist',
+        component: getView('_myshoplist')
+    },
+    {
+        path: '/user/myshopbuy',
+        name: '_myshopbuy',
+        component: getView('_myshopbuy')
+    },
+    {
+        path: '/user/myshopsell',
+        name: '_myshopsell',
+        component: getView('_myshopsell')
+    },
+    {
+        path: '/user/myshopreport',
+        name: '_myshopreport',
+        component: getView('_myshopreport')
+    },
+    //*****************************หน้าสินค้าทั้งหมดของฉัน******************************** */
+    {
+        path: '/user/productall',
+        name: 'productall',
+        component: getView('productall')
     },
 
 ]

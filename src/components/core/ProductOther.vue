@@ -1,7 +1,5 @@
 <template>
-<div>
-    <!-- <pre>{{products}}</pre> -->
-
+<div> 
     <div class="flex flex-row flex-wrap">
         <div class="w-1/2 md:w-1/6 p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
             <v-hover v-slot:default="{ hover }">

@@ -15,7 +15,8 @@
         "searchTxt":"Search For",
         "username":"Username",
         "password":"Password",
-        "confirmpassword":"Confirm password"
+        "confirmpassword":"Confirm password",
+        "post":"Post"
         
     },
     "language":["Mr.","Mrs.","Miss"]

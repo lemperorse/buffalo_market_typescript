@@ -17,14 +17,16 @@
 
                 <v-list>
                     <v-btn @click="$router.push('/user/profileuser')" text class="w-full">{{_lang('โปรไฟล์','Profile','个人资料')}}</v-btn>
-                    <v-btn @click="$router.push('/user/post/')" text class="w-full">{{_lang('จัดการประกาศ','Announcements','管理公告')}}</v-btn>
-                    <v-btn @click="logout()" text class="w-full">{{_lang('ออกจากระบบ','Logout','登出')}}</v-btn>
+                    <!-- <v-btn @click="$router.push('/user/post/')" text class="w-full">{{_lang('ร้านค้าของฉัน','My Shop','我的店鋪')}}</v-btn> -->
+                    <v-btn @click="$router.push('/user/myshop/')" text class="w-full">{{_lang('ร้านค้าของฉัน','My Shop','我的店鋪')}}</v-btn>
+                    <v-btn color="error" @click="logout()" text class="w-full">{{_lang('ออกจากระบบ','Logout','登出')}}</v-btn>
                 </v-list>
-            </v-menu>
+            </v-menu> 
 
             <v-btn v-if="!logined" @click="$router.push('/register')" small text dark> {{$txt.web_nav.register}}</v-btn>
             <v-btn v-if="!logined" @click="$router.push('/login')" small text dark> {{$txt.web_nav.login}}</v-btn>
-            <v-btn class="invisible  md:visible" @click="$router.push('/register')" small outlined dark> {{$txt.web_nav.download}}</v-btn>
+            <v-btn @click="$router.push('/user/addpostbuy')" small rounded dark>{{$txt.web_nav.post}}</v-btn>
+            <v-btn class="invisible  md:visible" @click="$router.push('/register')" small outlined rounded dark> {{$txt.web_nav.download}}</v-btn>
         </div>
         <div class="flex pt-2 ">
             <h2 style="cursor: pointer;" class="text-base md:text-2xl logo-font pon text-white mt-2" @click="$router.push('/')">
@@ -39,7 +41,7 @@
                     <v-btn type="submit" fab class="bgs " dark>{{$txt.web_nav.search}}</v-btn>
                 </div> -->
                 <v-text-field prepend-inner-icon="fas fa-search" v-model="search"  solo rounded name="name" :placeholder="$txt.web_nav.searchTxt" :label="$txt.web_nav.searchTxt"   ></v-text-field>
-                <v-btn type="submit" fab class="bg-t ml-2" color="bg-t"  >{{$txt.web_nav.search}}</v-btn>
+                <v-btn type="submit" fab class=" ml-2" color=""  >{{$txt.web_nav.search}}</v-btn>
             </form>
         </div>
     </div>

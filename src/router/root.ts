@@ -37,6 +37,15 @@ const rootRouter = [
         name: 'forgot_user-home',
         component: getView('Forgot_password_user')
     },
+    {
+        path: 'product',
+        name: 'product',
+        component: getView('Product')
+    },{
+        path: 'map',
+        name: 'map',
+        component: getView('Map')
+    },
 ]
 
 

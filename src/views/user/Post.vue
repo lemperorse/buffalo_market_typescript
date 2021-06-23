@@ -27,7 +27,7 @@
             </template>
         </v-toolbar>
         <v-tabs-items v-model="tabs">
-            <v-tab-item class=" ">
+            <v-tab-item class=" " >
                 <PostBuy />
             </v-tab-item>
             <v-tab-item class=" ">

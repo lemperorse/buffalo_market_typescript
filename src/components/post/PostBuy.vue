@@ -23,7 +23,7 @@
         </v-row>
 
         <div class="row p-1">
-            <div class="w-1/2 md:w-1/5 p-3" v-if="products" v-for="product,i in products" :key="i">
+            <div class="w-1/2 md:w-1/5 p-3" v-if="products" v-for="product,i in products.results" :key="i">
                 <v-hover v-slot:default="{ hover }">
                     <v-card class="rounded-lg" height="340px" width="200px">
                         <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="$server+'/'+product.file1">

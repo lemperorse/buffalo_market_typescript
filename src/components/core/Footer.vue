@@ -1,13 +1,11 @@
 <template>
-<nav id="footer" class="footer">
+<nav id="footer" class="  bg-nav">
     <!-- start container -->
     <div class="container mx-auto "> 
         <!-- Start footer bottom -->
-        <div class="pt-4 md:flex md:items-center md:justify-center " >
-            ลิขสิทธิ์ © 2563 โดย ชยุต ดงปาลีธรรม และ คณะ
-            <ul class="">
-                <li class="md:mx-2 md:inline leading-7 text-sm" id="footer-navi-2"><a class="text-white underline text-small" href="/">ติดต่อผู้ดูแลระบบ</a></li>
-            </ul>
+        <div class="pt-4 md:flex md:items-center md:justify-center " > 
+            {{_lang('ลิขสิทธิ์ © 2563 โดย ชยุต ดงปาลีธรรม และ คณะ','Copyright © 2020 by Chayut Dongpalitham and team.','版权所有 © 2020 Chayut Dongpalitham 和团队。')}}
+        
         </div>
         <!-- end container -->
     </div>

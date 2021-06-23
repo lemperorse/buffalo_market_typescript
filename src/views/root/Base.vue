@@ -2,7 +2,7 @@
 <div>
     <v-app>
         <WebNav /><br><br><br><br>
-        <v-main>
+        <v-main class=" bg-gray-100">
             <router-view />
         </v-main>
 

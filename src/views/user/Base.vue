@@ -2,7 +2,9 @@
 <div>
     <v-app>
         <WebNav />
-        <router-view class="pt-32" />
+        <v-main>
+            <router-view class="pt-32" />
+        </v-main>
         <CityDialog />
         <Footer></Footer>
     </v-app>

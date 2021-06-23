@@ -1,21 +1,25 @@
 <template>
-<div>
+<div >
     <Slide />
-    <Category />
-    <ProductNow />
+    <Category /><br><br>
+    <ProductSellNow />
+    <ProductBuyNow />
+    <MapMenu />
 </div>
 </template>
 
 <script>
 import Slide from '@/components/home/Slide.vue' 
 import Category from '@/components/home/Category.vue' 
-import ProductNow from '@/components/home/ProductNow.vue' 
+import ProductBuyNow from '@/components/home/ProductBuyNow.vue'  
+import ProductSellNow from '@/components/home/ProductSellNow.vue' 
+import MapMenu from '@/components/home/Map.vue' 
 
 import { Component, Vue } from "vue-property-decorator";
 export default {
     name: "home-page",
     components: {
-      Slide,Category,ProductNow
+      Slide,Category,ProductBuyNow,ProductSellNow,MapMenu
     },
     data() {
         return {

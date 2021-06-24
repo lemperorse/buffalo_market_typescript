@@ -16,7 +16,7 @@
                 </p>
                 <div class="get-app flex row wrap md:space-x-5 mt-10  ">
                     <v-btn x-large rounded><i class="fas fa-search text-xl"></i> {{_lang(' ค้นหาประกาศ ที่คุณต้องการ','Find the announcement you want.','找到您想要的公告。')}} </v-btn>
-                        <v-btn outlined x-large rounded><i class="fas fa-map-marker-alt text-xl"></i>{{_lang('ดูสถานที่สำคัญ','Find landmarks.','看地标')}}</v-btn>
+                        <v-btn dark outlined x-large rounded><i class="fas fa-map-marker-alt text-xl"></i>{{_lang('ดูสถานที่สำคัญ','Find landmarks.','看地标')}}</v-btn>
                 </div>
             </div>
 

@@ -40,10 +40,10 @@
 
                     <v-card-text class="">
                         <div class="m-4">
-                            <v-btn @click="$router.push('/user/addpostbuy')" depressed color="teal darken-4" dark x-large block rounded>เพิ่มประกาศซื้อ</v-btn>
+                            <v-btn @click="($router.push('/user/addpostbuy')) && (dialog=false)" depressed color="teal darken-4" dark x-large block rounded>เพิ่มประกาศซื้อ</v-btn>
                         </div>
                         <div class="m-4">
-                            <v-btn @click="$router.push('/user/addpostsell')" depressed color="teal darken-4" dark x-large block rounded>เพิ่มประกาศขาย</v-btn>
+                            <v-btn @click="($router.push('/user/addpostsell')) && (dialog=false)" depressed color="teal darken-4" dark x-large block rounded>เพิ่มประกาศขาย</v-btn>
                         </div>
                     </v-card-text> 
                 </v-card>

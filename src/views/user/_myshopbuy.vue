@@ -32,7 +32,7 @@
                     </v-radio-group>
                 </v-card>
             </v-col>
-            <v-col cols="12" sm="6" md="8">
+            <v-col class="w-full" cols="12" sm="6" md="8">
                 <v-card class=" rounded-lg">
                     <div>
                         <template>

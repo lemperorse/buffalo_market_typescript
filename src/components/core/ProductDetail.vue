@@ -75,8 +75,8 @@
                     <div >
                         <div class="text--primary" v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
                         <div class="flex "> 
-                            <v-btn @click="$router.push(`/user/productall?product=${product.id}&name=${product.farm.user.first_name}`)" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark>{{_lang('ดูสินค้า','View','查看產品')}}</v-btn>
-                            <v-btn @click="openMap" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark>{{_lang('นำทาง','Navigate','導航')}}</v-btn>
+                            <v-btn @click="$router.push(`/user/productall?product=${product.id}&name=${product.farm.user.first_name}`)" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark><v-icon>mdi-shopping-search</v-icon> {{_lang('ดูสินค้า','View','查看產品')}}</v-btn>
+                            <v-btn @click="openMap" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark><v-icon>mdi-map-marker-radius-outline</v-icon> {{_lang('นำทาง','Navigate','導航')}}</v-btn>
                         </div>
                     </div>
                 </v-col>
@@ -88,8 +88,8 @@
         <div class="row rounded-lg p-2 overflow-hidden">
             <div class="col-sm-12 col-xs-12 col-md-12">
                 <v-tabs class="rounded" color="teal accent-3" next-icon="mdi-arrow-right-bold-circle-outline" prev-icon="mdi-arrow-left-bold-circle-outline" show-arrows>
-                    <v-tab >{{_lang('รายละเอียด','Detail','詳情')}}</v-tab>
-                    <v-tab>{{_lang('ช่องทางการติดต่ออื่นๆ','Other contact','其他聯絡人')}}</v-tab>
+                    <v-tab ><v-icon>mdi-note-text-outline </v-icon> {{_lang('รายละเอียด','Detail','詳情')}}</v-tab>
+                    <v-tab><v-icon>mdi-contacts-outline </v-icon> {{_lang('ช่องทางการติดต่ออื่นๆ','Other contact','其他聯絡人')}}</v-tab>
                     <v-tab-item>
                         <p class="pt-4 font-weight-thin text-md">
                             {{product.detail}}

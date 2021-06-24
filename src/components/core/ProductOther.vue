@@ -4,7 +4,7 @@
             <v-col cols="12" sm="12">
                 <v-toolbar color="transparent" flat>  
                     <v-spacer></v-spacer>
-                    <v-btn rounded @click="$router.push('/product?type=2')" outlined>{{_lang('ดูทั้งหมด','All','查看全部')}}</v-btn>
+                    <v-btn rounded @click="$router.push('/product?type=2')" outlined><v-icon>mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}</v-btn>
                 </v-toolbar>
                 <v-slide-group multiple show-arrows><br>
                     <v-slide-item v-for="n in 25" :key="n">

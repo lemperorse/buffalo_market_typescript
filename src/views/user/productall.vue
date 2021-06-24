@@ -17,7 +17,7 @@
                                 </h3>
                                 <div class="text--primary" v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
                                 <h3 v-if="product.farm">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}}-{{profile.amphur.name}}-{{profile.district.name}}</h3>
-                                <v-btn @click="openMap" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark>{{_lang('นำทาง','Navigate','導航')}}</v-btn>
+                                <v-btn @click="openMap" rounded type="submit" class="w-full md:w-1/2 bgbtn" dark><v-icon>mdi-map-marker-radius-outline</v-icon> {{_lang('นำทาง','Navigate','導航')}}</v-btn>
                             </div>
                         </v-row>
                     </v-col>

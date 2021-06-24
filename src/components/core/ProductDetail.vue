@@ -92,18 +92,18 @@
                     <v-tab><v-icon>mdi-contacts-outline </v-icon> {{_lang('ช่องทางการติดต่ออื่นๆ','Other contact','其他聯絡人')}}</v-tab>
                     <v-tab-item>
                         <p class="pt-4 font-weight-thin text-md">
-                            {{product.detail}}
+                            <v-icon>mdi-lead-pencil</v-icon> {{product.detail}}
                         </p>
                     </v-tab-item>
                     <v-tab-item>
                         <p class="pt-4 font-weight-thin text-md">
-                            Email : <span>{{product.farm.email}}</span>
+                            <v-icon>mdi-email-outline</v-icon> Email : <span>{{product.farm.email}}</span>
                         </p>
-                        <p class="font-weight-thin text-md">Facebook : <span>{{product.farm.facebook}}</span></p>
-                        <p class="font-weight-thin text-md">Line : <span>{{product.farm.line}}</span></p>
-                        <p class="font-weight-thin text-md">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span></p>
+                        <p class="font-weight-thin text-md"><v-icon>mdi-facebook</v-icon> Facebook : <span>{{product.farm.facebook}}</span></p>
+                        <p class="font-weight-thin text-md"><i class="fab fa-line text-xl pl-1 pr-1"></i> Line : <span>{{product.farm.line}}</span></p>
+                        <p class="font-weight-thin text-md"><v-icon>mdi-cellphone</v-icon> {{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span></p>
                         <p class="font-weight-thin text-md">
-                            {{_lang('ที่อยู่','Address','地址')}} : <span>{{product.farm.address}}</span>
+                            <v-icon>mdi-map-marker-outline</v-icon> {{_lang('ที่อยู่','Address','地址')}} : <span>{{product.farm.address}}</span>
                             <span>{{product.farm.province.name}}</span>-
                             <span>{{product.farm.amphur.name}}</span>-
                             <span>{{product.farm.district.name}}</span>

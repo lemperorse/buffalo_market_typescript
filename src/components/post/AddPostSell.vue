@@ -2,7 +2,7 @@
 <div class="px-4 py-5 flex-auto">
     <div class="flex-auto lg:px-10 py-10 pt-0">
         <form @submit.prevent="storeProduct()">
-            <v-text-field dense rounded type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อ','Name','名称')"></v-text-field>
+            <v-text-field dense rounded type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อสินค้า','Product name','產品名稱')"></v-text-field>
             <v-text-field dense rounded type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')"></v-text-field>
             <v-select dense rounded :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select>
 
@@ -20,7 +20,7 @@
             <v-text-field type="file" v-model="product.file5" class="w-full " filled :label="_lang('ไฟล์ 5','File5','文件5')"></v-text-field> -->
             <v-select dense rounded :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full pt-3" filled :label="_lang('ประเภทการขาย','Sales type','銷售類型')"></v-select>
             <v-text-field dense rounded v-if="product.sell_type == 0" type="date" v-model="product.buy_date" class="w-full pt-3" filled :label="_lang('วันที่สิ้นสุดประกาศขาย','Sale end date','銷售結束日期')"></v-text-field>
-
+            <v-select dense rounded :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select>
             <div class="pt-3 pb-3">
                 <div v-for="category,index in categories" :key="index">
                     <div class="">{{category.name}}</div>
@@ -86,7 +86,7 @@ export default class Saller extends Vue {
         this.product.category = this.chooseCategories
         this.product.farm = this.farm.id
         this.product.user = this.user.pk
-        this.product.status = 5
+        this.product.status = this.product.status
     }
     choices: any = {}
     public async loadChoice() {
@@ -95,6 +95,7 @@ export default class Saller extends Vue {
             "product_type": await Product.ProductType,
             "sell_type": await Product.SaleType,
             "price_type": await Product.PriceType,
+            'status': await Product.StatusSell
         }
     }
     public async loadProduct() {

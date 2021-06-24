@@ -1,30 +1,34 @@
-<template>
-<div class="p-2">
+<template> 
+<div class="p-2 bg-gray-100 h-full">
     <v-container grid-list-xs>
         <div class="px-1 md:px-10 mx-auto w-full">
             <div>
                 <v-row class="pb-6 ">
-                    <div>
-                        <!-- <pre>{{user}}</pre> -->
+                    <div> 
                         <div class="pa-2 wrap elevation-0   ">
-                            <span class="text-xl">{{_lang('ประกาศขายของฉัน','My sale announcement','我的銷售公告')}}</span>
+                            <span class="text-xl"><i class="em em-clipboard p-4" aria-role="presentation" aria-label="CLIPBOARD"></i>{{_lang('ประกาศซื้อของฉัน','My purchase announcement','我的購買公告')}}</span>
                         </div>
                     </div>
+                    <v-spacer></v-spacer>
+                    <div>
+                        <!-- <i class="em em-female-technologist text-xl mr-2" aria-role="presentation" aria-label=""></i> <b>ติดต่อผู้ดูแลระบบ</b> -->
+                        <v-btn @click="$router.push('/user/addpostbuy')" rounded large dark color="teal darken-4"><v-icon>mdi-feather</v-icon>{{$txt.web_nav.post}}</v-btn>
+                    </div>
+                    
 
                 </v-row>
             </div>
         </div>
-
+        <!-- <pre>{{products}}</pre>  -->
         <v-row>
             <v-col cols="12" md="4">
                 <v-card class="pa-2 rounded-lg ">
                     <span class="text-xl"> {{_lang('สถานะประกาศ','Announcement Status','公告狀態')}}</span>
-                    <v-radio-group>
+                    <v-radio-group >
                         <v-radio label="ทั้งหมด" value="radio-0"></v-radio>
-                        <v-radio label="มีสินค้า" value="radio-1"></v-radio>
-                        <v-radio label="สินค้าหมด" value="radio-2"></v-radio>
-                        <v-radio label="ขายแล้ว" value="radio-3"></v-radio>
-                        <v-radio label="ยกเลิก" value="radio-4"></v-radio>
+                        <v-radio label="รับซื้อ" value="radio-1"></v-radio>
+                        <v-radio label="ได้รับสินค้าแล้ว" value="radio-2"></v-radio>
+                        <v-radio label="ยกเลิก" value="radio-3"></v-radio>
                     </v-radio-group>
                 </v-card>
             </v-col>
@@ -46,6 +50,9 @@
                                                 {{_lang('ราคา','Price','價格')}}
                                             </th>
                                             <th class="text-left">
+                                                {{_lang('ประเภทสินค้า','Product type','產品類別')}}
+                                            </th>
+                                            <th class="text-left">
                                                 {{_lang('ประเภทประกาศ','Announcement type','公告類型')}}
                                             </th>
                                             <th class="text-left">
@@ -57,17 +64,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for=" i in 10">
+                                        <tr v-if="products" v-for="product,i in products" :key="i">
+                                            <!-- <pre>{{product}}</pre> -->
                                             <td class="pa-2">
-                                                <v-avatar color="primary" size="56"></v-avatar>
+                                                <v-img :src="$server+'/'+product.file1" class="h-16 w-16 bg-white rounded-full border"></v-img>
                                             </td>
-                                            <td class="pa-2"><span class="">สินค้าทดลอง</span></td>
-                                            <td class="pa-2"><span>฿ 5000</span></td>
-                                            <td class="pa-2"><span>ประกาศขาย</span></td>
-                                            <td class="pa-2"><span>12/12/2012</span></td>
+                                            <td class="pa-2"><span class="">{{product.name}}</span></td>
+                                            <td class="pa-2"><span class="  text1" v-if="product.price_type">{{_lang('฿','฿','฿')}} {{product.price}}</span>
+                                            <span v-else class=" text1">{{_lang('฿','฿','฿')}} {{product.price_start}} - {{product.price_end}}</span></td>
+                                            <!-- <td class="pa-2"><v-select readonly dense rounded :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select></td> -->
+                                            <td class="pa-2"><span>{{product.status}}</span></td> 
+                                            <td class="pa-2"><span>{{product.product_type}}</span></td> 
+                                            <td class="pa-2"><span>{{product.created_at}}</span></td>
                                             <td class="pa-2">
-                                                <v-btn rounded depressed color="info">{{_lang('ดู','View','看法')}}</v-btn>
-                                                <v-btn rounded depressed color="warning">{{_lang('แก้ไข','Edit','修改')}}</v-btn>
+                                                <v-btn rounded depressed color="info" @click="$router.push(`/user/productdetail?product=${product.id}&name=${product.name}`)"><v-icon>mdi-shopping-outline</v-icon>{{_lang('ดู','View','看法')}}</v-btn>
+                                                <v-btn rounded depressed color="warning" @click="$router.push(`/user/postselledit/?product=${product.id}`)"><v-icon>mdi-circle-edit-outline</v-icon>{{_lang('แก้ไข','Edit','修改')}}</v-btn>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -78,7 +89,7 @@
                 </v-card>
 
                 <div class="text-center mt-4">
-                    <v-pagination v-model="page" :length="4" circle></v-pagination>
+                    <v-pagination v-model="page" :length="4" circle></v-pagination>  
                 </div>
 
             </v-col>
@@ -87,16 +98,74 @@
 </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            page: 1,
+<script lang="ts">
+import {
+    Component,
+    Vue,
+    Watch,
+} from 'vue-property-decorator';
+import MapView from '@/components/core/Map.vue';
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
+import { Map } from "@/store/map";
+import { Product } from "@/store/product";
+import {
+    City
+} from "@/store/city";
+@Component({
+    components: { MapView },
+    computed: {},
+})
+
+export default class PostSaller extends Vue {
+    choices: any = {}
+    page: number = 1
+    status: any = ['มีสินค้า', 'สินค้าหมด', 'ขายแล้ว', 'ยกเลิก']
+    search: any = ''
+    headers: any = [
+        { text: '', value: 'id' },
+        { text: 'Fat (g)', value: 'fat' },
+        { text: 'Carbs (g)', value: 'carbs' },
+        { text: 'Protein (g)', value: 'protein' },
+        { text: 'Iron (%)', value: 'iron' },
+    ]
+
+    async created() {
+        await this.loadFarm();
+        await this.loadProduct();
+        this.choices = {
+            'status': await Product.StatusSell
         }
-    },
+        this.response = true
+    }
+
+    farm: any = {}
+    response: boolean = false;
+    user: any = null
+    profile: any = null
+    async loadFarm() {
+        this.user = await Auth.getUser()
+        this.profile = await User.getProfileFull();
+        this.farm = await Core.getHttp(`/api/user/farm/${this.user.pk}/`)
+    }
+
+    products: any = null
+    async loadProduct() {
+        this.products = await Core.getHttp(`/api/default/product/?farm=${this.farm.id}&product_type=0&search=${this.search}`)
+    }
+
+    public async updateProduct(product: any) {
+        let store = await Core.putHttp(`/api/default/products/${product.id}/`, product)
+        if (store.id) {
+            alert("Save product success")
+            await this.loadProduct()
+        }
+    } 
+
+    ximg(file: any) {
+        return (file) ? file : 'https://images.pexels.com/photos/4052387/pexels-photo-4052387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    }
+
 }
 </script>
-
-<style>
-
-</style>

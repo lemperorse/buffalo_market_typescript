@@ -118,7 +118,7 @@
     <v-divider class="mt-8"></v-divider>
     <p class="font-weight-light pt-3 text-center te xt-2xl">สินค้าอื่นๆ</p>
     <p class="font-weight-light text-center text-2xl text-purple-600">
-        ของผู้ขายคนนี้
+        ที่คุณอาจสนใจ
     </p>
  
     <ProductOther />

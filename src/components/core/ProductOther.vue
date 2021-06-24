@@ -1,120 +1,66 @@
 <template>
-<div> 
-    <div class="flex flex-row flex-wrap">
-        <div class="w-1/2 md:w-1/6 p-2 " mobile-breakpoint="1024" v-for="pu,i in products" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
-            <v-hover v-slot:default="{ hover }">
-                <v-card class="rounded-lg" height="250px" width="200px">
-                    <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="$server+'/'+pu.file1">
-                        <v-expand-transition>
-                            <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
+<div class=""> 
+        <v-row justify="center">
+            <v-col cols="12" sm="12">
+                <v-toolbar color="transparent" flat>  
+                    <v-spacer></v-spacer>
+                    <v-btn rounded @click="$router.push('/product?type=2')" outlined>{{_lang('ดูทั้งหมด','All','查看全部')}}</v-btn>
+                </v-toolbar>
+                <v-slide-group multiple show-arrows><br>
+                    <v-slide-item v-for="n in 25" :key="n">
+                        <div class="flex flex-row w-full">
+                            <div class="w-1/2 md:w-1/5 p-2 " v-for="pu,i in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+                                <Card 
+                                :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`"
+                                :img="ximg(pu.file1)" 
+                                :name="pu.name"
+                                 :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" 
+                                 class="h-37 w-48"  />
                             </div>
-                        </v-expand-transition>
-                    </v-img>
-                    <div class="p-6 ">
-                        <h4 class="font-semibold leading-tight mb-1 text-indigo-600 text-sm">{{pu.name}}</h4>
-                        <div class="text-orange-600 font-bold mb-1">
-                            <span class="text-sm" v-if="pu.price_type">{{_lang('฿','฿','฿')}} {{pu.price}}</span>
-                            <span v-else>{{pu.price_start}} - {{pu.price_end}}</span>
                         </div>
-                    </div>
-                </v-card>
-            </v-hover>
-        </div>
-    </div>
-    <div class="text-center mt-6 rounded-lg">
-        <v-pagination v-model="page" :length="6" circle color="teal accent-3"></v-pagination>
-    </div>
+                    </v-slide-item>
+                </v-slide-group>
+            </v-col>
+        </v-row> 
 </div>
 </template>
 
 <script lang="ts">
+import Card from '@/components/cart/Card.vue'
 import {
     Component,
     Vue,
     Watch,
 } from 'vue-property-decorator';
-import MapView from '@/components/core/Map.vue';
-import { User } from "@/store/user";
-import { Auth } from "@/store/auth";
-import { Core } from "@/store/core";
-import { Map } from "@/store/map";
-import { Product } from "@/store/product";
+import {
+    Core
+} from "@/store/core";
+import {
+    Product
+} from "@/store/product";
 import {
     City
 } from "@/store/city";
 @Component({
-    components: { MapView },
+    components: {Card},
     computed: {},
 })
 
 export default class PostSaller extends Vue {
-    dialog: boolean = false
-    async created() {
-        await this.loadProduct();
-        await this.loadFarm();
-        await this.loadProducts()
-        this.response = true
-    }
+
     products: any = null
-    product: any = null
-    farm: any = {}
-    response: boolean = false;
-    user: any = null
-    profile: any = null
-    page: number = 1
-
-    async loadFarm() {
-        this.user = await Auth.getUser()
-        this.profile = await User.getProfileFull();
-        this.farm = await Core.getHttp(`/api/default/farm/${this.product.farm.id}/`)
-    }
-
-    async loadProduct() {
-        let id = this.$route.query.product
-        this.product = await Core.getHttp(`/api/default/products/${id}/`)
-    }
-    async loadProducts() {
-        this.products = await Core.getHttp(`/api/default/products/?farm=${this.product.farm.id}`)
-    }
-    public async updateProduct(product: any) {
-        let store = await Core.putHttp(`/api/default/products/${product.id}/`, product)
-        if (store.id) {
-            alert("Save product success")
-            await this.loadProduct()
-            
-        }
-    }
-
-    async openBrowser(position: any) {
-        let me = `${position.coords.latitude},${position.coords.longitude}`
-        let to = `${this.farm.latitude},${this.farm.longitude}`
-        console.log(me, `https://www.google.com/maps/dir/?api=1&origin=${me}&destination=${to}`);
-        window.open(`https://www.google.com/maps/dir/?api=1&origin=${me}&destination=${to}`, '_blank');
-    }
-    async openMap() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.openBrowser);
-        } else {
-
-        }
+    async created() {
+        this.products = await Core.getHttp(`/api/default/products/`)
 
     }
 
     ximg(file: any) {
-        return (file) ? file : 'https://images.pexels.com/photos/4052387/pexels-photo-4052387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+        return (file) ? process.env.VUE_APP_SERVER + '/' + file : 'https://images.pexels.com/photos/4052387/pexels-photo-4052387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
     }
 
 }
 </script>
 
-<style scoped>
-.v-card--reveal {
-    align-items: center;
-    bottom: 0;
-    justify-content: center;
-    opacity: 0.8;
-    position: absolute;
-    width: 100%;
-}
+<style>
+
 </style>

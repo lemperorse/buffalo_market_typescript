@@ -2,7 +2,7 @@
 <div class="px-4 py-5 flex-auto">
     <div class="flex-auto lg:px-10 py-10 pt-0">
         <form @submit.prevent="updateProduct()">
-            <v-text-field dense rounded type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อ','Name','名称')"></v-text-field>
+            <v-text-field dense rounded type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อสินค้า','Product name','產品名稱')"></v-text-field>
             <v-text-field dense rounded type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')"></v-text-field>
             <v-select dense rounded :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select>
 
@@ -112,7 +112,7 @@ export default class Saller extends Vue {
             "product_type": await Product.ProductType,
             "sell_type": await Product.SaleType,
             "price_type": await Product.PriceType,
-            'status': await Product.StatusSell
+            'status': await Product.StatusBuy
         }
     }
     public async loadProduct() {

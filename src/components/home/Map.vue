@@ -8,7 +8,7 @@
             {{_lang('แผนที่ปักหมุดสถานที่ที่เกียวข้อง เช่น ตลาด สานที่ที่เกี่ยวข้อง ที่ท่องเทียง และอื่นๆ','Map pinning related places such as markets, related places, places of worship, etc.','地图钉住相关场所，如市场、相关场所、礼拜场所等。')}}
         </div>
         <div class="mt-6 flex justify-center h-12 relative">
-            <v-btn x-large @click="$router.push('/map')" rounded>{{_lang('ดูแผนที่','See Map','看地图')}}</v-btn>
+            <v-btn x-large @click="$router.push('/map')" rounded><v-icon>mdi-map-legend</v-icon>{{_lang('ดูแผนที่','See Map','看地图')}}</v-btn>
         </div>
     </div>
 </div>

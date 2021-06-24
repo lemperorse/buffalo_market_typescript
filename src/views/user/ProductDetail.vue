@@ -1,6 +1,6 @@
 <template>
 <!-- <v-app> -->
-<div class="">
+<div class="bg-gray-100 h-full">
     <div class="container mx-auto">
         <div class="w-full mb-6">
             <ol class="flex text-gray-700 bg-gray-300 rounded-full py-2 px-2">

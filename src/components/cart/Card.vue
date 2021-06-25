@@ -1,6 +1,5 @@
 <template>
- 
-    <v-card    elevation="3">
+    <v-card elevation="3">
         <v-img :style="`width:${w}; height:${h}`" class="white--text align-end w-full rounded-t-lg  " :src="img">
  
         </v-img>

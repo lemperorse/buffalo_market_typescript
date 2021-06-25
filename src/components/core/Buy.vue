@@ -37,7 +37,7 @@
                 <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
                     <div class="w-full p-2 " v-for="(pu,i) in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                         <v-hover v-slot:default="{ hover }">
-                            <v-card class="rounded-lg w-full" height="220px">
+                            <v-card class="rounded-lg w-full p-1" height="220px">
                                 <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="ximg(pu.file1)">
                                     <v-expand-transition>
                                         <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
@@ -51,7 +51,7 @@
                                         <span class="text-sm" v-if="pu.price_type">{{_lang('฿','฿','฿')}} {{pu.price}}</span>
                                         <span v-else>{{_lang('฿','฿','฿')}} {{pu.price_start}} - {{pu.price_end}}</span>
                                     </div>
-                                </v-card-text>
+                                </v-card-text> 
                             </v-card>
                         </v-hover>
                     </div>

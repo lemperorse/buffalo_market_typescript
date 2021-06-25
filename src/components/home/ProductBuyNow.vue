@@ -18,7 +18,7 @@
                                 :img="ximg(pu.file1)" 
                                 :name="pu.name"
                                  :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" 
-                                 class="h-37 w-48"  />
+                                 class="h-37 w-48 p-1 rounded-lg"  />
                             </div>
                         </div>
                     </v-slide-item>

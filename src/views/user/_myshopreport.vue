@@ -1,9 +1,16 @@
 <template>
 <div class="p-2 bg-gray-100 h-full">
     <v-container grid-list-xs>
-        <div class="px-1 md:px-10 mx-auto w-full">
+        <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2">
+            <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
+            <li class="text-gray-500 select-none">/</li>
+            <li class="px-2"><a href="/#/user/myshop/" class="hover:underline">{{_lang('ร้านค้าของฉัน','My shop','我的店鋪')}}</a></li>
+            <li class="text-gray-500 select-none">/</li>
+            <li class="px-2 text-green-600">{{_lang('รายงานของฉัน','My report','我的報告')}}</li>
+        </ol>
+        <div class="px-1 pt-8 md:px-10 mx-auto w-full">
             <div>
-                <v-row class="pb-6 ">
+                <v-row class="pb-8 ">
                     <div>
                         <!-- <pre>{{user}}</pre> -->
                         <div class="pa-2 wrap elevation-0   ">
@@ -101,6 +108,16 @@ export default class Postx extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
+a {
+    color: black !important;
+}
 
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
 </style>

@@ -1,7 +1,14 @@
 <template>
 <div class="p-2 bg-gray-100 h-full">
     <v-container grid-list-xs>
-        <div class="px-1 md:px-10 mx-auto w-full">
+        <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2">
+            <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
+            <li class="text-gray-500 select-none">/</li>
+            <li class="px-2"><a href="/#/user/myshop/" class="hover:underline">{{_lang('ร้านค้าของฉัน','My shop','我的店鋪')}}</a></li>
+            <li class="text-gray-500 select-none">/</li>
+            <li class="px-2 text-green-600">{{_lang('ประกาศซื้อของฉัน','My purchase announcement','我的購買公告')}}</li>
+        </ol>
+        <div class="px-1 pt-8 md:px-10 mx-auto w-full">
             <div>
                 <v-row class="pb-6 ">
                     <div> 
@@ -32,7 +39,7 @@
                     </v-radio-group>
                 </v-card>
             </v-col>
-            <v-col class="w-full" cols="12" sm="6" md="8">
+            <v-col class="w-full" cols="12" sm="12" md="8">
                 <v-card class=" rounded-lg">
                     <div>
                         <template>
@@ -50,10 +57,13 @@
                                                 {{_lang('ราคา','Price','價格')}}
                                             </th>
                                             <th class="text-left">
-                                                {{_lang('ประเภทสินค้า','Product type','產品類別')}}
+                                                {{_lang('สถานะประกาศ ','Announcement Status','公告狀態')}}
                                             </th>
                                             <th class="text-left">
-                                                {{_lang('ประเภทประกาศ','Announcement type','公告類型')}}
+                                                {{_lang('ประเภทการซื้อ','Sales type','銷售類型')}}
+                                            </th>
+                                            <th class="text-left">
+                                                {{_lang('วันที่สิ้นสุดประกาศซื้อ','Sale end date','銷售結束日期')}}
                                             </th>
                                             <th class="text-left">
                                                 {{_lang('วันที่ลงประกาศ','Date posted','發布日期')}}
@@ -74,7 +84,8 @@
                                             <span v-else class=" text1">{{_lang('฿','฿','฿')}} {{product.price_start}} - {{product.price_end}}</span></td>
                                             <!-- <td class="pa-2"><v-select readonly dense rounded :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')"></v-select></td> -->
                                             <td class="pa-2"><span>{{product.status}}</span></td> 
-                                            <td class="pa-2"><span>{{product.product_type}}</span></td> 
+                                            <td class="pa-2"><span>{{product.sell_type}}</span></td> 
+                                            <td class="pa-2"><span>{{product.buy_date}}</span></td> 
                                             <td class="pa-2"><span>{{product.created_at}}</span></td>
                                             <td class="pa-2">
                                                 <v-btn rounded depressed color="info" @click="$router.push(`/user/productdetail?product=${product.id}&name=${product.name}`)"><v-icon>mdi-shopping-outline</v-icon>{{_lang('ดู','View','看法')}}</v-btn>
@@ -131,6 +142,8 @@ export default class PostSaller extends Vue {
         { text: 'Iron (%)', value: 'iron' },
     ]
 
+    
+
     async created() {
         await this.loadFarm();
         await this.loadProduct();
@@ -162,12 +175,22 @@ export default class PostSaller extends Vue {
             alert("Save product success")
             await this.loadProduct()
         }
-    } 
-
+    }
 
 }
 </script>
 
-<style>
+<style scoped>
+a {
+    color: black !important;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
 
 </style>

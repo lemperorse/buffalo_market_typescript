@@ -3,7 +3,7 @@
     <v-card class="w-full md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg" > 
         <div class="row rounded-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
-                <v-carousel class="rounded w-full"  height="300px" cycle>
+                <v-carousel class="rounded w-full"  height="350px" cycle>
                     <v-carousel-item v-if="product.file1">
                         <img class="w-full h-full" :src="$server+'/'+product.file1" alt="" srcset="">
                     </v-carousel-item>

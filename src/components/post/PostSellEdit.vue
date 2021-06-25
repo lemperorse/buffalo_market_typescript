@@ -4,7 +4,7 @@
         <form @submit.prevent="updateProduct()">
             <v-text-field dense rounded type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อสินค้า','Product name','產品名稱')" prepend-inner-icon="mdi-lead-pencil"></v-text-field>
             <v-text-field dense rounded type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')" prepend-inner-icon="mdi-clipboard-text-outline"></v-text-field>
-            <v-select dense rounded :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')" prepend-inner-icon="mdi-basket-outline"></v-select>
+            <v-select dense rounded :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทประกาศ ','Announcement type','公告類型')" prepend-inner-icon="mdi-basket-outline"></v-select>
 
             <v-select dense rounded :items="choices.price_type" item-text="name" item-value="id" v-model="product.price_type" class="w-full " filled :label="_lang('ประเภทราคา','Price Type','价格类型')" prepend-inner-icon="mdi-currency-btc"></v-select>
 
@@ -27,7 +27,7 @@
 
             <v-select dense rounded :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full " filled :label="_lang('ประเภทการขาย','Sales type','銷售類型')" prepend-inner-icon="mdi-calendar-alert"></v-select>
             <v-text-field dense rounded v-if="product.sell_type == 0" type="date" v-model="product.buy_date" class="w-full " filled :label="_lang('วันที่สิ้นสุดประกาศขาย','Sale end date','銷售結束日期')" prepend-inner-icon="mdi-calendar-alert"></v-text-field>
-            <v-select dense rounded :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('ประเภทสินค้า ','Product Type','产品类别')" prepend-inner-icon="mdi-tag-multiple-outline"></v-select>
+            <v-select dense rounded :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะประกาศ ','Announcement Status','公告狀態')" prepend-inner-icon="mdi-tag-multiple-outline"></v-select>
 
             <div class="pt-3 pb-3">
                 <div v-for="category,index in categories" :key="index">

@@ -41,7 +41,7 @@ export default class GoogleMapWithMarkersComponent extends Vue {
   map: any;
   markers: any = [];
   bounds = new google.maps.LatLngBounds();
-  imagePath: string = "/assets/img/pins/";
+  imagePath: string = "https://cdn0.iconfinder.com/data/icons/free-skycons-mix-april-1/128/yumminky-skycons-mix-01-512.png";
   ILocation: any = {}
   res: boolean = false;
   created() {

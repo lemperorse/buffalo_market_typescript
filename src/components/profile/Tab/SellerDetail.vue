@@ -37,10 +37,8 @@
                 <v-text-field rounded class="w-full " type="number" v-model="form.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')" prepend-inner-icon="mdi-id-card"></v-text-field>
 
                 <div class="relative w-full mb-3"> 
-                    <MapView :name="'locations'" :center="{'Latitude':location.lat ,'Longitude' :location.lng }" :locations="[
-                    {'Latitude':location.lng ,'Longitude' :location.lat} ,]" :zoom="16" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
-                </div>
-
+                    <MapView :name="'locations'" :center="currentLocation.center" :locations="currentLocation.mark" :zoom="16" :disableDefaultUI="false" :scaleControl="false" :zoomControl="false"></MapView>
+                </div>    
                 <v-text-field rounded class="w-full md:w-1/2" v-model="form.location" filled :label="_lang('พิกัดร้านค้าตามระบบ GPS (ละติจูด,ลองจิจูด)','GPS (Latitude,Longitude)','GPS（緯度,經度)')" prepend-inner-icon="mdi-google-maps"></v-text-field>
                 <div class="flex flex-wrap">
                     <v-text-field rounded type="number" class="w-full md:w-1/2" prepend-inner-icon="mdi-phone" v-model="form.tel" filled :label="_lang('เบอร์โทร','Phone number','电话号码')"></v-text-field>
@@ -55,7 +53,7 @@
             </v-btn>
         </form>
 
-    </div>
+    </div> 
     <div v-else>
         <v-alert type="info">
             {{_lang('คุณยังไม่มีร้านค้า หากคุณต้องการสร้างร้านค้าเพื่อลงประกาศขายของ ให้กด "สร้างสร้านค้า"','You do not have a store yet.If you want to create a store to post your listings, press "Create Shop".','您还没有商店。如果要创建一个商店来发布您的列表，请按“创建商店”。')}}
@@ -92,8 +90,8 @@ export default class Saller extends Vue {
     response: boolean = false;
     user: any = null
     profile: any = null
-    saller: boolean = false;
-    location:object = {}
+    saller: boolean = false; 
+    currentLocation:any ={}
 
     async created() {
         await this.loadFarm();
@@ -105,18 +103,19 @@ export default class Saller extends Vue {
         this.profile = await User.getProfileFull();
         this.form = await Core.getHttp(`/api/user/farm/${this.user.pk}/`)
         if (this.form.id) {
-            this.saller = true;
+            this.saller = true; 
             await this.generateMap()
         }
         this.response = true;
     }
 
     async generateMap(){
+         this.response = false;
         let map = (this.form.location).split(',')
-        if(map.length > 1){
-            this.location = {
-                lat : map[0],
-                lng:map[1]
+        if(map.length > 1){ 
+            this.currentLocation = {
+                center : {'Latitude':parseFloat(map[0]) ,'Longitude' : parseFloat(map[1]) },
+                mark : [{'Latitude':parseFloat(map[0]),'Longitude' :parseFloat(map[1]) } ,]  
             }
         }
     }
@@ -138,10 +137,12 @@ export default class Saller extends Vue {
     get lngCore() {
         return Map.lng
     }
+
     @Watch('latCore')
     async changeMapCore() {
         this.form.latitude = Map.lat
         this.form.longitude = Map.lng
+        this.form.location = `${Map.lat},${Map.lng}`
         await this.update();
     }
 

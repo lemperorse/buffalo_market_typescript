@@ -80,7 +80,6 @@ export default class Profile extends Vue {
                 en:['Mr.','Mrs.','Miss'],
                 ch:['先生','女士','小姐']
             },
-            "sex": await Core.getChoice('เพศ'),
         }
     }
 

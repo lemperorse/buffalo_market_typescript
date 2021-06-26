@@ -11,21 +11,21 @@
                             <v-radio-group class="p-3" v-model="productType">
                                 <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
                             </v-radio-group>
-                            <div v-for="category,index in categories" :key="index" class="pb-6">
-                                <h2 class="bgbtn rounded-full text-white p-3">{{category.name}}</h2>
-                                <v-checkbox class="pl-3 -mb-8" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
-                            </div>
-                            <p class="bgbtn rounded-full text-white p-3">{{_lang('ระยะเวลาการขาย','Time period','時間段')}}</p>
-                            <v-radio-group class="p-3" v-model="priceType">
-                                <v-radio v-for="sale,n in saleType" :key="n" :label="sale.name" :value="sale.id"></v-radio>
-                            </v-radio-group>
+                            <p class="bgbtn rounded-full text-white p-3">{{_lang('จังหวัด','Province','省')}}</p>
+                            <v-autocomplete class="p-3" item-text="name" item-value="id" @change="loadProducts()" :label="_lang('จังหวัด','Province','省')" :items="provinces" v-model="province"></v-autocomplete>
                             <p class="bgbtn rounded-full text-white p-3">{{_lang('ราคา','Price','價錢')}}</p>
                             <div class="flex p-3">
                                 <v-text-field v-model="price_low" name="name" id="id" :label="_lang('ต่ำสุด','Lowest','最低的')"></v-text-field> - <v-text-field v-model="price_height" name="name" id="id" :label="_lang('สูงสุด','Maximum','最大')"></v-text-field>
                                 <v-btn rounded flat class="mt-2 bgbtn" dark @click="changepriceType" depressed>{{_lang('ค้นหา','Search','搜索')}}</v-btn>
                             </div>
-                            <p class="bgbtn rounded-full text-white p-3">{{_lang('จังหวัด','Province','省')}}</p>
-                            <v-autocomplete class="p-3" item-text="name" item-value="id" @change="loadProducts()" :label="_lang('จังหวัด','Province','省')" :items="provinces" v-model="province"></v-autocomplete>
+                            <p class="bgbtn rounded-full text-white p-3">{{_lang('ระยะเวลาการขาย','Time period','時間段')}}</p>
+                            <v-radio-group class="p-3" v-model="priceType">
+                                <v-radio v-for="sale,n in saleType" :key="n" :label="sale.name" :value="sale.id"></v-radio>
+                            </v-radio-group>
+                            <div v-for="category,index in categories" :key="index" class="pb-6">
+                                <h2 class="bgbtn rounded-full text-white p-3">{{category.name}}</h2>
+                                <v-checkbox class="pl-3 -mb-8" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
+                            </div>
                             <v-divider class="pb-4"></v-divider>
                             <v-btn rounded block dark class="bgbtn">{{_lang('ล้างข้อมูล','Clean up','清理')}}</v-btn>
                         </v-expansion-panel-content>

@@ -14,10 +14,11 @@
         </v-col>
     </v-row>
 </v-container> -->
-    <center><h2 class="text-2xl font-bold text-blue-800 mt-10"> {{_lang('ประเภทสินค้าที่ประกาศซื้อขาย','Types of products advertised for sale','广告销售的产品类型')}} </h2></center>
-    <div class="flex flex-col w-full justify-center items-center" style="overflow-x:auto">
-
-        <div class="flex  mt-16 justify-center items-center w-full md:w-8/12">
+    <center>
+        <h2 class="text-2xl font-bold text-blue-800 mt-10"> {{_lang('ประเภทสินค้าที่ประกาศซื้อขาย','Types of products advertised for sale','广告销售的产品类型')}} </h2>
+    </center> 
+    <div class="flex flex-col w-full justify-center items-center " style="overflow-x:auto">
+        <div class="flex mt-16 justify-center items-center w-full md:w-8/12">
             <div class="flex-1 text-center px-4 py-2 m-2">
                 <div class="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
                     <img class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1502164980785-f8aa41d53611?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=967&amp;q=80">

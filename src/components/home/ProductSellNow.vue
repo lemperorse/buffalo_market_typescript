@@ -4,7 +4,7 @@
         <v-row justify="center">
             <v-col cols="12" sm="12">
                 <v-toolbar color="transparent" flat>
-                    <h2 class="font-bold text-2xl  ">
+                    <h2 class="font-bold text-xl  ">
                         <v-icon>mdi-bullhorn-outline</v-icon> {{_lang('ประกาศขายล่าสุด','Latest Sale','最新销售')}}
                     </h2>
                     <v-spacer></v-spacer>
@@ -14,8 +14,8 @@
                 </v-toolbar>
                 <v-slide-group multiple show-arrows><br>
                     <v-slide-item v-for="n in 25" :key="n">
-                        <div class="flex w-full">
-                            <div class="w-1/2 md:w-1/5 p-2 " v-for="pu,i in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+                        <div class="flex flex-row w-full">
+                            <!-- <div class="w-1/2 md:w-1/5 p-2 " v-for="pu,i in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                                 <v-hover v-slot:default="{ hover }">
                                     <v-card class="p-1 rounded-lg" height="320px" width="240px" elevation="3">
                                         <v-img class="white--text align-end w-full rounded-t-lg h-2/3" :src="ximg(pu.file1)">
@@ -34,6 +34,9 @@
                                         </v-card-text>
                                     </v-card>
                                 </v-hover> 
+                            </div> -->
+                            <div class="w-1/2 md:w-1/5 p-2 " v-for="pu,i in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+                                <Card :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :img="ximg(pu.file1)" :name="pu.name" :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" class="h-37 w-48 p-1 rounded-lg" />
                             </div>
                         </div>
                     </v-slide-item>
@@ -45,6 +48,7 @@
 </template>
 
 <script lang="ts">
+import Card from '@/components/cart/Card.vue'
 import {
     Component,
     Vue,
@@ -60,7 +64,7 @@ import {
     City
 } from "@/store/city";
 @Component({
-    components: {},
+    components: { Card },
     computed: {},
 })
 

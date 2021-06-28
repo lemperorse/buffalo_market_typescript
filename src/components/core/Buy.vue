@@ -4,9 +4,9 @@
         <div class="flex flex-col md:flex-row">
             <div class="w-full md:w-1/4 p-2">
                 <v-expansion-panels multiple v-model="panel">
-                    <v-expansion-panel>
-                        <v-expansion-panel-header class="bgbtn tw rounded-lg">{{_lang('คลิกเพื่อแสดงตัวกรอง','Click to display the filter','單擊以顯示過濾器。')}}</v-expansion-panel-header>
-                        <v-expansion-panel-content class="pt-4 rounded-lg">
+                    <v-expansion-panel >
+                        <v-expansion-panel-header class="bgbtn tw rounded-lg ">{{_lang('หมวดหมู่ทั้งหมด','All categories','所有類別')}}</v-expansion-panel-header>
+                        <v-expansion-panel-content class="pt-4 rounded-lg ">
                             <p class="bgbtn rounded-full text-white p-3">{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</p>
                             <v-radio-group class="p-3" v-model="productType">
                                 <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
@@ -34,7 +34,7 @@
                 </v-expansion-panels>
             </div>
             <div class="w-full md:w-3/4 ">
-                <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
+                <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-1">
                     <div class="w-full p-2 " v-for="(pu,i) in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                         <v-hover v-slot:default="{ hover }">
                             <v-card class="rounded-lg w-full p-1" height="220px">
@@ -46,7 +46,7 @@
                                     </v-expand-transition>
                                 </v-img>
                                 <v-card-text class="">
-                                    <span class="font-semibold leading-tight mb-1 text-indigo-600 text-sm">{{pu.name}}</span>
+                                    <span class="font-semibold leading-tight mb-1 text-indigo-600 text-sm line2">{{pu.name}}</span>
                                     <div class="font-bold mb-1">
                                         <span class="text-sm" v-if="pu.price_type">{{_lang('฿','฿','฿')}} {{pu.price}}</span>
                                         <span v-else>{{_lang('฿','฿','฿')}} {{pu.price_start}} - {{pu.price_end}}</span>
@@ -178,5 +178,12 @@ export default class PostSaller extends Vue {
 
 .tw {
     color: white;
+}
+.line2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="bg-gray-100">
     <div class="container mx-auto " v-if="response"> 
         <div class="w-full p-2">
             <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2">
@@ -62,7 +62,7 @@
             <div class="w-full lg:w-8/12 px-2">
                 <!-- <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded border-l-4 border-green-500"> -->
                 <v-card class="rounded-lg"> 
-                    <div class="px-4 py-5 flex-auto">
+                    <div class="px-4 py-5 ">
                         <div class="tab-content tab-space">
                             <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
                                 <Profile v-if="openTab === 1" />

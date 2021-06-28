@@ -4,10 +4,9 @@
  
         </v-img>
         <v-card-text class="">
-            <span class="font-semibold leading-tight mb-1 text-indigo-600 text-sm">{{name}}</span>
+            <span class="font-semibold leading-tight mb-1 text-indigo-600 text-sm line1">{{name}}</span>
             <div class="font-bold mb-1">
                 <span class="text-sm">฿ {{price}}</span>
-                
             </div>
         </v-card-text>
     </v-card>

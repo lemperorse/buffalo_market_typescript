@@ -33,17 +33,23 @@
 
                 <v-card>
                     <v-card-title class="">
-                        เพิ่มประกาศ
+                        <i class="fas fa-store text-2xl"></i>เพิ่มประกาศ
                         <v-spacer></v-spacer>
                         <v-btn depressed @click="dialog = false" fab small color="error">x</v-btn>
                     </v-card-title>
 
                     <v-card-text class="">
                         <div class="m-4">
-                            <v-btn @click="($router.push('/user/addpostbuy')) && (dialog=false)" depressed color="teal darken-4" dark x-large block rounded>เพิ่มประกาศซื้อ</v-btn>
+                            <v-btn @click="($router.push('/user/addpostbuy')) && (dialog=false)" depressed color="teal darken-4" 
+                            dark x-large block rounded 
+                            class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">
+                            เพิ่มประกาศซื้อ</v-btn>
                         </div>
                         <div class="m-4">
-                            <v-btn @click="($router.push('/user/addpostsell')) && (dialog=false)" depressed color="teal darken-4" dark x-large block rounded>เพิ่มประกาศขาย</v-btn>
+                            <v-btn @click="($router.push('/user/addpostsell')) && (dialog=false)" depressed color="teal darken-4" 
+                            dark x-large block rounded 
+                            class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">
+                            เพิ่มประกาศขาย</v-btn>
                         </div>
                     </v-card-text> 
                 </v-card>
@@ -56,7 +62,7 @@
             </h2>
             <form class="w-2/3 flex pl-4 p-2" @submit.prevent="goSearch()">
                 <v-text-field dense prepend-inner-icon="fas fa-search" v-model="search" solo rounded name="name" :placeholder="$txt.web_nav.searchTxt" :label="$txt.web_nav.searchTxt"></v-text-field>
-                <v-btn small type="submit" fab class=" ml-2" color="info">{{$txt.web_nav.search}}</v-btn>
+                <v-btn small type="submit" fab class=" ml-2" color="teal darken-3" dark>{{$txt.web_nav.search}}</v-btn>
             </form>
         </div>
     </div>
@@ -64,7 +70,7 @@
     <v-dialog v-model="dialogLang" scrollable :overlay="false" max-width="500px" transition="dialog-transition">
         <v-card class="rounded-lg">
             <v-card-title primary-title>
-                {{$txt.language_choose}}
+                <i class="fas fa-globe-americas text-2xl pr-2"></i>  {{$txt.language_choose}}
                 <v-spacer></v-spacer>
                 <v-btn @click="dialogLang = false" dark fab small color="red" class="elevation-0">
                     <v-icon>mdi-close</v-icon>
@@ -72,9 +78,15 @@
             </v-card-title>
             <v-card-text>
                 <div class="flex flex-col mt-2">
-                    <v-btn @click="changeLanguage('th')" depressed rounded color="success" class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> ภาษาไทย</v-btn> <br>
-                    <v-btn @click="changeLanguage('ch')" depressed rounded color="error" class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 中文</v-btn><br>
-                    <v-btn @click="changeLanguage('en')" depressed rounded color="primary" class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> English</v-btn><br>
+                    <v-btn x-large @click="changeLanguage('th')" depressed rounded color="green darken-1" dark 
+                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 
+                    ภาษาไทย</v-btn> <br>
+                    <v-btn x-large @click="changeLanguage('ch')" depressed rounded color="red darken-1" dark 
+                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 
+                    中文</v-btn><br>
+                    <v-btn x-large @click="changeLanguage('en')" depressed rounded color="blue darken-1" dark 
+                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 
+                    English</v-btn><br>
                 </div>
 
             </v-card-text>

@@ -1,19 +1,5 @@
 <template>
-<div>
-    <!-- <v-container>
-    <v-row justify="center">
-        <v-col cols="12" sm="8">
-            <div class="flex justify-around items-around p-6">
-                <div class="w-40 h-32  border-2 rounded-xl p-2 " v-for="(category,i) in categories" :key="i">
-                    <div class=" flex flex-col justify-center items-center ">
-                        <i class="em em-athletic_shoe text-4xl" aria-role="presentation" aria-label="ATHLETIC SHOE"></i><br>
-                        {{category.name}}
-                    </div>
-                </div> 
-            </div>
-        </v-col>
-    </v-row>
-</v-container> -->
+<div> 
     <center>
         <h2 class="text-2xl font-bold text-blue-800 mt-10"> {{_lang('ประเภทสินค้าที่ประกาศซื้อขาย','Types of products advertised for sale','广告销售的产品类型')}} </h2>
     </center> 

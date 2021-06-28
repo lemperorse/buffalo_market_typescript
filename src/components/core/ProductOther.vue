@@ -1,27 +1,28 @@
 <template>
-<div class=""> 
-        <v-row justify="center">
-            <v-col cols="12" sm="12">
-                <v-toolbar color="transparent" flat>  
-                    <v-spacer></v-spacer>
-                    <v-btn rounded @click="$router.push('/product?type=2')" outlined><v-icon>mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}</v-btn>
-                </v-toolbar>
-                <v-slide-group multiple show-arrows><br>
-                    <v-slide-item v-for="n in 25" :key="n">
-                        <div class="flex flex-row w-full">
-                            <div class="w-1/2 md:w-1/5 p-2 " v-for="pu,i in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
-                                <Card 
-                                :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`"
-                                :img="ximg(pu.file1)" 
-                                :name="pu.name"
-                                 :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" 
-                                 class="h-37 w-48"  />
-                            </div>
+<div class="mt-8">
+    <v-row justify="center">
+        <v-col cols="12" sm="12">
+            <v-toolbar color="transparent" flat class="justify-center items-center"> 
+                <!-- <p class="font-weight-light text-center text-xl text-purple-600">
+                    สินค้าที่คุณอาจสนใจ
+                </p> -->
+                <v-toolbar-title class="">สินค้าที่คุณอาจสนใจ</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn rounded @click="$router.push('/product?type=2')" color="teal darken-3" outlined>
+                    <v-icon>mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}
+                </v-btn>
+            </v-toolbar>
+            <v-slide-group multiple show-arrows><br>
+                <v-slide-item v-for="n in 25" :key="n">
+                    <div class="flex flex-row w-full">
+                        <div class="w-1/2 md:w-1/5 p-2 " v-for="pu,i in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+                            <Card :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :img="ximg(pu.file1)" :name="pu.name" :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" class="h-37 w-48" />
                         </div>
-                    </v-slide-item>
-                </v-slide-group>
-            </v-col>
-        </v-row> 
+                    </div>
+                </v-slide-item>
+            </v-slide-group>
+        </v-col>
+    </v-row>
 </div>
 </template>
 
@@ -42,7 +43,7 @@ import {
     City
 } from "@/store/city";
 @Component({
-    components: {Card},
+    components: { Card },
     computed: {},
 })
 

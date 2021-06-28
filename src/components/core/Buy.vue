@@ -131,7 +131,7 @@ export default class PostSaller extends Vue {
         let search = this.$route.query.search
         search = (search) ? `search=${search}` : ''
         this.products = await Core.getHttp(`/api/default/products/?&product_type=${this.productType}&${this.category}${search}${this.price}&farm__province=${this.province}`)
-        this.allPages = Math.ceil((this.products.count / 9))
+        this.allPages = Math.ceil((this.products.count / 16))
 
     }
     categories: any = null

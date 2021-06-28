@@ -15,8 +15,12 @@
                     {{_lang('แอปพลิเคชันสำหรับ ประกาศซื้อ ประกาศขาย สินค้าของเกษตรกร ไม่ว่าจะเป็น ควาย อาหารควาย ยา อาหารเสริม','An application for buying and selling announcements of farmers, whether buffalo, buffalo food, medicine, food supplements.','农户买卖公告的申请，无论是水牛、水牛食品、药品、食品补充剂')}}
                 </p>
                 <div class="get-app flex row wrap md:space-x-5 mt-10  ">
-                    <v-btn x-large rounded color="teal darken-3" dark><i class="fas fa-search text-xl"></i> {{_lang(' ค้นหาประกาศ ที่คุณต้องการ','Find the announcement you want.','找到您想要的公告。')}} </v-btn>
-                    <v-btn dark outlined x-large rounded ><i class="fas fa-map-marker-alt text-xl"></i>{{_lang('ดูสถานที่สำคัญ','Find landmarks.','看地标')}}</v-btn>
+                    <div class="mt-3 md:mt-1">
+                        <v-btn x-large rounded color="teal darken-3" dark><i class="fas fa-search text-xl pr-2"></i> {{_lang(' ค้นหาประกาศ ที่คุณต้องการ','Find the announcement you want.','找到您想要的公告。')}} </v-btn>
+                    </div>
+                    <div class="mt-3 md:mt-1">
+                        <v-btn dark outlined x-large rounded ><i class="fas fa-map-marker-alt text-xl pr-2"></i>{{_lang('ดูสถานที่สำคัญ','Find landmarks.','看地标')}}</v-btn>
+                    </div>
                 </div>
             </div>
 

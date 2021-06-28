@@ -9,7 +9,7 @@
                 <v-toolbar-title class="">สินค้าที่คุณอาจสนใจ</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn rounded @click="$router.push('/product?type=2')" color="teal darken-3" outlined>
-                    <v-icon>mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}
+                    <v-icon class="pr-2">mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}
                 </v-btn>
             </v-toolbar>
             <v-slide-group multiple show-arrows><br>

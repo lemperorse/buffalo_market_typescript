@@ -1,6 +1,6 @@
 <template>
 <div class="">
-    <div class="w-full  md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg bg-white shadow border-b-2 border-green-700">
+    <div class="w-full  md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg bg-white shadow ">
         <div class="row rounded-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
                 <v-carousel class="rounded w-full" height="400px" cycle>
@@ -65,7 +65,7 @@
                         <div class="text-2xl text-gray-500 mt-4 m-1">{{_lang('นำทางไปยังร้านค้าที่ขายสินค้านี้','Navigate to the store that sells this item.','導航到出售此商品的商店。')}}</div>
                         <div class="mt-4">
                             <v-btn @click="openMap" type="submit" large outlined rounded class="md:w-1/2 w-full p-2  bg-nav" dark>
-                                <v-icon>mdi-map-marker-radius-outline</v-icon> {{_lang('นำทางไปยังร้านค้าที่ขายสินค้านี้','Navigate','導航')}}
+                                <v-icon class="pr-2">mdi-map-marker-radius-outline</v-icon> {{_lang('นำทางไปยังร้านค้าที่ขายสินค้านี้','Navigate','導航')}}
                             </v-btn>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <div class="rounded-lg p-2 mt-6 overflow-hidden bg-white shadow border-b-2 border-green-700">
+    <div class="rounded-lg p-2 mt-6 overflow-hidden bg-white shadow ">
         <div class=" m-4 ">
             <v-row wrap class=" justify-center  items-center">
                 <v-col cols="12" sm="6" md="8">
@@ -90,7 +90,8 @@
                                 <span v-if="product.farm.user">{{_lang('ชื่อ','Name','名稱')}} : {{product.farm.user.first_name}} {{product.farm.user.last_name}}</span>
                             </h3>
                             <h3 v-if="product.farm" class="text-lg">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}} {{profile.amphur.name}} {{profile.district.name}}</h3>
-                        </div>
+                            <h3 v-if="product.farm" class="text-lg">{{_lang('โทร','Tel','稱呼')}} : {{profile.tel}}</h3>
+                        </div> 
                     </v-row>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
@@ -103,22 +104,22 @@
                         </div>
                     </div> -->
                     <v-btn @click="$router.push(`/user/productall?product=${product.id}&name=${product.farm.user.first_name}`)" rounded x-large outlined color="teal darken-3" type="submit" class="w-full p-2" dark>
-                        <v-icon>mdi-shopping</v-icon> {{_lang('ดูร้านค้า','View','查看產品')}}
+                        <v-icon class="pr-2">mdi-shopping</v-icon> {{_lang('ดูร้านค้า','View','查看產品')}}
                     </v-btn>
                 </v-col>
             </v-row>
         </div>
     </div>
 
-    <div class="w-full mt-2 md:w-1/1 xl:w-1/1 p-3 md:p-3 mb-2 rounded-lg mt-6 bg-white shadow border-b-2 border-green-700">
+    <div class="w-full mt-2 md:w-1/1 xl:w-1/1 p-3 md:p-3 mb-2 rounded-lg mt-6 bg-white shadow ">
         <div class="row rounded-lg p-2 overflow-hidden">
             <div class="col-sm-12 col-xs-12 col-md-12">
                 <v-tabs class="rounded" color="teal darken-4" next-icon="mdi-arrow-right-bold-circle-outline" prev-icon="mdi-arrow-left-bold-circle-outline" show-arrows>
                     <v-tab class="">
-                        <v-icon>mdi-note-text-outline </v-icon> {{_lang('รายละเอียด','Detail','詳情')}}
+                        {{_lang('รายละเอียด','Detail','詳情')}}
                     </v-tab>
                     <v-tab>
-                        <v-icon>mdi-contacts-outline </v-icon> {{_lang('ช่องทางการติดต่ออื่นๆ','Other contact','其他聯絡人')}}
+                        {{_lang('ช่องทางการติดต่ออื่นๆ','Other contact','其他聯絡人')}}
                     </v-tab>
                     <v-tab-item>
                         <p class="pt-4  text-lg">

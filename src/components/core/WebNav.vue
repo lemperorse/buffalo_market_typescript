@@ -33,7 +33,7 @@
 
                 <v-card>
                     <v-card-title class="">
-                        <i class="fas fa-store text-2xl"></i>เพิ่มประกาศ
+                        <i class="fas fa-store text-2xl pr-2"></i>เพิ่มประกาศ
                         <v-spacer></v-spacer>
                         <v-btn depressed @click="dialog = false" fab small color="error">x</v-btn>
                     </v-card-title>
@@ -42,13 +42,13 @@
                         <div class="m-4">
                             <v-btn @click="($router.push('/user/addpostbuy')) && (dialog=false)" depressed color="teal darken-4" 
                             dark x-large block rounded 
-                            class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">
+                            class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90 bg-btn">
                             เพิ่มประกาศซื้อ</v-btn>
                         </div>
                         <div class="m-4">
                             <v-btn @click="($router.push('/user/addpostsell')) && (dialog=false)" depressed color="teal darken-4" 
                             dark x-large block rounded 
-                            class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90">
+                            class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90 bg-btn">
                             เพิ่มประกาศขาย</v-btn>
                         </div>
                     </v-card-text> 
@@ -79,13 +79,13 @@
             <v-card-text>
                 <div class="flex flex-col mt-2">
                     <v-btn x-large @click="changeLanguage('th')" depressed rounded color="green darken-1" dark 
-                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 
+                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90 bg-btn"> 
                     ภาษาไทย</v-btn> <br>
                     <v-btn x-large @click="changeLanguage('ch')" depressed rounded color="red darken-1" dark 
-                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 
+                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90 bg-btn"> 
                     中文</v-btn><br>
                     <v-btn x-large @click="changeLanguage('en')" depressed rounded color="blue darken-1" dark 
-                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90"> 
+                    class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90 bg-btn"> 
                     English</v-btn><br>
                 </div>
 
@@ -176,4 +176,7 @@ export default class Navbar extends Vue {
     background-attachment: fixed;
     background-size: cover;
 }
+.bg-btn{ 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23000' fill-opacity='.1' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");
+} 
 </style>

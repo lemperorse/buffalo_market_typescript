@@ -9,7 +9,7 @@
                     </h2>
                     <v-spacer></v-spacer>
                     <v-btn rounded @click="$router.push('/product?type=2')" outlined color="teal darken-3">
-                        <v-icon>mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}
+                        <v-icon class="pr-2">mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}
                     </v-btn>
                 </v-toolbar>
                 <v-slide-group multiple show-arrows><br>

@@ -102,9 +102,9 @@
 
                 <div class="text-center mt-4">
                     <v-pagination v-model="page" :length="4" circle></v-pagination> 
-                </div>
-
+                </div> 
             </v-col>
+            
         </v-row>
     </v-container>
 </div>
@@ -122,28 +122,28 @@ import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
 import { Map } from "@/store/map";
 import { Product } from "@/store/product";
+import moment from "moment"; 
 import {
     City
 } from "@/store/city";
 @Component({
     components: { MapView },
-    computed: {},
+    computed: {
+    },
 })
 
 export default class PostSaller extends Vue {
     choices: any = {}
     page: number = 1
     status: any = ['มีสินค้า', 'สินค้าหมด', 'ขายแล้ว', 'ยกเลิก']
-    search: any = ''
+    search: any = '' 
     headers: any = [
         { text: '', value: 'id' },
         { text: 'Fat (g)', value: 'fat' },
         { text: 'Carbs (g)', value: 'carbs' },
         { text: 'Protein (g)', value: 'protein' },
         { text: 'Iron (%)', value: 'iron' },
-    ]
-
-    
+    ] 
 
     async created() {
         await this.loadFarm();
@@ -152,7 +152,7 @@ export default class PostSaller extends Vue {
             'status': await Product.StatusBuy
         }
         this.response = true
-    }
+    }  
 
     farm: any = {}
     response: boolean = false;
@@ -162,12 +162,12 @@ export default class PostSaller extends Vue {
     async loadFarm() {
         this.user = await Auth.getUser()
         this.profile = await User.getProfileFull();
-        this.farm = await Core.getHttp(`/api/user/farm/${this.user.pk}/`)
+        this.farm = await Core.getHttp(`/api/user/farm/${this.user.pk}/`) 
     }
 
     products: any = null
     async loadProduct() {
-        this.products = await Core.getHttp(`/api/default/product/?farm=${this.farm.id}&product_type=1&search=${this.search}`)
+        this.products = await Core.getHttp(`/api/default/product/?farm=${this.farm.id}&product_type=1&search=${this.search}`) 
     }
 
     public async updateProduct(product: any) {
@@ -177,7 +177,10 @@ export default class PostSaller extends Vue {
             await this.loadProduct()
         }
     }
+    
 
+    
+ 
 }
 </script>
 

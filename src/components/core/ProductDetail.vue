@@ -31,7 +31,7 @@
             <div class="col-md-7 col-sm-7 col-xs-12 ">
                 <div class="">
                     <p class="text-3xl mb-0 mt-2 font-bold"> {{product.name}}</p>
-                    <v-card-actions class="mt-4 pa-2 bg-gray-200 rounded-lg ">
+                    <v-card-actions class="mt-4 pa-3 bg-gray-200 rounded-lg ">
                         <div class="">
                             <div class="text-2xl text-gray-500" v-if="product.price_type">{{_lang('ราคา','Price','價錢')}} : {{product.price}} {{_lang('฿','฿','฿')}}</div>
                             <div class="text-2xl text-gray-500" v-else>{{_lang('ราคา','Price','價錢')}} : {{product.price_start}} - {{product.price_end}} {{_lang('฿','฿','฿')}}</div>
@@ -39,7 +39,7 @@
                     </v-card-actions>
                     <v-divider class="mt-4 mb-4"></v-divider>
                     <div class="text-2xl  mt-4 m-1"><v-icon>mdi-label </v-icon> {{_lang('ประเภทสินค้า','Product Type','產品類別')}}</div>
-                    <v-chip v-for="category,i in product.category" :key="i" class="m-1 rounded-lg " color="teal darken-3" label text-color="white">
+                    <v-chip v-for="category,i in product.category" :key="i" class="m-1 rounded-xl " color="teal darken-3" label text-color="white">
                         <v-icon left>
                             mdi-label
                         </v-icon>
@@ -84,7 +84,6 @@
                                 <img :src="$server+'/'+profile.profile_image" />
                             </v-avatar>
                         </div> 
-
                         <div class="ml-2 mt-3 ">
                             <h3 v-if="product.farm" class="text-lg">
                                 <span v-if="product.farm.user">{{_lang('ชื่อ','Name','名稱')}} : {{product.farm.user.first_name}} {{product.farm.user.last_name}}</span>

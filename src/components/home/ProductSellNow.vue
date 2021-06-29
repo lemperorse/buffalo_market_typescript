@@ -14,29 +14,16 @@
                 </v-toolbar>
                 <v-slide-group multiple show-arrows><br>
                     <v-slide-item v-for="n in 25" :key="n">
-                        <div class="flex flex-row w-full">
-                            <!-- <div class="w-1/2 md:w-1/5 p-2 " v-for="pu,i in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
-                                <v-hover v-slot:default="{ hover }">
-                                    <v-card class="p-1 rounded-lg" height="320px" width="240px" elevation="3">
-                                        <v-img class="white--text align-end w-full rounded-t-lg h-2/3" :src="ximg(pu.file1)">
-                                            <v-expand-transition>
-                                                <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                                    <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
-                                                </div>
-                                            </v-expand-transition>
-                                        </v-img>
-                                        <v-card-text class="">
-                                            <span class="font-semibold leading-tight mb-1 text-indigo-600 text-sm">{{pu.name}}</span>
-                                            <div class="font-bold mb-1">
-                                                <span class="text-sm" v-if="pu.price_type">{{_lang('฿','฿','฿')}} {{pu.price}}</span>
-                                                <span v-else>{{_lang('฿','฿','฿')}} {{pu.price_start}} - {{pu.price_end}}</span>
-                                            </div>
-                                        </v-card-text>
-                                    </v-card>
-                                </v-hover> 
-                            </div> -->
+                        <div class="flex flex-row w-full"> 
                             <div class="w-1/2 md:w-1/5 p-2 " v-for="pu,i in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
-                                <Card :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :img="ximg(pu.file1)" :name="pu.name" :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" class="h-37 w-48 p-1 rounded-lg" />
+                                <!-- <Card :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :img="ximg(pu.file1)"  class="h-37 w-48 p-1 rounded-lg" /> -->
+                                <le-card  
+                                :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" 
+                                :image="ximg(pu.file1)"
+                                :name="pu.name" 
+                                :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" 
+                                :time="pu.created_at"
+                                /> 
                             </div>
                         </div>
                     </v-slide-item>

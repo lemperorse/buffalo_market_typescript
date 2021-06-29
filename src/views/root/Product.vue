@@ -1,5 +1,5 @@
 <template>
-        <div class="container px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
+        <div  >
       <Buy />
   </div>
 </template>

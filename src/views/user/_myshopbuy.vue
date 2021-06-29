@@ -38,7 +38,6 @@
                         <v-radio label="ยกเลิก" value="radio-3"></v-radio>
                     </v-radio-group>
                 </v-card>
-                
             </v-col>
             <v-col class="w-full" cols="12" sm="12" md="8">
                 <v-card class=" rounded-lg">
@@ -176,10 +175,7 @@ export default class PostSaller extends Vue {
             alert("Save product success")
             await this.loadProduct()
         }
-    }
-    
-
-    
+    } 
  
 }
 </script>

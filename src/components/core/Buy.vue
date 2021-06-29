@@ -12,7 +12,7 @@
                         </v-expansion-panel-header>
                         <v-expansion-panel-content class="pt-4 rounded-lg ">
                             <p class="text-yellow-600 bg-green rounded-full p-3 text-xl font-bold"> 
-                               <i class="em em-memo" aria-role="presentation" aria-label="MEMO"></i>
+                              <i class="em em-loudspeaker" aria-role="presentation" aria-label="PUBLIC ADDRESS LOUDSPEAKER"></i>
                                 {{_lang('ประเภทประกาศ','Announcement type','公告類型')}}
                             </p>
                             <v-radio-group class="p-3 text-xl" v-model="productType">

@@ -1,18 +1,18 @@
 <template>
-<div class="">
-    <div class="w-full  md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg bg-white shadow ">
-        <div class="row rounded-lg overflow-hidden">
+<div class="flex flex-col justify-center items-center  w-full rounded-xl shadow-xl  bg-white " > 
+    <div class="md:w-10/12 w-full">
+        <div class="row rounded-lg overflow-hidden " >
             <div class="col-md-5 col-sm-5 col-xs-12">
                 <!-- <pre>{{this.product}}</pre> -->
-                <v-carousel class="rounded w-full" height="400px" cycle>
+                <v-carousel class="rounded w-full shadow-xl" height="400px" cycle>
                     <v-carousel-item v-if="product.file1">
-                        <img class="w-full h-full" :src="$server+'/'+product.file1" alt="" srcset="">
+                        <v-img class="w-full h-full" :src="$server+'/'+product.file1" alt="" srcset="" />
                     </v-carousel-item>
                     <v-carousel-item v-if="product.file2">
-                        <img class="w-full h-full" :src="$server+'/'+product.file2" alt="" srcset="">
+                        <v-img class="w-full h-full" :src="$server+'/'+product.file2" alt="" srcset="" />
                     </v-carousel-item>
                     <v-carousel-item v-if="product.file3">
-                        <img class="w-full h-full" :src="$server+'/'+product.file3" alt="" srcset="">
+                        <v-img class="w-full h-full" :src="$server+'/'+product.file3" alt="" srcset="" />
                     </v-carousel-item>
                     <v-carousel-item v-if="product.file4">
                         <video class="w-full h-full" controls autoplay>
@@ -30,12 +30,12 @@
 
             </div>
             <div class="col-md-7 col-sm-7 col-xs-12 ">
-                <div class="">
+                <div class=" ">
                     <p class="text-3xl mb-0 mt-2 font-bold"> {{product.name}}</p>
                     <v-card-actions class="mt-4 pa-3 bg-gray-200 rounded-lg ">
                         <div class="">
-                            <div class="text-2xl text-gray-500" v-if="product.price_type">{{_lang('ราคา','Price','價錢')}} : {{product.price}} {{_lang('฿','฿','฿')}}</div>
-                            <div class="text-2xl text-gray-500" v-else>{{_lang('ราคา','Price','價錢')}} : {{product.price_start}} - {{product.price_end}} {{_lang('฿','฿','฿')}}</div>
+                            <div class="text-2xl text-yellow-500" v-if="product.price_type">{{_lang('ราคา','Price','價錢')}} : {{product.price}} {{_lang('฿','฿','฿')}}</div>
+                            <div class="text-2xl text-yellow-500" v-else>{{_lang('ราคา','Price','價錢')}} : {{product.price_start}} - {{product.price_end}} {{_lang('฿','฿','฿')}}</div>
                         </div>
                     </v-card-actions>
                     <v-divider class="mt-4 mb-4"></v-divider>
@@ -173,6 +173,7 @@ import { Product } from "@/store/product";
 import {
     City
 } from "@/store/city";
+import moment from 'moment'
 @Component({
     components: { MapView, ProductOther },
     computed: {},
@@ -235,6 +236,12 @@ export default class PostSaller extends Vue {
     ximg(file: any) {
         return (file) ? file : 'https://images.pexels.com/photos/4052387/pexels-photo-4052387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
     }
+
+
+      dateOut(date:any){
+            let convert = moment(date).format('DD/MM/YYYY')
+            return convert
+        }
 
 }
 </script>

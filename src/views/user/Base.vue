@@ -1,9 +1,9 @@
 <template>
 <div>
     <v-app>
-        <WebNav />
+        <WebNav /><br><br><br><br>
         <v-main>
-            <router-view class="pt-32" />
+            <router-view   />
         </v-main>
         <CityDialog />
         <Footer></Footer>

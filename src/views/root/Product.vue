@@ -1,5 +1,5 @@
 <template>
-        <div  >
+        <div class="md:p-6" >
       <Buy />
   </div>
 </template>

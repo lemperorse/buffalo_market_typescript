@@ -1,44 +1,20 @@
 <template>
-<div> 
+<div>
     <center>
         <h2 class="text-2xl font-bold text-blue-800 mt-10"> {{_lang('ประเภทสินค้าที่ประกาศซื้อขาย','Types of products advertised for sale','广告销售的产品类型')}} </h2>
-    </center> 
+    </center>
     <div class="flex flex-col w-full justify-center items-center " style="overflow-x:auto">
-        <div class="flex mt-16 justify-center items-center w-full md:w-8/12">
-            <div class="flex-1 text-center px-4 py-2 m-2">
-                <div class="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-                    <img class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1502164980785-f8aa41d53611?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=967&amp;q=80">
+        <div class="flex mt-16 justify-center items-center w-full md:w-9/12">
+            <div class="flex-1 text-center px-4 py-2 m-2" v-for="(cat,i) in categories" :key="i">
+                <div @click="$router.push(`/product?cat=${cat.id}`)" class="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
+                    <img v-if="cat.image" class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1502164980785-f8aa41d53611?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=967&amp;q=80">
+
+                    <img v-else class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1502164980785-f8aa41d53611?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=967&amp;q=80">
+
                 </div>
-                <h1 class="pt-16 text-base font-semibold text-gray-900">Fun</h1>
+                <h1 class="pt-16 text-base font-semibold text-gray-900">{{cat.name}}</h1>
             </div>
 
-            <div class="flex-1 text-center px-4 py-2 m-2">
-                <div class="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-                    <img class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1456415333674-42b11b9f5b7b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=967&amp;q=80">
-                </div>
-                <h1 class="pt-16 text-base font-semibold text-gray-900">Travel</h1>
-            </div>
-
-            <div class="flex-1 text-center px-4 py-2 m-2">
-                <div class="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-                    <img class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1052&amp;q=80">
-                </div>
-                <h1 class="pt-16 text-base font-semibold text-gray-900">Food</h1>
-            </div>
-
-            <div class="flex-1 text-center px-4 py-2 m-2">
-                <div class="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-                    <img class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1516834474-48c0abc2a902?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1053&amp;q=80">
-                </div>
-                <h1 class="pt-16 text-base font-semibold text-gray-900">Sketch</h1>
-            </div>
-
-            <div class="flex-1 text-center px-4 py-2 m-2">
-                <div class="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
-                    <img class="object-cover w-full h-full" src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80">
-                </div>
-                <h1 class="pt-16 text-base font-semibold text-gray-900">My Work</h1>
-            </div>
         </div>
 
     </div>

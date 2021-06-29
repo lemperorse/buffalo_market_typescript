@@ -3,6 +3,7 @@
     <div class="w-full  md:w-1/1 xl:w-1/1 p-3 md:p-3 rounded-lg bg-white shadow ">
         <div class="row rounded-lg overflow-hidden">
             <div class="col-md-5 col-sm-5 col-xs-12">
+                <!-- <pre>{{this.product}}</pre> -->
                 <v-carousel class="rounded w-full" height="400px" cycle>
                     <v-carousel-item v-if="product.file1">
                         <img class="w-full h-full" :src="$server+'/'+product.file1" alt="" srcset="">
@@ -74,22 +75,22 @@
         </div>
     </div>
 
-    <div class="rounded-lg p-2 mt-6 overflow-hidden bg-white shadow ">
+    <div class="rounded-lg p-2 mt-6 overflow-hidden bg-white shadow "  >
         <div class=" m-4 ">
             <v-row wrap class=" justify-center  items-center">
                 <v-col cols="12" sm="6" md="8">
                     <v-row wrap>
                         <div class="pa-2 ml-5">
                             <v-avatar size="65">
-                                <img :src="$server+'/'+profile.profile_image" />
+                                <!-- <img :src="$server+'/'+profile.profile_image" /> -->
                             </v-avatar>
                         </div> 
                         <div class="ml-2 mt-3 ">
                             <h3 v-if="product.farm" class="text-lg">
-                                <span v-if="product.farm.user">{{_lang('ชื่อ','Name','名稱')}} : {{product.farm.user.first_name}} {{product.farm.user.last_name}}</span>
+                                <span v-if="profile">{{_lang('ชื่อ','Name','名稱')}} : {{profile.first_name}} {{profile.last_name}}</span>
                             </h3>
-                            <h3 v-if="product.farm" class="text-lg">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}} {{profile.amphur.name}} {{profile.district.name}}</h3>
-                            <h3 v-if="product.farm" class="text-lg">{{_lang('โทร','Tel','稱呼')}} : {{profile.tel}}</h3>
+                            <!-- <h3 v-if="product.farm" class="text-lg">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}} {{profile.amphur.name}} {{profile.district.name}}</h3>
+                            <h3 v-if="product.farm" class="text-lg">{{_lang('โทร','Tel','稱呼')}} : {{profile.tel}}</h3> -->
                         </div> 
                     </v-row>
                 </v-col>
@@ -181,9 +182,10 @@ export default class PostSaller extends Vue {
     dialog: boolean = false
     async created() {
         await this.loadProduct();
-        await this.loadFarm();
+ 
         await this.loadProducts()
-        this.response = true
+        await this.loadFarm()
+               // this.response = true
     }
     products: any = null
     product: any = null
@@ -193,9 +195,11 @@ export default class PostSaller extends Vue {
     profile: any = null
 
     async loadFarm() {
-        this.user = await Auth.getUser()
-        this.profile = await User.getProfileFull();
-        this.farm = await Core.getHttp(`/api/default/farm/${this.product.farm.id}/`)
+        // this.user = await Auth.getUser()
+        // this.profile = await User.getProfileFull();
+        this.farm = this.product.farm // await Core.getHttp(`/api/default/farm/${this.product.farm.id}/`)
+        this.profile = this.product.farm.user
+    
     }
 
     async loadProduct() {

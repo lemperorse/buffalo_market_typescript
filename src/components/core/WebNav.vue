@@ -2,8 +2,8 @@
 <div class="fixed w-full h-28 bg-nav" style="z-index:100;  ">
     <div class=" p-2 md:pl-20 md:pr-20 ">
         <div class="flex row-wrap overflow-y-hidden	overflow-x-auto p-1" v-if="response">
-            <v-btn @click="goPageTab(1)" small text dark><v-icon>mdi-shopping-outline</v-icon>{{$txt.web_nav.product}}</v-btn>
-            <v-btn @click="goPageTab(2)" small text dark><v-icon>mdi-google-maps</v-icon> {{$txt.web_nav.map}}</v-btn>
+            <v-btn @click="$router.push('/product')" small text dark><v-icon>mdi-shopping-outline</v-icon>{{$txt.web_nav.product}}</v-btn>
+            <v-btn @click="$router.push('/map')" small text dark><v-icon>mdi-google-maps</v-icon> {{$txt.web_nav.map}}</v-btn>
             <v-spacer></v-spacer>
             <v-btn @click="gotoHelp()" small text dark><v-icon>mdi-help</v-icon> {{$txt.web_nav.help}}</v-btn>
             <v-btn @click="dialogLang = true" small text dark><v-icon>mdi-bookshelf</v-icon>{{$txt.web_nav.language}}</v-btn>
@@ -26,7 +26,7 @@
             <v-btn v-if="!logined" @click="$router.push('/login')" small text dark> {{$txt.web_nav.login}}</v-btn>
             <v-dialog v-model="dialog" width="500">
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn small rounded color="teal darken-4" dark v-bind="attrs" v-on="on">
+                    <v-btn v-if="logined" small rounded color="teal darken-4" dark v-bind="attrs" v-on="on">
                         <v-icon>mdi-feather</v-icon>{{$txt.web_nav.post}}
                     </v-btn>
                 </template>
@@ -54,7 +54,7 @@
                     </v-card-text> 
                 </v-card>
             </v-dialog> 
-            <v-btn class="invisible  md:visible" @click="$router.push('/register')" small outlined rounded dark> {{$txt.web_nav.download}}</v-btn>
+            <v-btn class="invisible  md:visible" @click="openStore()" small outlined rounded dark> {{$txt.web_nav.download}}</v-btn>
         </div>
         <div class="flex pt-2 ">
             <h2 style="cursor: pointer;" class="text-base md:text-2xl logo-font pon text-white mt-2" @click="$router.push('/')">
@@ -148,6 +148,10 @@ export default class Navbar extends Vue {
     }
     async gotoHelp() {
         await window.open(`https://docs.google.com/document/d/1JzhXn1UksQ9rgVzus0VwBAHBoieGpSKdV1jypj5B7XE/edit?usp=sharing`, '_blank');
+    }
+
+    async openStore(){
+         window.open('https://play.google.com/store/apps/details?id=com.buffalo.market');
     }
 
 }

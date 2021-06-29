@@ -16,10 +16,10 @@
                 </p>
                 <div class="get-app flex row wrap md:space-x-5 mt-10  ">
                     <div class="mt-3 md:mt-1">
-                        <v-btn x-large rounded color="teal darken-3" dark><i class="fas fa-search text-xl pr-2"></i> {{_lang(' ค้นหาประกาศ ที่คุณต้องการ','Find the announcement you want.','找到您想要的公告。')}} </v-btn>
+                        <v-btn @click="$router.push('/product')" x-large rounded color="teal darken-3" dark><i class="fas fa-search text-xl pr-2"></i> {{_lang(' ค้นหาประกาศ ที่คุณต้องการ','Find the announcement you want.','找到您想要的公告。')}} </v-btn>
                     </div>
                     <div class="mt-3 md:mt-1">
-                        <v-btn dark outlined x-large rounded ><i class="fas fa-map-marker-alt text-xl pr-2"></i>{{_lang('ดูสถานที่สำคัญ','Find landmarks.','看地标')}}</v-btn>
+                        <v-btn @click="$router.push('/map')"  dark outlined x-large rounded ><i class="fas fa-map-marker-alt text-xl pr-2"></i>{{_lang('ดูสถานที่สำคัญ','Find landmarks.','看地标')}}</v-btn>
                     </div>
                 </div>
             </div>

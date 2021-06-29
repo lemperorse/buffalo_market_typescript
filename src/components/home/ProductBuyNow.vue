@@ -8,7 +8,7 @@
                         <v-icon>mdi-bullhorn-outline</v-icon> {{_lang('ประกาศซื้อล่าสุด','Latest Purchase ','最新采购公告')}}
                     </h2>
                     <v-spacer></v-spacer>
-                    <v-btn rounded @click="$router.push('/product?type=2')" outlined color="teal darken-3">
+                    <v-btn rounded @click="$router.push('/product?type=ซื้อ')" outlined color="teal darken-3">
                         <v-icon class="pr-2">mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}
                     </v-btn>
                 </v-toolbar>

@@ -10,7 +10,7 @@
                             <p class="bgbtn rounded-full text-white p-3">{{_lang('ประเภทประกาศ','Announcement type','公告類型')}}</p>
                             <v-radio-group class="p-3" v-model="productType">
                                 <v-radio v-for="product,n in productsType" :key="n" :label="product.name" :value="product.id"></v-radio>
-                            </v-radio-group>
+                            </v-radio-group> 
                             <p class="bgbtn rounded-full text-white p-3">{{_lang('จังหวัด','Province','省')}}</p>
                             <v-autocomplete class="p-3" item-text="name" item-value="id" @change="loadProducts()" :label="_lang('จังหวัด','Province','省')" :items="provinces" v-model="province"></v-autocomplete>
                             <p class="bgbtn rounded-full text-white p-3">{{_lang('ราคา','Price','價錢')}}</p>
@@ -25,7 +25,7 @@
                             <div v-for="category,index in categories" :key="index" class="pb-6">
                                 <h2 class="bgbtn rounded-full text-white p-3">{{category.name}}</h2>
                                 <v-checkbox class="pl-3 -mb-8" v-for="detail,i in category.detail" :key="i" v-model="chooseCategories" :label="detail.name" :value="detail.id"></v-checkbox>
-                            </div>
+                            </div> 
                             <v-divider class="pb-4"></v-divider>
                             <v-btn rounded block dark class="bgbtn">{{_lang('ล้างข้อมูล','Clean up','清理')}}</v-btn>
                         </v-expansion-panel-content>
@@ -79,6 +79,7 @@ import { Product } from "@/store/product";
 import {
     City
 } from "@/store/city";
+import _ from 'lodash'
 @Component({
     components: { MapView },
     computed: {},
@@ -97,6 +98,8 @@ export default class PostSaller extends Vue {
         this.saleType = await Product.SaleType
         this.productsType = await Product.ProductType
         await this.loadProducts()
+        await this.getType();
+        await this.getCat();
         this.response = true
     }
     products: any = null
@@ -113,6 +116,24 @@ export default class PostSaller extends Vue {
     @Watch('productType')
     async changeProductsType(val: any) {
         await this.loadProducts()
+    }
+
+
+    async getType(){
+        let typeProduct:any = this.$route.query.type;
+        if(typeProduct){
+            let choose = _.find(this.productsType,{name:typeProduct})
+            this.productType = choose.id; 
+        }
+    }
+
+        async getCat(){
+        let typeProduct:any = this.$route.query.cat;
+        if(typeProduct){
+            let choose = _.find(this.categories,{id:Number(typeProduct)}) 
+            this.chooseCategories = _.map(choose.detail,(val:any)=>{return  val.id})
+         
+        }
     }
 
     price: any = ''

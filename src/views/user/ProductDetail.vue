@@ -3,12 +3,12 @@
     <div class="flex flex-col justify-center items-center w-full">
         <div class="w-full md:w-10/12">
             <div class="w-full"><br>
-                <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2 ">
-                    <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
+                <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2 mt-2 items-center">
+                    <li class="px-2 text-sm"><span @click="$router.push('/')" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</span></li>
                     <li class="text-gray-500 select-none">/</li>
-                    <li class="px-2"><a href="/#/product" class="hover:underline">{{_lang('ประกาศ ซื้อ-ขาย','Home','家')}}</a></li>
+                    <li class="px-2 text-sm"><span @click="$router.push('/product')" class="hover:underline">{{_lang('ประกาศ ซื้อ-ขาย','Home','家')}}</span></li>
                     <li class="text-gray-500 select-none">/</li>
-                    <li class="px-2 text-yellow-600"> {{product.name}}</li>
+                    <li class="px-2 text-sm text-yellow-600"> {{product.name}}</li>
                 </ol>
             </div>
             <br>

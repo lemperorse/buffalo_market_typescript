@@ -1,14 +1,14 @@
 <template>
 <div class="bg-gray-100 h-full">
     <div class="container mx-auto ">
-        <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2 mt-8">
-            <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
+        <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2 mt-10 items-center">
+            <li class="px-2 text-sm"><span @click="$router.push('/')" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</span></li>
             <li class="text-gray-500 select-none">/</li>
-            <li class="px-2"><a href="/#/user/myshop/" class="hover:underline">{{_lang('ร้านค้าของฉัน','My shop','我的店鋪')}}</a></li>
+            <li class="px-2 text-sm"><span @click="$router.push('/user/myshop')" class="hover:underline">{{_lang('ร้านค้าของฉัน','My shop','我的店鋪')}}</span></li>
             <li class="text-gray-500 select-none">/</li>
-            <li class="px-2"><a href="/#/user/myshopsell/" class="hover:underline">{{_lang('ประกาศขายของฉัน','My sale announcement','我的銷售公告')}}</a></li>
+            <li class="px-2 text-sm"><span @click="$router.push('/user/myshopsell')" class="hover:underline">{{_lang('ประกาศขายของฉัน','My sale announcement','我的銷售公告')}}</span></li>
             <li class="text-gray-500 select-none">/</li>
-            <li class="px-2 text-yellow-600">{{_lang('แก้ไขประกาศขาย','Edit','編輯銷售')}}</li>
+            <li class="px-2 text-sm text-yellow-600">{{_lang('แก้ไขประกาศขาย','Edit','編輯銷售')}}</li>
         </ol>
         <div class="flex flex-wrap ">
             <div class="w-full pt-6">

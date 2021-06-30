@@ -1,10 +1,10 @@
 <template>
 <div class="p-2 mt-4 bg-gray-100 h-full">
     <v-container grid-list-xs>
-        <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2">
-            <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
+        <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2 mt-4 items-center">
+            <li class="px-2 text-sm"><span @click="$router.push('/')" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</span></li>
             <li class="text-gray-500 select-none">/</li>
-            <li class="px-2 text-yellow-600">{{_lang('ร้านค้าของฉัน','My shop','我的店鋪')}}</li>
+            <li class="px-2 text-sm text-yellow-600">{{_lang('ร้านค้าของฉัน','My shop','我的店鋪')}}</li>
         </ol>
         <div class="px-1 pt-4 md:px-10 mx-auto w-full">
             <div>

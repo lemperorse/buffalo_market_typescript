@@ -2,10 +2,10 @@
 <div class="bg-gray-100 mt-4">
     <div class="container mx-auto " v-if="response"> 
         <div class="w-full p-2">
-            <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2">
-                <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li> 
+            <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2 mt-4 items-center">
+                <li class="px-2 text-sm"><span @click="$router.push('/')" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</span></li> 
                 <li class="text-gray-500 select-none">/</li> 
-                <li class="px-2 text-yellow-600">{{_lang('โปรไฟล์','Profile','輪廓')}}</li>
+                <li class="px-2 text-sm text-yellow-600">{{_lang('โปรไฟล์','Profile','輪廓')}}</li>
             </ol> 
         </div>
         <div class="flex flex-wrap">

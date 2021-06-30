@@ -89,6 +89,7 @@
                 </div>
                 <br>
                 <v-pagination color="orange darken-4" v-model="page" :length="allPages" :total-visible="9" @input="handlePageChange" circle></v-pagination>
+                <br>
             </div>
         </div>
  

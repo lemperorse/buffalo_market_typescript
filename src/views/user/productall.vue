@@ -10,46 +10,56 @@
                 <li class="px-2 text-sm text-yellow-600"> {{product.farm.name}}</li>
             </ol>
         </div>
+
         <div class="rounded-lg p-2 mt-6 overflow-hidden bgbg shadow ">
             <div class="pa-2">
                 <div class="flex flex-col md:flex-row  items-center md:items-start	">
-                <div class="pa-2 ml-5 ">
-                            <v-avatar size="150">
-                                <v-img v-if="farm.user_image" :src="$server+'/'+product.farm.user_image" /> 
-                                <v-img v-else src="https://www.ibeargroup.com/booking/assets/images/icon_shop.png" /> 
-                            </v-avatar>
-                       
-                            </div>
-                            <div class="ml-2 mt-3 text-white">
-                                <h3 v-if="product.farm">
-                                    <!-- {{_lang('ชื่อ','Name','名稱')}} : -->
-                                    <span class="text-xl font-bold"> {{product.farm.name}}</span>
-                                </h3>
-                                <div class="text-white text-lg " v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
-                                <h3 v-if="product.farm" class="text-lg text-white">
-                                    <span>{{_lang('ที่อยู่','Address','地址')}} :{{product.farm.farm_address}}</span>
-                                </h3>
-                                <h3 class="text-lg" v-if="product.farm">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}} {{profile.amphur.name}} {{profile.district.name}}</h3>
-                                <h3 class="text-lg" v-if="product.farm">{{_lang('รหัสไปรษณีย์','Postal code','郵政編碼')}} : {{profile.zipcode}}</h3>
-                                <div class="mt-2 ">
-                                    <v-btn large @click="openMap()" outlined rounded type="submit" class="w-full" dark>
-                                        <v-icon>mdi-map-marker-radius-outline</v-icon> {{_lang('นำทางไปสู่เจ้าของร้านค้า','Navigate','導航')}}
-                                    </v-btn>
-                                </div>
-                            </div>
+                    <div class="pa-2 ml-5 ">
+                        <v-avatar size="150">
+                            <v-img v-if="farm.user_image" :src="$server+'/'+product.farm.user_image" />
+                            <v-img v-else src="https://www.ibeargroup.com/booking/assets/images/icon_shop.png" />
+                        </v-avatar>
+                    </div>
+                    <div class="ml-2 mt-3 text-white">
+                        <h3 v-if="product.farm">
+                            <!-- {{_lang('ชื่อ','Name','名稱')}} : -->
+                            <span class="text-xl font-bold"> {{product.farm.name}}</span>
+                        </h3>
+                        <div class="text-white text-lg " v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
+                        <h3 v-if="product.farm" class="text-lg text-white">
+                            <span>{{_lang('ที่อยู่','Address','地址')}} :{{product.farm.farm_address}}</span>
+                        </h3>
+                        <h3 class="text-lg" v-if="product.farm">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}} {{profile.amphur.name}} {{profile.district.name}}</h3>
+                        <h3 class="text-lg" v-if="product.farm">{{_lang('รหัสไปรษณีย์','Postal code','郵政編碼')}} : {{profile.zipcode}}</h3>
+                        <div class="mt-2 ">
+                            <v-btn large @click="openMap()" outlined rounded type="submit" class="w-full" dark>
+                                <v-icon>mdi-map-marker-radius-outline</v-icon> {{_lang('นำทางไปสู่เจ้าของร้านค้า','Navigate','導航')}}
+                            </v-btn>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        
         <div class="pt-8">
-            <span class="text-2xl font-bold">รายการประกาศของ <span class="text-2xl">{{farm.user.first_name}} {{farm.user.last_name}}</span> </span>
+            <span class="text-2xl font-bold">รายการประกาศของ <span class="text-2xl text-yellow-600">{{farm.user.first_name}} {{farm.user.last_name}}</span> </span>
         </div>
 
         <div class="w-full md:w-4/4 pt-6">
-            <div class="grid grid-cols-2 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-3 gap-1">
-                <div class="w-full p-2 " v-for="(pu,i) in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
+            <!-- <div class="grid grid-cols-2 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-3 gap-1">
+                <div class="" v-for="(pu,i) in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
                     <le-card :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :image="ximg(pu.file1)" :name="pu.name" :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" :time="pu.created_at" />
                 </div>
-            </div>
+            </div> -->
+            <div :class="`grid grid-cols-2 ${(advanceSearch)?'lg:grid-cols-6':'lg:grid-cols-7'}  md:grid-cols-4 sm:grid-cols-3 gap-1`">
+                         <le-card   v-for="(pu,i) in products.results" :key="i"  classProp="w-full"
+                                :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" 
+                                :image="ximg(pu.file1)"
+                                :name="pu.name" 
+                                :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" 
+                                :time="pu.created_at"
+                                /> 
+                </div>
             <br>
         </div>
         <div class="text-center mt-4 mb-6 rounded-lg">
@@ -113,7 +123,7 @@ export default class PostSaller extends Vue {
         this.product = await Core.getHttp(`/api/default/products/${id}/`)
         this.farm = this.product.farm
         this.profile = this.product.farm
-        console.log(this.product )
+        console.log(this.product)
     }
     async loadProducts() {
         let search = this.$route.query.search

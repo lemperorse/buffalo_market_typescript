@@ -1,24 +1,26 @@
 <template>
 <div class="px-4 py-5 flex-auto">
     <div class="flex-auto lg:px-10 py-10 pt-0">
-        <form @submit.prevent="storeProduct()">
+        <form @submit.prevent="storeProduct()" v-if="response">
             <v-text-field required dense rounded type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อสินค้า','Product name','產品名稱')" prepend-inner-icon="mdi-lead-pencil"></v-text-field>
-            <v-text-field required dense rounded type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')" prepend-inner-icon="mdi-clipboard-text-outline"></v-text-field>
-            <v-select required dense rounded :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทประกาศ ','Announcement type','公告類型')" prepend-inner-icon="mdi-basket-outline"></v-select>
-
+            <v-textarea required   rounded type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')" prepend-inner-icon="mdi-clipboard-text-outline"></v-textarea>
             <v-select required dense rounded :items="choices.price_type" item-text="name" item-value="id" v-model="product.price_type" class="w-full " filled :label="_lang('ประเภทราคา','Price Type','价格类型')" prepend-inner-icon="mdi-currency-btc"></v-select>
 
             <v-text-field required dense rounded v-if="product.price_type" type="text" v-model="product.price" class="w-full " filled :label="_lang('ราคา','Price','价钱')" prepend-inner-icon="mdi-currency-btc"></v-text-field>
             <v-text-field required dense rounded v-if="!product.price_type" type="text" v-model="product.price_start" class="w-full " filled :label="_lang('ราคาเริ่มต้น','PriceStart','价格开始')" prepend-inner-icon="mdi-currency-btc"></v-text-field>
             <v-text-field required dense rounded v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคาสุดท้าย','PriceEnd','价格结束')" prepend-inner-icon="mdi-currency-btc"></v-text-field>
-            <VueFileAgent required v-model="file"  @select="filesSelected($event)" :multiple="true" :maxSize="'5MB'" :deletable="true" :maxFiles="5"  :accept="'image/*,video/*'" ></VueFileAgent> 
-            <!-- <pre>{{product.file1}}</pre> -->
-            <!-- <v-text-field type="file" v-model="product.file1" class="w-full " filled :label="_lang('ไฟล์ 1','File1','文件1')"></v-text-field>
-            <v-text-field type="file" v-model="product.file2" class="w-full " filled :label="_lang('ไฟล์ 2','File2','文件2')"></v-text-field>
-            <v-text-field type="file" v-model="product.file3" class="w-full " filled :label="_lang('ไฟล์ 3','File3','文件3')"></v-text-field>
-            <v-text-field type="file" v-model="product.file4" class="w-full " filled :label="_lang('ไฟล์ 4','File4','文件4')"></v-text-field>
-            <v-text-field type="file" v-model="product.file5" class="w-full " filled :label="_lang('ไฟล์ 5','File5','文件5')"></v-text-field> -->
-            <v-select required dense rounded :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full pt-3" filled :label="_lang('ประเภทการขาย','Sales type','銷售類型')" prepend-inner-icon="mdi-calendar-alert"></v-select>
+             <p class="text-red-600">
+                * จำกัดไฟล์อัพโหลดได้สูงสุดที่ 5 ไฟล์ โดย ไฟล์ที่ 1,2,3 ต้องเป็นไฟล์รูปเท่านั้น และ ไฟล์ที่ 4,5 เป็นไฟล์วีดีโอเท่านั้น (ไม่จำเป็นต้องอัพโหลดครบทั้ง 5 ไฟล์)
+             </p>
+             <VueFileAgent required v-model="file"  @select="filesSelected($event)" :multiple="true" :maxSize="'5MB'" :deletable="true" :maxFiles="5"  :accept="'image/*,video/*'" ></VueFileAgent> 
+             <!--   <pre>{{product.file1}}</pre> 
+             <v-text-field type="file" v-model="product.file1" class="w-full " filled :label="_lang('ไฟล์ 1 (รูป)','File1','文件1')"></v-text-field>
+            <v-text-field type="file" v-model="product.file2" class="w-full " filled :label="_lang('ไฟล์ 2 (รูป)','File2','文件2')"></v-text-field>
+            <v-text-field type="file" v-model="product.file3" class="w-full " filled :label="_lang('ไฟล์ 3 (รูป)','File3','文件3')"></v-text-field>
+            <v-text-field type="file" v-model="product.file4" class="w-full " filled :label="_lang('ไฟล์ 4 (วีดีโอ)','File4','文件4')"></v-text-field>
+            <v-text-field type="file" v-model="product.file5" class="w-full " filled :label="_lang('ไฟล์ 5 (วีดีโอ)','File5','文件5')"></v-text-field>  
+            -->  
+          <v-select required dense rounded :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full pt-3" filled :label="_lang('ประเภทการขาย','Sales type','銷售類型')" prepend-inner-icon="mdi-calendar-alert"></v-select>
             <v-text-field required dense rounded v-if="product.sell_type == 0" type="date" v-model="product.buy_date" class="w-full pt-3" filled :label="_lang('วันที่สิ้นสุดประกาศขาย','Sale end date','銷售結束日期')" prepend-inner-icon="mdi-calendar-alert"></v-text-field>
             <v-select required dense rounded :items="choices.status" item-text="name" item-value="id" v-model="product.status" class="w-full " filled :label="_lang('สถานะประกาศ ','Announcement Status','公告狀態')" prepend-inner-icon="mdi-tag-multiple-outline"></v-select>
             <div class="pt-3 pb-3">
@@ -31,7 +33,7 @@
                 </div>
 
             </div>
-            <v-btn type="submit" rounded large class="w-full bgbtn" dark>{{_lang('บันทึก','Save','保存')}}</v-btn> 
+            <v-btn type="submit" depressed rounded x-large class="w-full bgbtn" color="green accent-4" dark>{{_lang('บันทึก','Save','保存')}}</v-btn> 
         </form>
     </div>
 </div>
@@ -71,6 +73,8 @@ export default class Saller extends Vue {
         await this.loadFarm()
         await this.loadChoice();
         await this.setProductKey();
+        this.product.product_type = 0 ;
+        this.response  = true
     }
 
     async loadFarm() {
@@ -107,7 +111,7 @@ export default class Saller extends Vue {
         let store = await Core.postHttp(`/api/default/product/`, this.product)
         if (store.id) { 
             await this.storeImage(store.id)
-            alert("Save product success") 
+            alert("บันทึกประกาศสำเร็จแล้ว") 
             await this.$router.go(-1)
             }
     }
@@ -115,14 +119,14 @@ export default class Saller extends Vue {
     public async updateProduct() {
         await this.setProductKey()
         let store = await Core.putHttp(`/api/default/product/${this.product.id}/`, this.product)
-        if (store.id) { alert("Save product success") }
+        if (store.id) { alert("บันทึกประกาศสำเร็จแล้ว") }
         await this.$router.go(-1)
     }
 
     public async removeProduct() {
         let store = await Core.deleteHttp(`/api/default/product/${this.product.id}/`)
         if (store.id) {  
-         alert("Save product success") }
+         alert("บันทึกประกาศสำเร็จแล้ว") }
          await this.$router.go(-1)
     }
 
@@ -156,10 +160,7 @@ export default class Saller extends Vue {
     height: 300px;
 }
 
-.bgbtn{
-    background-color: #6da29e;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%236da29e' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%236a9e9a' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23679995' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23649591' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%2361908d' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%235e8c88' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%235b8784' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23588380' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23557f7c' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23527a78' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23507673' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%234d726f' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%234a6e6b' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23476967' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23446563' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%2341615f' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%233f5d5b' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%233c5957' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
-    background-attachment: fixed;
-    background-size: cover;
+.bgbtn{ 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23000' fill-opacity='.1' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");
 }
-</style> 
+</style>

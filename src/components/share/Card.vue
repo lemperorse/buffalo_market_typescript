@@ -1,12 +1,12 @@
 <template> 
 <div :class="`${classProp} p-2`">
-    <div   class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden" @click="$router.push(path)">
+    <div   class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden" @click="gotoPage(path)">
         <div class="  overflow-hidden w-full">
             <v-img   :class="`h-40 ${classProp}`"  :src="image" /> 
         </div>
         <div class="p-4">
-             <h2 class="mt-2 mb-2  font-bold tect-xl">{{name}}</h2>
-            <div class="mt-3 flex items-center">
+             <h2 class="mt-2 mb-2  font-bold tect-xl line1 ">{{name}}</h2>
+            <div class="mt-3 flex items-center line1">
                 <span class="text-yellow-600 text-sm font-semibold">฿</span>&nbsp;<span class="font-bold text-xl text-yellow-600">{{price}}</span>&nbsp;
             </div>
         </div>
@@ -41,6 +41,10 @@ export default {
         dateOut(date){
             let convert = moment(date).format('DD/MM/YYYY')
             return convert
+        },
+        async gotoPage(path){
+            await this.$router.push(path)
+            await location.reload()
         }
     }
 
@@ -48,5 +52,11 @@ export default {
 </script>
 
 <style>
-
+.line1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 </style>

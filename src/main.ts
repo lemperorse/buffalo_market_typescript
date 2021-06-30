@@ -8,12 +8,21 @@ import vuetify from './plugins/vuetify';
 
 import Card from '@/components/share/Card.vue'
 Vue.component('le-card',Card)
-
+import Menu from '@/components/share/Menu.vue'
+Vue.component('le-menu',Menu)
+import Menu2 from '@/components/share/Menu2.vue'
+Vue.component('le-menu2',Menu2)
 import './plugins/varible';
 Vue.config.productionTip = false 
 import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg.css'
 Vue.use(VueFormGenerator)
+
+import VueApexCharts from 'vue-apexcharts'
+Vue.use(VueApexCharts)
+
+Vue.component('apexchart', VueApexCharts)
+
 
 const language = localStorage.getItem("language");
 

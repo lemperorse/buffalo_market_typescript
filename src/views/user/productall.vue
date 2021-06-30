@@ -1,63 +1,60 @@
 <template>
 <div class="bg-gray-100 h-full">
     <v-container grid-list-xs>
-        <div class="rounded-lg p-2 mt-2 overflow-hidden bgbg shadow ">
+        <div class="w-full"><br>
+            <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2 ">
+                <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
+                <li class="text-gray-500 select-none">/</li>
+                <li class="px-2"><a href="/#/product" class="hover:underline">{{_lang('ประกาศ ซื้อ-ขาย','Home','家')}}</a></li>
+                <li class="text-gray-500 select-none">/</li>
+                <li class="px-2 text-yellow-600"> {{product.farm.name}}</li>
+            </ol>
+        </div>
+        <div class="rounded-lg p-2 mt-6 overflow-hidden bgbg shadow ">
             <div class="pa-2">
-                <v-row wrap>
-                    <v-col cols="12" sm="6" md="8">
-                        <v-row wrap class="items-center p-4">
-                            <div class="pa-2 ml-5 ">
-                                <v-avatar size="85" class="border-2">
-                                    <img :src="$server+'/'+profile.profile_image" />
-                                </v-avatar>
+                <div class="flex flex-col md:flex-row  items-center md:items-start	">
+                <div class="pa-2 ml-5 ">
+                            <v-avatar size="150">
+                                <v-img v-if="farm.user_image" :src="$server+'/'+product.farm.user_image" /> 
+                                <v-img v-else src="https://www.ibeargroup.com/booking/assets/images/icon_shop.png" /> 
+                            </v-avatar>
+                       
                             </div>
                             <div class="ml-2 mt-3 text-white">
                                 <h3 v-if="product.farm">
                                     <!-- {{_lang('ชื่อ','Name','名稱')}} : -->
-                                    <span class="text-xl font-bold" v-if="product.farm.user"> {{product.farm.user.first_name}} {{product.farm.user.last_name}}</span>
+                                    <span class="text-xl font-bold"> {{product.farm.name}}</span>
                                 </h3>
                                 <div class="text-white text-lg " v-if="product.farm">{{_lang('เบอร์ติดต่อ','Phone number','電話號碼')}} : <span>{{product.farm.tel}}</span> <br /></div>
+                                <h3 v-if="product.farm" class="text-lg text-white">
+                                    <span>{{_lang('ที่อยู่','Address','地址')}} :{{product.farm.farm_address}}</span>
+                                </h3>
                                 <h3 class="text-lg" v-if="product.farm">{{_lang('จังหวัด','Province','省')}} : {{profile.province.name}} {{profile.amphur.name}} {{profile.district.name}}</h3>
                                 <h3 class="text-lg" v-if="product.farm">{{_lang('รหัสไปรษณีย์','Postal code','郵政編碼')}} : {{profile.zipcode}}</h3>
-                                <div class="mt-2 "><v-btn large @click="openMap" outlined rounded type="submit" class="w-full bg-btn" dark><v-icon>mdi-map-marker-radius-outline</v-icon> {{_lang('นำทางไปสู่เจ้าของร้านค้า','Navigate','導航')}}</v-btn></div>
+                                <div class="mt-2 ">
+                                    <v-btn large @click="openMap()" outlined rounded type="submit" class="w-full" dark>
+                                        <v-icon>mdi-map-marker-radius-outline</v-icon> {{_lang('นำทางไปสู่เจ้าของร้านค้า','Navigate','導航')}}
+                                    </v-btn>
+                                </div>
                             </div>
-                        </v-row>
-                    </v-col>
-                </v-row>
+                </div>
             </div>
         </div>
         <div class="pt-8">
-            <span class="text-2xl font-bold">รายการประกาศของ {{product.farm.user.first_name}}</span>
+            <span class="text-2xl font-bold">รายการประกาศของ <span class="text-2xl">{{farm.user.first_name}} {{farm.user.last_name}}</span> </span>
         </div>
 
         <div class="w-full md:w-4/4 pt-6">
-            <div class="grid grid-cols-2 lg:grid-cols-7 md:grid-cols-5 sm:grid-cols-3 gap-1">
+            <div class="grid grid-cols-2 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-3 gap-1">
                 <div class="w-full p-2 " v-for="(pu,i) in products.results" :key="i" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)">
-                    <v-hover v-slot:default="{ hover }">
-                        <v-card class="p-1 rounded-lg w-full" height="220px" >
-                            <v-img class="white--text align-end w-full rounded-t-lg h-28" :src="$server+'/'+pu.file1">
-                                <v-expand-transition>
-                                    <div v-if="hover" class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 black--text" style="height: 100%">
-                                        <v-btn v-if="hover" @click="$router.push(`/user/productdetail?product=${pu.id}&name=${pu.name}`)" class="" outlined>{{_lang('ดูรายละเอียด','Details','詳情')}} </v-btn>
-                                    </div>
-                                </v-expand-transition>
-                            </v-img>
-                            <v-card-text class="">
-                                <span class="font-semibold leading-tight mb-1 text-indigo-600 text-sm line2">{{pu.name}}</span>
-                                <div class="font-bold mb-1">
-                                    <span class="text-sm" v-if="pu.price_type">{{_lang('฿','฿','฿')}} {{pu.price}}</span>
-                                    <span v-else>{{_lang('฿','฿','฿')}} {{pu.price_start}} - {{pu.price_end}}</span>
-                                </div>
-                            </v-card-text>
-                        </v-card>
-                    </v-hover>
+                    <le-card :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :image="ximg(pu.file1)" :name="pu.name" :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" :time="pu.created_at" />
                 </div>
             </div>
             <br>
         </div>
-        <div class="text-center mt-6 rounded-lg">
+        <div class="text-center mt-4 mb-6 rounded-lg">
             <!-- <v-pagination v-model="page" :length="6" circle color="teal accent-3"></v-pagination> -->
-            <v-pagination v-model="page" :length="allPages" :total-visible="9" @input="handlePageChange" circle></v-pagination>
+            <v-pagination color="orange" v-model="page" :length="allPages" :total-visible="9" @input="handlePageChange" circle></v-pagination>
         </div>
 
     </v-container>
@@ -77,11 +74,12 @@ import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
 import { Map } from "@/store/map";
 import { Product } from "@/store/product";
+import Card from '@/components/cart/Card.vue'
 import {
     City
 } from "@/store/city";
 @Component({
-    components: { MapView, ProductOther },
+    components: { MapView, ProductOther, Card },
     computed: {},
 })
 
@@ -104,14 +102,18 @@ export default class PostSaller extends Vue {
     page: number = 1
 
     async loadFarm() {
-        this.user = await Auth.getUser()
-        this.profile = await User.getProfileFull();
-        this.farm = await Core.getHttp(`/api/default/farm/${this.product.farm.id}/`)
+        //   this.user = await Auth.getUser()
+        // this.profile = await User.getProfileFull();
+        // this.farm = await Core.getHttp(`/api/default/farm/${this.product.farm.id}/`)
+        // console.log(this.farm )
     }
 
     async loadProduct() {
         let id = this.$route.query.product
         this.product = await Core.getHttp(`/api/default/products/${id}/`)
+        this.farm = this.product.farm
+        this.profile = this.product.farm
+        console.log(this.product )
     }
     async loadProducts() {
         let search = this.$route.query.search
@@ -143,7 +145,7 @@ export default class PostSaller extends Vue {
         let to = `${this.farm.latitude},${this.farm.longitude}`
         console.log(me, `https://www.google.com/maps/dir/?api=1&origin=${me}&destination=${to}`);
         window.open(`https://www.google.com/maps/dir/?api=1&origin=${me}&destination=${to}`, '_blank');
-    } 
+    }
     async openMap() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.openBrowser);
@@ -152,7 +154,10 @@ export default class PostSaller extends Vue {
         }
 
     }
- 
+
+    ximg(file: any) {
+        return (file) ? process.env.VUE_APP_SERVER + '/' + file : 'https://images.pexels.com/photos/4052387/pexels-photo-4052387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    }
 
 }
 </script>
@@ -166,6 +171,7 @@ export default class PostSaller extends Vue {
     position: absolute;
     width: 100%;
 }
+
 .bg-nav {
     background-color: #6da29e;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%236da29e' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%236a9e9a' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23679995' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23649591' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%2361908d' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%235e8c88' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%235b8784' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23588380' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23557f7c' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23527a78' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23507673' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%234d726f' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%234a6e6b' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23476967' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23446563' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%2341615f' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%233f5d5b' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%233c5957' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
@@ -180,10 +186,20 @@ export default class PostSaller extends Vue {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .bgbg {
     background-color: #ee5522;
 }
-.bg-btn{ 
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23000' fill-opacity='.1' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");
-} 
+
+a {
+    color: black !important;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
 </style>

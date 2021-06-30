@@ -1,7 +1,6 @@
 <template>
     <v-card elevation="3">
-        <v-img :style="`width:${w}; height:${h}`" class="white--text align-end w-full rounded-t-lg  " :src="img">
- 
+        <v-img :style="`width:${w}; height:${h}`" class="white--text align-end w-full rounded-t-lg " :src="img">
         </v-img>
         <v-card-text class="">
             <span class="font-semibold leading-tight mb-1 text-indigo-600 text-sm line1">{{name}}</span>

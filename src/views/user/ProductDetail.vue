@@ -1,17 +1,17 @@
 <template>
-<div class="pt-6  ">
-    <div class="flex flex-col justify-center items-center  w-full rounded-xl shadow-xl  bg-white ">
+<div class="pt-6 bg-gray-100">
+    <div class="flex flex-col justify-center items-center w-full">
         <div class="w-full md:w-10/12">
-            <div class="w-full mb-6  "><br>
+            <div class="w-full"><br>
                 <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2 ">
                     <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
                     <li class="text-gray-500 select-none">/</li>
                     <li class="px-2"><a href="/#/product" class="hover:underline">{{_lang('ประกาศ ซื้อ-ขาย','Home','家')}}</a></li>
                     <li class="text-gray-500 select-none">/</li>
-                    <li class="px-2 text-green-600"> {{product.name}}</li>
+                    <li class="px-2 text-yellow-600"> {{product.name}}</li>
                 </ol>
             </div>
-<br>
+            <br>
             <ProductDetail />
         </div>
     </div>

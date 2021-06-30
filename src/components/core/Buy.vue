@@ -68,17 +68,17 @@
                         <span v-if="!advanceSearch"><v-icon>mdi-card-search</v-icon> ค้นหาแบบละเอียด</span>
                         <span v-else>X ปิดค้นหาแบบละเอียด</span>
                     </v-btn>
+                 
                     </v-toolbar>
-
-                    
                 </div>
-               <div class="w-full p-6" v-if="($route.query.search) && ($route.query.search != '')" >
-                    <h2 class="text-xl">
-                        <v-icon >mdi-card-search</v-icon>&nbsp;
-                        <span class="text-2xl font-bold">ผลการค้นหา</span> {{$route.query.search}}</h2>
+               <div class="w-full p-6   " v-if="($route.query.search) && ($route.query.search != '')" >
+                    <h2 class="text-xl ">
+                        &nbsp;
+                        <span class="text-2xl font-bold">ผลการค้นหา</span> {{$route.query.search}}</h2><br>
+                        <v-btn small  @click="resetPage()" rounded   color="orange" outlined  class="text-yellow-600">{{_lang('ล้างการค้นหา','Clean up','清理')}}</v-btn>
+
                 </div>
                 <div :class="`grid grid-cols-2 ${(advanceSearch)?'lg:grid-cols-6':'lg:grid-cols-7'}  md:grid-cols-4 sm:grid-cols-3 gap-1`">
-                    
                          <le-card   v-for="(pu,i) in products.results" :key="i"  classProp="w-full"
                                 :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" 
                                 :image="ximg(pu.file1)"
@@ -86,12 +86,9 @@
                                 :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" 
                                 :time="pu.created_at"
                                 /> 
-                    
-                     
-             
                 </div>
                 <br>
-                <v-pagination v-model="page" :length="allPages" :total-visible="9" @input="handlePageChange" circle></v-pagination>
+                <v-pagination color="orange darken-4" v-model="page" :length="allPages" :total-visible="9" @input="handlePageChange" circle></v-pagination>
             </div>
         </div>
  
@@ -196,7 +193,7 @@ export default class PostSaller extends Vue {
         let search = this.$route.query.search
         search = (search) ? `search=${search}` : ''
         this.products = await Core.getHttp(`/api/default/products/?&product_type=${this.productType}&${this.category}${search}${this.price}&farm__province=${this.province}`)
-        this.allPages = Math.ceil((this.products.count / 16))
+        this.allPages = Math.ceil((this.products.count / 9))
 
     }
     categories: any = null
@@ -248,12 +245,5 @@ export default class PostSaller extends Vue {
 
 .tw {
     color: white;
-}
-.line2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+} 
 </style>

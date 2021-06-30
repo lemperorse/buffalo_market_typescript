@@ -1,38 +1,25 @@
 <template>
-<div class="p-2 bg-gray-100 h-full">
-    <v-container grid-list-xs>
+<div class="p-2 mt-4 bg-gray-100 h-full">
+    <v-container grid-list-xs v-if="response">
         <ol class="flex text-gray-700 bg-gray-200 rounded-full py-2 px-2">
             <li class="px-2"><a href="/#/" class="hover:underline">{{_lang('หน้าแรก','Home','家')}}</a></li>
             <li class="text-gray-500 select-none">/</li>
             <li class="px-2"><a href="/#/user/myshop/" class="hover:underline">{{_lang('ร้านค้าของฉัน','My shop','我的店鋪')}}</a></li>
             <li class="text-gray-500 select-none">/</li>
-            <li class="px-2 text-green-600">{{_lang('รายงานของฉัน','My report','我的報告')}}</li>
+            <li class="px-2 text-yellow-600">{{_lang('รายงานของฉัน','My report','我的報告')}}</li>
         </ol>
         <div class="px-1 pt-8 md:px-10 mx-auto w-full">
-            <div>
-                <v-row class="pb-8 ">
-                    <div>
-                        <!-- <pre>{{user}}</pre> -->
-                        <div class="pa-2 wrap elevation-0   ">
-                            <span class="text-xl"><i class="em em-card_file_box p-4" aria-role="presentation" aria-label=""></i>{{_lang('รายงานของฉัน','My report','我的報告')}}</span>
-                        </div>
-                    </div>
+        <span class="text-2xl"><i class="em em-card_file_box p-4" aria-role="presentation" aria-label=""></i>{{_lang('รายงานของฉัน','My report','我的報告')}}</span>
 
-                </v-row>
-                <div class="">
-                    <!-- <pre>{{data}}</pre> -->
-                    <v-card class=""> 
-                        <v-sheet color="" class="rounded-lg">
-                            <v-icon class="p-4" size="48" color="indigo">
-                                mdi-shopping-outline
-                            </v-icon>
-                            <v-sparkline :labels="labels" :value="value" color="teal darken-1" height="100" padding="30" stroke-linecap="round" smooth>
+        <div class="flex flex-col md:flex-row"> 
+            <le-menu2 v-for="label,i in labels" :key="i"  class="w-full md:w-1/3 m-4"
+             :name="value[i]" :text="label" :icon="icons[i]" ></le-menu2> 
+            </div> 
+        </div>
+    <br>
+        <div class="w-full p-6 flex flex-col justify-center items-center" style="overflow-x: scroll;">
+        <apexchart type="bar" width="1000" height="350" :options="chartOptions" :series="series"></apexchart>
 
-                            </v-sparkline>
-                        </v-sheet>
-                    </v-card>
-                </div>
-            </div>
         </div>
     </v-container>
 </div>
@@ -55,9 +42,14 @@ export default class Postx extends Vue {
     products: any = null
     value: any = []
     labels: any = []
+    icons:any = []
+ 
     async created() {
         await this.loadFarm()
         await this.loadProducts()
+        this.chartOptions.xaxis.categories = this.labels
+        this.series[0].data = this.value
+        this.response = true;
     }
 
     farm: any = {}
@@ -85,29 +77,120 @@ export default class Postx extends Vue {
         for (let index = 0; index < this.data.length; index++) {
             this.value.push(this.data[index].data.length)
             let name = ''
+            let icon = ''
             if (this.data[index].status == 0) {
                 name = 'ยกเลิก'
+                icon = 'em em-man-gesturing-no'
             } else if (this.data[index].status == 1) {
                 name = 'ได้รับสินค้าแล้ว'
+                icon = 'em em-man-juggling'
             } else if (this.data[index].status == 2) {
                 name = 'รับซื้อ'
+                icon = 'em em-mega'
             } else if (this.data[index].status == 3) {
                 name = 'ขายแล้ว'
+                icon = 'em em-moneybag'
             } else if (this.data[index].status == 4) {
                 name = 'สินค้าหมด'
+                icon = 'em em-man-shrugging'
             } else if (this.data[index].status == 5) {
                 name = 'มีสินค้า'
+                icon = 'em em-shopping_bags'
             } else {
                 name = 'ไม่มีสถานะ'
+                icon = 'em em-meat_on_bone'
             }
-            this.labels.push(`${name} (${this.data[index].data.length})`)
+            this.labels.push(`${name} `)
+            this.icons.push(`${icon} `)
         }
 
     }
 
-}
-</script>
+    series:any =  [{
+        name: 'Data',
+        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+      }]
+ 
 
+          chartOptions:any =  {
+            chart: {
+              height: 350,
+              type: 'bar',
+            },
+            plotOptions: {
+              bar: {
+                borderRadius: 10,
+                dataLabels: {
+                  position: 'top', // top, center, bottom
+                },
+              }
+            },
+            dataLabels: {
+              enabled: true,
+              formatter: function (val:any) {
+                return val + "%";
+              },
+              offsetY: -20,
+              style: {
+                fontSize: '12px',
+                colors: ["#304758"]
+              }
+            },
+            
+            xaxis: {
+              categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+              position: 'top',
+              axisBorder: {
+                show: false
+              },
+              axisTicks: {
+                show: false
+              },
+              crosshairs: {
+                fill: {
+                  type: 'gradient',
+                  gradient: {
+                    colorFrom: '#D8E3F0',
+                    colorTo: 'orange',
+                    stops: [0, 100],
+                    opacityFrom: 0.4,
+                    opacityTo: 0.5,
+                  }
+                }
+              },
+              tooltip: {
+                enabled: true,
+              }
+            },
+            yaxis: {
+              axisBorder: {
+                show: false
+              },
+              axisTicks: {
+                show: false,
+              },
+              labels: {
+                show: false,
+                formatter: function (val:any) {
+                  return val + "%";
+                }
+              }
+            
+            },
+            title: {
+              text: 'ตารางรายงานยอดขาย',
+              floating: true,
+              offsetY: 330,
+              align: 'center',
+              style: {
+                color: 'orange'
+              }
+            }
+          }
+    
+} 
+</script>
+ 
 <style scoped>
 a {
     color: black !important;

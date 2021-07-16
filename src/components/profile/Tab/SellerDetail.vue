@@ -37,7 +37,7 @@
         <br> <br>
         <form v-if="response" @submit.prevent="update()">
             <div class="flex flex-wrap">
-                <v-text-field rounded class="w-full " v-model="form.name" filled :label="_lang('ชื่อทางการค้า','Trade name','商品名')" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
+                <v-text-field required rounded class="w-full " v-model="form.name" filled :label="_lang('ชื่อทางการค้า','Trade name','商品名')" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
                 <v-text-field rounded class="w-full " v-model="form.farm_address" filled :label="_lang('ที่อยู่ร้านค้า','Shop address','店鋪地址')" prepend-inner-icon="mdi-home-city-outline"></v-text-field>
                 <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('จังหวัดที่อยู่ร้านค้า','province, shop address','省、店地址')" prepend-inner-icon="mdi-home-group"></v-text-field>
 

@@ -4,10 +4,8 @@
     <div class="container mx-auto "> 
         <!-- Start footer bottom -->
         <div class="pt-4 md:flex md:items-center md:justify-center " > 
-            {{_lang('ลิขสิทธิ์ © 2563 โดย ชยุต ดงปาลีธรรม และ คณะ','Copyright © 2020 by Chayut Dongpalitham and team.','版权所有 © 2020 Chayut Dongpalitham 和团队。')}}
-        
+            {{_lang('ลิขสิทธิ์ © 2563 โดย ศูนย์วิจัยและบํารุงพันธุ์สัตว์พะเยา','Copyright © 2020 by Phayao Animal Research and Breeding Center.','版权所有 © 2020 帕堯動物研究與繁育中心')}}
         </div>
-        <!-- end container -->
     </div>
 </nav>
 </template>

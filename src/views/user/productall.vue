@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="pt-8">
             <span class="text-2xl font-bold">รายการประกาศของ <span class="text-2xl text-yellow-600">{{farm.user.first_name}} {{farm.user.last_name}}</span> </span>
         </div>
@@ -52,14 +52,8 @@
                 </div>
             </div> -->
             <div :class="`grid grid-cols-2 ${(advanceSearch)?'lg:grid-cols-6':'lg:grid-cols-7'}  md:grid-cols-4 sm:grid-cols-3 gap-1`">
-                         <le-card   v-for="(pu,i) in products.results" :key="i"  classProp="w-full"
-                                :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" 
-                                :image="ximg(pu.file1)"
-                                :name="pu.name" 
-                                :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" 
-                                :time="pu.created_at"
-                                /> 
-                </div>
+                <le-card v-for="(pu,i) in products.results" :key="i" classProp="w-full" :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :image="ximg(pu.file1)" :name="pu.name" :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" :time="pu.created_at" />
+            </div>
             <br>
         </div>
         <div class="text-center mt-4 mb-6 rounded-lg">
@@ -112,7 +106,7 @@ export default class PostSaller extends Vue {
     page: number = 1
 
     async loadFarm() {
-        //   this.user = await Auth.getUser()
+        // this.user = await Auth.getUser()
         // this.profile = await User.getProfileFull();
         // this.farm = await Core.getHttp(`/api/default/farm/${this.product.farm.id}/`)
         // console.log(this.farm )
@@ -120,7 +114,7 @@ export default class PostSaller extends Vue {
 
     async loadProduct() {
         let id = this.$route.query.product
-        this.product = await Core.getHttp(`/api/default/products/${id}/`)
+        this.product = await Core.getHttp(`/api/default/products/${id}/ `)
         this.farm = this.product.farm
         this.profile = this.product.farm
         console.log(this.product)
@@ -128,8 +122,8 @@ export default class PostSaller extends Vue {
     async loadProducts() {
         let search = this.$route.query.search
         search = (search) ? `search=${search}` : ''
-        this.products = await Core.getHttp(`/api/default/products/?&product_type=${search}`)
-        this.allPages = Math.ceil((this.products.count / 16))
+        this.products = await Core.getHttp(`/api/default/products/?&farm=${this.farm.id}&product_type=${search}`)
+        this.allPages = Math.ceil((this.products.count / 9))
 
     }
     // async loadProducts() {

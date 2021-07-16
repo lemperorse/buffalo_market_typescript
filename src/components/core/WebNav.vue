@@ -1,7 +1,7 @@
 <template>
-<div class="fixed w-full h-28 bg-beta" style="z-index:100;  ">
-    <div class=" p-2 md:pl-20 md:pr-20 ">
-        <div class="flex row-wrap overflow-y-hidden	overflow-x-auto p-1" v-if="response">
+<div class="fixed w-full h-32 bg-beta" style="z-index:100;  ">
+    <div class=" p-2 md:pl-20 md:pr-20 mt-6 md:pt-0">
+        <div class="flex row-wrap overflow-y-hidden	overflow-x-auto p-1 " v-if="response">
             <v-btn @click="$router.push('/product')" small text dark><v-icon>mdi-shopping-outline</v-icon>{{$txt.web_nav.product}}</v-btn>
             <v-btn @click="$router.push('/map')" small text dark><v-icon>mdi-google-maps</v-icon> {{$txt.web_nav.map}}</v-btn>
             <v-spacer></v-spacer>
@@ -33,7 +33,7 @@
 
                 <v-card>
                     <v-card-title class="">
-                        <i class="fas fa-store text-2xl pr-2"></i>เพิ่มประกาศ
+                        <i class="fas fa-store text-2xl pr-2"></i>{{_lang('เพิ่มประกาศ','Add announcement','添加公告')}}
                         <v-spacer></v-spacer>
                         <v-btn depressed @click="dialog = false" fab small color="error">x</v-btn>
                     </v-card-title>
@@ -43,13 +43,13 @@
                             <v-btn @click="($router.push('/user/addpostbuy')) && (dialog=false)" depressed color="orange darken-4" 
                             dark x-large block rounded 
                             class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90 bg-btn">
-                            เพิ่มประกาศซื้อ</v-btn>
+                            {{_lang('เพิ่มประกาศซื้อ','Add buy announcement','添加购买公告')}}</v-btn>
                         </div>
                         <div class="m-4">
                             <v-btn @click="($router.push('/user/addpostsell')) && (dialog=false)" depressed color="orange darken-4" 
                             dark x-large block rounded 
                             class="transition duration-500 ease-in-out transform hover:-translate-x-1 hover:scale-90 bg-btn">
-                            เพิ่มประกาศขาย</v-btn>
+                            {{_lang('เพิ่มประกาศขาย','Add sell announcement','添加出售公告')}}</v-btn>
                         </div>
                     </v-card-text> 
                 </v-card>

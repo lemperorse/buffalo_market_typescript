@@ -11,13 +11,13 @@
             <v-text-field rounded class="w-full md:w-2/5" filled v-model="form.first_name" :label="_lang('ชื่อจริง','First Name','名字')" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
             <v-text-field rounded class="w-full md:w-2/5" filled v-model="form.last_name" :label="_lang('นามสกุล','Last Name','姓')" prepend-inner-icon="mdi-card-account-details-outline"></v-text-field>
             <hr>
-            <v-text-field rounded class="w-full md:w-1/2" type="date" filled v-model="profile.birthday" :label="_lang('วันเกิด','Birthday','生日')" prepend-inner-icon="mdi-cake"></v-text-field>
+            <v-text-field required rounded class="w-full md:w-1/2" type="date" filled v-model="profile.birthday" :label="_lang('วันเกิด','Birthday','生日')" prepend-inner-icon="mdi-cake"></v-text-field>
             <v-text-field rounded class="w-full md:w-1/2" disabled filled v-model="profile.age" :label="_lang('อายุ','Age','年齡')" prepend-inner-icon="mdi-cake"></v-text-field>
 
-            <v-text-field rounded class="w-full " filled v-model="profile.my_address" :label="_lang('ที่อยู่','Address','地址')" prepend-inner-icon="mdi-home-city-outline"></v-text-field>
+            <v-text-field required rounded class="w-full " filled v-model="profile.my_address" :label="_lang('ที่อยู่','Address','地址')" prepend-inner-icon="mdi-home-city-outline"></v-text-field>
 
-            <v-text-field rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地區')" prepend-inner-icon="mdi-home-group"></v-text-field>
-            <v-text-field rounded class="w-full" type="number" v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')" prepend-inner-icon="mdi-postage-stamp"></v-text-field>
+            <v-text-field required rounded class="w-full items-end" :value="CityFrom" @click="openCityDialog " @focus="openCityDialog" filled :label="_lang('ภูมิภาค','Region','地區')" prepend-inner-icon="mdi-home-group"></v-text-field>
+            <v-text-field required rounded class="w-full" type="number" v-model="profile.zipcode" filled :label="_lang('รหัสไปรษณีย์','Postal code','郵政編碼')" prepend-inner-icon="mdi-postage-stamp"></v-text-field>
 
         </div>
         <v-btn x-large depressed rounded class="w-full bgbtn" color="green accent-4" dark type="submit">

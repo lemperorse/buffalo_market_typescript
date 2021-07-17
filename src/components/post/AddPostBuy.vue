@@ -51,6 +51,7 @@ import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
 import { Map } from "@/store/map";
 import { Product } from "@/store/product";
+import { App } from "@/store/app";
 import {
     City
 } from "@/store/city";
@@ -70,10 +71,12 @@ export default class Saller extends Vue {
     categories: any = null
     chooseCategories: any = []
     async created() {
+        await Core.switchLoad(true)
         await this.loadFarm()
         await this.loadChoice();
         await this.setProductKey();
         this.product.product_type = 1;
+        await Core.switchLoad(false)
         this.response  = true
     }
 
@@ -111,7 +114,7 @@ export default class Saller extends Vue {
         let store = await Core.postHttp(`/api/default/product/`, this.product)
         if (store.id) {
             await this.storeImage(store.id)
-            alert("บันทึกประกาศสำเร็จแล้ว")
+            await App.success("บันทึกประกาศสำเร็จแล้ว")
             await this.$router.go(-1)
         }
 
@@ -120,7 +123,7 @@ export default class Saller extends Vue {
     public async updateProduct() {
         await this.setProductKey()
         let store = await Core.putHttp(`/api/default/product/${this.product.id}/`, this.product)
-        if (store.id) { alert("บันทึกประกาศสำเร็จแล้ว") }
+        if (store.id) { await App.success("บันทึกประกาศสำเร็จแล้ว") }
         await this.$router.go(-1)
     }
 
@@ -128,7 +131,7 @@ export default class Saller extends Vue {
         let store = await Core.deleteHttp(`/api/default/product/${this.product.id}/`)
         if (store.id) {
 
-            alert("บันทึกประกาศสำเร็จแล้ว")
+            await App.success("บันทึกประกาศสำเร็จแล้ว")
             await this.$router.go(-1)
         }
     }

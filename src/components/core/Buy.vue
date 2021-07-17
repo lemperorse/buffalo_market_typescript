@@ -129,7 +129,9 @@ export default class PostSaller extends Vue {
     panel: number[] = [0, 1]
     allPages: number = 1
     async created() {
+        await Core.switchLoad(true)
         await this.run()
+        await Core.switchLoad(false)
     }
     
     products: any = null
@@ -139,13 +141,15 @@ export default class PostSaller extends Vue {
     productsType: any = null
 
     async run(){
-               await this.loadCategory();
+        await Core.switchLoad(true)
+        await this.loadCategory();
         await this.loadProvinces();
         this.saleType = await Product.SaleType
         this.productsType = await Product.ProductType
         await this.loadProducts()
         await this.getType();
         await this.getCat();
+        await Core.switchLoad(false)
         this.response = true
     }
     
@@ -194,7 +198,8 @@ export default class PostSaller extends Vue {
         let search = this.$route.query.search
         search = (search) ? `search=${search}` : ''
         this.products = await Core.getHttp(`/api/default/products/?&product_type=${this.productType}&${this.category}${search}${this.price}&farm__province=${this.province}`)
-        this.allPages = Math.ceil((this.products.count / 9))
+        // this.allPages = Math.ceil((this.products.count / 9))
+        this.allPages = Math.ceil((this.products.count / this.products.result.length))
 
     }
     categories: any = null

@@ -59,6 +59,7 @@ import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
 import { Map } from "@/store/map";
 import { Product } from "@/store/product";
+import { App } from "@/store/app";
 import {
     City
 } from "@/store/city";
@@ -81,16 +82,20 @@ export default class Saller extends Vue {
     f4: any = {}
     f5: any = {}
     async created() {
+        // await Core.switchLoad(true)
         await this.loadFarm()
         await this.loadChoice();
         await this.loadProduct();
+        // await Core.switchLoad(false)
         // await this.setProductKey();
     }
 
     async loadFarm() {
+        await Core.switchLoad(true)
         this.user = await Auth.getUser()
         this.profile = await User.getProfileFull();
         this.farm = await Core.getHttp(`/api/user/farm/${this.user.pk}/`)
+        await Core.switchLoad(false)
         this.response = true
     }
 
@@ -120,7 +125,7 @@ export default class Saller extends Vue {
     public async storeProduct() {
         await this.setProductKey()
         let store = await Core.postHttp(`/api/default/product/`, this.product)
-        if (store.id) { alert("Save product success") }
+        if (store.id) { await App.success("บันทึกประกาศสำเร็จแล้ว") }
         await this.$router.go(-1)
     }
 
@@ -133,16 +138,16 @@ export default class Saller extends Vue {
         let store = await Core.putHttp(`/api/default/product/${this.product.id}/`, this.product)
         if (store.id) {
             await this.storeImage(store.id);
-            alert("Save product success")
+            await App.success("บันทึกประกาศสำเร็จแล้ว")
             await this.$router.go(-1)
         }
     }
 
     public async removeProduct() {
-        let check = confirm('Are you sure ?')
+        let check = await App.confirm('คุณแน่ใจใช่ไหม', 'ที่จะลบประกาศนี้')
         if (check) {
             let store = await Core.deleteHttp(`/api/default/product/${this.product.id}/`)
-            alert("Delete product success")
+            await App.error("ลบประกาศสำเร็จแล้ว")
             await this.$router.go(-1)
         }
     }

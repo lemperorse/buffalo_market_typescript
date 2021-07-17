@@ -35,6 +35,7 @@ import {
 import { Core } from '../../store/core'
 import { Auth } from '../../store/auth'
 import { User } from '../../store/user'
+import { App } from "@/store/app";
 @Component({
     components: {
 
@@ -66,13 +67,12 @@ export default class Forgot extends Vue {
             let change = await Core.putHttp(`/api/user/password/${user.user}/`, this.formPassword)
             this.formPassword = {}
             if (change.id) {
-                alert('เปลี่ยนรหัสผ่านสำเร็จ');
+                await App.success("เปลี่ยนรหัสผ่านสำเร็จ")
                 await this.$router.go(-1)
-                // await App.success("เปลี่ยนรหัสผ่านสำเร็จ")
+                
             }
-        } else {
-            alert('รหัสผ่านไม่ตรงกัน');
-            // await App.error("รหัสผ่านไม่ตรงกัน")
+        } else { 
+            await App.error("รหัสผ่านไม่ตรงกัน")
         }
     }
 }

@@ -172,6 +172,7 @@ import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
 import { Map } from "@/store/map";
 import { Product } from "@/store/product";
+import { App } from "@/store/app";
 import {
     City
 } from "@/store/city";
@@ -215,7 +216,8 @@ export default class PostSaller extends Vue {
     public async updateProduct(product: any) {
         let store = await Core.putHttp(`/api/default/products/${product.id}/`, product)
         if (store.id) {
-            alert("Save product success")
+            // alert("Save product success")
+            await App.success("บันทึกข้อมูลสำเร็จ") 
             await this.loadProduct()
         }
     }

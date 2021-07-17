@@ -7,6 +7,12 @@ class CoreModule extends VuexModule {
     private token: string | null = null;
     public Hi:String | null = null;
 
+    public loading : boolean = false
+
+    public async switchLoad(loading : boolean){
+        this.loading = loading
+    }
+
 
     async getHttp(url:string):Promise<any>{
         return  await axios.get(url).then((r)=>{return r.data}).catch((e)=>{return e.response.data})

@@ -78,6 +78,7 @@ import { Component, Vue } from "vue-property-decorator";
 import WebNav from "../../components/core/WebNav.vue";
 import { Core } from "../../store/core";
 import { Auth } from "../../store/auth";
+import { App } from "@/store/app";
 @Component({
     components: {
         WebNav,
@@ -89,19 +90,21 @@ export default class Login extends Vue {
     errorText: any = null;
     async created() {
         await Auth.checkToken();
-        if (Auth.logined) {
+        if (Auth.logined) { 
             await this.$router.replace("/");
         }
     }
     async login() {
         await Auth.reToken();
         let logined = await Core.postHttp(`/api/auth/login/`, this.form);
+        // await App.success("เข้าสู่ระบบสำเร็จ")
         if (logined.key) {
             await Auth.storeToken(logined.key);
             await Auth.storeTokenToStorage(logined.key);
             await this.$router.push("/");
             await location.reload();
         } else {
+            await App.error("เข้าสู่ระบบล้มเหลว กรุณาตรวจสอบข้อมูลให้ถูกต้อง")
             this.errorText = logined.non_field_errors;
         }
     }

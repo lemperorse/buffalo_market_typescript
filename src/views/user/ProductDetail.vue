@@ -55,8 +55,11 @@ import {
 export default class PostSaller extends Vue {
     dialog: boolean = false
     async created() {
+        await Core.switchLoad(true)
         await this.loadProduct();
+        await Core.switchLoad(false)
         this.response = true
+
     }
     product: any = null
     response: boolean = false;

@@ -31,6 +31,7 @@ import {
 import { User } from "@/store/user";
 import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
+import { App } from "@/store/app";
 @Component({
     components: {},
     computed: {}
@@ -41,8 +42,9 @@ export default class Profile extends Vue {
  
     response: boolean = false
     async created() {
-      
+        await Core.switchLoad(true)
         this.response = true;
+        await Core.switchLoad(false)
     } 
 
     async changePassword(event: any) {
@@ -50,12 +52,11 @@ export default class Profile extends Vue {
         if (this.formPassword.password == this.formPassword.password2) {
             let change = await Core.putHttp(`/api/user/password/${user.pk}/`, this.formPassword)
             this.formPassword = {}
-            if (change.id) {
-                alert('เปลี่ยนรหัสผ่านสำเร็จ');
-                // await App.success("เปลี่ยนรหัสผ่านสำเร็จ")
+            if (change.id) { 
+                await App.success("เปลี่ยนรหัสผ่านสำเร็จ")
             }
         } else {
-            alert('รหัสผ่านไม่ตรงกัน');
+            await App.error("รหัสผ่านไม่ตรงกัน")
             // await App.error("รหัสผ่านไม่ตรงกัน")
         }
     }

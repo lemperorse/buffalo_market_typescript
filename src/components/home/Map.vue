@@ -14,8 +14,26 @@
 </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { User } from "@/store/user";
+import { Auth } from "@/store/auth";
+import { Core } from "@/store/core";
+import { Component, Vue, Watch } from "vue-property-decorator";
+
+@Component({
+    components: {
+
+    },
+    computed: {}
+})
+
+export default class Map extends Vue {
+    response: boolean = false
+    async created() {
+        await Core.switchLoad(true)
+        this.response = true;
+        await Core.switchLoad(false)
+    }
 
 }
 </script>

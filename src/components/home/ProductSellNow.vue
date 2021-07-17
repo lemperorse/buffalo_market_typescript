@@ -4,7 +4,7 @@
         <v-row justify="center">
             <v-col cols="12" sm="12">
                 <v-toolbar color="transparent" flat>
-                    <h2 class="font-bold text-2xl  ">
+                    <h2 class="font-bold text-xl  ">
                         <v-icon>mdi-bullhorn-outline</v-icon> {{_lang('ประกาศขายล่าสุด','Latest Sale','最新销售')}}
                     </h2>
                     <v-spacer></v-spacer>

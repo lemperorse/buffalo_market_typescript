@@ -83,16 +83,18 @@ import {
     City
 } from "@/store/city";
 @Component({
-    components: { MapView, ProductOther, Card },
+    components: { MapView, ProductOther, Card, },
     computed: {},
 })
 
 export default class PostSaller extends Vue {
     dialog: boolean = false
     async created() {
+        // await Core.switchLoad(true)
         await this.loadProduct();
         await this.loadFarm();
         await this.loadProducts()
+        // await Core.switchLoad(false)
         this.response = true
     }
     products: any = null
@@ -122,8 +124,8 @@ export default class PostSaller extends Vue {
     async loadProducts() {
         let search = this.$route.query.search
         search = (search) ? `search=${search}` : ''
-        this.products = await Core.getHttp(`/api/default/products/?&farm=${this.farm.id}&product_type=${search}`)
-        this.allPages = Math.ceil((this.products.count / 9))
+        this.products = await Core.getHttp(`/api/default/products/?farm=${this.farm.id}`)
+        this.allPages = Math.ceil((this.products.count / this.products.result.length))
 
     }
     // async loadProducts() {
@@ -140,7 +142,7 @@ export default class PostSaller extends Vue {
     private async handlePageChange(value: any) {
         let search = this.$route.query.search
         search = (search) ? `search=${search}` : ''
-        this.products = await Core.getHttp(`/api/default/products/?&product_type=${search}&page=${value}`)
+        this.products = await Core.getHttp(`/api/default/products/?farm=${this.farm.id}&product_type=${search}&page=${value}`)
 
     }
 

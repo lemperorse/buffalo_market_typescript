@@ -32,6 +32,7 @@ import {
 import { User } from "@/store/user";
 import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
+import { App } from "@/store/app";
 @Component({
     components: {},
     computed: {}
@@ -42,7 +43,9 @@ export default class Personal extends Vue {
     profileImage: any = null;
     response: boolean = false
     async created() {
+        // await Core.switchLoad(true)
         await this.loadProfile()
+        // await Core.switchLoad(false)
         this.response = true;
     }
     async loadProfile() {
@@ -52,7 +55,7 @@ export default class Personal extends Vue {
     async updatePersonal() {
         let update = await Core.putHttp(`/api/default/profile/${this.profile.id}/`, this.profile)
         if (update.id) {
-            alert('Successfully saved data')
+            await App.success("บันทึกข้อมูลสำเร็จ")
             await this.loadProfile() //.$_lang('บันทึกข้อมูลสำเร็จ','Successfully saved data','成功保存数据')
         }
 
@@ -65,7 +68,7 @@ export default class Personal extends Vue {
         this.profileImage.presonal_image = file
         let data = await Core.putHttp(`/api/user/personal/image/${this.profile.id}/`, this.profileImage)
         if (data.id) {
-            alert("success")
+            await App.success("บันทึกข้อมูลสำเร็จ")
         }
     }
 

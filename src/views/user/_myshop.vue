@@ -65,7 +65,11 @@ import {
 import {
     Core
 } from '@/store/core'
-import _ from 'lodash'
+import _ from 'lodash' 
+import {
+    Auth
+} from '@/store/auth'
+import { App } from "@/store/app";
 @Component({
     components: {
         Menu
@@ -77,9 +81,19 @@ import _ from 'lodash'
 export default class Home extends Vue {
 
     width: any = this.$vuetify.breakpoint.width
+    user:any = {}
+    farm:any = {}
 
     async created() {
-
+        await Core.switchLoad(true)
+        this.user = await Auth.getUser()
+        this.farm = await Core.getHttp(`/api/user/farm/${this.user.pk}/`) 
+        if(!this.farm.name && !this.farm.farm_address){
+            // alert('ไม่สามารถเข้าสู้ข้อมูลร้านค้าได้กรุณาระบุข้อมูลร้านค้าให้ครบถ้วน')
+            await App.error("ไม่สามารถเข้าสู้ข้อมูลร้านค้าได้กรุณาระบุข้อมูลร้านค้าให้ครบถ้วน(ในเมนูโปรไฟล์ > ข้อมูลผู้ขาย)")
+            await this.$router.go(-1)
+        }
+        await Core.switchLoad(false)
     }
 
 }

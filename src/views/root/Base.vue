@@ -1,6 +1,7 @@
 <template>
 <div>
     <v-app>
+        <Loading />
         <WebNav /><br><br><br><br>
         <v-main class=" bg-gray-100">
             <router-view />
@@ -19,10 +20,12 @@ import {
 } from 'vue-property-decorator';
 import WebNav from '../../components/core/WebNav.vue'
 import Footer from '../../components/core/Footer.vue'
+import Loading from '../../components/core/loading.vue'
 @Component({
     components: {
         WebNav,
-        Footer
+        Footer,
+        Loading
     },
     computed: {}
 })

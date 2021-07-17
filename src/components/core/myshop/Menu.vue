@@ -17,7 +17,9 @@
     </v-card-text>
     <v-card-actions>
 
-        <v-btn color="orange darken-4" block text @click="$router.push(path)"><v-icon>mdi-circle-edit-outline</v-icon> {{caption}}</v-btn>
+        <v-btn color="orange darken-4" block text @click="$router.push(path)">
+            <v-icon>mdi-circle-edit-outline</v-icon> {{caption}}
+        </v-btn>
 
     </v-card-actions>
 </v-card>
@@ -32,12 +34,15 @@
             <v-img :src="image"></v-img>
         </v-avatar>
         <div>
-            <h2 class="font-bold text-black mt-6"> 
+            <h2 class="font-bold text-black mt-6">
+
                 {{head}}</h2>
             <p class="text-gray-500">{{txt}} </p>
 
             <v-card-actions>
-                <v-btn color="orange darken-4" block text @click="$router.push(path)"><v-icon>mdi-circle-edit-outline</v-icon> {{caption}}</v-btn>
+                <v-btn color="orange darken-4 w-full" text @click="$router.push(path)">
+                    <v-icon>mdi-circle-edit-outline</v-icon> {{caption}}
+                </v-btn>
             </v-card-actions>
         </div>
 

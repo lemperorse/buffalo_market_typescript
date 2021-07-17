@@ -45,10 +45,12 @@ export default class Postx extends Vue {
     icons:any = []
  
     async created() {
+        await Core.switchLoad(true)
         await this.loadFarm()
         await this.loadProducts()
         this.chartOptions.xaxis.categories = this.labels
         this.series[0].data = this.value
+        await Core.switchLoad(false)
         this.response = true;
     }
 

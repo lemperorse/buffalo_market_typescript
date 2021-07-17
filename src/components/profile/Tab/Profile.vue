@@ -36,7 +36,8 @@ import {
 } from 'vue-property-decorator';
 import { User } from "@/store/user";
 import { Auth } from "@/store/auth";
-import { Core } from "@/store/core";
+import { Core } from "@/store/core"; 
+import { App } from "@/store/app";
 import {
     City
 } from "@/store/city";
@@ -59,6 +60,7 @@ export default class Profile extends Vue {
     async load() {
         await Auth.checkToken();
         if (Auth.logined) {
+            await Core.switchLoad(true)
             this.form = await Auth.getUser()
             this.profile = await Core.getHttp(`/api/default/profile/?user=${this.form.pk}`)
             if (this.profile[0]) {
@@ -68,6 +70,7 @@ export default class Profile extends Vue {
                 this.profile = {}
                 this.update = false;
             }
+            await Core.switchLoad(false)
             this.response = true;
         }
     }
@@ -92,14 +95,14 @@ export default class Profile extends Vue {
             await Core.putHttp(`/api/auth/user/`, this.form)
             await Core.putHttp(`/api/default/profile/${this.profile.id}/`, this.profile)
             await this.load();
-            alert('Successfully saved data')
+            await App.success("บันทึกข้อมูลสำเร็จ")
         } else {
             console.log(this.profile)
             this.profile.user = this.form.pk
             await Core.putHttp(`/api/auth/user/`, this.form)
             await Core.postHttp(`/api/default/profile/`, this.profile)
             await this.load();
-            alert('Successfully saved data')
+            await App.success("บันทึกข้อมูลสำเร็จ")
         }
 
     }

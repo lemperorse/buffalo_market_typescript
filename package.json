@@ -19,7 +19,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "nouislider": "14.6.0",
-    "sweetalert2": "^10.10.1",
+    "sweetalert2": "^10.16.9",
     "typescript-tools": "^0.3.1",
     "vue": "^2.6.12",
     "vue-apexcharts": "^1.6.1",

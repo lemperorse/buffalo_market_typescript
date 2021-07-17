@@ -35,6 +35,7 @@ import {
 import { Core } from '../../store/core'
 import { Auth } from '../../store/auth'
 import { User } from '../../store/user'
+import { App } from "@/store/app";
 @Component({
     components: {
 
@@ -52,10 +53,10 @@ export default class Forgot extends Vue {
     async register() {
         let storeUser = await Core.postHttp(`api/register/`, this.form)
         if (storeUser.id) {
-            alert('สมัครสมาชิกสำเร็จ');
+            await App.success("สมัครสมาชิกสำเร็จ")
             await this.$router.push('/login')
         } else {
-            alert('สมัครสมาชิกไม่สำเร็จ');
+            await App.error('ไม่สามารถสมัครสมาชิกได้');
         }
     }
 

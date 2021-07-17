@@ -99,11 +99,13 @@ export default class PostSaller extends Vue {
     ]
 
     async created() {
+        await Core.switchLoad(true)
         await this.loadFarm();
         await this.loadProduct();
         this.choices = {
             'status': await Product.StatusSell
         }
+        await Core.switchLoad(false)
         this.response = true
     }
 

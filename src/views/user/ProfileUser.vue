@@ -77,7 +77,7 @@
                             </div>
 
                             <div v-bind:class="{'hidden': openTab !== 4, 'block': openTab === 4}">
-                                <SellerDetail v-if="openTab === 4" />
+                                <SellerDetail @changePage="changePages" v-if="openTab === 4" />
                             </div>
 
                             <div v-bind:class="{'hidden': openTab !== 5, 'block': openTab === 5}">
@@ -107,6 +107,7 @@ import Manager from '@/components/profile/Tab/Manager.vue';
 import { User } from "@/store/user";
 import { Auth } from "@/store/auth";
 import { Core } from "@/store/core";
+import { App } from "@/store/app";
 @Component({
     components: {
 
@@ -134,6 +135,7 @@ export default class Table extends Vue {
     profile: any = {}
     form: any = null;
     async created() {
+        await Core.switchLoad(true)
         await Auth.checkToken();
         if (Auth.logined) {
             this.user = await Auth.getUser()
@@ -141,6 +143,7 @@ export default class Table extends Vue {
 
         }
         await this.getTab();
+        await Core.switchLoad(false)
         this.response = true;
     }
     
@@ -162,7 +165,7 @@ export default class Table extends Vue {
 
             }
         } else {
-            alert('กรุณาระบุข้อมูลส่วนตัว')
+            await App.success("กรุณาระบุข้อมูลส่วนตัว") 
         }
 
     }
@@ -174,7 +177,7 @@ export default class Table extends Vue {
         this.profile.profile_image = file
         let data = await Core.putHttp(`/api/user/profile/image/${this.profile.id}/`, this.profile)
         if (data.id) {
-            alert("success")
+            await App.success("สำเร็จ")  
         }
     }
 
@@ -189,6 +192,10 @@ export default class Table extends Vue {
 
     toggleTabs(tabNumber: number) {
         this.openTab = tabNumber
+    }
+
+    changePages(val:number){
+        this.openTab = val
     }
 
 }

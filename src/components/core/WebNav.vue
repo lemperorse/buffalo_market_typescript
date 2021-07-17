@@ -157,8 +157,9 @@ export default class Navbar extends Vue {
     async logout() {
         await Auth.logout();
         await App.success("ออกจากระบบสำเร็จ")
-        await this.$router.push("/")
+        await this.$router.push("/login")
         await location.reload();
+        
         
 
     }

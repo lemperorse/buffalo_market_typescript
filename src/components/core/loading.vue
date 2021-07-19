@@ -4,7 +4,8 @@
       <v-btn style="height:108px; width:108px;" color="white" fab class=" animate__animated animate__pulse animate__infinite infinite" >
         <!-- <img class="w-auto  h-24 " src="/017-cow.png" alt=""> -->
         <i class="em em-shopping_bags text-3xl" aria-role="presentation" aria-label=""></i>
-      </v-btn> 
+      </v-btn>
+      <div>{{_lang('กำลังโหลดข้อมูล...','Loading data...','加载数据中...')}}</div>
     </v-overlay>
   </div>
 

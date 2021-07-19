@@ -129,9 +129,9 @@ export default class PostSaller extends Vue {
     panel: number[] = [0, 1]
     allPages: number = 1
     async created() {
-        await Core.switchLoad(true)
+        // await Core.switchLoad(true)
         await this.run()
-        await Core.switchLoad(false)
+        // await Core.switchLoad(false)
     }
     
     products: any = null
@@ -141,7 +141,7 @@ export default class PostSaller extends Vue {
     productsType: any = null
 
     async run(){
-        await Core.switchLoad(true)
+        // await Core.switchLoad(true)
         await this.loadCategory();
         await this.loadProvinces();
         this.saleType = await Product.SaleType
@@ -149,7 +149,7 @@ export default class PostSaller extends Vue {
         await this.loadProducts()
         await this.getType();
         await this.getCat();
-        await Core.switchLoad(false)
+        // await Core.switchLoad(false)
         this.response = true
     }
     

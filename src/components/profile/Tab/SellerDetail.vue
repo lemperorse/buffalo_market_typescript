@@ -13,7 +13,7 @@
             <div class="flex flex-col">
                 <div class="flex flex-col md:flex-row justify-around">
                     <div class="pl-4 mt-4 flex">
-                        <img class="w-24 h-24 rounded-full" :src="$server+'/'+profile.profile_image" alt="" srcset="">
+                        <img v-if="profile.profile_image" class="w-24 h-24 rounded-full" :src="$server+'/'+profile.profile_image" alt="" srcset="">
                         <div class="ml-4">
                             <h2 class="text-xl">{{_lang('ผู้ขาย-ซื้อ','Seller name','賣家名稱')}} : {{user.first_name}}&nbsp;&nbsp;{{user.last_name}}</h2>
                             <h2 class="text-ิฟหำ text-gray-600">{{_lang('เลขบัตรประชาชน','ID card number','身份證號碼')}} : {{profile.personal_id}}</h2>

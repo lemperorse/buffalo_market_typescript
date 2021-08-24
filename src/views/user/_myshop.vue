@@ -33,7 +33,7 @@
                         <Menu class="rounded-lg" :name="_lang('ประกาศขายของฉัน','My sale announcement','我的銷售公告')" path="/user/myshopsell" image="./assets/ecommerce/032-discount.png" :head="_lang('ประกาศขายของฉัน','My sale announcement','我的銷售公告')" :txt="_lang('สามารถดูและแก้ไขสถานะประกาศขายต่างๆได้','Can view and edit the status of various listings','可以查看和編輯各種列表的狀態')" :caption="_lang('จัดการข้อมูล','Edit','調整')" />
                     </div>
                     <div class="m-2 w-full">
-                        <Menu class="rounded-lg" :name="_lang('รายงานของฉัน','My report','我的報告')" path="/user/myshopreport" image="./assets/ecommerce/029-bar chart.png" :head="_lang('รายงานของฉัน','My report','我的報告')" :txt="_lang('รายงานเกี่ยวกับสถิติประกาศต่างๆ','Report on various announcement statistics','各種公告統計報表')" :caption="_lang('จัดการข้อมูล','Edit','調整')" />
+                        <Menu class="rounded-lg" :name="_lang('รายงานของฉัน','My report','我的報告')" path="/user/myshopreport" image="./assets/ecommerce/029-bar-chart.png" :head="_lang('รายงานของฉัน','My report','我的報告')" :txt="_lang('รายงานเกี่ยวกับสถิติประกาศต่างๆ','Report on various announcement statistics','各種公告統計報表')" :caption="_lang('จัดการข้อมูล','Edit','調整')" />
                     </div>
                 </div>
 

@@ -3,19 +3,15 @@
     <v-container>
         <v-row justify="center">
             <v-col cols="12" sm="12">
-                <br>
                 <v-toolbar color="transparent" flat>
-                    <h2 class="">
-                        <h2 class="text-md md:text-xl"><v-icon>mdi-bullhorn-outline</v-icon> {{_lang('ประกาศขายล่าสุด','Latest Sale','最新销售')}}</h2>
-                        <h2 class="text-md md:text-xl font-bold text-red-500"> {{_lang('หากคุณต้องการซื้อสินค้า','If you want to buy','如果你想买')}}</h2>
+                    <h2 class="font-bold text-xl  ">
+                        <v-icon>mdi-bullhorn-outline</v-icon> {{_lang('ประกาศขายล่าสุด','Latest Sale','最新销售')}}
                     </h2>
                     <v-spacer></v-spacer>
-                    <!-- <v-btn rounded @click="$router.push('/product?type=ขาย')" outlined color="orange accent-4"> -->
-                    <v-btn rounded @click="$router.push('/ProductSell')" outlined color="orange accent-4">
+                    <v-btn rounded @click="$router.push('/product?type=ขาย')" outlined color="orange accent-4">
                         <v-icon class="pr-2">mdi-shopping</v-icon> {{_lang('ดูทั้งหมด','All','查看全部')}}
                     </v-btn>
                 </v-toolbar>
-                <br><br>
                 <v-slide-group multiple show-arrows><br>
                     <v-slide-item  v-for="pu,i in products" :key="i" >
                         <div class="flex flex-row w-full"> 

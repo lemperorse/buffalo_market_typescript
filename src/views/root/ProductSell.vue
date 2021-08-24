@@ -1,15 +1,15 @@
 <template>
         <div class="md:p-6" >
-      <Buy /> 
+      <Sell /> 
   </div>
 </template>
 
 <script>
-import Buy from "@/components/core/Buy.vue"; 
+import Sell from "@/components/core/Sell.vue"; 
 
 export default {
     components:{
-        Buy
+        Sell
     }
 }
 </script>

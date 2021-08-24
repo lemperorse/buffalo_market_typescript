@@ -1,26 +1,25 @@
 <template>
 <!-- <div class="hero bg-beta py-16"> -->
-<div class="hero bg-beta ">
-    <br><br>
+<div class="hero py-16">
     <!-- container -->
     <div class="container px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto">
         <!-- hero wrapper -->
         <div class="hero-wrapper grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             <!-- hero text -->
             <div class="hero-text col-span-6">
-                <h1 class=" font-bold text-xl md:text-5xl max-w-xl text-white leading-tight">
+                <h1 class=" font-bold text-xl md:text-5xl max-w-xl text-black leading-tight">
                     {{_lang('ประกาศซื้อขายสินค้าในฟาร์มควายของคุณกับเรา','Sell your buffalo farm products with us.','与我们一起出售您的水牛农产品。')}} </h1>
                 <hr class=" w-12 h-1 bg-orange-500 rounded-full mt-8">
-                <p class="text-white text-base leading-relaxed mt-8 ">
+                <p class="text-black   text-base leading-relaxed mt-8 ">
 
                     {{_lang('แอปพลิเคชันสำหรับ ประกาศซื้อ ประกาศขาย สินค้าของเกษตรกร ไม่ว่าจะเป็น ควาย อาหารควาย ยา อาหารเสริม','An application for buying and selling announcements of farmers, whether buffalo, buffalo food, medicine, food supplements.','农户买卖公告的申请，无论是水牛、水牛食品、药品、食品补充剂')}}
                 </p>
                 <div class="get-app flex row wrap md:space-x-5 mt-10  ">
-                    <div class="mt-3 md:mt-1 md:ml-4">
-                        <v-btn @click="$router.push('/product')" x-large rounded  color=""  ><i class="fas fa-search text-xl pr-2"></i> {{_lang(' ค้นหาประกาศ ที่คุณต้องการ','Find the announcement you want.','找到您想要的公告。')}} </v-btn>
+                    <div class="mt-3 md:mt-1">
+                        <v-btn @click="$router.push('/product')" x-large rounded  color="orange" dark ><i class="fas fa-search text-xl pr-2"></i> {{_lang(' ค้นหาประกาศ ที่คุณต้องการ','Find the announcement you want.','找到您想要的公告。')}} </v-btn>
                     </div>
                     <div class="mt-3 md:mt-1">
-                        <v-btn @click="$router.push('/map')"  dark outlined x-large rounded  color=""><i class="fas fa-map-marker-alt text-xl pr-2"></i>{{_lang('ดูสถานที่สำคัญ','Find landmarks.','看地标')}}</v-btn>
+                        <v-btn @click="$router.push('/map')"  dark outlined x-large rounded  color="orange"><i class="fas fa-map-marker-alt text-xl pr-2"></i>{{_lang('ดูสถานที่สำคัญ','Find landmarks.','看地标')}}</v-btn>
                     </div>
                 </div>
             </div>

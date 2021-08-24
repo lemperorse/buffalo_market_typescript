@@ -38,8 +38,10 @@
               )
             }}
           </p>
-          <div class="get-app flex row wrap md:space-x-5 mt-10">
-            <div class="mt-3 md:mt-1 md:ml-4">
+          <div class="get-app flex row wrap md:space-x-5 my-10 ">
+            <div
+              class="mt-3 md:mt-1 md:ml-4 d-none d-xs-none d-sm-none d-md-flex"
+            >
               <v-btn
                 @click="$router.push('/ProductBuy')"
                 x-large
@@ -55,7 +57,25 @@
                 }}
               </v-btn>
             </div>
-            <div class="mt-3 md:mt-1 md:ml-4">
+            <div class="mt-3 md:mt-1 md:ml-4 d-sm-flex d-xs-flex d-md-none">
+              <v-btn
+                @click="$router.push('/ProductBuy')"
+                x-large
+                rounded
+                color=""
+                ><i class="fas fa-search text-xl pr-2"></i>
+                {{
+                  _lang(
+                    " หากคุณต้องการ เลือกซื้อสินค้า",
+                    " If you want shop Try going to the listing page.",
+                    " 如果你想店鋪嘗試轉到列表頁面。"
+                  )
+                }}
+              </v-btn>
+            </div>
+            <div
+              class="mt-3 md:mt-1 md:ml-4 d-none d-xs-none d-sm-none d-md-flex"
+            >
               <v-btn
                 @click="$router.push('/ProductSell')"
                 x-large
@@ -71,7 +91,41 @@
                 }}
               </v-btn>
             </div>
-            <div class="mt-3 md:mt-1">
+            <div class="mt-3 md:mt-1 md:ml-4 d-sm-flex d-xs-flex d-md-none">
+              <v-btn
+                @click="$router.push('/ProductSell')"
+                x-large
+                rounded
+                color=""
+                ><i class="fas fa-search text-xl pr-2"></i>
+                {{
+                  _lang(
+                    " หากคุณต้องการ ขายสินค้า",
+                    " If you want to sell products, go to the buy ad page",
+                    "如果您想銷售產品，請轉到購買廣告頁面。"
+                  )
+                }}
+              </v-btn>
+            </div>
+            <div class="mt-3 md:mt-1 d-sm-flex d-xs-flex d-md-none">
+              <v-btn
+                @click="$router.push('/map')"
+                dark
+                outlined
+                x-large
+                rounded
+                color=""
+                ><i class="fas fa-map-marker-alt text-xl pr-2"></i
+                >{{
+                  _lang(
+                    " สถานที่สำคัญที่เกี่ยวข้อง",
+                    " If you want to see related landmarks.",
+                    "或者如果您想查看相關地標"
+                  )
+                }}</v-btn
+              >
+            </div>
+            <div class="mt-3 md:mt-1 d-none d-xs-none d-sm-none d-md-flex">
               <v-btn
                 @click="$router.push('/map')"
                 dark

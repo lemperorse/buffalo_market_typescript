@@ -178,6 +178,7 @@ export default class Table extends Vue {
         let data = await Core.putHttp(`/api/user/profile/image/${this.profile.id}/`, this.profile)
         if (data.id) {
             await App.success("สำเร็จ")  
+            await location.reload()
         }
     }
 

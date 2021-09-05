@@ -3,25 +3,26 @@
     <div class="flex-auto lg:px-10 py-10 pt-0">
         <form @submit.prevent="updateProduct()">
             <v-text-field dense rounded type="text" v-model="product.name" class="w-full " filled :label="_lang('ชื่อสินค้า','Product name','產品名稱')" prepend-inner-icon="mdi-lead-pencil"></v-text-field>
-            <v-text-field dense rounded type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')" prepend-inner-icon="mdi-clipboard-text-outline"></v-text-field>
             <v-select dense rounded :items="choices.product_type" item-text="name" item-value="id" v-model="product.product_type" class="w-full " filled :label="_lang('ประเภทประกาศ ','Announcement type','公告類型')" prepend-inner-icon="mdi-basket-outline"></v-select>
             <v-select dense rounded :items="choices.price_type" item-text="name" item-value="id" v-model="product.price_type" class="w-full " filled :label="_lang('ประเภทราคา','Price Type','价格类型')" prepend-inner-icon="mdi-currency-btc"></v-select>
             <v-text-field dense rounded v-if="product.price_type" type="text" v-model="product.price" class="w-full " filled :label="_lang('ราคา','Price','价钱')" prepend-inner-icon="mdi-currency-btc"></v-text-field>
             <v-text-field dense rounded v-if="!product.price_type" type="text" v-model="product.price_start" class="w-full " filled :label="_lang('ราคาเริ่มต้น','PriceStart','价格开始')" prepend-inner-icon="mdi-currency-btc"></v-text-field>
             <v-text-field dense rounded v-if="!product.price_type" type="text" v-model="product.price_end" class="w-full " filled :label="_lang('ราคาสุดท้าย','PriceEnd','价格结束')" prepend-inner-icon="mdi-currency-btc"></v-text-field>
             <v-text-field dense rounded type="date" class="w-full" v-model="product.end_date" filled :label="_lang('วันส่งมอบ','Delivery date','郵寄日期')" prepend-inner-icon="mdi-calendar"></v-text-field>
+            <v-textarea dense rounded type="text" v-model="product.detail" class="w-full " filled :label="_lang('รายละเอียด','Detail','详情')" prepend-inner-icon="mdi-clipboard-text-outline"></v-textarea>
 
-            <a  v-if="product.file1" target="_blank" rel="noopener noreferrer" :href="product.file1">ไฟล์ 1</a>
+        
+            <a  v-if="product.file1" target="_blank" rel="noopener noreferrer" :href="$server+'/'+product.file1">ดูภาพหรือวิดีโอไฟล์ 1</a>
             <VueFileAgent v-model="f1" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
 
-            <a v-if="product.file2" target="_blank" rel="noopener noreferrer" :href="product.file2">ไฟล์ 2</a>
+            <a v-if="product.file2" target="_blank" rel="noopener noreferrer" :href="$server+'/'+product.file2">ดูภาพหรือวิดีโอไฟล์ 2</a>
             <VueFileAgent v-model="f2" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
 
-            <a v-if="product.file3" target="_blank" rel="noopener noreferrer" :href="product.file3">ไฟล์ 3</a>
+            <a v-if="product.file3" target="_blank" rel="noopener noreferrer" :href="$server+'/'+product.file3">ดูภาพหรือวิดีโอไฟล์ 3</a>
             <VueFileAgent v-model="f3" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
-            <a v-if="product.file4" target="_blank" rel="noopener noreferrer" :href="product.file4">ไฟล์ 4</a>
+            <a v-if="product.file4" target="_blank" rel="noopener noreferrer" :href="$server+'/'+product.file4">ดูภาพหรือวิดีโอไฟล์ 4</a>
             <VueFileAgent v-model="f4" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
-            <a v-if="product.file5" target="_blank" rel="noopener noreferrer" :href="product.file5">ไฟล์ 5</a>
+            <a v-if="product.file5" target="_blank" rel="noopener noreferrer" :href="$server+'/'+product.file5">ดูภาพหรือวิดีโอไฟล์ 5</a>
             <VueFileAgent v-model="f5" :multiple="false" :maxSize="'5MB'" :deletable="true" :accept="'image/*,video/*'"></VueFileAgent>
             <!-- <pre>{{product}}</pre> -->
             <v-select dense rounded :items="choices.sell_type" item-text="name" item-value="id" v-model="product.sell_type" class="w-full " filled :label="_lang('ประเภทการซื้อ','Sales type','銷售類型')" prepend-inner-icon="mdi-calendar-alert"></v-select>

@@ -41,7 +41,18 @@ const rootRouter = [
         path: 'product',
         name: 'product',
         component: getView('Product')
-    },{
+    },
+    {
+        path: 'productbuy',
+        name: 'productbuy',
+        component: getView('ProductBuy')
+    },
+    {
+        path: 'productsell',
+        name: 'productsell',
+        component: getView('ProductSell')
+    },
+    {
         path: 'map',
         name: 'map',
         component: getView('Map')

@@ -11,6 +11,7 @@
     <div class="mt-24">
         <h2>{{_lang('ภาพถ่ายบัตรประจำตัวประชาชน','ID card photo','賣方地址')}}</h2>
         <center>
+           
         <img v-if="profileImage.presonal_image" ref="profileImage" class="mt-4 h-120 w-120 rounded-lg align-middle border-none" 
         :src="$server+'/'+profileImage.presonal_image" />
         <img v-else ref="profileImage" class="mt-4 rounded-full align-middle border-none" src="https://sv1.picz.in.th/images/2020/11/04/bQMzml.jpg" />
@@ -68,6 +69,7 @@ export default class Personal extends Vue {
         this.profileImage.presonal_image = file
         let data = await Core.putHttp(`/api/user/personal/image/${this.profile.id}/`, this.profileImage)
         if (data.id) {
+             this.profileImage.presonal_image = data.presonal_image
             await App.success("บันทึกข้อมูลสำเร็จ")
         }
     }

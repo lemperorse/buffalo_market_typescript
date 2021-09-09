@@ -34,6 +34,11 @@ Vue.prototype.$server = process.env.VUE_APP_SERVER
 import VueFileAgent from 'vue-file-agent';  
 Vue.use(VueFileAgent);
 
+import VueSocialSharing from 'vue-social-sharing'
+
+Vue.use(VueSocialSharing);
+import VueMeta from 'vue-meta'
+Vue.use(VueMeta)
 if(language == 'th'){ 
   Vue.prototype.$txt = th
 }else if(language == 'en'){

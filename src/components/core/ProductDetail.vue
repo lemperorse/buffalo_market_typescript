@@ -1,5 +1,7 @@
 <template>
 <div class="flex flex-col justify-center items-center w-full rounded-xl shadow-xl mb-10 p-4 bg-white ">
+   <meta property="og:image" :src="$server+'/'+product.file1" />
+
     <v-alert v-if="product.product_type" border="left" type="amber lighten-3" class="w-full pa-8">
         <div class="flex">
             <div class="row wrap">
@@ -48,6 +50,17 @@
             <div class="col-md-7 col-sm-7 col-xs-12 ">
                 <div class=" ">
                     <p class="text-3xl mb-0 mt-2 font-bold"> {{product.name}}</p>
+             
+          <ShareNetwork
+    network="facebook"
+    :url="$server+'/buffalo_market_typescript/#'+url"
+    :title="product.name"
+     :quote="product.name "
+    hashtags="ตลาดควาย,buffalomarket"
+     
+  >
+     Shere To Facebook
+</ShareNetwork>
                     <v-card-actions class="mt-4 pa-3 bg-gray-100 rounded-lg  ">
                         <div class="">
                             <div class="text-3xl text-yellow-600" v-if="product.price_type"> {{product.price}} {{_lang('฿','฿','฿')}}</div>
@@ -196,17 +209,32 @@ import {
 } from "@/store/city";
 import moment from 'moment'
 @Component({
-    components: { MapView, ProductOther },
+    components: { MapView, ProductOther,  },
     computed: {},
+     metaInfo: {
+         meta: [
+                { name: 'description', content: 'Test description' },
+                { name: 'keywords', content: 'Test keywords' },
+                {property: 'og:image', content: 'https://www.buffalomarket.agri.up.ac.th/product/silage.jpg' }    
+
+            ],
+        title: "ตลาดควาย"
+        }
+   
 })
+
+ 
+ 
 
 export default class PostSaller extends Vue {
     dialog: boolean = false
+    url:any = this.$route.fullPath
     async created() {
         await this.loadProduct();
-
+        
         await this.loadProducts()
         await this.loadFarm()
+ 
         // this.response = true
     }
     products: any = null
@@ -216,6 +244,7 @@ export default class PostSaller extends Vue {
     user: any = null
     profile: any = null
 
+   
     async loadFarm() {
         // this.user = await Auth.getUser()
         // this.profile = await User.getProfileFull();
@@ -266,6 +295,8 @@ export default class PostSaller extends Vue {
         let convert = moment(date).format('DD/MM/YYYY')
         return convert
     }
+
+        
 
 }
 </script>

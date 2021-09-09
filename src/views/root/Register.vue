@@ -8,8 +8,8 @@
          <v-card-text>
              <form @submit.prevent="register">
                  <div> 
-                    <v-text-field required v-model="form.username" type="text" :label="_lang('ชื่อผู้ใช้งาน','Username','用戶名')" filled rounded prepend-inner-icon="mdi-account-circle-outline"></v-text-field>
-                    <v-text-field required v-model="form.password" type="password" :label="_lang('รหัสผ่าน','Password','密碼')" filled rounded prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
+                    <v-text-field hint="แนะนำให้ใส่ 'ชื่อผู้ใช้งาน' เป็นภาษาอังกฤษ" required v-model="form.username" type="text" :label="_lang('ชื่อผู้ใช้งาน','Username','用戶名')" filled rounded prepend-inner-icon="mdi-account-circle-outline"></v-text-field>
+                    <v-text-field hint="รหัสผ่านต้องไม่ซ้ำกับผู้ใช้งาน" required v-model="form.password" type="password" :label="_lang('รหัสผ่าน','Password','密碼')" filled rounded prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
                     <v-text-field required v-model="form.password2" type="password" :label="_lang('ยืนยันรหัสผ่าน','Confirm password','確認密碼')" filled rounded prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
                     <v-text-field required v-model="form.first_name" type="text" :label="_lang('ชื่อ','Firstname','名字')" filled rounded prepend-inner-icon="mdi-badge-account-outline"></v-text-field>
                     <v-text-field required v-model="form.last_name" type="text" :label="_lang('นามสกุล','Lastname','姓')" filled rounded prepend-inner-icon="mdi-badge-account-outline"></v-text-field>

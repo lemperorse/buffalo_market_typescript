@@ -10,7 +10,7 @@
         </v-btn>
       </v-card-title>
       <v-card-text>
-        <v-autocomplete required rounded return-object label="ภูมิภาค" filled v-model="geoChoose" :items="geo"
+        <v-autocomplete required rounded return-object hint="คลิกหรือกดเพื่อค้นหาข้อมูล" label="ภูมิภาค" filled v-model="geoChoose" :items="geo"
                         item-text="name"></v-autocomplete>
         <v-autocomplete required rounded return-object label="จังหวัด" filled v-model="provinceChoose" :items="province"
                         item-text="name"></v-autocomplete>

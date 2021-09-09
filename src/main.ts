@@ -38,7 +38,12 @@ import VueSocialSharing from 'vue-social-sharing'
 
 Vue.use(VueSocialSharing);
 import VueMeta from 'vue-meta'
-Vue.use(VueMeta)
+ 
+
+Vue.use(VueMeta);
+
+
+
 if(language == 'th'){ 
   Vue.prototype.$txt = th
 }else if(language == 'en'){

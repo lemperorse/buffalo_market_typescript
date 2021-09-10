@@ -21,7 +21,7 @@
                 <div :class="(width > 1025)?`grid grid-cols-1 lg:grid-cols-5 md:grid-cols-2 gap-4`:''">
                 <!-- <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4"> -->
                     <div class="m-2 w-full">
-                        <Menu class="rounded-lg" :name="_lang('ร้านค้าของฉัน','My shop','我的店鋪')" path="/user/profileuser?tab=4" image="./assets/ecommerce/050-warehouse.png" :head="_lang('ร้านค้าของฉัน','My shop','我的店鋪')" :txt="_lang('ชื่อสกุล ที่อยู่ อีเมล์ รวมถึงข้อมมูลส่วนตัวต่างๆ ของคุณ','Your full name, address, e-mail address, and other personal information.','您的全名、地址、電子郵件地址以及您的個人信息。')" :caption="_lang('จัดการข้อมูล','Edit','調整')" />
+                        <Menu class="rounded-lg" :name="_lang('ร้านค้าของฉัน','My shop','我的店鋪')" path="/user/profileuser?tab=4" image="./assets/ecommerce/050-warehouse.png" :head="_lang('ร้านค้าของฉัน','My shop','我的店鋪')" :txt="_lang('ชื่อสกุล ที่อยู่ อีเมล์ รวมถึงข้อมูลส่วนตัวต่างๆ ของคุณ','Your full name, address, e-mail address, and other personal information.','您的全名、地址、電子郵件地址以及您的個人信息。')" :caption="_lang('จัดการข้อมูล','Edit','調整')" />
                     </div>
                     <!-- <div class="m-2 w-full">
                         <Menu :name="_lang('รายการของฉัน','My list','我的列表')" path="/user/myshoplist" image="./assets/ecommerce/018-budget.png" :head="_lang('รายการของฉัน','My list','我的列表')" :txt="_lang('แสดงสถานะของประกาศต่างๆ และดูประกาศซื้อขายต่างๆได้','Show the status of various announcements and view various trading announcements','顯示各種公告的狀態 並查看各種交易公告')" :caption="_lang('จัดการข้อมูล','Edit','調整')" />

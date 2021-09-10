@@ -88,7 +88,7 @@
             <div class="text-2xl text-gray-500 mt-4 m-1">{{_lang('นำทางไปยังร้านค้าที่ขายสินค้านี้','Navigate to the store that sells this item.','導航到出售此商品的商店。')}}</div>
             <div class="mt-4">
               <v-btn @click="openMap(farm.location)" type="submit" large outlined rounded class="md:w-1/2 w-full p-2 bgbg" dark>
-                <v-icon class="pr-2">mdi-map-marker-radius-outline</v-icon> {{_lang('นำทางไปยังร้านค้าที่ขายสินค้านี้','Navigate','導航')}}
+                <v-icon class="pr-2">mdi-map-marker-radius-outline</v-icon> {{_lang('นำทางไปยังร้านค้า','Navigate','導航')}}
               </v-btn>
             </div>
           </div>

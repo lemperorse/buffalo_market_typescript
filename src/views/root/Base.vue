@@ -6,7 +6,6 @@
         <v-main class=" bg-gray-100">
             <router-view />
         </v-main>
-
         <Footer></Footer>
     </v-app>
 

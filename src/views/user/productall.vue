@@ -51,7 +51,7 @@
                     <le-card :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :image="ximg(pu.file1)" :name="pu.name" :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" :time="pu.created_at" />
                 </div>
             </div> -->
-            <div :class="`grid grid-cols-2 ${(advanceSearch)?'lg:grid-cols-6':'lg:grid-cols-7'}  md:grid-cols-4 sm:grid-cols-3 gap-1`">
+            <div :class="`grid grid-cols-2 ${(advanceSearch)?'lg:grid-cols-6':'lg:grid-cols-6'}  md:grid-cols-4 sm:grid-cols-3 gap-1`">
                 <le-card v-for="(pu,i) in products.results" :key="i" classProp="w-full" :path="`/user/productdetail?product=${pu.id}&name=${pu.name}`" :image="ximg(pu.file1)" :name="pu.name" :price="(pu.price_type)?pu.price:`${pu.price_start} - ${pu.price_end}`" :time="pu.created_at" />
             </div>
             <br>

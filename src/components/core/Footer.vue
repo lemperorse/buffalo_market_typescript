@@ -4,7 +4,7 @@
     <div class="container mx-auto "> 
         <!-- Start footer bottom -->
         <div class="pt-4 md:flex md:items-center md:justify-center text-white" > 
-            {{_lang('ลิขสิทธิ์ © 2563 โดย ศูนย์วิจัยและบํารุงพันธุ์สัตว์พะเยา','Copyright © 2020 by Phayao Animal Research and Breeding Center.','版权所有 © 2020 帕堯動物研究與繁育中心')}}
+            {{_lang('ลิขสิทธิ์ © 2563 โดย กรมปศุสัตว์ ศูนย์วิจัยและบํารุงพันธุ์สัตว์พะเยา','Copyright © 2020 by Department of Livestock Development Phayao Animal Research and Breeding Center.','版权所有 © 2020 畜牧发展部帕尧动物研究与繁育中心')}}
         </div>
     </div>
 </nav>

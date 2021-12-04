@@ -4,3 +4,4 @@
 /src-cordova/platforms
 /src-cordova/plugins
 /public/cordova.js
+dist/*

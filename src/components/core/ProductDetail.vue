@@ -24,16 +24,16 @@
         <!-- <pre>{{this.product}}</pre> -->
         <v-carousel class="rounded w-full shadow-xl" height="400px" cycle>
           <v-carousel-item v-if="product.file1">
-            <v-img class="w-full h-full" :src="$server+'/'+product.file1" alt="" srcset="" />
+            <v-img class="w-full h-full cursor-pointer " :src="$server+'/'+product.file1" alt="" srcset="" />
           </v-carousel-item>
           <v-carousel-item v-if="product.file2">
-            <v-img class="w-full h-full" :src="$server+'/'+product.file2" alt="" srcset="" />
+            <v-img class="w-full h-full cursor-pointer " :src="$server+'/'+product.file2" alt="" srcset="" />
           </v-carousel-item>
           <v-carousel-item v-if="product.file3">
-            <v-img class="w-full h-full" :src="$server+'/'+product.file3" alt="" srcset="" />
+            <v-img class="w-full h-full cursor-pointer " :src="$server+'/'+product.file3" alt="" srcset="" />
           </v-carousel-item>
           <v-carousel-item v-if="product.file4">
-            <video class="w-full h-full" controls autoplay>
+            <video class="w-full h-full cursor-pointer " controls autoplay>
               <source :src="$server+'/'+product.file4" type="video/mp4">
               <source :src="$server+'/'+product.file4" type="video/ogg">
             </video>

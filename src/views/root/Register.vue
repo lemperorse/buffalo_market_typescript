@@ -6,7 +6,7 @@
         </v-card-title>
         <v-divider></v-divider>
          <v-card-text>
-             <form @submit.prevent="register">
+             <form @submit.prevent="prePareRegister">
                  <div> 
                     <v-text-field hint="แนะนำให้ใส่ 'ชื่อผู้ใช้งาน' เป็นภาษาอังกฤษ" required v-model="form.username" type="text" :label="_lang('ชื่อผู้ใช้งาน','Username','用戶名')" filled rounded prepend-inner-icon="mdi-account-circle-outline"></v-text-field>
                     <v-text-field hint="รหัสผ่านต้องไม่ซ้ำกับผู้ใช้งาน" required v-model="form.password" type="password" :label="_lang('รหัสผ่าน','Password','密碼')" filled rounded prepend-inner-icon="mdi-form-textbox-password"></v-text-field>
@@ -24,6 +24,28 @@
          </v-card-actions>
      </v-card>
      <br>
+
+     <v-dialog
+         v-model="dialog"
+         scrollable   
+         persistent :overlay="false"
+         max-width="500px"
+         transition="dialog-transition"
+     >
+         <v-card>
+             <v-card-title primary-title>
+                {{_lang('ข้อกำหนดเงื่อนไขการใช้บริการ','Terms of Service','服務條款')}}
+             </v-card-title>
+             <v-card-text>
+                  <p class="text-base text-gray-500" v-html="_lang(service.name,service.name_en,service.name_ch)"></p>
+             </v-card-text>
+             <v-card-actions>
+                 <v-spacer></v-spacer>
+                 <v-btn @click="dialog = false" outlined color="red">{{_lang('ไม่ยอมรับ','Not accept','不接受')}}</v-btn>
+                 <v-btn @click="register" color="success">{{_lang('ยอมรับ','Accept','接受')}}</v-btn>
+             </v-card-actions>
+         </v-card>
+     </v-dialog>
  </div>
 </template>
 
@@ -46,8 +68,14 @@ import { App } from "@/store/app";
 export default class Forgot extends Vue {
 
     form: any = {}
+    dialog:boolean = false
+    service:any = {}
     async created() {
+        await this.getTermService()
+    }
 
+    async prePareRegister(){
+        this.dialog = true;
     }
 
     async register() {
@@ -58,6 +86,16 @@ export default class Forgot extends Vue {
         } else {
             await App.error('ไม่สามารถสมัครสมาชิกได้');
         }
+    }
+
+    async getTermService(){
+        let service = await Core.getHttp(`/api/default/termservice/`)
+        this.service = service[service.length-1]
+    }
+
+
+    async closeDialog(){
+
     }
 
 }
